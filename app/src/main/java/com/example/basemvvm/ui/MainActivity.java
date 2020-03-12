@@ -9,17 +9,19 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.BaseSwipeBackLeftActivity;
 
 
 public class MainActivity extends BaseSwipeBackLeftActivity {
     TextView textView;
-    private boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        BarUtils.setStatusBarLightMode(this,false);//设置深色 字体黑色
+        BarUtils.setStatusBarLightMode(this,true);//设置浅色 字体白色
         textView = (TextView) findViewById(R.id.tv);
 
         textView.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +38,7 @@ public class MainActivity extends BaseSwipeBackLeftActivity {
     }
 
     private void starAnimation(int color) {
-        Animator anim = ViewAnimationUtils.createCircularReveal(textView, textView.getWidth() / 2, textView.getHeight() / 2, 0, textView.getWidth() / 2.0f);
+        Animator anim = ViewAnimationUtils.createCircularReveal(textView, textView.getWidth() / 2, textView.getHeight(), 0, textView.getWidth() / 2.0f);
         textView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, color));
         anim.setDuration(500);
         anim.setInterpolator(new AccelerateDecelerateInterpolator());
