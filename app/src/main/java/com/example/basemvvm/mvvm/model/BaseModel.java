@@ -6,4 +6,5 @@ package com.example.basemvvm.mvvm.model;
  * desc:
  */
 public class BaseModel {
+
 }

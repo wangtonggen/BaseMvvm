@@ -83,4 +83,7 @@ dependencies {
 
     //基础工具类
     implementation 'com.blankj:utilcodex:1.26.0'
+
+    //下滑/左滑/右滑 关闭activity
+    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
 }
