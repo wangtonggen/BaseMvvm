@@ -1,7 +1,9 @@
-package com.example.basemvvm;
+package com.example.basemvvm.ui;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.basemvvm.R;
 
 public class MainActivity extends AppCompatActivity {
 
