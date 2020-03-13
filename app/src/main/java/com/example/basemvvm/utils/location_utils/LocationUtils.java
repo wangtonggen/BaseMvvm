@@ -47,6 +47,7 @@ public class LocationUtils {
      */
     public static boolean isGpsEnabled() {
         LocationManager lm = (LocationManager) Utils.getApp().getSystemService(Context.LOCATION_SERVICE);
+        assert lm != null;
         return lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
@@ -57,6 +58,7 @@ public class LocationUtils {
      */
     public static boolean isLocationEnabled() {
         LocationManager lm = (LocationManager) Utils.getApp().getSystemService(Context.LOCATION_SERVICE);
+        assert lm != null;
         return lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
                 || lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
@@ -88,6 +90,7 @@ public class LocationUtils {
     public static boolean register(long minTime, long minDistance, OnLocationChangeListener listener) {
         if (listener == null) return false;
         mLocationManager = (LocationManager) Utils.getApp().getSystemService(Context.LOCATION_SERVICE);
+        assert mLocationManager != null;
         if (!mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
                 && !mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             Log.d("LocationUtils", "无法定位，请打开定位服务");
@@ -95,6 +98,7 @@ public class LocationUtils {
         }
         mListener = listener;
         String provider = mLocationManager.getBestProvider(getCriteria(), true);
+        assert provider != null;
         Location location = mLocationManager.getLastKnownLocation(provider);
         if (location != null) listener.getLastKnownLocation(location);
         if (myLocationListener == null) myLocationListener = new MyLocationListener();
@@ -237,10 +241,7 @@ public class LocationUtils {
             return true;
         } else if (isNewer && !isLessAccurate) {
             return true;
-        } else if (isNewer && !isSignificantlyLessAccurate && isFromSameProvider) {
-            return true;
-        }
-        return false;
+        } else return isNewer && !isSignificantlyLessAccurate && isFromSameProvider;
     }
 
     /**

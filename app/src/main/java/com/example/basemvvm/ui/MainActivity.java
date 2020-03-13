@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import com.blankj.utilcode.util.BarUtils;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.BaseSwipeNoneRightActivity;
 import com.example.basemvvm.ui.activity.TestActivity;

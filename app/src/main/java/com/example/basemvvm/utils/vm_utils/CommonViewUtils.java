@@ -1,7 +1,5 @@
 package com.example.basemvvm.utils.vm_utils;
 
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;

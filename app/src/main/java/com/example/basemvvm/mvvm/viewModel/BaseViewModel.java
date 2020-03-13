@@ -6,7 +6,6 @@ import android.widget.TextView;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
 
-import com.example.basemvvm.R;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
 /**

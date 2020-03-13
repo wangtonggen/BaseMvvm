@@ -270,6 +270,7 @@ public class DangerousUtils {
     public static boolean reboot(final String reason) {
         try {
             PowerManager pm = (PowerManager) Utils.getApp().getSystemService(Context.POWER_SERVICE);
+            assert pm != null;
             pm.reboot(reason);
             return true;
         } catch (Exception e) {

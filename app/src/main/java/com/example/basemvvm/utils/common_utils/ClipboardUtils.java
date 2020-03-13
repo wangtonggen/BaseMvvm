@@ -53,6 +53,7 @@ public class ClipboardUtils {
      */
     public static void copyUri(final Uri uri) {
         ClipboardManager cm = (ClipboardManager) Utils.getApp().getSystemService(Context.CLIPBOARD_SERVICE);
+        assert cm != null;
         cm.setPrimaryClip(ClipData.newUri(Utils.getApp().getContentResolver(), "uri", uri));
     }
 
@@ -63,6 +64,7 @@ public class ClipboardUtils {
      */
     public static Uri getUri() {
         ClipboardManager cm = (ClipboardManager) Utils.getApp().getSystemService(Context.CLIPBOARD_SERVICE);
+        assert cm != null;
         ClipData clip = cm.getPrimaryClip();
         if (clip != null && clip.getItemCount() > 0) {
             return clip.getItemAt(0).getUri();
@@ -77,6 +79,7 @@ public class ClipboardUtils {
      */
     public static void copyIntent(final Intent intent) {
         ClipboardManager cm = (ClipboardManager) Utils.getApp().getSystemService(Context.CLIPBOARD_SERVICE);
+        assert cm != null;
         cm.setPrimaryClip(ClipData.newIntent("intent", intent));
     }
 
@@ -87,6 +90,7 @@ public class ClipboardUtils {
      */
     public static Intent getIntent() {
         ClipboardManager cm = (ClipboardManager) Utils.getApp().getSystemService(Context.CLIPBOARD_SERVICE);
+        assert cm != null;
         ClipData clip = cm.getPrimaryClip();
         if (clip != null && clip.getItemCount() > 0) {
             return clip.getItemAt(0).getIntent();

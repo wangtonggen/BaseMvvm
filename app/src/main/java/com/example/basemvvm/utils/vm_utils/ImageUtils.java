@@ -1,7 +1,5 @@
 package com.example.basemvvm.utils.vm_utils;
 
-import android.graphics.drawable.Drawable;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.widget.AppCompatImageView;
