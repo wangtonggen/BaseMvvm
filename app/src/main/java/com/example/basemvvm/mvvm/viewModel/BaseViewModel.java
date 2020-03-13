@@ -55,7 +55,7 @@ public abstract class BaseViewModel {
     /**
      * 绑定生命周期到指定的资源
      *
-     * @param <T>
+     * @param <T> T
      * @return 返回
      */
     public abstract <T> LifecycleTransformer<T> bindToLifecycle();

@@ -46,12 +46,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     @Nonnull
     public Observable<ActivityEvent> lifecycle() {
-        return lifecycleSubject.lift(new ObservableOperator<ActivityEvent, ActivityEvent>() {
-            @Override
-            public Observer<? super ActivityEvent> apply(Observer<? super ActivityEvent> observer) throws Exception {
-                return observer;
-            }
-        });
+        return lifecycleSubject.lift(observer -> observer);
     }
 
     @Override
