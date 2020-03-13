@@ -1,6 +1,7 @@
 package com.example.basemvvm.ui;
 
 import android.animation.Animator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -11,25 +12,27 @@ import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.BarUtils;
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.BaseSwipeBackLeftActivity;
+import com.example.basemvvm.base.BaseSwipeNoneRightActivity;
+import com.example.basemvvm.ui.activity.TestActivity;
 
 
-public class MainActivity extends BaseSwipeBackLeftActivity {
+public class MainActivity extends BaseSwipeNoneRightActivity {
     TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BarUtils.setStatusBarLightMode(this,false);//设置深色 字体黑色
-        BarUtils.setStatusBarLightMode(this,true);//设置浅色 字体白色
+//        BarUtils.setStatusBarLightMode(this,false);//设置深色 字体黑色
+//        BarUtils.setStatusBarLightMode(this,true);//设置浅色 字体白色
+//        BarUtils.addMarginTopEqualStatusBarHeight();
         textView = (TextView) findViewById(R.id.tv);
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                closeAnimation(R.color.colorAccent);
+        textView.setOnClickListener((View v) ->{
+//                startAnimationActivity(new Intent(MainActivity.this, TestActivity.class));
+                startActivity(new Intent(MainActivity.this, TestActivity.class));
+//                closeAnimation(R.color.colorAccent);
             }
-        });
+        );
     }
 
     @Override
