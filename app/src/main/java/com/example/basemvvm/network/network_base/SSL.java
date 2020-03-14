@@ -1,4 +1,4 @@
-package com.example.basemvvm.network;
+package com.example.basemvvm.network.network_base;
 
 import android.annotation.SuppressLint;
 

@@ -1,4 +1,4 @@
-package com.example.basemvvm.mvvm.viewModel;
+package com.example.basemvvm.mvvm.view_model_base;
 
 import android.content.Context;
 

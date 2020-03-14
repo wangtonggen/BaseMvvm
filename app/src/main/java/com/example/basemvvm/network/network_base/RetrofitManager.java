@@ -1,6 +1,7 @@
-package com.example.basemvvm.network;
+package com.example.basemvvm.network.network_base;
 
 import com.example.basemvvm.base.MyApplication;
+import com.example.basemvvm.network.api.ApiBaseUrl;
 import com.example.basemvvm.network.exception.RetrofitException;
 import com.example.basemvvm.utils.common_utils.LogUtils;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
@@ -9,29 +10,17 @@ import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersisto
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.time.Duration;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.SSLSocketFactory;
-
-import okhttp3.Cookie;
-import okhttp3.CookieJar;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.example.basemvvm.network.ApiConfigConstant.CONNECT_TIMEOUT;
-import static com.example.basemvvm.network.ApiConfigConstant.READ_TIMEOUT;
-import static com.example.basemvvm.network.ApiConfigConstant.WRITE_TIMEOUT;
-import static com.example.basemvvm.network.ApiConstant.URL_BASE;
+import static com.example.basemvvm.network.network_base.ApiConfigConstant.CONNECT_TIMEOUT;
+import static com.example.basemvvm.network.network_base.ApiConfigConstant.READ_TIMEOUT;
+import static com.example.basemvvm.network.network_base.ApiConfigConstant.WRITE_TIMEOUT;
 
 /**
  * author: wtg
@@ -62,7 +51,7 @@ public class RetrofitManager {
         retrofit = new Retrofit.Builder().client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(URL_BASE)
+                .baseUrl(ApiBaseUrl.URL_BASE)
                 .build();
     }
 
@@ -87,12 +76,8 @@ public class RetrofitManager {
      * @param service service
      * @param <T> 类型
      * @return 服务类
-     * @throws RetrofitException 异常
      */
-    public <T> T createService(Class<T> service) throws RetrofitException {
-        if (retrofit == null){
-            throw new RetrofitException("retrofit is null");
-        }
+    public <T> T createService(Class<T> service){
         return retrofit.create(service);
     }
 }
