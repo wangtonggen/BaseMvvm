@@ -9,6 +9,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
+
 import javax.annotation.Nonnull;
 
 import io.reactivex.Observable;
