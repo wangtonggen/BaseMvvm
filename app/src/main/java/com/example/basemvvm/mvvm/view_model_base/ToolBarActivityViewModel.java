@@ -2,7 +2,7 @@ package com.example.basemvvm.mvvm.view_model_base;
 
 import androidx.databinding.ObservableField;
 
-import com.example.basemvvm.base.BaseActivity;
+import com.example.basemvvm.base.BaseMvvmActivity;
 
 /**
  * author: wtg
@@ -12,7 +12,7 @@ import com.example.basemvvm.base.BaseActivity;
 public abstract class ToolBarActivityViewModel extends BaseActivityViewModel {
     public final ObservableField<String> title = new ObservableField<>();//头部title
     public final ObservableField<String> rightText = new ObservableField<>();//右边文本
-    public ToolBarActivityViewModel(BaseActivity mActivity) {
+    public ToolBarActivityViewModel(BaseMvvmActivity mActivity) {
         super(mActivity);
     }
 }

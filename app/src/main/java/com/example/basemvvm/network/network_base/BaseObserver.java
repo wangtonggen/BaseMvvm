@@ -15,7 +15,7 @@ import io.reactivex.disposables.Disposable;
  * desc: 对数据处理
  */
 public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
-    private Disposable disposable;
+//    private Disposable disposable;
     @Override
     public void onNext(HttpResponse<T> tHttpResponse) {
         onSuccess(tHttpResponse);
@@ -26,7 +26,7 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
 
     @Override
     public void onSubscribe(Disposable d) {
-        this.disposable = d;
+//        this.disposable = d;
     }
 
     @Override
@@ -51,10 +51,10 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
      * 销毁disposable
      */
     private void disposeIt() {
-        if (disposable != null && !disposable.isDisposed()) {
-            disposable.dispose();
-            disposable = null;
-        }
+//        if (disposable != null && !disposable.isDisposed()) {
+//            disposable.dispose();
+//            disposable = null;
+//        }
     }
 
 

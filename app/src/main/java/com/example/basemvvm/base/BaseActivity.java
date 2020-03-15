@@ -18,24 +18,19 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
- * author: wtg
- * date:2020/3/12 0012
- * desc: activity 基类
+ * author：wtg
+ * time：2020/3/15
+ * desc：
  */
 public abstract class BaseActivity extends SwipeBackActivity {
     protected SwipeBackLayout mSwipeBackLayout;
     protected BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutRes());
+        lifecycleSubject.onNext(ActivityEvent.CREATE);
         mSwipeBackLayout = getSwipeBackLayout();
         mSwipeBackLayout.setEdgeTrackingEnabled(getEdgeTrackingEnabled());
-        initView();
-        //添加activity 到activity管理器里面
-
-        lifecycleSubject.onNext(ActivityEvent.CREATE);
     }
 
     @Nonnull
@@ -94,19 +89,16 @@ public abstract class BaseActivity extends SwipeBackActivity {
     }
 
     /**
-     * 初始化控件
-     */
-    protected void initView() {
-
-    }
-
-    @LayoutRes
-    protected abstract int getLayoutRes();
-
-    /**
      * activity 划出关闭的方向 SwipeBackLayout.EDGE_LEFT 向右划出   SwipeBackLayout.EDGE_RIGHT 向左划出  SwipeBackLayout.EDGE_BOTTOM 向上划出
      *
      * @return 方向
      */
     protected abstract int getEdgeTrackingEnabled();
+
+    /**
+     * 获取布局id
+     * @return layoutId
+     */
+    @LayoutRes
+    protected abstract int getLayoutRes();
 }

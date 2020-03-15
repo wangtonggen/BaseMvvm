@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 29
     buildToolsVersion "28.0.3"
@@ -112,4 +111,8 @@ dependencies {
 
     //分割线
     implementation 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+
+    //butterknife
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 }
