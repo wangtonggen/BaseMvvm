@@ -1,15 +1,9 @@
 package com.example.basemvvm.ui;
 
 import android.animation.Animator;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
@@ -19,9 +13,6 @@ import com.example.basemvvm.base.BaseSwipeNoneRightActivity;
 import com.example.basemvvm.databinding.ActivityMainBinding;
 import com.example.basemvvm.mvvm.view_model.LoginViewModel;
 import com.example.basemvvm.mvvm.view_model_base.BaseViewModel;
-import com.example.basemvvm.network.model.UserModel;
-import com.example.basemvvm.ui.activity.TestActivity;
-import com.example.basemvvm.utils.common_utils.LogUtils;
 
 
 public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding> {

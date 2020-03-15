@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
-import com.example.basemvvm.R;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.basemvvm.base.BaseActivity;
-import com.example.basemvvm.base.BaseMvvmActivity;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
 /**

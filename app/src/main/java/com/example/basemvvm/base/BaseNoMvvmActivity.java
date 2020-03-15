@@ -1,6 +1,5 @@
 package com.example.basemvvm.base;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.LayoutRes;
