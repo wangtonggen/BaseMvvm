@@ -3,6 +3,7 @@ package com.example.basemvvm.mvvm.view_model_base;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.basemvvm.base.BaseActivity;
 import com.example.basemvvm.base.BaseMvvmActivity;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 
@@ -12,9 +13,9 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
  * desc: ViewModel的基类 activity
  */
 public abstract class BaseActivityViewModel extends BaseViewModel{
-    protected BaseMvvmActivity mActivity;
+    protected BaseActivity mActivity;
     protected Bundle bundle;
-    public BaseActivityViewModel(BaseMvvmActivity mActivity) {
+    public BaseActivityViewModel(BaseActivity mActivity) {
         this.mActivity = mActivity;
     }
 

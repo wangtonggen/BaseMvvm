@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.example.basemvvm.R;
 import com.trello.rxlifecycle2.LifecycleTransformer;
@@ -78,14 +80,41 @@ public abstract class BaseActivity extends SwipeBackActivity {
         return RxLifecycle.bind(lifecycleSubject);
     }
 
-    protected void startAnimationActivity(Intent intent){
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
-        startActivity(intent);
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+//        setStartAnimation(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
     }
 
-    protected void finishAnimationActivity(){
-        finish();
-        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+//        setFinishAnimation(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+//        setFinishAnimation(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+    }
+
+
+    /**
+     * 设置打开activity动画
+     * @param enterAnim 进入动画
+     * @param exitAnim 退出动画
+     */
+    public void setStartAnimation(int enterAnim,int exitAnim){
+        overridePendingTransition(enterAnim,exitAnim);
+    }
+
+    /**
+     * 设置关闭activity动画
+     * @param enterAnim 进入动画
+     * @param exitAnim 退出动画
+     */
+    public void setFinishAnimation(int enterAnim,int exitAnim){
+        overridePendingTransition(enterAnim,exitAnim);
     }
 
     /**
