@@ -9,68 +9,86 @@
             name="loginVm"
             type="com.example.basemvvm.mvvm.view_model.LoginViewModel" />
     </data>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_mobile"
+        app:srlEnableLoadMoreWhenContentNotFull="false"
+        app:srlDisableContentWhenLoading="true"
+        app:onRefreshCommand="@{loginVm.onRefreshCommand}"
+        app:onLoadMoreCommand="@{loginVm.onLoadMoreCommand}">
+        <com.scwang.smart.refresh.header.ClassicsHeader
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
+            android:layout_height="wrap_content"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:hint="请输入手机号"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:text="@={loginVm.str_mobile}"
-            app:layout_constraintTop_toTopOf="parent"/>
+            tools:context=".ui.MainActivity">
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/view_toolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:toolBarActivityViewModel="@{loginVm.toolBarActivityViewModel}" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_code"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:hint="请输入验证码"
-            android:text="@={loginVm.str_code}"
-            app:layout_constraintTop_toBottomOf="@id/et_mobile" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="请输入手机号"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:text="@={loginVm.str_mobile}"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_login"
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_40"
-            android:onClick="@{loginVm::onViewClick}"
-            android:text="登录"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/btn_code"
-            app:layout_constraintTop_toBottomOf="@id/et_code" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_code"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:hint="请输入验证码"
+                android:text="@={loginVm.str_code}"
+                app:layout_constraintTop_toBottomOf="@id/et_mobile" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_code"
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_40"
-            android:onClick="@{loginVm::onViewClick}"
-            android:text="获取验证码"
-            app:layout_constraintLeft_toRightOf="@id/btn_login"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_code" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_40"
+                android:onClick="@{loginVm::onViewClick}"
+                android:text="登录"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/btn_code"
+                app:layout_constraintTop_toBottomOf="@id/et_code" />
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="Hello World!"
-            android:onClick="@{loginVm::onViewClick}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_code"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_40"
+                android:onClick="@{loginVm::onViewClick}"
+                android:text="获取验证码"
+                app:layout_constraintLeft_toRightOf="@id/btn_login"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_code" />
 
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:onClick="@{loginVm::onViewClick}"
+                android:text="Hello World!"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </layout>

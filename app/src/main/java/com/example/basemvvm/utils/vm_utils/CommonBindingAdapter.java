@@ -1,16 +1,31 @@
 package com.example.basemvvm.utils.vm_utils;
 
+import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.databinding.BindingAdapter;
 
+import org.w3c.dom.Text;
+
 /**
- * author: wtg
- * date:2020/3/13 0013
- * desc: 提取操作的公共部分
+ * author：wtg
+ * time：2020/3/15
+ * desc： 提取操作的公共部分
  */
-public class CommonViewUtils {
+public class CommonBindingAdapter {
+
+    /**
+     * 设置背景图
+     * @param view view
+     * @param bgResId 资源id
+     */
+    @BindingAdapter("view_background")
+    public static void setToolbarBgColor(View view,int bgResId){
+        view.setBackgroundResource(bgResId);
+    }
 
     /**
      * 设置填充左边布局
@@ -55,5 +70,15 @@ public class CommonViewUtils {
     @BindingAdapter("compoundDrawableBottom")
     public static void compoundDrawablesBottom(TextView view, @DrawableRes int drawableResId) {
         view.setCompoundDrawables(null, null, null, view.getResources().getDrawable(drawableResId));
+    }
+
+    /**
+     * 设置字体颜色
+     * @param textView view
+     * @param resColorId 资源id
+     */
+    @BindingAdapter("text_color")
+    public static void setTextColor(AppCompatTextView textView,@ColorRes int resColorId){
+        textView.setTextColor(textView.getResources().getColor(resColorId));
     }
 }

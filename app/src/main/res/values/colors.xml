@@ -4,5 +4,11 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="color_title">@color/color_4d4d4d</color>
+    <color name="color_title_right">@color/color_4d4d4d</color>
+
     <color name="white">#FFFFFF</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="color_dddddd">#dddddd</color>
+    <color name="color_4d4d4d">#4d4d4d</color>
 </resources>

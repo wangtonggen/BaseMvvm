@@ -60,6 +60,34 @@ public abstract class BaseViewModel {
     }
 
     /**
+     * 显示加载框
+     */
+    public void showLoadingDialog(){
+
+    }
+
+    /**
+     * 关闭加载框
+     */
+    public void closeLoadingDialog(){
+
+    }
+
+    /**
+     * 显示提示性对话框
+     */
+    public void showTextDialog(){
+
+    }
+
+    /**
+     * 关闭提示性对话框
+     */
+    public void closeTextDialog(){
+
+    }
+
+    /**
      * 加入订阅对象
      *
      * @param disposable 订阅对象

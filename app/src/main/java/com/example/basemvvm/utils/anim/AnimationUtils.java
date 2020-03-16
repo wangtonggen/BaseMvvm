@@ -1,48 +1,27 @@
-package com.example.basemvvm.ui;
+package com.example.basemvvm.utils.anim;
 
 import android.animation.Animator;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
 
-import com.example.basemvvm.BR;
-import com.example.basemvvm.R;
-import com.example.basemvvm.base.BaseSwipeNoneRightActivity;
-import com.example.basemvvm.databinding.ActivityMainBinding;
-import com.example.basemvvm.mvvm.view_model.LoginViewModel;
-import com.example.basemvvm.mvvm.view_model_base.BaseViewModel;
+/**
+ * author: wtg
+ * date:2020/3/16 0016
+ * desc: 动画的工具类
+ */
+public class AnimationUtils {
 
-
-public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding> {
-
-    @Override
-    protected int getLayoutRes() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    protected BaseViewModel getViewModel() {
-        return new LoginViewModel(this);
-    }
-
-    @Override
-    protected void initView() {
-//        binding.getRoot().findViewById(R.id.toolbar).setBackgroundResource();
-//        ((AppCompatTextView)binding.getRoot().findViewById(R.id.tv_right)).setTextColor(getResources().getColor(R.color.colorAccent));
-    }
-
-    @Override
-    protected int getViewModelId() {
-        return BR.loginVm;
-    }
-
+    /**
+     * 开始动画
+     * @param view view
+     * @param color 颜色值
+     */
     private void starAnimation(View view, int color) {
         Animator anim = ViewAnimationUtils.createCircularReveal(view, view.getWidth() / 2, view.getHeight(), 0, view.getWidth() / 2.0f);
-        view.setBackgroundColor(ContextCompat.getColor(MainActivity.this, color));
+        view.setBackgroundColor(ContextCompat.getColor(view.getContext(), color));
         anim.setDuration(500);
         anim.setInterpolator(new AccelerateDecelerateInterpolator());
         anim.addListener(new Animator.AnimatorListener() {
@@ -68,6 +47,11 @@ public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding
         anim.start();
     }
 
+    /**
+     * 关闭动画
+     * @param view view
+     * @param color 颜色值
+     */
     private void closeAnimation(View view, final int color) {
         Animator anim = ViewAnimationUtils.createCircularReveal(view, view.getWidth() / 2, view.getHeight(), view.getWidth() / 2.0f, 0);
         anim.setDuration(500);
