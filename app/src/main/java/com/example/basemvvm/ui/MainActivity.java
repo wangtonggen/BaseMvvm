@@ -29,6 +29,7 @@ public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding
 
     @Override
     protected void initView() {
+
     }
 
     @Override
