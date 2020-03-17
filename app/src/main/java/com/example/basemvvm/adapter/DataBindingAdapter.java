@@ -1,7 +1,5 @@
 package com.example.basemvvm.adapter;
 
-import android.view.View;
-
 import androidx.databinding.DataBindingUtil;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;

@@ -54,7 +54,7 @@ public class LoginViewModel extends ToolBarActivityViewModel {
     }
 
     public void login() {
-        UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
+        UserModel.getInstance().bindLift(mActivity.bindToLifecycle()).login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
             @Override
             public void onSubscribe(Disposable d) {
                 super.onSubscribe(d);

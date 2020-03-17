@@ -1,9 +1,13 @@
 package com.example.basemvvm.network.model;
 
+import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.bean.LoginBean;
 import com.example.basemvvm.network.network_base.BaseObserver;
 import com.example.basemvvm.network.network_base.RetrofitManager;
 import com.example.basemvvm.network.service.UserService;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.RxLifecycle;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +23,7 @@ import io.reactivex.schedulers.Schedulers;
 public class UserModel {
     private static UserModel userModel;
     private static UserService userService;
-
+    private LifecycleTransformer<HttpResponse<LoginBean>> lifecycleTransformer;
     public static UserModel getInstance() {
         if (userModel == null) {
             synchronized (UserModel.class) {
@@ -34,13 +38,18 @@ public class UserModel {
         return userModel;
     }
 
+    public UserModel bindLift(LifecycleTransformer<HttpResponse<LoginBean>> lifecycleTransformer){
+        this.lifecycleTransformer = lifecycleTransformer;
+        return userModel;
+    }
+
     /**
      * 登录
      * @param mobile 手机号
      * @param captcha 验证码
      * @param baseObserver 监听
      */
-    public void login(String mobile, String captcha, BaseObserver<LoginBean> baseObserver) {
+    public void login(String mobile, String captcha, BaseObserver<LoginBean> baseObserver, LifecycleProvider lifecycler) {
         Map<String, Object> params = new HashMap<>();
         params.put("mobile", mobile);
         params.put("captcha", captcha);

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_favorites"
+        icon="@drawable/selector_home"
+        title="Favorites"
+        barColorWhenSelected="@color/colorAccent"/>
+    <tab
+        id="@+id/tab_nearby"
+        icon="@drawable/selector_home"
+        title="Nearby" />
+    <tab
+        id="@+id/tab_friends"
+        icon="@drawable/selector_home"
+        title="Friends" />
+</tabs>

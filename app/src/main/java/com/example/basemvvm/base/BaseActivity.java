@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.LayoutRes;
 
+import com.example.basemvvm.utils.common_utils.ActivityManagerUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;
@@ -31,6 +32,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
         lifecycleSubject.onNext(ActivityEvent.CREATE);
         mSwipeBackLayout = getSwipeBackLayout();
         mSwipeBackLayout.setEdgeTrackingEnabled(getEdgeTrackingEnabled());
+        ActivityManagerUtils.getAppManager().addActivity(this);
     }
 
     @Nonnull
@@ -66,6 +68,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
     public void onDestroy() {
         super.onDestroy();
         lifecycleSubject.onNext(ActivityEvent.DESTROY);
+        ActivityManagerUtils.getAppManager().finishActivity(this);
     }
 
     @Nonnull
