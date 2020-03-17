@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
+import com.example.basemvvm.base.lifecycle.MyObserver;
 import com.example.basemvvm.mvvm.view_model_base.BaseViewModel;
 
 /**
@@ -16,7 +17,6 @@ public abstract class BaseMvvmActivity<B extends ViewDataBinding,VM extends Base
     protected B binding;
     protected int viewModelId;
     protected VM viewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ public abstract class BaseMvvmActivity<B extends ViewDataBinding,VM extends Base
         viewModel = getViewModel();
         viewModelId = getViewModelId();
         refreshLayout();
-
+        getLifecycle().addObserver(viewModel);
         initView();
     }
 
@@ -34,10 +34,6 @@ public abstract class BaseMvvmActivity<B extends ViewDataBinding,VM extends Base
         super.onDestroy();
         if (binding != null){
             binding.unbind();
-        }
-
-        if (viewModel != null){
-            viewModel.onDestroy();
         }
     }
 

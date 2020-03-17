@@ -1,12 +1,14 @@
 package com.example.basemvvm.mvvm.view_model_base;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
-
-import com.trello.rxlifecycle2.LifecycleTransformer;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -16,7 +18,7 @@ import io.reactivex.disposables.Disposable;
  * date:2020/3/13 0013
  * desc: ViewModel 基类
  */
-public abstract class BaseViewModel {
+public abstract class BaseViewModel implements LifecycleObserver {
     protected final String TAG = this.getClass().getSimpleName();
     private CompositeDisposable mDisposables = new CompositeDisposable();//请求管理类
 
@@ -107,23 +109,34 @@ public abstract class BaseViewModel {
             mDisposables.dispose();
     }
 
-    /**
-     * 及时解绑防止内存泄漏
-     */
-    public void onDestroy() {
-        cancelRequest();//停止请求数据
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    public void onCreate() {
+        Log.e(TAG, "onCreate: ");
     }
 
-    /**
-     * 绑定生命周期到指定的资源
-     *
-     * @param <T> T
-     * @return 返回
-     */
-    public abstract <T> LifecycleTransformer<T> bindToLifecycle();
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    public void onStart() {
+        Log.e(TAG, "onStart: ");
+    }
 
-//    /**
-//     * 摧毁数据 解绑 停止请求
-//     */
-//    public abstract void onDestroy();
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    public void onResume() {
+        Log.e(TAG, "onResume: ");
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    public void onPause() {
+        Log.e(TAG, "onPause: ");
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    public void onStop() {
+        Log.e(TAG, "onStop: ");
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    public void onDestroy() {
+        Log.e(TAG, "onDestroy: ");
+        cancelRequest();
+    }
 }

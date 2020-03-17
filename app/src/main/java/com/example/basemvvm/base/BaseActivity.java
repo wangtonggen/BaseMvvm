@@ -6,9 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.LayoutRes;
 
 import com.example.basemvvm.utils.common_utils.ActivityManagerUtils;
-import com.trello.rxlifecycle2.LifecycleTransformer;
-import com.trello.rxlifecycle2.RxLifecycle;
-import com.trello.rxlifecycle2.android.ActivityEvent;
 
 
 import javax.annotation.Nonnull;
@@ -25,60 +22,18 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
  */
 public abstract class BaseActivity extends SwipeBackActivity {
     protected SwipeBackLayout mSwipeBackLayout;
-    protected BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lifecycleSubject.onNext(ActivityEvent.CREATE);
         mSwipeBackLayout = getSwipeBackLayout();
         mSwipeBackLayout.setEdgeTrackingEnabled(getEdgeTrackingEnabled());
         ActivityManagerUtils.getAppManager().addActivity(this);
     }
 
-    @Nonnull
-    public Observable<ActivityEvent> lifecycle() {
-        return lifecycleSubject.lift(observer -> observer);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        lifecycleSubject.onNext(ActivityEvent.START);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        lifecycleSubject.onNext(ActivityEvent.RESUME);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        lifecycleSubject.onNext(ActivityEvent.PAUSE);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        lifecycleSubject.onNext(ActivityEvent.STOP);
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
-        lifecycleSubject.onNext(ActivityEvent.DESTROY);
         ActivityManagerUtils.getAppManager().finishActivity(this);
-    }
-
-    @Nonnull
-    public <T> LifecycleTransformer<T> bindUntilEvent(@Nonnull ActivityEvent event) {
-        return RxLifecycle.bindUntilEvent(lifecycleSubject, event);
-    }
-
-    @Nonnull
-    public <T> LifecycleTransformer<T> bindToLifecycle() {
-        return RxLifecycle.bind(lifecycleSubject);
     }
 
     @Override

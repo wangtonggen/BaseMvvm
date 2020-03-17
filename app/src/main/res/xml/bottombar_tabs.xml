@@ -3,8 +3,7 @@
     <tab
         id="@+id/tab_favorites"
         icon="@drawable/selector_home"
-        title="Favorites"
-        barColorWhenSelected="@color/colorAccent"/>
+        title="Favorites" />
     <tab
         id="@+id/tab_nearby"
         icon="@drawable/selector_home"

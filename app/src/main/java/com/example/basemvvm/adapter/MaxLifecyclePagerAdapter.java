@@ -16,10 +16,11 @@ import java.util.List;
  * desc: viewPager 配合 LazyFragment 实现懒加载
  */
 public class MaxLifecyclePagerAdapter extends FragmentPagerAdapter {
-    private List<BaseMvvmFragment> fragments;
+    private List<Fragment> fragments;
+//    private List<BaseMvvmFragment> fragments;
     private List<String> titles;
 
-    public MaxLifecyclePagerAdapter(@NonNull FragmentManager fm, List<BaseMvvmFragment> fragments, List<String> titles) {
+    public MaxLifecyclePagerAdapter(@NonNull FragmentManager fm, List<Fragment> fragments, List<String> titles) {
         super(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.fragments = fragments;
         this.titles = titles;

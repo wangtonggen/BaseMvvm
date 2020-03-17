@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.basemvvm.base.BaseActivity;
-import com.trello.rxlifecycle2.LifecycleTransformer;
 
 /**
  * author: wtg
@@ -16,11 +15,6 @@ public abstract class BaseActivityViewModel extends BaseViewModel{
     protected Bundle bundle;
     public BaseActivityViewModel(BaseActivity mActivity) {
         this.mActivity = mActivity;
-    }
-
-    @Override
-    public <T> LifecycleTransformer<T> bindToLifecycle() {
-        return mActivity.bindToLifecycle();
     }
 
     /**
