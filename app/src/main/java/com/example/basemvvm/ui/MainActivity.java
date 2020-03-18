@@ -5,16 +5,14 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
 
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.BaseSwipeNoneRightActivity;
 import com.example.basemvvm.databinding.ActivityMainBinding;
-import com.example.basemvvm.mvvm.view_model.LoginViewModel;
-import com.example.basemvvm.mvvm.view_model_base.BaseViewModel;
+import com.example.basemvvm.mvvm.view_model.LoginVM;
+import com.example.basemvvm.mvvm.view_model_base.BaseVM;
 
 
 public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding> {
@@ -25,8 +23,8 @@ public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding
     }
 
     @Override
-    protected BaseViewModel getViewModel() {
-        return new LoginViewModel(this);
+    protected BaseVM getViewModel() {
+        return new LoginVM(this);
     }
 
     @Override

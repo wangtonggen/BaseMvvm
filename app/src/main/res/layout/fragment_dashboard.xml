@@ -1,31 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="dashboardVM"
+            type="com.example.basemvvm.mvvm.view_model.DashboardVM" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <androidx.appcompat.widget.AppCompatTextView
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_400"
-            android:background="@color/color_cccccc"
-            android:textSize="@dimen/sp_38"
-            android:gravity="center"
-            android:text="hello"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_400"
-            android:background="@color/colorAccent"
-            android:textSize="@dimen/sp_38"
-            android:gravity="center"
-            android:text="hello"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_400"
-            android:background="@color/colorPrimary"
-            android:textSize="@dimen/sp_38"
-            android:gravity="center"
-            android:text="hello"/>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_400"
+                android:background="@color/color_cccccc"
+                android:textSize="@dimen/sp_38"
+                android:gravity="center"
+                android:text="@{dashboardVM.text}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_400"
+                android:background="@color/colorAccent"
+                android:textSize="@dimen/sp_38"
+                android:gravity="center"
+                android:text="@{dashboardVM.text1}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_400"
+                android:background="@color/colorPrimary"
+                android:textSize="@dimen/sp_38"
+                android:gravity="center"
+                android:text="@{dashboardVM.text2}" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

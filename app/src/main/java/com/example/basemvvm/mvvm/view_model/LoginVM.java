@@ -10,13 +10,12 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.base.BaseMvvmActivity;
 import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.bean.LoginBean;
-import com.example.basemvvm.mvvm.view_model_base.ToolBarActivityViewModel;
+import com.example.basemvvm.mvvm.view_model_base.ToolBarActivityVM;
 import com.example.basemvvm.network.model.UserModel;
 import com.example.basemvvm.network.network_base.BaseObserver;
 import com.example.basemvvm.ui.activity.TestActivity;
 import com.example.basemvvm.utils.common_utils.LogUtils;
 import com.example.basemvvm.utils.common_utils.ToastUtils;
-import com.example.basemvvm.utils.vm_utils.refresh.BindingAction;
 import com.example.basemvvm.utils.vm_utils.refresh.BindingCommand;
 
 import io.reactivex.disposables.Disposable;
@@ -24,7 +23,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * 登录的viewModel
  */
-public class LoginViewModel extends ToolBarActivityViewModel {
+public class LoginVM extends ToolBarActivityVM {
     public final ObservableField<String> str_mobile = new ObservableField<>();
     public final ObservableField<String> str_code = new ObservableField<>();
 
@@ -33,24 +32,19 @@ public class LoginViewModel extends ToolBarActivityViewModel {
     private String[] mobiles = new String[]{"13735701398", "15727960191", "15727960192", "15727960193"};
     private String[] codes = new String[]{"25485", "12548", "87541", "98652"};
 
-    public BindingCommand onRefreshCommand = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            //下拉刷新
-            ToastUtils.showShortToast("下拉刷新");
-        }
+    public BindingCommand onRefreshCommand = new BindingCommand(() -> {
+        //下拉刷新
+        ToastUtils.showShortToast("下拉刷新");
     });
 
-    public BindingCommand onLoadMoreCommand = new BindingCommand(()->{
+    public BindingCommand onLoadMoreCommand = new BindingCommand(() -> {
         //上拉加载更多
         ToastUtils.showShortToast("上拉加载");
 
     });
 
-    public LoginViewModel(BaseMvvmActivity mActivity) {
+    public LoginVM(BaseMvvmActivity mActivity) {
         super(mActivity);
-//        str_mobile.set("15727960191");
-//        str_code.set("25486");
     }
 
     public void login() {

@@ -18,7 +18,7 @@ import io.reactivex.disposables.Disposable;
  * date:2020/3/13 0013
  * desc: ViewModel 基类
  */
-public abstract class BaseViewModel implements LifecycleObserver {
+public abstract class BaseVM implements LifecycleObserver {
     protected final String TAG = this.getClass().getSimpleName();
     private CompositeDisposable mDisposables = new CompositeDisposable();//请求管理类
 

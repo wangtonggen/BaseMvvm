@@ -5,16 +5,12 @@ import android.view.MenuItem;
 
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.MaxLifecyclePagerAdapter;
-import com.example.basemvvm.ui.activity.ui.dashboard.DashboardFragment;
-import com.example.basemvvm.ui.activity.ui.home.HomeFragment;
-import com.example.basemvvm.ui.activity.ui.notifications.NotificationsFragment;
+import com.example.basemvvm.ui.fragment.DashboardFragment;
+import com.example.basemvvm.ui.fragment.HomeFragment;
+import com.example.basemvvm.ui.fragment.NotificationsFragment;
 import com.example.basemvvm.utils.common_utils.BottomNavigationViewUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.OnTabReselectListener;
-import com.roughike.bottombar.OnTabSelectListener;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

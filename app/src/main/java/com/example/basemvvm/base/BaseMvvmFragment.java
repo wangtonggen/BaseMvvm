@@ -14,24 +14,21 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
-import com.example.basemvvm.mvvm.view_model_base.BaseViewModel;
-
-import javax.annotation.Nonnull;
-
-import io.reactivex.subjects.BehaviorSubject;
+import com.example.basemvvm.mvvm.view_model_base.BaseVM;
 
 /**
  * author: wtg
  * date:2020/3/12 0012
  * desc: fragment 基类
  */
-public abstract class BaseMvvmFragment<B extends ViewDataBinding,VM extends BaseViewModel> extends Fragment {
+public abstract class BaseMvvmFragment<B extends ViewDataBinding,VM extends BaseVM> extends Fragment {
     protected Context mContext;
     protected Activity mActivity;
 
     protected B binding;
     protected int viewModelId;
     protected VM viewModel;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -66,6 +63,14 @@ public abstract class BaseMvvmFragment<B extends ViewDataBinding,VM extends Base
         if (viewModel != null){
             binding.setVariable(viewModelId,viewModel);
         }
+    }
+
+    /**
+     * 用newInstance创建 fragment 获取参数
+     * @param bundle bundle
+     */
+    public void getBundleArgument(Bundle bundle){
+
     }
 
     @LayoutRes

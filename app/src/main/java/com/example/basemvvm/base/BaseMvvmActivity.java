@@ -5,15 +5,14 @@ import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
-import com.example.basemvvm.base.lifecycle.MyObserver;
-import com.example.basemvvm.mvvm.view_model_base.BaseViewModel;
+import com.example.basemvvm.mvvm.view_model_base.BaseVM;
 
 /**
  * author: wtg
  * date:2020/3/12 0012
  * desc: activity 基类
  */
-public abstract class BaseMvvmActivity<B extends ViewDataBinding,VM extends BaseViewModel> extends BaseActivity {
+public abstract class BaseMvvmActivity<B extends ViewDataBinding,VM extends BaseVM> extends BaseActivity {
     protected B binding;
     protected int viewModelId;
     protected VM viewModel;

@@ -7,7 +7,7 @@
 
         <variable
             name="loginVm"
-            type="com.example.basemvvm.mvvm.view_model.LoginViewModel" />
+            type="com.example.basemvvm.mvvm.view_model.LoginVM" />
     </data>
 <!--    <androidx.recyclerview.widget.RecyclerView-->
 <!--        android:layout_width="match_parent"-->

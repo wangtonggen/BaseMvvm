@@ -5,5 +5,5 @@ package com.example.basemvvm.mvvm.view_model;
  * date:2020/3/14 0014
  * desc:
  */
-public class UserViewModel {
+public class UserVM {
 }

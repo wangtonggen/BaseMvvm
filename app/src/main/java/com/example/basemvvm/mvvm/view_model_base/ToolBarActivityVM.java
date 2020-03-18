@@ -12,7 +12,7 @@ import com.example.basemvvm.base.BaseMvvmActivity;
  * date:2020/3/13 0013
  * desc:
  */
-public class ToolBarActivityViewModel extends BaseActivityViewModel {
+public class ToolBarActivityVM extends BaseActivityVM {
     public final ObservableInt toolbarColor = new ObservableInt(R.color.colorAccent);//toolbar 的颜色值
     public final ObservableField<String> title = new ObservableField<>("hello word");//标题
     public final ObservableInt titleColor = new ObservableInt(R.color.color_title);//标题的颜色值
@@ -26,8 +26,8 @@ public class ToolBarActivityViewModel extends BaseActivityViewModel {
     public final ObservableBoolean rightImageShow = new ObservableBoolean(false);//右侧图标是否显示
     public final ObservableBoolean backNavigationShow = new ObservableBoolean(true);//导航按钮是否显示
     public final ObservableInt backNavigationResId = new ObservableInt(R.drawable.ic_navigate_before_black_24dp);//导航按钮资源文件
-    public ToolBarActivityViewModel  toolBarActivityViewModel;
-    public ToolBarActivityViewModel(BaseMvvmActivity mActivity) {
+    public ToolBarActivityVM toolBarActivityViewModel;
+    public ToolBarActivityVM(BaseMvvmActivity mActivity) {
         super(mActivity);
 
         toolBarActivityViewModel = this;
