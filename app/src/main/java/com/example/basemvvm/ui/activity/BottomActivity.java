@@ -1,6 +1,7 @@
 package com.example.basemvvm.ui.activity;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.example.basemvvm.R;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import q.rorbin.badgeview.Badge;
+import q.rorbin.badgeview.QBadgeView;
 
 public class BottomActivity extends BaseNoMVVMActivity {
 
@@ -29,6 +32,8 @@ public class BottomActivity extends BaseNoMVVMActivity {
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.viewPager)
     ViewPager viewPager;
+
+    private Badge homeBadge;
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_bottom;
@@ -95,6 +100,12 @@ public class BottomActivity extends BaseNoMVVMActivity {
             public void onPageScrollStateChanged(int state) {
 
             }
+        });
+        bottomNavigationView.post(()->{
+            BottomNavigationViewUtils.showBadgeView(this,bottomNavigationView,0,100);
+            BottomNavigationViewUtils.showBadgeView(this,bottomNavigationView,1,50);
+            BottomNavigationViewUtils.showBadgeView(this,bottomNavigationView,2,8);
+            BottomNavigationViewUtils.showBadgeView(this,bottomNavigationView,3,10);
         });
     }
 }
