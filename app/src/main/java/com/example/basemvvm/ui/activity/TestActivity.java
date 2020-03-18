@@ -1,14 +1,11 @@
 package com.example.basemvvm.ui.activity;
 
-import android.view.View;
-
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.BaseNoMvvmActivity;
+import com.example.basemvvm.base.BaseNoMVVMActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -16,7 +13,7 @@ import butterknife.OnClick;
  * date:2020/3/13 0013
  * desc:
  */
-public class TestActivity extends BaseNoMvvmActivity {
+public class TestActivity extends BaseNoMVVMActivity {
     @BindView(R.id.et_test)
     AppCompatEditText et_test;
 

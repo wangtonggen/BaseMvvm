@@ -9,7 +9,7 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
  * date:2020/3/12 0012
  * desc: 向右划出
  */
-public abstract class BaseSwipeBackLeftActivity<B extends ViewDataBinding> extends BaseMvvmActivity {
+public abstract class BaseSwipeBackLeftActivity<B extends ViewDataBinding> extends BaseMVVMActivity {
     @Override
     protected int getEdgeTrackingEnabled() {
         return SwipeBackLayout.EDGE_LEFT;

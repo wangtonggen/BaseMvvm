@@ -10,6 +10,8 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
+import com.example.basemvvm.utils.common_utils.LogUtils;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -19,7 +21,7 @@ import io.reactivex.disposables.Disposable;
  * desc: ViewModel 基类
  */
 public abstract class BaseVM implements LifecycleObserver {
-    protected final String TAG = this.getClass().getSimpleName();
+    protected String TAG = getClass().getSimpleName();
     private CompositeDisposable mDisposables = new CompositeDisposable();//请求管理类
 
     /**
@@ -111,32 +113,32 @@ public abstract class BaseVM implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate() {
-        Log.e(TAG, "onCreate: ");
+        LogUtils.logE(TAG, "onCreate: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onStart() {
-        Log.e(TAG, "onStart: ");
+        LogUtils.logE(TAG, "onStart: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void onResume() {
-        Log.e(TAG, "onResume: ");
+        LogUtils.logE(TAG, "onResume: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPause() {
-        Log.e(TAG, "onPause: ");
+        LogUtils.logE(TAG, "onPause: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void onStop() {
-        Log.e(TAG, "onStop: ");
+        LogUtils.logE(TAG, "onStop: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy() {
-        Log.e(TAG, "onDestroy: ");
+        LogUtils.logE(TAG, "onDestroy: ");
         cancelRequest();
     }
 }

@@ -12,7 +12,7 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
  * time：2020/3/15
  * desc：不使用MVVM结构的 使用butterKnife 控件绑定
  */
-public abstract class BaseNoMvvmActivity extends BaseActivity {
+public abstract class BaseNoMVVMActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

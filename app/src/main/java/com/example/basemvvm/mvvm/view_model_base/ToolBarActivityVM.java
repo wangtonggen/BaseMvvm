@@ -5,7 +5,7 @@ import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.BaseMvvmActivity;
+import com.example.basemvvm.base.BaseMVVMActivity;
 
 /**
  * author: wtg
@@ -27,7 +27,7 @@ public class ToolBarActivityVM extends BaseActivityVM {
     public final ObservableBoolean backNavigationShow = new ObservableBoolean(true);//导航按钮是否显示
     public final ObservableInt backNavigationResId = new ObservableInt(R.drawable.ic_navigate_before_black_24dp);//导航按钮资源文件
     public ToolBarActivityVM toolBarActivityViewModel;
-    public ToolBarActivityVM(BaseMvvmActivity mActivity) {
+    public ToolBarActivityVM(BaseMVVMActivity mActivity) {
         super(mActivity);
 
         toolBarActivityViewModel = this;

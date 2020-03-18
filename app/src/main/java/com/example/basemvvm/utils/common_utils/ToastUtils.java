@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 import androidx.annotation.StringRes;
 
-import com.example.basemvvm.base.MyApplication;
+import com.example.basemvvm.base.BaseApplication;
 
 /**
  * 提示类
@@ -17,7 +17,7 @@ public class ToastUtils {
      * @param content 内容
      */
     public static void showLongToast(String content){
-        showLongToast(MyApplication.instance,content);
+        showLongToast(BaseApplication.instance,content);
     }
 
     /**
@@ -25,7 +25,7 @@ public class ToastUtils {
      * @param content 内容
      */
     public static void showShortToast(String content){
-        showShortToast(MyApplication.instance,content);
+        showShortToast(BaseApplication.instance,content);
     }
 
     /**
@@ -33,7 +33,7 @@ public class ToastUtils {
      * @param resId 字符串资源id
      */
     public static void showShortToast(@StringRes int resId){
-        showShortToast(MyApplication.instance,resId);
+        showShortToast(BaseApplication.instance,resId);
     }
 
     /**

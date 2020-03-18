@@ -7,7 +7,7 @@ import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.BaseMvvmActivity;
+import com.example.basemvvm.base.BaseMVVMActivity;
 import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.bean.LoginBean;
 import com.example.basemvvm.mvvm.view_model_base.ToolBarActivityVM;
@@ -43,7 +43,7 @@ public class LoginVM extends ToolBarActivityVM {
 
     });
 
-    public LoginVM(BaseMvvmActivity mActivity) {
+    public LoginVM(BaseMVVMActivity mActivity) {
         super(mActivity);
     }
 

@@ -21,20 +21,27 @@ import com.example.basemvvm.mvvm.view_model_base.BaseVM;
  * date:2020/3/12 0012
  * desc: fragment 基类
  */
-public abstract class BaseMvvmFragment<B extends ViewDataBinding,VM extends BaseVM> extends Fragment {
+public abstract class BaseMVVMFragment<B extends ViewDataBinding,VM extends BaseVM> extends Fragment {
+    protected String TAG = this.getClass().getSimpleName();
     protected Context mContext;
     protected Activity mActivity;
 
     protected B binding;
     protected int viewModelId;
     protected VM viewModel;
-
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.mContext = context;
         this.mActivity = getActivity();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null){
+            getBundleArgument(getArguments());
+        }
     }
 
     @Nullable
@@ -53,6 +60,7 @@ public abstract class BaseMvvmFragment<B extends ViewDataBinding,VM extends Base
         viewModelId = getViewModelId();
         viewModel = getViewModel();
         refreshLayout();
+        getLifecycle().addObserver(viewModel);
     }
 
     protected void initView(Bundle savedInstanceState,View rootView){

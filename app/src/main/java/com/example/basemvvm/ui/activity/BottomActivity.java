@@ -5,6 +5,8 @@ import android.view.MenuItem;
 
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.MaxLifecyclePagerAdapter;
+import com.example.basemvvm.base.BaseMVVMFragment;
+import com.example.basemvvm.base.BaseNoMVVMActivity;
 import com.example.basemvvm.ui.fragment.DashboardFragment;
 import com.example.basemvvm.ui.fragment.HomeFragment;
 import com.example.basemvvm.ui.fragment.NotificationsFragment;
@@ -13,37 +15,46 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BottomActivity extends AppCompatActivity {
+import butterknife.BindView;
+
+public class BottomActivity extends BaseNoMVVMActivity {
 
     private int mIndex = 0;
+    @BindView(R.id.bottomNavigationView)
+    BottomNavigationView bottomNavigationView;
+    @BindView(R.id.viewPager)
+    ViewPager viewPager;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bottom);
-        BottomNavigationView bottom = findViewById(R.id.bottom);
-        bottom.setItemIconTintList(null);
-        ViewPager viewPager = findViewById(R.id.viewPager);
-        List<Fragment> fragments = new ArrayList<>();
+    protected int getLayoutRes() {
+        return R.layout.activity_bottom;
+    }
+
+    @Override
+    protected int getEdgeTrackingEnabled() {
+        return -1;
+    }
+
+    @Override
+    protected void initView() {
+        super.initView();
+        bottomNavigationView.setItemIconTintList(null);
+        List<BaseMVVMFragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new DashboardFragment());
         fragments.add(new NotificationsFragment());
         fragments.add(new HomeFragment());
         MaxLifecyclePagerAdapter pagerAdapter = new MaxLifecyclePagerAdapter(getSupportFragmentManager(),fragments,null);
         viewPager.setAdapter(pagerAdapter);
-        BottomNavigationViewUtils.closeAnimation(bottom);
+        BottomNavigationViewUtils.closeAnimation(bottomNavigationView);
 
-        bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                if (mIndex == viewPager.getCurrentItem()){
-//                    return false;
-//                }
                 int index = 0;
                 switch (item.getItemId()){
                     case R.id.navigation_home:
@@ -77,7 +88,7 @@ public class BottomActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 mIndex = position;
-                bottom.getMenu().getItem(position).setChecked(true);
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
             }
 
             @Override
@@ -86,5 +97,4 @@ public class BottomActivity extends AppCompatActivity {
             }
         });
     }
-
 }

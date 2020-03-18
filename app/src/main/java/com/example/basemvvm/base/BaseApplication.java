@@ -11,12 +11,11 @@ import androidx.multidex.MultiDexApplication;
  * date:2020/3/12 0012
  * desc:
  */
-public class MyApplication extends MultiDexApplication {
+public class BaseApplication extends MultiDexApplication {
     public static Application instance;
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        MultiDex.install(base);
         instance = this;
     }
 }

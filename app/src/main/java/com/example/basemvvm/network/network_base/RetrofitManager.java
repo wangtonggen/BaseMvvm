@@ -1,6 +1,6 @@
 package com.example.basemvvm.network.network_base;
 
-import com.example.basemvvm.base.MyApplication;
+import com.example.basemvvm.base.BaseApplication;
 import com.example.basemvvm.network.api.ApiBaseUrl;
 import com.example.basemvvm.utils.common_utils.LogUtils;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
@@ -45,7 +45,7 @@ public class RetrofitManager {
                 .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .sslSocketFactory(SSL.initSSLSocketFactory(),SSL.initTrustManager())
                 .addNetworkInterceptor(httpLoggingInterceptor)
-                .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(MyApplication.instance)));
+                .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApplication.instance)));
 
         retrofit = new Retrofit.Builder().client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
