@@ -7,6 +7,7 @@ package com.example.basemvvm.network.exception;
  */
 public class RetrofitException extends Exception{
     public RetrofitException() {
+
     }
 
     public RetrofitException(String message) {

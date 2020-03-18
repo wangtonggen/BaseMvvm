@@ -15,7 +15,6 @@ import com.example.basemvvm.utils.common_utils.BottomNavigationViewUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
@@ -23,7 +22,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import q.rorbin.badgeview.Badge;
-import q.rorbin.badgeview.QBadgeView;
 
 public class BottomActivity extends BaseNoMVVMActivity {
 

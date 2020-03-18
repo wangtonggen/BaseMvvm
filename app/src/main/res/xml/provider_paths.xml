@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <!--external-path中，-->
+        <!--name：可以随意写，只是一个名字-->
+        <!--path：表示文件路径，.表示所有-->
+        <!--    <external-path path="Android/data/com/dsrz/chocolate/" name="files_root"/>-->
+        <external-path
+            name="external_files"
+            path="." />
+    </paths>
+</resources>

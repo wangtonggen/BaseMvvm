@@ -1,7 +1,5 @@
 package com.example.basemvvm.bean;
 
-import java.util.List;
-
 /**
  * author: wtg  2019/4/24 0024
  * desc: 用户登录的bean
@@ -25,7 +23,7 @@ public class LoginBean {
     private String id;//id
     private Integer isBindMobile;//是否绑定手机:0-否;1-是; 用于第三方登录跳转绑定手机页面
     private Integer isRegister;//是否首次注册:0-不是;1-是; 用于判断登录后跳转首页还是完善信息页
-    private List<String> likeLabel;//你喜欢的标签
+    private boolean likeLabel;//你喜欢的标签
     private String livePlace;//居住地
     private Integer lotteryNumber;//抽奖次数
     private Integer membership;//会员资格:0-非会员;1-会员
@@ -186,11 +184,11 @@ public class LoginBean {
         this.isRegister = isRegister;
     }
 
-    public List<String> getLikeLabel() {
+    public boolean getLikeLabel() {
         return likeLabel;
     }
 
-    public void setLikeLabel(List<String> likeLabel) {
+    public void setLikeLabel(boolean likeLabel) {
         this.likeLabel = likeLabel;
     }
 
