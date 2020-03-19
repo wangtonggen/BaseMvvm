@@ -10,4 +10,23 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <!--checkBox 主题颜色-->
+    <style name="theme_checkbox" parent="android:style/Widget.Material.CompoundButton.CheckBox">
+        <item name="colorControlNormal">@color/color_check_normal</item>
+        <item name="colorControlActivated">@color/color_check_selected</item>
+    </style>
+
+    <!--switch 主题颜色-->
+    <style name="theme_switch" parent="android:style/Widget.Material.CompoundButton.Switch">
+        <item name="colorControlNormal">@color/color_check_normal</item>
+        <item name="colorControlActivated">@color/color_check_selected</item>
+    </style>
+
+    <!--switch 主题颜色-->
+    <style name="theme_RadioButton" parent="android:style/Widget.Material.CompoundButton.RadioButton">
+        <item name="colorControlNormal">@color/color_check_normal</item>
+        <item name="colorControlActivated">@color/color_check_selected</item>
+    </style>
+
+
 </resources>

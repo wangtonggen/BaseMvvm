@@ -6,6 +6,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Keep;
+
 import com.example.basemvvm.R;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
@@ -28,10 +30,12 @@ public class BottomNavigationViewUtils {
             BottomNavigationItemView button = (BottomNavigationItemView) mMenuView.getChildAt(i);
             TextView mLargeLabel = getField(button.getClass(), button, "largeLabel");
             TextView mSmallLabel = getField(button.getClass(), button, "smallLabel");
+            assert mSmallLabel != null;
             float mSmallLabelSize = mSmallLabel.getTextSize();
             setField(button.getClass(), button, "shiftAmount", 0F);
             setField(button.getClass(), button, "scaleUpFactor", 1F);
             setField(button.getClass(), button, "scaleDownFactor", 1F);
+            assert mLargeLabel != null;
             mLargeLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX, mSmallLabelSize);
         }
         mMenuView.updateMenuView();
@@ -84,9 +88,7 @@ public class BottomNavigationViewUtils {
             Field field = targetClass.getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(instance, value);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
