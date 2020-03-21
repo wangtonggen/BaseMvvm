@@ -16,8 +16,8 @@ import androidx.core.view.ViewCompat;
  */
 public class BottomNavigationBehavior extends CoordinatorLayout.Behavior<View> {
     private ObjectAnimator outAnimator, inAnimator;
-    private View child;
-    private int oldScrollY = 0;
+    private boolean isShow = true;
+    private boolean isNeedAnimation = true;//是否需要动画
 
     public BottomNavigationBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -32,28 +32,44 @@ public class BottomNavigationBehavior extends CoordinatorLayout.Behavior<View> {
 
     @Override
     public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
-        if (this.child == null) {
-            this.child = child;
-        }
+//        LogUtils.logE("tag",child+"---"+target);
 //        LogUtils.logE("child", consumed[1] + "---" + dy + "---" + target.getScrollY());
-        if (target.getScrollY() - oldScrollY > 20) {// 上滑隐藏
-            if (outAnimator == null) {
-                outAnimator = ObjectAnimator.ofFloat(child, "translationY", 0, child.getHeight());
-                outAnimator.setDuration(200);
-            }
-            if (!outAnimator.isRunning() && child.getTranslationY() <= 0) {
-                outAnimator.start();
-            }
-            oldScrollY = target.getScrollY();
-        } else if (target.getScrollY() - oldScrollY < -20) {// 下滑显示
-            if (inAnimator == null) {
-                inAnimator = ObjectAnimator.ofFloat(child, "translationY", child.getHeight(), 0);
-                inAnimator.setDuration(200);
-            }
-            if (!inAnimator.isRunning() && child.getTranslationY() >= child.getHeight()) {
-                inAnimator.start();
-            }
-            oldScrollY = target.getScrollY();
+//        if (!isNeedAnimation){//如果不需要动画 并且导航栏处于隐藏的情况下则显示导航栏
+//            if (!isShow){
+//                startShowAnimation(child);
+//            }
+//            return;
+//        }
+        if (dy > 0) {// 上滑隐藏
+            startHideAnimation(child);
+        } else if (dy < 0) {// 下滑显示
+            startShowAnimation(child);
         }
+    }
+
+    private void startShowAnimation(@NonNull View child) {
+        if (inAnimator == null) {
+            inAnimator = ObjectAnimator.ofFloat(child, "translationY", child.getHeight(), 0);
+            inAnimator.setDuration(200);
+        }
+        if (!inAnimator.isRunning() && child.getTranslationY() >= child.getHeight()) {
+            inAnimator.start();
+        }
+        isShow = true;
+    }
+
+    private void startHideAnimation(@NonNull View child) {
+        if (outAnimator == null) {
+            outAnimator = ObjectAnimator.ofFloat(child, "translationY", 0, child.getHeight());
+            outAnimator.setDuration(200);
+        }
+        if (!outAnimator.isRunning() && child.getTranslationY() <= 0) {
+            outAnimator.start();
+        }
+        isShow = false;
+    }
+
+    public void setNeedAnimation(boolean needAnimation) {
+        isNeedAnimation = needAnimation;
     }
 }

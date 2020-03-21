@@ -27,5 +27,6 @@ public class NotificationsFragment extends LazyLoadFragment<FragmentNotification
     @Override
     public void onLazyLoadData() {
         LogUtils.logE(TAG, "NotificationsFragment");
+        binding.smartRefreshLayout.autoRefresh();
     }
 }

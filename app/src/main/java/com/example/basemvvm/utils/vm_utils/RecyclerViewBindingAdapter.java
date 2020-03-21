@@ -18,8 +18,11 @@ public class RecyclerViewBindingAdapter {
      * @param layout_item_cache_size 缓存的item数量
      * @param layout_has_fixed_size  item是否是固定宽高
      */
-    @BindingAdapter(value = {"layout_manager", "layout_item_cache_size", "layout_has_fixed_size"}, requireAll = false)
-    public static void layoutManager(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager, int layout_item_cache_size, boolean layout_has_fixed_size) {
+    @BindingAdapter(value = {"layout_manager", "layout_item_cache_size", "layout_has_fixed_size","recycler_adapter"}, requireAll = false)
+    public static void layoutManager(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager, int layout_item_cache_size, boolean layout_has_fixed_size,RecyclerView.Adapter adapter) {
+        if (adapter != null){
+            recyclerView.setAdapter(adapter);
+        }
         if (layoutManager != null) {
             recyclerView.setLayoutManager(layoutManager);
         }
@@ -27,17 +30,6 @@ public class RecyclerViewBindingAdapter {
             recyclerView.setItemViewCacheSize(layout_item_cache_size);
         }
         recyclerView.setHasFixedSize(layout_has_fixed_size);
-    }
-
-    /**
-     * 设置adapter
-     *
-     * @param recyclerView recycler
-     * @param adapter      adapter
-     */
-    @BindingAdapter("recycler_adapter")
-    public static void setAdapter(RecyclerView recyclerView, RecyclerView.Adapter adapter) {
-        recyclerView.setAdapter(adapter);
     }
 
 //    /**

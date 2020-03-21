@@ -1,4 +1,4 @@
-package com.example.basemvvm.widget;
+package com.example.basemvvm.widget.common;
 
 import android.content.Context;
 import android.util.AttributeSet;

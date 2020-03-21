@@ -1,4 +1,4 @@
-package com.example.basemvvm.widget;
+package com.example.basemvvm.widget.common;
 
 import android.text.Editable;
 import android.text.TextWatcher;
