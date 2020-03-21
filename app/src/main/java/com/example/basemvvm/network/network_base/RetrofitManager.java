@@ -16,7 +16,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.basemvvm.network.network_base.ApiConfigConstant.CONNECT_TIMEOUT;
 import static com.example.basemvvm.network.network_base.ApiConfigConstant.READ_TIMEOUT;
@@ -30,16 +29,17 @@ import static com.example.basemvvm.network.network_base.ApiConfigConstant.WRITE_
 public class RetrofitManager {
     private static RetrofitManager instance;
     private static Retrofit retrofit;
+
     private RetrofitManager() {
         //添加拦截器
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> LogUtils.logE("okhttp4:",message));
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> LogUtils.logE("okhttp4:", message));
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
         builder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
-                .sslSocketFactory(SSL.initSSLSocketFactory(),SSL.initTrustManager())
+                .sslSocketFactory(SSL.initSSLSocketFactory(), SSL.initTrustManager())
                 .addNetworkInterceptor(httpLoggingInterceptor)
                 .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApplication.instance)));
 
@@ -69,11 +69,12 @@ public class RetrofitManager {
 
     /**
      * 创建service
+     *
      * @param service service
-     * @param <T> 类型
+     * @param <T>     类型
      * @return 服务类
      */
-    public <T> T createService(Class<T> service){
+    public <T> T createService(Class<T> service) {
         return retrofit.create(service);
     }
 }

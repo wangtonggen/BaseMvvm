@@ -11,13 +11,14 @@ import com.example.basemvvm.BuildConfig;
  */
 public class LogUtils {
     private static final String TAG = "LogUtils";
-    public static void logE(String tag,String message){
-        if (BuildConfig.DEBUG){
-            Log.e(tag,message);
+
+    public static void logE(String tag, String message) {
+        if (BuildConfig.DEBUG) {
+            Log.e(tag, message);
         }
     }
 
-    public static void logE(String message){
-        logE(TAG,message);
+    public static void logE(String message) {
+        logE(TAG, message);
     }
 }

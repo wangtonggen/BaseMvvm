@@ -65,9 +65,7 @@ public class SSL {
             trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             trustManagerFactory.init(keyStore);
 
-            TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
-
-            return trustManagers;
+            return trustManagerFactory.getTrustManagers();
         } catch (Exception e) {
             e.printStackTrace();
         }

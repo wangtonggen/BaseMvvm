@@ -9,13 +9,12 @@ import androidx.core.content.ContextCompat;
 
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.BaseSwipeNoneRightActivity;
+import com.example.basemvvm.base.activity.BaseSwipeNoneRightActivity;
 import com.example.basemvvm.databinding.ActivityMainBinding;
 import com.example.basemvvm.mvvm.view_model.LoginVM;
-import com.example.basemvvm.mvvm.view_model_base.BaseVM;
 
 
-public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding> {
+public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding, LoginVM> {
 
     @Override
     protected int getLayoutRes() {
@@ -23,12 +22,13 @@ public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding
     }
 
     @Override
-    protected BaseVM getViewModel() {
+    protected LoginVM getViewModel() {
         return new LoginVM(this);
     }
 
     @Override
     protected void initView() {
+        binding.smartRefreshLayout.autoRefresh();
 //        binding.getRoot().findViewById(R.id.toolbar).setBackgroundResource();
 //        ((AppCompatTextView)binding.getRoot().findViewById(R.id.tv_right)).setTextColor(getResources().getColor(R.color.colorAccent));
     }

@@ -35,9 +35,9 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
     public void onError(Throwable e) {
         if (e instanceof SocketTimeoutException) {//连接超时
             ToastUtils.showShortToast("连接超时，请稍后再试!");
-        }else if (e instanceof ResultException){
+        } else if (e instanceof ResultException) {
             ResultException resultException = (ResultException) e;
-            switch (resultException.getCode()){
+            switch (resultException.getCode()) {
                 case 1:
                     break;
                 case 2:
@@ -46,16 +46,15 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
                     break;
             }
 //            ToastUtils.showShortToast(e.getMessage());
-        }else if (e instanceof JsonParseException){
+        } else if (e instanceof JsonParseException) {
             ToastUtils.showShortToast("数据错误");
         }
         onFail(e);
     }
 
-    public void onFail(Throwable e){
+    public void onFail(Throwable e) {
         LogUtils.logE(e.getMessage());
     }
-
 
 
     public abstract void onSuccess(HttpResponse<T> data);

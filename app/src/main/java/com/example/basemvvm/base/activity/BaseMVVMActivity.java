@@ -1,4 +1,4 @@
-package com.example.basemvvm.base;
+package com.example.basemvvm.base.activity;
 
 import android.os.Bundle;
 
@@ -12,41 +12,36 @@ import com.example.basemvvm.mvvm.view_model_base.BaseVM;
  * date:2020/3/12 0012
  * desc: activity 基类
  */
-public abstract class BaseMVVMActivity<B extends ViewDataBinding,VM extends BaseVM> extends BaseActivity {
+public abstract class BaseMVVMActivity<B extends ViewDataBinding, VM extends BaseVM> extends BaseActivity {
     protected B binding;
     protected int viewModelId;
     protected VM viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,getLayoutRes());
+        binding = DataBindingUtil.setContentView(this, getLayoutRes());
         //添加activity 到activity管理器里面
         viewModel = getViewModel();
         viewModelId = getViewModelId();
         refreshLayout();
-        getLifecycle().addObserver(viewModel);
+        getLifecycle().addObserver(viewModel);//监听生命周期
         initView();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (binding != null){
+        if (binding != null) {
             binding.unbind();
         }
     }
 
-    /**
-     * 初始化控件
-     */
-    protected void initView() {
-
-    }
 
     /**
      * 刷新布局
      */
-    protected void refreshLayout(){
+    protected void refreshLayout() {
         if (viewModel != null) {
             binding.setVariable(viewModelId, viewModel);
         }
@@ -54,12 +49,14 @@ public abstract class BaseMVVMActivity<B extends ViewDataBinding,VM extends Base
 
     /**
      * 获取viewModel
+     *
      * @return viewModel
      */
     protected abstract VM getViewModel();
 
     /**
      * 获取BR的id
+     *
      * @return id
      */
     protected abstract int getViewModelId();

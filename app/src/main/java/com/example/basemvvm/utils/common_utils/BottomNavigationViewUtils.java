@@ -6,8 +6,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.Keep;
-
 import com.example.basemvvm.R;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
@@ -44,10 +42,10 @@ public class BottomNavigationViewUtils {
     /**
      * BottomNavigationView显示角标
      *
-     * @param viewIndex tab索引
+     * @param viewIndex  tab索引
      * @param showNumber 显示的数字，小于等于0是将不显示
      */
-    public static void showBadgeView(Context context,BottomNavigationView bottomNavigationView, int viewIndex, int showNumber) {
+    public static void showBadgeView(Context context, BottomNavigationView bottomNavigationView, int viewIndex, int showNumber) {
         // 具体child的查找和view的嵌套结构请在源码中查看
         // 从bottomNavigationView中获得BottomNavigationMenuView
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
@@ -66,12 +64,13 @@ public class BottomNavigationViewUtils {
             int spaceWidth = tabWidth - iconWidth;
 
             // 显示badegeview
-            new QBadgeView(context).bindTarget(view).setBadgeTextSize(10,true).setOnDragStateChangedListener((dragState, badge, targetView) -> {}).setGravityOffset(spaceWidth, context.getResources().getDimensionPixelOffset(R.dimen.dp_3), false).setBadgeNumber(showNumber);
+            new QBadgeView(context).bindTarget(view).setBadgeTextSize(10, true).setOnDragStateChangedListener((dragState, badge, targetView) -> {
+            }).setGravityOffset(spaceWidth, context.getResources().getDimensionPixelOffset(R.dimen.dp_3), false).setBadgeNumber(showNumber);
         }
     }
 
 
-    private static  <T> T getField(Class targetClass, Object instance, String fieldName) {
+    private static <T> T getField(Class targetClass, Object instance, String fieldName) {
         try {
             Field field = targetClass.getDeclaredField(fieldName);
             field.setAccessible(true);

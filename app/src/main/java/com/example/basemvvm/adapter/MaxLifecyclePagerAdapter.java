@@ -1,11 +1,12 @@
 package com.example.basemvvm.adapter;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.basemvvm.base.BaseMVVMFragment;
+import com.example.basemvvm.base.fragment.BaseMVVMFragment;
 
 import java.util.List;
 
@@ -22,6 +23,12 @@ public class MaxLifecyclePagerAdapter extends FragmentPagerAdapter {
         super(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.fragments = fragments;
         this.titles = titles;
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return titles.get(position);
     }
 
     @NonNull

@@ -1,12 +1,11 @@
 package com.example.basemvvm.utils.vm_utils;
 
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import androidx.databinding.BindingAdapter;
 
 import com.blankj.utilcode.util.KeyboardUtils;
+import com.example.basemvvm.widget.SimpleTextWatcher;
 
 /**
  * author: wtg
@@ -17,20 +16,28 @@ public class EditTextBindingAdapter {
 
     /**
      * 设置请求焦点
-     * @param editText editText
+     *
+     * @param editText         editText
      * @param needRequestFocus 是否请求焦点 true 请求焦点 false不请求
      */
-    @BindingAdapter(value = {"requestFocus"},requireAll = false)
-    public static void requestFocusCommand(EditText editText,boolean needRequestFocus){
+    @BindingAdapter(value = {"requestFocus"}, requireAll = false)
+    public static void requestFocusCommand(EditText editText, boolean needRequestFocus) {
         if (needRequestFocus) {
             editText.setSelection(editText.getText().length());
             editText.requestFocus();
             KeyboardUtils.showSoftInput(editText);
-//            InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-//            if (imm != null){
-//                imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-//            }
         }
         editText.setFocusableInTouchMode(needRequestFocus);
+    }
+
+    /**
+     * 设置editText 控件的监控监听
+     *
+     * @param editText          editText
+     * @param simpleTextWatcher 监听
+     */
+    @BindingAdapter(value = {"textWatcher"})
+    public static void onEditTextCommand(EditText editText, SimpleTextWatcher simpleTextWatcher) {
+        editText.addTextChangedListener(simpleTextWatcher);
     }
 }

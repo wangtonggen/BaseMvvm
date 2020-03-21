@@ -7,7 +7,8 @@ package com.example.basemvvm.network.exception;
  */
 public class ResultException extends Exception {
     private int code;
-    public ResultException(int code,String message) {
+
+    public ResultException(int code, String message) {
         super(message);
     }
 

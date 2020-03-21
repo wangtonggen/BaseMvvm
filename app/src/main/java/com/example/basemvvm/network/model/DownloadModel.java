@@ -22,6 +22,7 @@ import okhttp3.ResponseBody;
 public class DownloadModel {
     private static DownloadModel downloadModel;
     private static DownloadService downloadService;
+
     public static DownloadModel getInstance() {
         if (downloadModel == null) {
             synchronized (UserModel.class) {
@@ -38,19 +39,20 @@ public class DownloadModel {
 
     /**
      * 带下载进度的
-     * @param url 路径
-     * @param destDir 文件目录
-     * @param fileName  文件名称
+     *
+     * @param url                  路径
+     * @param destDir              文件目录
+     * @param fileName             文件名称
      * @param fileDownLoadObserver 文件监听
      */
-    public void downloadFile(String url,String destDir,String fileName,FileDownLoadObserver<File> fileDownLoadObserver){
+    public void downloadFile(String url, String destDir, String fileName, FileDownLoadObserver<File> fileDownLoadObserver) {
         downloadService.download(url).subscribeOn(Schedulers.io())//subscribeOn和ObserOn必须在io线程，如果在主线程会出错
                 .observeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())//需要
                 .map(new Function<ResponseBody, File>() {
                     @Override
                     public File apply(@NonNull ResponseBody responseBody) throws Exception {
-                        LogUtils.logE("hahaha","来了");
+                        LogUtils.logE("hahaha", "来了");
                         return fileDownLoadObserver.saveFile(responseBody, destDir, fileName);
                     }
                 })

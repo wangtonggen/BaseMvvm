@@ -3,7 +3,7 @@ package com.example.basemvvm.ui.activity;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.BaseNoMVVMActivity;
+import com.example.basemvvm.base.activity.BaseNoMVVMActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;

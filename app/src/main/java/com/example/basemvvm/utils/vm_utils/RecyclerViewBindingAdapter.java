@@ -12,17 +12,18 @@ public class RecyclerViewBindingAdapter {
 
     /**
      * 设置列表的 布局管理器和缓存大小和item宽高是否是固定值
-     * @param recyclerView recyclerView
-     * @param layoutManager 布局管理器
+     *
+     * @param recyclerView           recyclerView
+     * @param layoutManager          布局管理器
      * @param layout_item_cache_size 缓存的item数量
-     * @param layout_has_fixed_size item是否是固定宽高
+     * @param layout_has_fixed_size  item是否是固定宽高
      */
-    @BindingAdapter(value = {"layout_manager","layout_item_cache_size","layout_has_fixed_size"},requireAll = false)
-    public static void layoutManager(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager,int layout_item_cache_size,boolean layout_has_fixed_size){
-        if (layoutManager != null){
+    @BindingAdapter(value = {"layout_manager", "layout_item_cache_size", "layout_has_fixed_size"}, requireAll = false)
+    public static void layoutManager(RecyclerView recyclerView, RecyclerView.LayoutManager layoutManager, int layout_item_cache_size, boolean layout_has_fixed_size) {
+        if (layoutManager != null) {
             recyclerView.setLayoutManager(layoutManager);
         }
-        if (layout_item_cache_size > 0){
+        if (layout_item_cache_size > 0) {
             recyclerView.setItemViewCacheSize(layout_item_cache_size);
         }
         recyclerView.setHasFixedSize(layout_has_fixed_size);
@@ -30,11 +31,12 @@ public class RecyclerViewBindingAdapter {
 
     /**
      * 设置adapter
+     *
      * @param recyclerView recycler
-     * @param adapter adapter
+     * @param adapter      adapter
      */
     @BindingAdapter("recycler_adapter")
-    public static void setAdapter(RecyclerView recyclerView, RecyclerView.Adapter adapter){
+    public static void setAdapter(RecyclerView recyclerView, RecyclerView.Adapter adapter) {
         recyclerView.setAdapter(adapter);
     }
 

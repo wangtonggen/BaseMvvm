@@ -27,17 +27,33 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all {
+                outputs.all {
+                    outputFileName = "gogo_" + buildType.name + "-v" + defaultConfig.versionCode + "_" + defaultConfig.versionName + ".apk"
+                }
+            }
         }
 
         debug {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all {
+                outputs.all {
+                    outputFileName = "gogo_" + buildType.name + "-v" + defaultConfig.versionCode + "_" + defaultConfig.versionName + ".apk"
+                }
+            }
         }
     }
 
@@ -50,6 +66,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.2.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     testImplementation("com.squareup.okhttp3:mockwebserver:4.4.0")
     implementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -122,7 +139,6 @@ dependencies {
 
     //弹窗
     implementation 'com.lxj:xpopup:1.8.10-x'
-
 
 
 }

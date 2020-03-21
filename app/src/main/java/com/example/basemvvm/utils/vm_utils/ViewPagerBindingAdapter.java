@@ -14,25 +14,27 @@ public class ViewPagerBindingAdapter {
 
     /**
      * 设置viewPager的监听
-     * @param viewPager viewPager
+     *
+     * @param viewPager          viewPager
      * @param pageChangeListener 监听
      */
-    @BindingAdapter(value = {"pageChangeListener"},requireAll = false)
-    public static void viewPagerChange(ViewPager viewPager, ViewPager.OnPageChangeListener pageChangeListener){
+    @BindingAdapter(value = {"pageChangeListener"}, requireAll = false)
+    public static void viewPagerChange(ViewPager viewPager, ViewPager.OnPageChangeListener pageChangeListener) {
         viewPager.addOnPageChangeListener(pageChangeListener);
     }
 
 
-    public static void setFragmentManager(ViewPager viewPager, FragmentManager fragmentManager){
+    public static void setFragmentManager(ViewPager viewPager, FragmentManager fragmentManager) {
 
     }
 
     /**
      * 设置adapter
-     * @param viewPager viewPager
+     *
+     * @param viewPager    viewPager
      * @param pagerAdapter adapter
      */
-    public static void setViewPagerAdapter(ViewPager viewPager, PagerAdapter pagerAdapter){
+    public static void setViewPagerAdapter(ViewPager viewPager, PagerAdapter pagerAdapter) {
         viewPager.setAdapter(pagerAdapter);
     }
 }

@@ -22,7 +22,6 @@ import com.example.basemvvm.network.network_base.FileDownLoadObserver;
 import com.example.basemvvm.utils.common_utils.LogUtils;
 
 import java.io.File;
-import java.util.Objects;
 
 /**
  * author: wtg
@@ -43,8 +42,8 @@ public class UpdateAppService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent == null){
-            return super.onStartCommand(intent,flags,startId);
+        if (intent == null) {
+            return super.onStartCommand(intent, flags, startId);
         }
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         initNotify();
@@ -56,10 +55,10 @@ public class UpdateAppService extends Service {
     /**
      * 下载
      */
-    private void download(){
-        if (SDCardUtils.isSDCardEnableByEnvironment()){//sdk卡是否可用
-            String dir =  SDCardUtils.getSDCardPathByEnvironment() + File.separator+"luyuan";
-            LogUtils.logE("dir",dir);
+    private void download() {
+        if (SDCardUtils.isSDCardEnableByEnvironment()) {//sdk卡是否可用
+            String dir = SDCardUtils.getSDCardPathByEnvironment() + File.separator + "luyuan";
+            LogUtils.logE("dir", dir);
             FileUtils.createOrExistsDir(dir);
             String url = "http://imtt.dd.qq.com/16891/E4E087B63E27B87175F4B9BC7CFC4997.apk?fsname=com.tencent.qlauncher_6.0.2_64170111.apk&csr=97c2";
             DownloadModel.getInstance().downloadFile(url, dir, "qq.apk", new FileDownLoadObserver<File>() {
@@ -67,18 +66,18 @@ public class UpdateAppService extends Service {
                 public void onDownLoadSuccess(File file) {
                     AppUtils.installApp(file);
                     stopSelf();
-                    LogUtils.logE("onDownLoadSuccess","成功");
+                    LogUtils.logE("onDownLoadSuccess", "成功");
                 }
 
                 @Override
                 public void onDownLoadFail(Throwable throwable) {
-                    LogUtils.logE("onDownLoadFail","失败");
+                    LogUtils.logE("onDownLoadFail", "失败");
                 }
 
                 @Override
                 public void onProgress(int progress, long total) {
                     notifyMsg(progress);
-                    LogUtils.logE("progress",progress+"---"+total);
+                    LogUtils.logE("progress", progress + "---" + total);
                 }
             });
         }
@@ -107,6 +106,7 @@ public class UpdateAppService extends Service {
 
     /**
      * 创建 channelId
+     *
      * @return channelId
      */
     private String createNotificationChannel() {
@@ -143,8 +143,8 @@ public class UpdateAppService extends Service {
     /**
      * 取消通知
      */
-    private void cancelNotify(){
-        if (mNotificationManager != null){
+    private void cancelNotify() {
+        if (mNotificationManager != null) {
             mNotificationManager.cancel(NOTIFICATION_ID);
             mNotificationManager = null;
         }

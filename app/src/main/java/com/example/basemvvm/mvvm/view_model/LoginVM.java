@@ -7,7 +7,7 @@ import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.BaseMVVMActivity;
+import com.example.basemvvm.base.activity.BaseMVVMActivity;
 import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.bean.LoginBean;
 import com.example.basemvvm.mvvm.view_model_base.ToolBarActivityVM;
@@ -17,6 +17,8 @@ import com.example.basemvvm.ui.activity.TestActivity;
 import com.example.basemvvm.utils.common_utils.LogUtils;
 import com.example.basemvvm.utils.common_utils.ToastUtils;
 import com.example.basemvvm.utils.vm_utils.refresh.BindingCommand;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import io.reactivex.disposables.Disposable;
 
@@ -35,13 +37,24 @@ public class LoginVM extends ToolBarActivityVM {
     public BindingCommand onRefreshCommand = new BindingCommand(() -> {
         //下拉刷新
         ToastUtils.showShortToast("下拉刷新");
+        //加载数据
     });
 
     public BindingCommand onLoadMoreCommand = new BindingCommand(() -> {
         //上拉加载更多
         ToastUtils.showShortToast("上拉加载");
-
+        //加载数据
     });
+
+    public OnRefreshListener onRefreshListener = refreshLayout -> {
+        ToastUtils.showShortToast("我是刷新");
+        refreshLayout.finishRefresh(2000);
+    };
+
+    public OnLoadMoreListener onLoadMoreListener = refreshLayout -> {
+        ToastUtils.showShortToast("我是加载");
+        refreshLayout.finishLoadMore(2000);
+    };
 
     public LoginVM(BaseMVVMActivity mActivity) {
         super(mActivity);

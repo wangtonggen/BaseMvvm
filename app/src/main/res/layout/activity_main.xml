@@ -9,26 +9,26 @@
             name="loginVm"
             type="com.example.basemvvm.mvvm.view_model.LoginVM" />
     </data>
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srlEnableLoadMoreWhenContentNotFull="false"
+        app:srlEnableLoadMoreWhenContentNotFull="true"
         app:srlDisableContentWhenLoading="true"
-        app:onRefreshCommand="@{loginVm.onRefreshCommand}"
-        app:onLoadMoreCommand="@{loginVm.onLoadMoreCommand}">
-        <com.scwang.smart.refresh.header.ClassicsHeader
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        onRefreshListener="@{loginVm.onRefreshListener}"
+        onLoadMoreListener="@{loginVm.onLoadMoreListener}">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="true"
             android:focusableInTouchMode="true"
             tools:context=".ui.MainActivity">
+
             <include
                 android:id="@+id/toolbar"
                 layout="@layout/view_toolbar"

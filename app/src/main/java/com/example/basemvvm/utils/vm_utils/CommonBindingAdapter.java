@@ -8,8 +8,6 @@ import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.databinding.BindingAdapter;
 
-import org.w3c.dom.Text;
-
 /**
  * author：wtg
  * time：2020/3/15
@@ -19,11 +17,12 @@ public class CommonBindingAdapter {
 
     /**
      * 设置背景图
-     * @param view view
+     *
+     * @param view    view
      * @param bgResId 资源id
      */
     @BindingAdapter("view_background")
-    public static void setToolbarBgColor(View view,int bgResId){
+    public static void setToolbarBgColor(View view, int bgResId) {
         view.setBackgroundResource(bgResId);
     }
 
@@ -74,11 +73,23 @@ public class CommonBindingAdapter {
 
     /**
      * 设置字体颜色
-     * @param textView view
+     *
+     * @param textView   view
      * @param resColorId 资源id
      */
     @BindingAdapter("text_color")
-    public static void setTextColor(AppCompatTextView textView,@ColorRes int resColorId){
+    public static void setTextColor(AppCompatTextView textView, @ColorRes int resColorId) {
         textView.setTextColor(textView.getResources().getColor(resColorId));
+    }
+
+    /**
+     * 设置hint字体颜色
+     *
+     * @param textView   所有继承AppCompatTextView 的类
+     * @param resColorId 颜色id
+     */
+    @BindingAdapter("text_hint_color")
+    public static void setTextHintColor(AppCompatTextView textView, @ColorRes int resColorId) {
+        textView.setHintTextColor(textView.getResources().getColor(resColorId));
     }
 }

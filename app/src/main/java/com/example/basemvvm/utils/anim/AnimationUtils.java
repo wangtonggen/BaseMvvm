@@ -16,7 +16,8 @@ public class AnimationUtils {
 
     /**
      * 开始动画
-     * @param view view
+     *
+     * @param view  view
      * @param color 颜色值
      */
     private void starAnimation(View view, int color) {
@@ -49,7 +50,8 @@ public class AnimationUtils {
 
     /**
      * 关闭动画
-     * @param view view
+     *
+     * @param view  view
      * @param color 颜色值
      */
     private void closeAnimation(View view, final int color) {

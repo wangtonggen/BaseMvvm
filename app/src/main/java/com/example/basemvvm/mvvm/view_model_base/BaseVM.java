@@ -1,6 +1,5 @@
 package com.example.basemvvm.mvvm.view_model_base;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -66,28 +65,28 @@ public abstract class BaseVM implements LifecycleObserver {
     /**
      * 显示加载框
      */
-    public void showLoadingDialog(){
+    public void showLoadingDialog() {
 
     }
 
     /**
      * 关闭加载框
      */
-    public void closeLoadingDialog(){
+    public void closeLoadingDialog() {
 
     }
 
     /**
      * 显示提示性对话框
      */
-    public void showTextDialog(){
+    public void showTextDialog() {
 
     }
 
     /**
      * 关闭提示性对话框
      */
-    public void closeTextDialog(){
+    public void closeTextDialog() {
 
     }
 

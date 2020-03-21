@@ -9,8 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 
-import com.example.basemvvm.utils.common_utils.LogUtils;
-
 /**
  * author：wtg
  * time：2020/3/17

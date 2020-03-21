@@ -25,7 +25,7 @@ public class ClipboardUtils {
      */
     public static void copyText(final CharSequence text) {
         ClipboardManager cm = (ClipboardManager) Utils.getApp().getSystemService(Context.CLIPBOARD_SERVICE);
-        if (cm != null){
+        if (cm != null) {
             cm.setPrimaryClip(ClipData.newPlainText("text", text));
         }
     }
@@ -37,7 +37,7 @@ public class ClipboardUtils {
      */
     public static CharSequence getText() {
         ClipboardManager cm = (ClipboardManager) Utils.getApp().getSystemService(Context.CLIPBOARD_SERVICE);
-        if (cm != null){
+        if (cm != null) {
             ClipData clip = cm.getPrimaryClip();
             if (clip != null && clip.getItemCount() > 0) {
                 return clip.getItemAt(0).coerceToText(Utils.getApp());

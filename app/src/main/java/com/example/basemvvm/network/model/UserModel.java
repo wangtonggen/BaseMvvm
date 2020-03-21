@@ -19,6 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 public class UserModel {
     private static UserModel userModel;
     private static UserService userService;
+
     public static UserModel getInstance() {
         if (userModel == null) {
             synchronized (UserModel.class) {
@@ -35,8 +36,9 @@ public class UserModel {
 
     /**
      * 登录
-     * @param mobile 手机号
-     * @param captcha 验证码
+     *
+     * @param mobile       手机号
+     * @param captcha      验证码
      * @param baseObserver 监听
      */
     public void login(String mobile, String captcha, BaseObserver<LoginBean> baseObserver) {
@@ -50,7 +52,8 @@ public class UserModel {
 
     /**
      * 发送验证码
-     * @param mobile 手机号
+     *
+     * @param mobile       手机号
      * @param baseObserver 监听
      */
     public void sendCode(String mobile, BaseObserver<String> baseObserver) {

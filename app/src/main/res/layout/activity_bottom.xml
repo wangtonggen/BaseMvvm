@@ -16,12 +16,23 @@
         android:layout_height="@dimen/dp_60"
         android:layout_gravity="bottom"
         android:background="@color/white"
-        app:itemTextColor="@color/selector_tab_text_color"
         app:itemTextAppearanceActive="@dimen/sp_10"
         app:itemTextAppearanceInactive="@dimen/sp_10"
+        app:itemTextColor="@color/selector_tab_text_color"
         app:labelVisibilityMode="labeled"
         app:layout_behavior=".widget.behavior.BottomNavigationBehavior"
         app:menu="@menu/bottom_nav_menu" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_60"
+        android:src="@android:drawable/ic_delete"
+        app:borderWidth="0dp"
+        app:fabSize="auto"
+        app:layout_behavior=".widget.behavior.BottomNavigationBehavior" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.example.basemvvm.base;
+package com.example.basemvvm.base.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,6 @@ import androidx.annotation.LayoutRes;
 import com.example.basemvvm.utils.common_utils.ActivityManagerUtils;
 
 
-import javax.annotation.Nonnull;
-
-import io.reactivex.Observable;
-import io.reactivex.subjects.BehaviorSubject;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
@@ -21,11 +17,11 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
  * desc：
  */
 public abstract class BaseActivity extends SwipeBackActivity {
-    protected SwipeBackLayout mSwipeBackLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mSwipeBackLayout = getSwipeBackLayout();
+        SwipeBackLayout mSwipeBackLayout = getSwipeBackLayout();
         mSwipeBackLayout.setEdgeTrackingEnabled(getEdgeTrackingEnabled());
         ActivityManagerUtils.getAppManager().addActivity(this);
     }
@@ -57,20 +53,29 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     /**
      * 设置打开activity动画
+     *
      * @param enterAnim 进入动画
-     * @param exitAnim 退出动画
+     * @param exitAnim  退出动画
      */
-    public void setStartAnimation(int enterAnim,int exitAnim){
-        overridePendingTransition(enterAnim,exitAnim);
+    public void setStartAnimation(int enterAnim, int exitAnim) {
+        overridePendingTransition(enterAnim, exitAnim);
     }
 
     /**
      * 设置关闭activity动画
+     *
      * @param enterAnim 进入动画
-     * @param exitAnim 退出动画
+     * @param exitAnim  退出动画
      */
-    public void setFinishAnimation(int enterAnim,int exitAnim){
-        overridePendingTransition(enterAnim,exitAnim);
+    public void setFinishAnimation(int enterAnim, int exitAnim) {
+        overridePendingTransition(enterAnim, exitAnim);
+    }
+
+    /**
+     * 初始化控件
+     */
+    protected void initView() {
+
     }
 
     /**
@@ -82,6 +87,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     /**
      * 获取布局id
+     *
      * @return layoutId
      */
     @LayoutRes

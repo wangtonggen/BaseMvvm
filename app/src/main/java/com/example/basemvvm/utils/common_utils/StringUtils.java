@@ -31,38 +31,42 @@ public class StringUtils {
 
     /**
      * 格式化字符串
+     *
      * @param context 上下文
-     * @param resId 字符资源id
-     * @param args 参数
+     * @param resId   字符资源id
+     * @param args    参数
      * @return 字符串
      */
-    public static String strFormat(Context context, @StringRes int resId, Object... args){
-        return String.format(getString(context,resId),args);
+    public static String strFormat(Context context, @StringRes int resId, Object... args) {
+        return String.format(getString(context, resId), args);
     }
 
     /**
      * 格式化字符串
+     *
      * @param format 需要格式化的字符串
-     * @param args 参数
+     * @param args   参数
      * @return 字符串
      */
-    public static String strFormat(String format, Object... args){
-        return String.format(format,args);
+    public static String strFormat(String format, Object... args) {
+        return String.format(format, args);
     }
 
     /**
      * 判断是否是gif图片
+     *
      * @param path 图片路径
      * @return true 是 false 否
      */
-    public static boolean isGif(String path){
-        return (path.endsWith(".gif")||path.endsWith(".GIF"));
+    public static boolean isGif(String path) {
+        return (path.endsWith(".gif") || path.endsWith(".GIF"));
     }
 
     /**
      * dp 转 px
+     *
      * @param ctx 上下文
-     * @param dp dp
+     * @param dp  dp
      * @return px
      */
     public static int dp2px(Context ctx, float dp) {

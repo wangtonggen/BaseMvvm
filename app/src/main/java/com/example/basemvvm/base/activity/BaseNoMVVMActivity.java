@@ -1,8 +1,6 @@
-package com.example.basemvvm.base;
+package com.example.basemvvm.base.activity;
 
 import android.os.Bundle;
-
-import androidx.annotation.LayoutRes;
 
 import butterknife.ButterKnife;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
@@ -22,25 +20,11 @@ public abstract class BaseNoMVVMActivity extends BaseActivity {
     }
 
     /**
-     * 初始化控件
-     */
-    protected void initView() {
-
-    }
-
-    /**
      * activity 划出关闭的方向 SwipeBackLayout.EDGE_LEFT 向右划出   SwipeBackLayout.EDGE_RIGHT 向左划出  SwipeBackLayout.EDGE_BOTTOM 向上划出
      *
      * @return 方向
      */
-    protected int getEdgeTrackingEnabled(){
+    protected int getEdgeTrackingEnabled() {
         return SwipeBackLayout.EDGE_LEFT;
     }
-
-    /**
-     * 获取布局id
-     * @return layoutId
-     */
-    @LayoutRes
-    protected abstract int getLayoutRes();
 }

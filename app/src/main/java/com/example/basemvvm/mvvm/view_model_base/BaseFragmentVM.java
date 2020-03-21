@@ -2,7 +2,7 @@ package com.example.basemvvm.mvvm.view_model_base;
 
 import android.content.Context;
 
-import com.example.basemvvm.base.BaseMVVMFragment;
+import com.example.basemvvm.base.fragment.BaseMVVMFragment;
 
 /**
  * author: wtg

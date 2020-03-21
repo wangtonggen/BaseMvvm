@@ -14,26 +14,29 @@ public class ToastUtils {
 
     /**
      * 长土司
+     *
      * @param content 内容
      */
-    public static void showLongToast(String content){
-        showLongToast(BaseApplication.instance,content);
+    public static void showLongToast(String content) {
+        showLongToast(BaseApplication.instance, content);
     }
 
     /**
      * 短土司
+     *
      * @param content 内容
      */
-    public static void showShortToast(String content){
-        showShortToast(BaseApplication.instance,content);
+    public static void showShortToast(String content) {
+        showShortToast(BaseApplication.instance, content);
     }
 
     /**
      * 短土司
+     *
      * @param resId 字符串资源id
      */
-    public static void showShortToast(@StringRes int resId){
-        showShortToast(BaseApplication.instance,resId);
+    public static void showShortToast(@StringRes int resId) {
+        showShortToast(BaseApplication.instance, resId);
     }
 
     /**
@@ -61,6 +64,6 @@ public class ToastUtils {
      * @param resId 资源id
      */
     public static void showShortToast(Context context, @StringRes int resId) {
-        ToastUtils.showShortToast(context,StringUtils.getString(context,resId));
+        ToastUtils.showShortToast(context, StringUtils.getString(context, resId));
     }
 }
