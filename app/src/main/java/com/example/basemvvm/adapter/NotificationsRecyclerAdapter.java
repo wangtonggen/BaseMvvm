@@ -1,9 +1,5 @@
 package com.example.basemvvm.adapter;
 
-import androidx.annotation.NonNull;
-import androidx.databinding.ViewDataBinding;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.adapter.baseaDapter.BaseRecyclerSingleAdapter;
 import com.example.basemvvm.bean.NotificationBean;
@@ -22,11 +18,6 @@ import java.util.List;
 public class NotificationsRecyclerAdapter extends BaseRecyclerSingleAdapter<RecyclerItemNotificationBinding, NotificationBean, BaseViewHolder> {
     public NotificationsRecyclerAdapter(int layoutResId, @Nullable List<NotificationBean> data) {
         super(layoutResId, data);
-    }
-
-    @Override
-    protected RecyclerItemNotificationBinding getViewDataBinding(@NotNull BaseViewHolder baseViewHolder) {
-        return baseViewHolder.getBinding();
     }
 
     @Override

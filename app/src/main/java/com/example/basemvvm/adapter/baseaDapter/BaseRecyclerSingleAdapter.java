@@ -43,7 +43,14 @@ public abstract class BaseRecyclerSingleAdapter<VB extends ViewDataBinding, T, V
         }
     }
 
-    protected abstract VB getViewDataBinding(@NotNull VH vh);
+    /**
+     * 获取DataBinding 实例
+     * @param vh viewHolder
+     * @return DataBinding
+     */
+    protected VB getViewDataBinding(@NotNull VH vh){
+        return vh.getBinding();
+    }
 
     /**
      * 设置数据源
