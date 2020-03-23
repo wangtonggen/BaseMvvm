@@ -8,7 +8,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.bean.NotificationBean;
 import com.example.basemvvm.databinding.RecyclerItemNotificationBinding;
-import com.example.basemvvm.utils.common_utils.LogUtils;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,13 +27,13 @@ public class NotificationsRecyclerAdapter extends BaseQuickAdapter<NotificationB
     @NotNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
-        LogUtils.logE("onCreateViewHolder",parent+"---");
+//        LogUtils.logE("onCreateViewHolder",parent+"---");
         return super.onCreateViewHolder(parent, viewType);
     }
 
     @Override
     public void onBindViewHolder(@NotNull BaseViewHolder holder, int position, @NotNull List<Object> payloads) {
-        LogUtils.logE("onBindViewHolder",holder.itemView+"---");
+//        LogUtils.logE("onBindViewHolder",holder.itemView+"---");
         super.onBindViewHolder(holder, position, payloads);
     }
 

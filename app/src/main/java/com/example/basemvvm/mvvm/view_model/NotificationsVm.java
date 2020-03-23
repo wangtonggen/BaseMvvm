@@ -37,14 +37,25 @@ public class NotificationsVm extends BaseFragmentVM {
         loadData(refreshLayout);
     };
 
-
     public NotificationsVm(BaseMVVMFragment fragment) {
         super(fragment);
+        init();
+    }
+
+    @Override
+    protected void init() {
         linearLayoutManager = new LinearLayoutManager(mContext);
         notificationsRecyclerAdapter = new NotificationsRecyclerAdapter(R.layout.recycler_item_notification, notificationBeans);
 
         notificationsRecyclerAdapter.setOnItemClickListener((adapter, view, position) -> {
-            ToastUtils.showLongToast("position_"+position);
+            ToastUtils.showLongToast("position_" + position);
+        });
+
+        notificationsRecyclerAdapter.setOnItemLongClickListener((adapter, view, position) -> {
+            notificationBeans.remove(position);
+            notificationsRecyclerAdapter.notifyItemRemoved(position);
+            notificationsRecyclerAdapter.notifyItemRangeChanged(position, notificationBeans.size() - position);
+            return true;
         });
     }
 
@@ -59,8 +70,7 @@ public class NotificationsVm extends BaseFragmentVM {
             int size = notificationBeans.size();
             for (int i = 0; i < pageSize; i++) {
                 notificationBeans.add(new NotificationBean("item_" + (size + i)));
-                notificationsRecyclerAdapter.notifyItemRangeInserted(notificationBeans.size(),15);
-//                notificationsRecyclerAdapter.notifyDataSetChanged();
+                notificationsRecyclerAdapter.notifyItemRangeInserted(notificationBeans.size(), 15);
             }
         }
 

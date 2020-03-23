@@ -17,4 +17,9 @@ public abstract class BaseFragmentVM extends BaseVM {
         this.mFragment = fragment;
         this.mContext = this.mFragment.getContext();
     }
+
+    /**
+     * 初始化
+     */
+    protected void init(){};
 }
