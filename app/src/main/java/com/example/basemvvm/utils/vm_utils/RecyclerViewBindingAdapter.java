@@ -2,9 +2,6 @@ package com.example.basemvvm.utils.vm_utils;
 
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SimpleItemAnimator;
-
-import java.util.Objects;
 
 /**
  * author: wtg

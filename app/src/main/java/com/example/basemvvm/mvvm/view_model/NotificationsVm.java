@@ -48,7 +48,9 @@ public class NotificationsVm extends BaseFragmentVM {
         notificationsRecyclerAdapter = new NotificationsRecyclerAdapter(R.layout.recycler_item_notification, notificationBeans);
 
         notificationsRecyclerAdapter.setOnItemClickListener((adapter, view, position) -> {
-            ToastUtils.showLongToast("position_" + position);
+            notificationBeans.get(position).name = "hello word";
+            notificationsRecyclerAdapter.notifyItemChanged(position);
+//            ToastUtils.showLongToast("position_" + position);
         });
 
         notificationsRecyclerAdapter.setOnItemLongClickListener((adapter, view, position) -> {
