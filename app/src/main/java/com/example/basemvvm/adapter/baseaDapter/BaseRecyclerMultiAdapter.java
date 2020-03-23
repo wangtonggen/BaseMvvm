@@ -32,12 +32,16 @@ public abstract class BaseRecyclerMultiAdapter<T extends MultiItemEntity, VH ext
             return;
         }
         bindData(vh, t);
+        if (vh.getBinding() != null){
+            vh.getBinding().executePendingBindings();
+        }
     }
 
     /**
      * 设置数据源
+     *
      * @param vh viewHolder
-     * @param t 数据源
+     * @param t  数据源
      */
     public abstract void bindData(@NotNull VH vh, T t);
 

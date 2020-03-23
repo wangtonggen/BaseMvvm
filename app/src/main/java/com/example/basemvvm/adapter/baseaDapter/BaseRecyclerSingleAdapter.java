@@ -16,7 +16,7 @@ import java.util.List;
  * date:2020/3/23 0023
  * desc: 单布局的基类
  */
-public abstract class BaseRecyclerSingleAdapter<T, VH extends BaseViewHolder> extends BaseQuickAdapter<T, VH> {
+public abstract class BaseRecyclerSingleAdapter<VB extends ViewDataBinding, T, VH extends BaseViewHolder> extends BaseQuickAdapter<T, VH> {
     public BaseRecyclerSingleAdapter(int layoutResId, @Nullable List<T> data) {
         super(layoutResId, data);
     }
@@ -36,14 +36,21 @@ public abstract class BaseRecyclerSingleAdapter<T, VH extends BaseViewHolder> ex
             return;
         }
 
-        bindData(vh, t);
+        VB viewDataBinding = getViewDataBinding(vh);
+        if (viewDataBinding != null) {
+            bindData(vh, viewDataBinding, t);
+            viewDataBinding.executePendingBindings();
+        }
     }
+
+    protected abstract VB getViewDataBinding(@NotNull VH vh);
 
     /**
      * 设置数据源
+     *
      * @param vh viewHolder
-     * @param t 数据源
+     * @param t  数据源
      */
-    public abstract void bindData(@NotNull VH vh, T t);
+    public abstract void bindData(@NotNull VH vh, @NotNull VB viewDataBinding, T t);
 
 }

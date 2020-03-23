@@ -31,12 +31,14 @@ public class HomeRecyclerAdapter extends BaseRecyclerMultiAdapter<MultiItemBean,
                 RecyclerItemHome01Binding recyclerItemHome01Binding = baseViewHolder.getBinding();
                 if (recyclerItemHome01Binding != null){
                     recyclerItemHome01Binding.setMultiItemBean(multiItemBean);
+                    recyclerItemHome01Binding.executePendingBindings();
                 }
                 break;
             case 1:
                 RecyclerItemHomeBinding recyclerItemHomeBinding = baseViewHolder.getBinding();
                 if (recyclerItemHomeBinding != null){
                     recyclerItemHomeBinding.setMultiItemBean(multiItemBean);
+                    recyclerItemHomeBinding.executePendingBindings();
                 }
                 break;
         }

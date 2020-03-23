@@ -95,7 +95,7 @@ public class BottomActivity extends BaseNoMVVMActivity {
             BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 0, 100);
             BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 1, 50);
             BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 2, 8);
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 3, 10);
+            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 3, -10);
         });
     }
 }
