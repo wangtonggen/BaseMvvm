@@ -35,7 +35,7 @@ public class CommonBindingAdapter {
     @BindingAdapter("compoundDrawableLeft")
     public static void compoundDrawablesLeft(TextView view, @DrawableRes int drawableResId) {
 //        view.setCompoundDrawables(view.getResources().getDrawable(R.mipmap.ic_launcher),null,null,null);
-        view.setCompoundDrawables(view.getResources().getDrawable(drawableResId), null, null, null);
+        view.setCompoundDrawablesWithIntrinsicBounds(view.getResources().getDrawable(drawableResId), null, null, null);
     }
 
     /**
@@ -46,7 +46,7 @@ public class CommonBindingAdapter {
      */
     @BindingAdapter("compoundDrawableRight")
     public static void compoundDrawablesRight(TextView view, @DrawableRes int drawableResId) {
-        view.setCompoundDrawables(null, null, view.getResources().getDrawable(drawableResId), null);
+        view.setCompoundDrawablesWithIntrinsicBounds(null, null, view.getResources().getDrawable(drawableResId), null);
     }
 
     /**
@@ -57,7 +57,7 @@ public class CommonBindingAdapter {
      */
     @BindingAdapter("compoundDrawableTop")
     public static void compoundDrawablesTop(TextView view, @DrawableRes int drawableResId) {
-        view.setCompoundDrawables(null, view.getResources().getDrawable(drawableResId), null, null);
+        view.setCompoundDrawablesWithIntrinsicBounds(null, view.getResources().getDrawable(drawableResId), null, null);
     }
 
     /**
@@ -68,7 +68,7 @@ public class CommonBindingAdapter {
      */
     @BindingAdapter("compoundDrawableBottom")
     public static void compoundDrawablesBottom(TextView view, @DrawableRes int drawableResId) {
-        view.setCompoundDrawables(null, null, null, view.getResources().getDrawable(drawableResId));
+        view.setCompoundDrawablesWithIntrinsicBounds(null, null, null, view.getResources().getDrawable(drawableResId));
     }
 
     /**

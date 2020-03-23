@@ -2,16 +2,26 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
+        <import type="com.example.basemvvm.R" />
+
+        <variable
+            name="itemVM"
+            type="com.example.basemvvm.mvvm.view_model.ItemVM" />
+
         <variable
             name="multiItemBean"
             type="com.example.basemvvm.bean.MultiItemBean" />
     </data>
+
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv"
+        compoundDrawableLeft="@{itemVM.imageRes}"
+        text_color="@{itemVM.textColor}"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_50"
-        android:background="@color/colorAccent"
-        android:textSize="@dimen/sp_20"
+        android:background="@color/colorPrimaryDark"
         android:gravity="end|center_vertical"
-        android:textColor="@android:color/white"
-        android:text="@{multiItemBean.desc}"/>
+        android:text="@{multiItemBean.desc}"
+        android:textSize="@dimen/sp_20" />
 </layout>

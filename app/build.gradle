@@ -40,7 +40,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             android.applicationVariants.all {
                 outputs.all {
-                    outputFileName = "gogo_" + buildType.name + "-v" + defaultConfig.versionCode + "_" + defaultConfig.versionName + ".apk"
+                    outputFileName = "baseMvvm_" + buildType.name + "-v" + defaultConfig.versionCode + "_" + defaultConfig.versionName + ".apk"
                 }
             }
         }
@@ -51,7 +51,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             android.applicationVariants.all {
                 outputs.all {
-                    outputFileName = "gogo_" + buildType.name + "-v" + defaultConfig.versionCode + "_" + defaultConfig.versionName + ".apk"
+                    outputFileName = "base_mvvm_" + buildType.name + "-v" + defaultConfig.versionCode + "_" + defaultConfig.versionName + ".apk"
                 }
             }
         }

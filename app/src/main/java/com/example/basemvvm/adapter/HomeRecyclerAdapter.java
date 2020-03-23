@@ -6,6 +6,7 @@ import com.example.basemvvm.adapter.baseaDapter.BaseRecyclerMultiAdapter;
 import com.example.basemvvm.bean.MultiItemBean;
 import com.example.basemvvm.databinding.RecyclerItemHome01Binding;
 import com.example.basemvvm.databinding.RecyclerItemHomeBinding;
+import com.example.basemvvm.mvvm.view_model.ItemVM;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -38,6 +39,8 @@ public class HomeRecyclerAdapter extends BaseRecyclerMultiAdapter<MultiItemBean,
                 RecyclerItemHomeBinding recyclerItemHomeBinding = baseViewHolder.getBinding();
                 if (recyclerItemHomeBinding != null){
                     recyclerItemHomeBinding.setMultiItemBean(multiItemBean);
+                    ItemVM itemVM = new ItemVM();
+                    recyclerItemHomeBinding.setItemVM(itemVM);
                     recyclerItemHomeBinding.executePendingBindings();
                 }
                 break;
