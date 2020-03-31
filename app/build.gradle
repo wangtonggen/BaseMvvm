@@ -140,5 +140,9 @@ dependencies {
     //弹窗
     implementation 'com.lxj:xpopup:1.8.10-x'
 
-
+    //wcdb数据库
+    implementation 'com.tencent.wcdb:wcdb-android:1.0.8'
+    implementation 'com.tencent.wcdb:room:1.0.8'  // 代替 room-runtime，同时也不需要再引用 wcdb-android
+    implementation 'androidx.room:room-runtime:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5' // compiler 需要用 room 的
 }

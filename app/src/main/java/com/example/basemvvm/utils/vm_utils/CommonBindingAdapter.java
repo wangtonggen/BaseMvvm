@@ -11,7 +11,7 @@ import androidx.databinding.BindingAdapter;
 /**
  * author：wtg
  * time：2020/3/15
- * desc： 提取操作的公共部分
+ * desc：提取操作的公共部分
  */
 public class CommonBindingAdapter {
 

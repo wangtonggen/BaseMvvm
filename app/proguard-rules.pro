@@ -255,3 +255,11 @@
 -keep class android.support.**{*;}
 #混淆 xpop 结束
 
+#混淆 wcdb 开始
+-keep class com.tencent.wcdb.repair.RepairKit { int onProgress(java.lang.String, int, long); }
+-keep class com.tencent.wcdb.database.SQLiteConnection {
+    void notifyCheckpoint(java.lang.String, int);
+    void notifyChange(java.lang.String, java.lang.String, long[], long[], long[]);
+}
+#混淆 wcdb 结束
+
