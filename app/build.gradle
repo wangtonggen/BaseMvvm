@@ -145,4 +145,13 @@ dependencies {
     implementation 'com.tencent.wcdb:room:1.0.8'  // 代替 room-runtime，同时也不需要再引用 wcdb-android
     implementation 'androidx.room:room-runtime:2.2.5'
     annotationProcessor 'androidx.room:room-compiler:2.2.5' // compiler 需要用 room 的
+
+    //圆形图片
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //recyclerView 侧滑
+    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+
+    //带数字的进度条
+    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
 }

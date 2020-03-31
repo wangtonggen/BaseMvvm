@@ -52,7 +52,6 @@ public class DownloadModel {
                 .map(new Function<ResponseBody, File>() {
                     @Override
                     public File apply(@NonNull ResponseBody responseBody) throws Exception {
-                        LogUtils.logE("hahaha", "来了");
                         return fileDownLoadObserver.saveFile(responseBody, destDir, fileName);
                     }
                 })

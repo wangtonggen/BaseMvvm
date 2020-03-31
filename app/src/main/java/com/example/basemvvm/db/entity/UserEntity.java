@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class UserEntity {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
 
     public String userName;
 

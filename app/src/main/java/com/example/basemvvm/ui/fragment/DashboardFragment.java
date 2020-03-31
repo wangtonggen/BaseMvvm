@@ -26,6 +26,6 @@ public class DashboardFragment extends LazyLoadFragment<FragmentDashboardBinding
 
     @Override
     public void onLazyLoadData() {
-        LogUtils.logE(TAG, "DashboardFragment");
+//        LogUtils.logE(TAG, "DashboardFragment");
     }
 }

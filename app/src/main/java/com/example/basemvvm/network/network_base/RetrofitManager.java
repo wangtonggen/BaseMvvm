@@ -2,7 +2,6 @@ package com.example.basemvvm.network.network_base;
 
 import com.example.basemvvm.base.BaseApplication;
 import com.example.basemvvm.network.api.ApiBaseUrl;
-import com.example.basemvvm.network.gson.ResponseConverterFactory;
 import com.example.basemvvm.utils.common_utils.LogUtils;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
@@ -16,6 +15,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.basemvvm.network.network_base.ApiConfigConstant.CONNECT_TIMEOUT;
 import static com.example.basemvvm.network.network_base.ApiConfigConstant.READ_TIMEOUT;
@@ -44,8 +44,7 @@ public class RetrofitManager {
                 .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApplication.instance)));
 
         retrofit = new Retrofit.Builder().client(builder.build())
-//                .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(ResponseConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(ApiBaseUrl.URL_BASE)
                 .build();

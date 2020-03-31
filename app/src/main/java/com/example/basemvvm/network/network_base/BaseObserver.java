@@ -19,7 +19,11 @@ import io.reactivex.disposables.Disposable;
 public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
     @Override
     public void onNext(HttpResponse<T> tHttpResponse) {
-        onSuccess(tHttpResponse);
+        if (tHttpResponse.getCode() != 200){
+            onError(new ResultException(tHttpResponse.getCode(),tHttpResponse.getMsg()));
+        }else {
+            onSuccess(tHttpResponse);
+        }
     }
 
     @Override
@@ -45,7 +49,7 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
                 case 3:
                     break;
             }
-//            ToastUtils.showShortToast(e.getMessage());
+            ToastUtils.showShortToast(e.getMessage());
         } else if (e instanceof JsonParseException) {
             ToastUtils.showShortToast("数据错误");
         }
@@ -53,7 +57,7 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
     }
 
     public void onFail(Throwable e) {
-        LogUtils.logE(e.getMessage());
+        LogUtils.logE("Throwable:"+e.getMessage());
     }
 
 

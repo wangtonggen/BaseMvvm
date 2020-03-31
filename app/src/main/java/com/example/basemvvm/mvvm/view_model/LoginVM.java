@@ -61,6 +61,7 @@ public class LoginVM extends ToolBarActivityVM {
     }
 
     public void login() {
+        int i = 1/0;
         UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -70,7 +71,7 @@ public class LoginVM extends ToolBarActivityVM {
 
             @Override
             public void onSuccess(HttpResponse<LoginBean> data) {
-                LogUtils.logE(data.getCode() + "---" + data.getMsg());
+//                LogUtils.logE(data.getCode() + "---" + data.getMsg());
             }
         });
     }
@@ -79,7 +80,7 @@ public class LoginVM extends ToolBarActivityVM {
         UserModel.getInstance().sendCode(str_mobile.get(), new BaseObserver<String>() {
             @Override
             public void onSuccess(HttpResponse<String> data) {
-                LogUtils.logE(data.getCode() + "---" + data.getMsg());
+//                LogUtils.logE(data.getCode() + "---" + data.getMsg());
             }
         });
     }

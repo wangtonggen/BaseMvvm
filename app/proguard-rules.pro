@@ -5,12 +5,6 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
 
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
@@ -48,6 +42,12 @@
 
 #-----------------------全局混淆-----------------------
 #除了项目目录，其他都不混淆，这种写法只能有一行，请自行改成自己的包路径，如果再加一行com.li.*会导致全部都不混淆②
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+   public *;
+}
 -keep class !com.example.basemvvm.** {*;}
 -dontwarn **
 

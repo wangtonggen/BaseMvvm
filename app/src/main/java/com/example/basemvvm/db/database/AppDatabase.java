@@ -20,7 +20,7 @@ import com.tencent.wcdb.room.db.WCDBOpenHelperFactory;
  * date:2020/3/31 0031
  * desc:
  */
-@Database(entities = {UserEntity.class},version = 1)
+@Database(entities = {UserEntity.class},version = 1,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final byte[] PASS_PWD = "luyuan".getBytes();//数据库加密的密码短语
     private static final int PAGE_SIZE = 4096;//设置要使用的页面大小。页面大小应该是2的幂。

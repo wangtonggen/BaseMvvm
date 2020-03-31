@@ -23,27 +23,27 @@
         <!--        <activity-->
         <!--            android:name=".ui.activity.BottomActivity"-->
         <!--            android:label="@string/title_activity_bottom"/>-->
-        <activity android:name=".ui.activity.BottomActivity">
+        <!--   <activity android:name=".ui.activity.BottomActivity">
+               <intent-filter>
+                   <action android:name="android.intent.action.MAIN" />
+
+                   <category android:name="android.intent.category.LAUNCHER" />
+               </intent-filter>
+           </activity>-->
+
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--         <activity android:name=".ui.MainActivity">-->
-        <!--             <intent-filter>-->
-        <!--                 <action android:name="android.intent.action.MAIN" />-->
-
-        <!--                 <category android:name="android.intent.category.LAUNCHER" />-->
-        <!--             </intent-filter>-->
-        <!--         </activity>-->
         <activity android:name=".ui.activity.TestActivity" />
 
         <!--更新APP的service-->
         <service android:name=".service.UpdateAppService" />
         <!--获取基本配置文件的服务-->
-        <service android:name=".service.ConfigService"/>
+        <service android:name=".service.ConfigService" />
         <!--适配7.0无法自动跳转安装界面的问题-->
         <provider
             android:name="androidx.core.content.FileProvider"

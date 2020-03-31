@@ -112,32 +112,32 @@ public abstract class BaseVM implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate() {
-        LogUtils.logE(TAG, "onCreate: ");
+//        LogUtils.logE(TAG, "onCreate: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onStart() {
-        LogUtils.logE(TAG, "onStart: ");
+//        LogUtils.logE(TAG, "onStart: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void onResume() {
-        LogUtils.logE(TAG, "onResume: ");
+//        LogUtils.logE(TAG, "onResume: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPause() {
-        LogUtils.logE(TAG, "onPause: ");
+//        LogUtils.logE(TAG, "onPause: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void onStop() {
-        LogUtils.logE(TAG, "onStop: ");
+//        LogUtils.logE(TAG, "onStop: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy() {
-        LogUtils.logE(TAG, "onDestroy: ");
+//        LogUtils.logE(TAG, "onDestroy: ");
         cancelRequest();
     }
 }
