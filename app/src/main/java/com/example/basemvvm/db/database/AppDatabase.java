@@ -13,8 +13,6 @@ import com.example.basemvvm.base.BaseApplication;
 import com.example.basemvvm.db.dao.UserDao;
 import com.example.basemvvm.db.entity.UserEntity;
 import com.tencent.wcdb.database.SQLiteCipherSpec;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.room.db.WCDBDatabase;
 import com.tencent.wcdb.room.db.WCDBOpenHelperFactory;
 
 /**
@@ -28,7 +26,6 @@ public abstract class AppDatabase extends RoomDatabase {
     private static final int PAGE_SIZE = 4096;//设置要使用的页面大小。页面大小应该是2的幂。
     private static final int KDF_TIMES = 64000;//设置要使用的KDF迭代时间
     private static volatile AppDatabase INSTANCE;
-    private static volatile SQLiteCipherSpec sqLiteCipherSpec;
 
     /**
      * 数据库升级
@@ -53,7 +50,9 @@ public abstract class AppDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
-                    iniSQLiteCipherSpec();
+                    SQLiteCipherSpec sqLiteCipherSpec = new SQLiteCipherSpec()
+                            .setPageSize(PAGE_SIZE)
+                            .setKDFIteration(KDF_TIMES);
                     WCDBOpenHelperFactory factory = new WCDBOpenHelperFactory()
                             .passphrase(PASS_PWD)      // 指定加密DB密钥，非加密DB去掉此行
                             .cipherSpec(sqLiteCipherSpec)               // 指定加密方式，使用默认加密可以省略
@@ -61,8 +60,8 @@ public abstract class AppDatabase extends RoomDatabase {
                             .asyncCheckpointEnabled(true);        // 打开异步Checkpoint优化，不需要可以省略
 
                     INSTANCE = Room.databaseBuilder(BaseApplication.instance, AppDatabase.class, "luyuan_database")
-                            .allowMainThreadQueries()//允许在主线程使用
-//                            .addMigrations(MIGRATION_1_2)
+//                            .allowMainThreadQueries()//允许在主线程使用 比较耗时的操作 不推荐
+//                            .addMigrations(MIGRATION_1_2)//更新数据库
                             .openHelperFactory(factory)
                             .addCallback(sRoomDatabaseCallback)
                             .build();
@@ -72,14 +71,6 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    /**
-     * 初始化 SQLiteCipherSpec
-     */
-    private static void iniSQLiteCipherSpec(){
-        sqLiteCipherSpec = new SQLiteCipherSpec()
-                .setPageSize(PAGE_SIZE)
-                .setKDFIteration(KDF_TIMES);
-    }
 
     /**
      * 监听数据库的状态 create/open/
