@@ -9,10 +9,16 @@ import android.os.Looper;
 import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.SDCardUtils;
 import com.example.basemvvm.utils.common_utils.LogUtils;
 import com.example.basemvvm.utils.common_utils.ToastUtils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.RandomAccessFile;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.text.DateFormat;
@@ -21,6 +27,9 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import static com.example.basemvvm.constant.FileConstant.DIR_APP;
+import static com.example.basemvvm.constant.FileConstant.DIR_CRASH;
 
 /**
  * author: wtg
@@ -127,10 +136,11 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
      *
      */
     private void collectDeviceInfo() {
+        infos.put("app名称", AppUtils.getAppName());
         infos.put("versionCode", AppUtils.getAppVersionCode());
         infos.put("versionName", AppUtils.getAppVersionName());
         infos.put("sdk", Build.VERSION.SDK_INT);
-//        infos.put("androidVersion", Build.);
+        infos.put("androidVersion", Build.VERSION.RELEASE);
         StringBuilder builderCpu = new StringBuilder();
         for (String supportedAbi : Build.SUPPORTED_ABIS) {
             builderCpu.append(supportedAbi);
@@ -178,6 +188,21 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
         这个 crashInfo 就是我们收集到的所有信息，可以做一个异常上报的接口用来提交用户的crash信息
          */
         String crashInfo = sb.toString();
+        //写到sd卡上
+        if (SDCardUtils.isSDCardEnableByEnvironment()){
+            FileUtils.createOrExistsDir(DIR_CRASH);
+            String fileName = formatter.format(new Date())+".txt";
+            File crashFile = new File(DIR_CRASH,fileName);
+            FileUtils.createOrExistsFile(crashFile);
+            try {
+                RandomAccessFile randomAccessFile = new RandomAccessFile(crashFile,"rwd");
+                randomAccessFile.seek(crashFile.length());
+                randomAccessFile.write(crashInfo.getBytes());
+                randomAccessFile.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         uploadCrashInfo(crashInfo);
     }
 
@@ -187,7 +212,8 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
      * @param crashInfo crash信息
      */
     public void uploadCrashInfo(String crashInfo) {
-        LogUtils.logE("info", crashInfo);
+//        LogUtils.logE("info", crashInfo);
+        //如果上传成功了，则删除，上传失败了,保留
     }
 
 }

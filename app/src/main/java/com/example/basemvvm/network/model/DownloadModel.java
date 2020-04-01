@@ -46,15 +46,11 @@ public class DownloadModel {
      * @param fileDownLoadObserver 文件监听
      */
     public void downloadFile(String url, String destDir, String fileName, FileDownLoadObserver<File> fileDownLoadObserver) {
-        downloadService.download(url).subscribeOn(Schedulers.io())//subscribeOn和ObserOn必须在io线程，如果在主线程会出错
+        downloadService.download(url)
+                .subscribeOn(Schedulers.io())//subscribeOn和ObserOn必须在io线程，如果在主线程会出错
                 .observeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())//需要
-                .map(new Function<ResponseBody, File>() {
-                    @Override
-                    public File apply(@NonNull ResponseBody responseBody) throws Exception {
-                        return fileDownLoadObserver.saveFile(responseBody, destDir, fileName);
-                    }
-                })
+                .map(responseBody -> fileDownLoadObserver.saveFile(responseBody, destDir, fileName))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(fileDownLoadObserver);
     }

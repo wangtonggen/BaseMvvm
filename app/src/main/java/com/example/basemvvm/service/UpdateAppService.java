@@ -23,6 +23,8 @@ import com.example.basemvvm.utils.common_utils.LogUtils;
 
 import java.io.File;
 
+import static com.example.basemvvm.constant.FileConstant.DIR_APP;
+
 /**
  * author: wtg
  * date:2020/3/19 0019
@@ -33,6 +35,7 @@ public class UpdateAppService extends Service {
     private NotificationCompat.Builder mBuilder;
     private Notification mNotification;
     private NotificationManager mNotificationManager;
+
 
     @Nullable
     @Override
@@ -57,11 +60,11 @@ public class UpdateAppService extends Service {
      */
     private void download() {
         if (SDCardUtils.isSDCardEnableByEnvironment()) {//sdk卡是否可用
-            String dir = SDCardUtils.getSDCardPathByEnvironment() + File.separator + "luyuan";
+//            String dir = SDCardUtils.getSDCardPathByEnvironment() + File.separator + "luyuan";
 //            LogUtils.logE("dir", dir);
-            FileUtils.createOrExistsDir(dir);
+            FileUtils.createOrExistsDir(DIR_APP);
             String url = "http://imtt.dd.qq.com/16891/E4E087B63E27B87175F4B9BC7CFC4997.apk?fsname=com.tencent.qlauncher_6.0.2_64170111.apk&csr=97c2";
-            DownloadModel.getInstance().downloadFile(url, dir, "qq.apk", new FileDownLoadObserver<File>() {
+            DownloadModel.getInstance().downloadFile(url, DIR_APP, "qq.apk", new FileDownLoadObserver<File>() {
                 @Override
                 public void onDownLoadSuccess(File file) {
                     AppUtils.installApp(file);

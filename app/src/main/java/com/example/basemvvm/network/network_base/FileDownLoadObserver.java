@@ -1,5 +1,7 @@
 package com.example.basemvvm.network.network_base;
 
+import com.example.basemvvm.utils.common_utils.LogUtils;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -49,6 +51,7 @@ public abstract class FileDownLoadObserver<T> extends DefaultObserver<T> {
      * @throws IOException IO异常
      */
     public File saveFile(ResponseBody responseBody, String destFileDir, String destFileName) throws IOException {
+        LogUtils.logE("hahaha",responseBody.contentLength()+"---");
         InputStream is = null;
         byte[] buf = new byte[2048];
         int len = 0;
