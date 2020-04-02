@@ -12,7 +12,7 @@ import com.example.basemvvm.ui.activity.AppUpdateActivity;
 /**
  * author: wtg
  * date:2020/3/19 0019
- * desc: 更新app的service
+ * desc: 检测app更新的service
  */
 public class UpdateAppService extends Service {
 

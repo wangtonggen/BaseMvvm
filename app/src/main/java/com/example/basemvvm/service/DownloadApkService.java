@@ -40,7 +40,7 @@ import static com.example.basemvvm.constant.NotificationConstant.NOTIFICATION_ID
 /**
  * author: wtg
  * date:2020/3/19 0019
- * desc: 更新app的service
+ * desc: 下载APK的service
  */
 public class DownloadApkService extends Service {
     private NotificationCompat.Builder mBuilder;

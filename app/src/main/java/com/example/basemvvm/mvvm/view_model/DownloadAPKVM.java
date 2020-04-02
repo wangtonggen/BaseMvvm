@@ -35,7 +35,7 @@ import static com.example.basemvvm.constant.FileConstant.DIR_APP;
 /**
  * author: wtg
  * date:2020/4/2 0002
- * desc: 下载的vm
+ * desc: 下载APK的vm
  */
 public class DownloadAPKVM extends BaseActivityVM {
     public ObservableInt progressInt = new ObservableInt(0);

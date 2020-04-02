@@ -15,7 +15,7 @@ import com.example.basemvvm.mvvm.view_model.DownloadAPKVM;
 /**
  * author: wtg
  * date:2020/4/2 0002
- * desc:
+ * desc: 更新app的activity
  */
 public class AppUpdateActivity extends BaseMVVMActivity<ActivityDialogDownApkBinding, DownloadAPKVM> {
     private UpdateBean updateBean;
