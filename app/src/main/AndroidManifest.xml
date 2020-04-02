@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /><!--兼容7.0 在AndroidManifest.xml 添加权限-->
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
     <application
         android:name=".base.BaseApplication"
@@ -36,10 +38,13 @@
                   <category android:name="android.intent.category.LAUNCHER" />
               </intent-filter>
           </activity>-->
+        <activity android:name=".ui.activity.AppUpdateActivity" android:theme="@style/dialogstyle"/>
         <activity android:name=".ui.activity.TestActivity" />
 
-        <!--更新APP的service-->
+        <!--判断是否需要更新APP的service-->
         <service android:name=".service.UpdateAppService" />
+        <!--下载的service-->
+        <service android:name=".service.DownloadApkService" />
         <!--获取基本配置文件的服务-->
         <service android:name=".service.ConfigService" />
         <!--适配7.0无法自动跳转安装界面的问题-->
