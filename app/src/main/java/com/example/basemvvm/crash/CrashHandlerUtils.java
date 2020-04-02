@@ -1,8 +1,6 @@
 package com.example.basemvvm.crash;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Looper;
 
@@ -11,11 +9,10 @@ import androidx.annotation.NonNull;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.SDCardUtils;
-import com.example.basemvvm.utils.common_utils.LogUtils;
-import com.example.basemvvm.utils.common_utils.ToastUtils;
+import com.example.basemvvm.utils.commonUtils.LogUtils;
+import com.example.basemvvm.utils.commonUtils.ToastUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.RandomAccessFile;
@@ -28,7 +25,6 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import static com.example.basemvvm.constant.FileConstant.DIR_APP;
 import static com.example.basemvvm.constant.FileConstant.DIR_CRASH;
 
 /**

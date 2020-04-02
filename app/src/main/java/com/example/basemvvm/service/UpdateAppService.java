@@ -14,16 +14,29 @@ import androidx.core.app.NotificationCompat;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SDCardUtils;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.BaseApplication;
+import com.example.basemvvm.network.downloadAndUpload.download.DownLoadUtils;
+import com.example.basemvvm.network.downloadAndUpload.download.DownloadResponseBody;
 import com.example.basemvvm.network.model.DownloadModel;
-import com.example.basemvvm.network.network_base.FileDownLoadObserver;
-import com.example.basemvvm.utils.common_utils.LogUtils;
+import com.example.basemvvm.network.networkBase.FileDownLoadObserver;
+import com.example.basemvvm.utils.commonUtils.MyFileUtils;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 import static com.example.basemvvm.constant.FileConstant.DIR_APP;
+import static com.example.basemvvm.constant.NotificationConstant.DOWNLOAD_APK_CHANNEL_ID;
+import static com.example.basemvvm.constant.NotificationConstant.NOTIFICATION_ID;
 
 /**
  * author: wtg
@@ -31,11 +44,10 @@ import static com.example.basemvvm.constant.FileConstant.DIR_APP;
  * desc: 更新app的service
  */
 public class UpdateAppService extends Service {
-    private static final int NOTIFICATION_ID = 0;
     private NotificationCompat.Builder mBuilder;
     private Notification mNotification;
     private NotificationManager mNotificationManager;
-
+    private Call call;
 
     @Nullable
     @Override
@@ -64,23 +76,37 @@ public class UpdateAppService extends Service {
 //            LogUtils.logE("dir", dir);
             FileUtils.createOrExistsDir(DIR_APP);
             String url = "http://imtt.dd.qq.com/16891/E4E087B63E27B87175F4B9BC7CFC4997.apk?fsname=com.tencent.qlauncher_6.0.2_64170111.apk&csr=97c2";
-            DownloadModel.getInstance().downloadFile(url, DIR_APP, "qq.apk", new FileDownLoadObserver<File>() {
+            call = DownLoadUtils.download(url, new DownloadResponseBody.DownloadListener() {
                 @Override
-                public void onDownLoadSuccess(File file) {
-                    AppUtils.installApp(file);
-                    stopSelf();
-//                    LogUtils.logE("onDownLoadSuccess", "成功");
+                public void onStartDownload(long length) {
+                    LogUtils.e("onStartDownload=" + length);
                 }
 
                 @Override
-                public void onDownLoadFail(Throwable throwable) {
-//                    LogUtils.logE("onDownLoadFail", "失败");
+                public void onProgress(long progress, long total, boolean done) {
+                    LogUtils.e("onProgress=" + progress+"---total="+total);
+                    notifyMsg((int) (progress * 100 / total));
                 }
 
                 @Override
-                public void onProgress(int progress, long total) {
-                    notifyMsg(progress);
-//                    LogUtils.logE("progress", progress + "---" + total);
+                public void onFail(String errorInfo) {
+                    LogUtils.e("onFail=" + errorInfo);
+                }
+            }, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    LogUtils.e("onFailure=" + e.getMessage());
+                }
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) {
+                    LogUtils.e("onResponse="+response.message());
+                    ResponseBody responseBody = response.body();
+                    if (responseBody != null) {
+                        File file = MyFileUtils.saveFile(responseBody.byteStream(), DIR_APP, "hello.apk");
+                        AppUtils.installApp(file);
+                        stopSelf();
+                    }
                 }
             });
         }
@@ -113,13 +139,12 @@ public class UpdateAppService extends Service {
      * @return channelId
      */
     private String createNotificationChannel() {
-        String channelId = "channelId";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence channelName = "channelName";
             String channelDescription = "channelDescription";
             int channelImportance = NotificationManager.IMPORTANCE_DEFAULT;
 
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, channelImportance);
+            NotificationChannel notificationChannel = new NotificationChannel(DOWNLOAD_APK_CHANNEL_ID, channelName, channelImportance);
             // 设置描述 最长30字符
             notificationChannel.setDescription(channelDescription);
             // 该渠道的通知是否使用震动
@@ -128,7 +153,7 @@ public class UpdateAppService extends Service {
             notificationChannel.setLockscreenVisibility(NotificationCompat.VISIBILITY_PUBLIC);
             mNotificationManager.createNotificationChannel(notificationChannel);
         }
-        return channelId;
+        return DOWNLOAD_APK_CHANNEL_ID;
     }
 
     /**
@@ -156,6 +181,9 @@ public class UpdateAppService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (call != null){
+            call.cancel();
+        }
         cancelNotify();
     }
 }

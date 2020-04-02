@@ -12,11 +12,10 @@ import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.bean.LoginBean;
 import com.example.basemvvm.mvvm.view_model_base.ToolBarActivityVM;
 import com.example.basemvvm.network.model.UserModel;
-import com.example.basemvvm.network.network_base.BaseObserver;
+import com.example.basemvvm.network.networkBase.BaseObserver;
 import com.example.basemvvm.ui.activity.TestActivity;
-import com.example.basemvvm.utils.common_utils.LogUtils;
-import com.example.basemvvm.utils.common_utils.ToastUtils;
-import com.example.basemvvm.utils.vm_utils.refresh.BindingCommand;
+import com.example.basemvvm.utils.commonUtils.ToastUtils;
+import com.example.basemvvm.utils.vmUtils.refresh.BindingCommand;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
