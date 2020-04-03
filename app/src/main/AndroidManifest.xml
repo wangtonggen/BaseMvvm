@@ -23,21 +23,21 @@
         android:theme="@style/AppTheme"
         tools:targetApi="n">
 
-        <activity android:name=".ui.activity.BottomActivity">
+       <!-- <activity android:name=".ui.activity.BottomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>-->
 
-        <!--  <activity android:name=".ui.MainActivity">
+          <activity android:name=".ui.MainActivity">
               <intent-filter>
                   <action android:name="android.intent.action.MAIN" />
 
                   <category android:name="android.intent.category.LAUNCHER" />
               </intent-filter>
-          </activity>-->
+          </activity>
         <activity android:name=".ui.activity.AppUpdateActivity" android:theme="@style/dialogstyle"/>
         <activity android:name=".ui.activity.TestActivity" />
 

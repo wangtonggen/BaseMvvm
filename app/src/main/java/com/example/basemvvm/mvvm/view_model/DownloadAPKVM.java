@@ -13,7 +13,7 @@ import com.blankj.utilcode.util.SDCardUtils;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseActivity;
 import com.example.basemvvm.bean.UpdateBean;
-import com.example.basemvvm.mvvm.view_model_base.BaseActivityVM;
+import com.example.basemvvm.mvvm.view_model_base.BaseActivityLifecycleVM;
 import com.example.basemvvm.network.downloadAndUpload.download.DownLoadUtils;
 import com.example.basemvvm.network.downloadAndUpload.download.DownloadResponseBody;
 import com.example.basemvvm.service.DownloadApkService;
@@ -37,7 +37,8 @@ import static com.example.basemvvm.constant.FileConstant.DIR_APP;
  * date:2020/4/2 0002
  * desc: 下载APK的vm
  */
-public class DownloadAPKVM extends BaseActivityVM {
+public class DownloadAPKVM extends BaseActivityLifecycleVM {
+    //防止引用不消失出现以前的引用 不要使用static
     public ObservableInt progressInt = new ObservableInt(0);
     public ObservableField<String> titleText = new ObservableField<>("");
     public ObservableField<String> cancelText = new ObservableField<>("");
@@ -87,8 +88,7 @@ public class DownloadAPKVM extends BaseActivityVM {
         titleText.set("下载");
         if (SDCardUtils.isSDCardEnableByEnvironment()) {//sdk卡是否可用
             FileUtils.createOrExistsDir(DIR_APP);
-            String url = "http://imtt.dd.qq.com/16891/E4E087B63E27B87175F4B9BC7CFC4997.apk?fsname=com.tencent.qlauncher_6.0.2_64170111.apk&csr=97c2";
-            call = DownLoadUtils.download(url, new DownloadResponseBody.DownloadListener() {
+            call = DownLoadUtils.download(updateBean.getDownloadUrl(), new DownloadResponseBody.DownloadListener() {
                 @Override
                 public void onStartDownload(long length) {
                     LogUtils.logE("onStartDownload=" + length);

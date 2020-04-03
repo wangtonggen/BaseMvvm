@@ -6,7 +6,7 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.NotificationsRecyclerAdapter;
 import com.example.basemvvm.base.fragment.BaseMVVMFragment;
 import com.example.basemvvm.bean.NotificationBean;
-import com.example.basemvvm.mvvm.view_model_base.BaseFragmentVM;
+import com.example.basemvvm.mvvm.view_model_base.BaseFragmentLifecycleVM;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
@@ -19,7 +19,7 @@ import java.util.List;
  * date:2020/3/18 0018
  * desc:
  */
-public class NotificationsVm extends BaseFragmentVM {
+public class NotificationsVm extends BaseFragmentLifecycleVM {
     public NotificationsRecyclerAdapter notificationsRecyclerAdapter;
     private int page = 1;
     private int pageSize = 15;

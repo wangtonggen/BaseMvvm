@@ -9,11 +9,11 @@ import com.example.basemvvm.base.fragment.BaseMVVMFragment;
  * date:2020/3/13 0013
  * desc: ViewModel的基类 fragment
  */
-public abstract class BaseFragmentVM extends BaseVM {
+public abstract class BaseFragmentLifecycleVM extends BaseLifecycleVM {
     protected BaseMVVMFragment mFragment;
     protected Context mContext;
 
-    public BaseFragmentVM(BaseMVVMFragment fragment) {
+    public BaseFragmentLifecycleVM(BaseMVVMFragment fragment) {
         this.mFragment = fragment;
         this.mContext = this.mFragment.getContext();
     }

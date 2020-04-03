@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.basemvvm.adapter.HomeRecyclerAdapter;
 import com.example.basemvvm.base.fragment.BaseMVVMFragment;
 import com.example.basemvvm.bean.MultiItemBean;
-import com.example.basemvvm.mvvm.view_model_base.BaseFragmentVM;
+import com.example.basemvvm.mvvm.view_model_base.BaseFragmentLifecycleVM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  * date:2020/3/18 0018
  * desc: 首页的viewModel
  */
-public class HomeVM extends BaseFragmentVM {
+public class HomeVM extends BaseFragmentLifecycleVM {
     public LinearLayoutManager linearLayoutManager;
     public HomeRecyclerAdapter homeRecyclerAdapter;
     private List<MultiItemBean> multiItemBeans = new ArrayList<>();

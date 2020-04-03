@@ -10,11 +10,11 @@ import com.example.basemvvm.base.activity.BaseActivity;
  * date:2020/3/13 0013
  * desc: ViewModel的基类 activity
  */
-public abstract class BaseActivityVM extends BaseVM {
+public abstract class BaseActivityLifecycleVM extends BaseLifecycleVM {
     protected BaseActivity mActivity;
     protected Bundle bundle;
 
-    public BaseActivityVM(BaseActivity mActivity) {
+    public BaseActivityLifecycleVM(BaseActivity mActivity) {
         this.mActivity = mActivity;
     }
 

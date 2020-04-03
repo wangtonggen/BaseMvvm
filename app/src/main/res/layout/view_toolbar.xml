@@ -7,8 +7,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="toolBarActivityViewModel"
-            type="com.example.basemvvm.mvvm.view_model_base.ToolBarActivityVM" />
+            name="toolbarVM"
+            type="com.example.basemvvm.mvvm.view_model_base.BaseToolbarActivityVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,13 +17,13 @@
         android:layout_height="@dimen/dp_50"
         android:paddingLeft="@dimen/dp_10"
         android:paddingRight="@dimen/dp_10"
-        app:view_background="@{toolBarActivityViewModel.toolbarColor}">
+        app:view_background="@{toolbarVM.toolbarColor}">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/dp_30"
             android:layout_height="@dimen/dp_30"
-            android:visibility="@{toolBarActivityViewModel.backNavigationShow?View.VISIBLE:View.INVISIBLE}"
-            app:image_url="@{toolBarActivityViewModel.backNavigationResId}"
+            android:visibility="@{toolbarVM.backNavigationShow?View.VISIBLE:View.INVISIBLE}"
+            app:image_url="@{toolbarVM.backNavigationResId}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,14 +31,14 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{toolBarActivityViewModel.title}"
+            android:text="@{toolbarVM.title}"
             android:textSize="@dimen/sp_24"
-            android:visibility="@{toolBarActivityViewModel.titleShow?View.VISIBLE:View.INVISIBLE}"
+            android:visibility="@{toolbarVM.titleShow?View.VISIBLE:View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:text_color="@{toolBarActivityViewModel.titleColor}" />
+            app:text_color="@{toolbarVM.titleColor}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -49,8 +49,8 @@
                 android:id="@+id/tv_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{toolBarActivityViewModel.rightText}"
-                android:visibility="@{toolBarActivityViewModel.rightTextShow?View.VISIBLE:View.GONE}"
+                android:text="@{toolbarVM.rightText}"
+                android:visibility="@{toolbarVM.rightTextShow?View.VISIBLE:View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/iv_right"
                 app:layout_constraintTop_toTopOf="parent"
@@ -61,8 +61,8 @@
                 android:layout_width="@dimen/dp_30"
                 android:layout_height="@dimen/dp_30"
                 android:layout_marginLeft="@dimen/dp_10"
-                android:visibility="@{toolBarActivityViewModel.rightImageShow?View.VISIBLE:View.GONE}"
-                app:image_url="@{toolBarActivityViewModel.rightImageResId}"
+                android:visibility="@{toolbarVM.rightImageShow?View.VISIBLE:View.GONE}"
+                app:image_url="@{toolbarVM.rightImageResId}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/tv_right"
                 app:layout_constraintTop_toTopOf="parent" />

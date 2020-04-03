@@ -4,9 +4,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
+import androidx.annotation.DimenRes;
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.databinding.BindingAdapter;
+
+import com.example.basemvvm.R;
 
 /**
  * author：wtg
@@ -16,13 +19,13 @@ import androidx.databinding.BindingAdapter;
 public class CommonBindingAdapter {
 
     /**
-     * 设置背景图
+     * 设置设置背景颜色值/背景图
      *
      * @param view    view
      * @param bgResId 资源id
      */
     @BindingAdapter("view_background")
-    public static void setToolbarBgColor(View view, int bgResId) {
+    public static void setBgRes(View view, int bgResId) {
         view.setBackgroundResource(bgResId);
     }
 
@@ -34,7 +37,6 @@ public class CommonBindingAdapter {
      */
     @BindingAdapter("compoundDrawableLeft")
     public static void compoundDrawablesLeft(TextView view, @DrawableRes int drawableResId) {
-//        view.setCompoundDrawables(view.getResources().getDrawable(R.mipmap.ic_launcher),null,null,null);
         view.setCompoundDrawablesWithIntrinsicBounds(view.getResources().getDrawable(drawableResId), null, null, null);
     }
 

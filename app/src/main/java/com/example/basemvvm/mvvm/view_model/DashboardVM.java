@@ -8,7 +8,7 @@ import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.fragment.BaseMVVMFragment;
-import com.example.basemvvm.mvvm.view_model_base.BaseFragmentVM;
+import com.example.basemvvm.mvvm.view_model_base.BaseFragmentLifecycleVM;
 import com.example.basemvvm.service.UpdateAppService;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -19,7 +19,7 @@ import io.reactivex.disposables.Disposable;
  * date:2020/3/18 0018
  * desc:
  */
-public class DashboardVM extends BaseFragmentVM {
+public class DashboardVM extends BaseFragmentLifecycleVM {
     public final ObservableField<String> text = new ObservableField<>();
     public final ObservableField<String> text1 = new ObservableField<>();
     public final ObservableField<String> text2 = new ObservableField<>();

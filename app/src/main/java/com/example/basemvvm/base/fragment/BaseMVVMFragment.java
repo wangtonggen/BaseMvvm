@@ -10,14 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
-import com.example.basemvvm.mvvm.view_model_base.BaseVM;
+import com.example.basemvvm.mvvm.view_model_base.BaseLifecycleVM;
 
 /**
  * author: wtg
  * date:2020/3/12 0012
  * desc: fragment 基类
  */
-public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends BaseVM> extends BaseFragment {
+public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseFragment {
 
     protected B binding;
     protected int viewModelId;

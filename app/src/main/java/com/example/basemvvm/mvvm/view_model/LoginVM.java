@@ -10,7 +10,7 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseMVVMActivity;
 import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.bean.LoginBean;
-import com.example.basemvvm.mvvm.view_model_base.ToolBarActivityVM;
+import com.example.basemvvm.mvvm.view_model_base.BaseToolbarActivityVM;
 import com.example.basemvvm.network.model.UserModel;
 import com.example.basemvvm.network.networkBase.BaseObserver;
 import com.example.basemvvm.ui.activity.TestActivity;
@@ -24,14 +24,10 @@ import io.reactivex.disposables.Disposable;
 /**
  * 登录的viewModel
  */
-public class LoginVM extends ToolBarActivityVM {
+public class LoginVM extends BaseToolbarActivityVM {
     public final ObservableField<String> str_mobile = new ObservableField<>();
     public final ObservableField<String> str_code = new ObservableField<>();
-
     public final ObservableBoolean focus = new ObservableBoolean(true);
-
-    private String[] mobiles = new String[]{"13735701398", "15727960191", "15727960192", "15727960193"};
-    private String[] codes = new String[]{"25485", "12548", "87541", "98652"};
 
     public BindingCommand onRefreshCommand = new BindingCommand(() -> {
         //下拉刷新
@@ -57,10 +53,11 @@ public class LoginVM extends ToolBarActivityVM {
 
     public LoginVM(BaseMVVMActivity mActivity) {
         super(mActivity);
+
+        toolbarColor.set(R.color.colorPrimary);
     }
 
-    public void login() {
-        int i = 1/0;
+    private void login() {
         UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
             @Override
             public void onSubscribe(Disposable d) {

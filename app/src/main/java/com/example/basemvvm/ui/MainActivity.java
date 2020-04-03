@@ -29,8 +29,6 @@ public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding
     @Override
     protected void initView() {
         binding.smartRefreshLayout.autoRefresh();
-//        binding.getRoot().findViewById(R.id.toolbar).setBackgroundResource();
-//        ((AppCompatTextView)binding.getRoot().findViewById(R.id.tv_right)).setTextColor(getResources().getColor(R.color.colorAccent));
     }
 
     @Override
