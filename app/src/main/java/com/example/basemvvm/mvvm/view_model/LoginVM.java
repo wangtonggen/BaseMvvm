@@ -28,27 +28,36 @@ public class LoginVM extends BaseToolbarActivityVM {
     public final ObservableField<String> str_mobile = new ObservableField<>();
     public final ObservableField<String> str_code = new ObservableField<>();
     public final ObservableBoolean focus = new ObservableBoolean(true);
-
-    public BindingCommand onRefreshCommand = new BindingCommand(() -> {
+    private int page = 1;
+    private int pageSize = 20;
+    private BindingCommand onRefreshCommand = new BindingCommand(() -> {
         //下拉刷新
         ToastUtils.showShortToast("下拉刷新");
         //加载数据
+        page = 1;
+        loadData();
+
     });
 
-    public BindingCommand onLoadMoreCommand = new BindingCommand(() -> {
+    private BindingCommand onLoadMoreCommand = new BindingCommand(() -> {
         //上拉加载更多
         ToastUtils.showShortToast("上拉加载");
         //加载数据
+        page++;
+        loadData();
     });
 
     public OnRefreshListener onRefreshListener = refreshLayout -> {
         ToastUtils.showShortToast("我是刷新");
         refreshLayout.finishRefresh(2000);
+        //
+        onRefreshCommand.execute();
     };
 
     public OnLoadMoreListener onLoadMoreListener = refreshLayout -> {
         ToastUtils.showShortToast("我是加载");
         refreshLayout.finishLoadMore(2000);
+        onLoadMoreCommand.execute();
     };
 
     public LoginVM(BaseMVVMActivity mActivity) {
@@ -94,5 +103,9 @@ public class LoginVM extends BaseToolbarActivityVM {
                 mActivity.startActivity(new Intent(mActivity, TestActivity.class));
                 break;
         }
+    }
+
+    private void loadData(){
+
     }
 }
