@@ -12,7 +12,7 @@ import com.example.basemvvm.base.activity.BaseActivity;
  * date:2020/4/3 0003
  * desc: toolbar的基类
  */
-public class BaseToolbarActivityVM extends BaseActivityLifecycleVM{
+public class BaseToolbarActivityVM extends BaseActivityLifecycleVM {
     public ObservableInt toolbarColor = new ObservableInt(R.color.colorAccent);//toolbar 的颜色值
     public ObservableField<String> title = new ObservableField<>("hello word");//标题
     public ObservableInt titleColor = new ObservableInt(R.color.color_title);//标题的颜色值
@@ -28,6 +28,6 @@ public class BaseToolbarActivityVM extends BaseActivityLifecycleVM{
     public ObservableInt backNavigationResId = new ObservableInt(R.drawable.ic_navigate_before_black_24dp);//导航按钮资源文件
 
     public BaseToolbarActivityVM(BaseActivity mActivity) {
-       super(mActivity);
+        super(mActivity);
     }
 }

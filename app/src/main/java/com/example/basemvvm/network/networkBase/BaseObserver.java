@@ -19,9 +19,9 @@ import io.reactivex.disposables.Disposable;
 public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
     @Override
     public void onNext(HttpResponse<T> tHttpResponse) {
-        if (tHttpResponse.getCode() != 200){
-            onError(new ResultException(tHttpResponse.getCode(),tHttpResponse.getMsg()));
-        }else {
+        if (tHttpResponse.getCode() != 200) {
+            onError(new ResultException(tHttpResponse.getCode(), tHttpResponse.getMsg()));
+        } else {
             onSuccess(tHttpResponse);
         }
     }
@@ -57,7 +57,7 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
     }
 
     public void onFail(Throwable e) {
-        LogUtils.logE("Throwable:"+e.getMessage());
+        LogUtils.logE("Throwable:" + e.getMessage());
     }
 
 

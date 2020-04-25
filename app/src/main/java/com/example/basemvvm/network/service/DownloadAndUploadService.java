@@ -33,20 +33,22 @@ public interface DownloadAndUploadService {
 
     /**
      * 上传文件
-     * @param parts 文件列表
+     *
+     * @param parts  文件列表
      * @param params 参数
      * @return 监听
      */
     @Multipart
     @POST(URL_UPLOAD_IMAGE)
-    Observable<HttpResponse<String>> uploadImage(@Part List<MultipartBody.Part> parts, @FieldMap Map<String,Object> params);
+    Observable<HttpResponse<String>> uploadImage(@Part List<MultipartBody.Part> parts, @FieldMap Map<String, Object> params);
 
     /**
      * 上传文件
+     *
      * @param multipartBody 文件
-     * @param params 参数
+     * @param params        参数
      * @return 监听
      */
     @POST("/commitment/published")
-    Observable<HttpResponse<String>> uploadImage(@Body MultipartBody multipartBody, @FieldMap Map<String,Object> params);
+    Observable<HttpResponse<String>> uploadImage(@Body MultipartBody multipartBody, @FieldMap Map<String, Object> params);
 }

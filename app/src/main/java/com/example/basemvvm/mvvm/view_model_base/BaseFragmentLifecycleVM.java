@@ -21,5 +21,6 @@ public abstract class BaseFragmentLifecycleVM extends BaseLifecycleVM {
     /**
      * 初始化
      */
-    protected void init(){};
+    protected void init() {
+    }
 }

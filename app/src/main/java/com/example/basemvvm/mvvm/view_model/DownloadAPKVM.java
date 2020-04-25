@@ -48,6 +48,7 @@ public class DownloadAPKVM extends BaseActivityLifecycleVM {
     public ObservableInt updateType = new ObservableInt(0);
     private UpdateBean updateBean;
     private Call call;
+
     public DownloadAPKVM(BaseActivity mActivity) {
         super(mActivity);
     }
@@ -63,15 +64,15 @@ public class DownloadAPKVM extends BaseActivityLifecycleVM {
 
     @Override
     public void onViewClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tv_cancel:
                 mActivity.finish();
                 break;
             case R.id.tv_sure:
-                switch (updateBean.getUpdateType()){
+                switch (updateBean.getUpdateType()) {
                     case 0:
                         Intent intent = new Intent(mActivity, DownloadApkService.class);
-                        intent.putExtra("update",updateBean);
+                        intent.putExtra("update", updateBean);
                         mActivity.startService(intent);
                         mActivity.finish();
                         break;
@@ -83,7 +84,7 @@ public class DownloadAPKVM extends BaseActivityLifecycleVM {
         }
     }
 
-    private void download(){
+    private void download() {
         isDownLoading.set(true);
         titleText.set("下载");
         if (SDCardUtils.isSDCardEnableByEnvironment()) {//sdk卡是否可用
@@ -96,7 +97,7 @@ public class DownloadAPKVM extends BaseActivityLifecycleVM {
 
                 @Override
                 public void onProgress(long progress, long total, boolean done) {
-                    LogUtils.logE("onProgress=" + progress+"---total="+total);
+                    LogUtils.logE("onProgress=" + progress + "---total=" + total);
                     progressInt.set((int) (progress * 100 / total));
                 }
 
@@ -114,7 +115,7 @@ public class DownloadAPKVM extends BaseActivityLifecycleVM {
 
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) {
-                    LogUtils.logE("onResponse="+response.message());
+                    LogUtils.logE("onResponse=" + response.message());
                     ResponseBody responseBody = response.body();
                     if (responseBody != null) {
                         File file = MyFileUtils.saveFile(responseBody.byteStream(), DIR_APP, "hello.apk");
@@ -130,7 +131,7 @@ public class DownloadAPKVM extends BaseActivityLifecycleVM {
     public void onDestroy() {
         super.onDestroy();
 
-        if (call != null){
+        if (call != null) {
             call.cancel();
         }
     }

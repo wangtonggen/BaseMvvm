@@ -1,4 +1,4 @@
-package com.example.basemvvm.base;
+package com.example.basemvvm.base.app;
 
 import android.app.Application;
 import android.content.Context;

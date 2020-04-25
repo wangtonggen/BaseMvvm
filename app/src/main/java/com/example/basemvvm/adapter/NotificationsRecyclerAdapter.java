@@ -1,7 +1,7 @@
 package com.example.basemvvm.adapter;
 
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
-import com.example.basemvvm.adapter.baseaDapter.BaseRecyclerSingleAdapter;
+import com.example.basemvvm.adapter.baseAdapter.BaseRecyclerSingleAdapter;
 import com.example.basemvvm.bean.NotificationBean;
 import com.example.basemvvm.databinding.RecyclerItemNotificationBinding;
 

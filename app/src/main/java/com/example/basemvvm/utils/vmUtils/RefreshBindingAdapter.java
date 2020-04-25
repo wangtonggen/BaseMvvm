@@ -36,12 +36,13 @@ public class RefreshBindingAdapter {
 
     /**
      * 自动刷新
+     *
      * @param smartRefreshLayout 刷新控件
-     * @param autoRefresh 是否自动刷新 true 是
+     * @param autoRefresh        是否自动刷新 true 是
      */
-    @BindingAdapter(value = "autoRefresh",requireAll = false)
-    public static void autoRefresh(SmartRefreshLayout smartRefreshLayout, boolean autoRefresh){
-        if (autoRefresh){
+    @BindingAdapter(value = "autoRefresh", requireAll = false)
+    public static void autoRefresh(SmartRefreshLayout smartRefreshLayout, boolean autoRefresh) {
+        if (autoRefresh) {
             smartRefreshLayout.autoRefresh();
         }
     }

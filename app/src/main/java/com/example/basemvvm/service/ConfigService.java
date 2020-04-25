@@ -28,7 +28,7 @@ public class ConfigService extends Service {
     /**
      * 获取基本配置的data
      */
-    private void getConfigData(){
+    private void getConfigData() {
         //完成后 停止服务
         stopSelf();
     }

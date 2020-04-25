@@ -1,4 +1,4 @@
-package com.example.basemvvm.adapter.baseaDapter;
+package com.example.basemvvm.adapter.baseAdapter;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -45,10 +45,11 @@ public abstract class BaseRecyclerSingleAdapter<VB extends ViewDataBinding, T, V
 
     /**
      * 获取DataBinding 实例
+     *
      * @param vh viewHolder
      * @return DataBinding
      */
-    protected VB getViewDataBinding(@NotNull VH vh){
+    protected VB getViewDataBinding(@NotNull VH vh) {
         return vh.getBinding();
     }
 

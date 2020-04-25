@@ -12,23 +12,25 @@ import okhttp3.Response;
 public class DownloadInterceptor implements Interceptor {
     private DownloadResponseBody.DownloadListener downloadListener;
     private long startPoint = -1;
+
     public DownloadInterceptor(DownloadResponseBody.DownloadListener downloadListener) {
         this.downloadListener = downloadListener;
     }
 
-    public DownloadInterceptor(DownloadResponseBody.DownloadListener downloadListener,long startPoint) {
+    public DownloadInterceptor(DownloadResponseBody.DownloadListener downloadListener, long startPoint) {
         this.downloadListener = downloadListener;
         this.startPoint = startPoint;
     }
+
     @Override
     public Response intercept(Chain chain) throws IOException {
         Response response = chain.proceed(chain.request());
-        if (startPoint == -1){
+        if (startPoint == -1) {
             return response.newBuilder().body(
                     new DownloadResponseBody(response.body(), downloadListener)).build();
-        }else {
+        } else {
             return response.newBuilder().body(
-                    new DownloadResponseBody(response.body(), downloadListener,startPoint)).build();
+                    new DownloadResponseBody(response.body(), downloadListener, startPoint)).build();
         }
 
     }

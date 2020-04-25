@@ -13,7 +13,7 @@ public class FileConstant {
     //文件处理的根目录
     public static final String DIR_ROOT = SDCardUtils.getSDCardPathByEnvironment() + File.separator + "luyuan";
     //apk的下载路径
-    public static final String DIR_APP =DIR_ROOT + File.separator + "app";
+    public static final String DIR_APP = DIR_ROOT + File.separator + "app";
     //闪退文件的保存路径
-    public static final String DIR_CRASH =DIR_ROOT + File.separator + "crash";
+    public static final String DIR_CRASH = DIR_ROOT + File.separator + "crash";
 }

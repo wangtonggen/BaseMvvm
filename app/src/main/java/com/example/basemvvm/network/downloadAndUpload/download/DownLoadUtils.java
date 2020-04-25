@@ -1,6 +1,6 @@
 package com.example.basemvvm.network.downloadAndUpload.download;
 
-import com.example.basemvvm.base.BaseApplication;
+import com.example.basemvvm.base.app.BaseApplication;
 import com.example.basemvvm.network.networkBase.SSL;
 import com.example.basemvvm.utils.commonUtils.LogUtils;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
@@ -29,11 +29,12 @@ public class DownLoadUtils {
 
     /**
      * 下载文件 无断点续传
-     * @param url 地址
+     *
+     * @param url              地址
      * @param downloadListener 下载监听
-     * @param callback 下载完成回调
+     * @param callback         下载完成回调
      */
-    public static Call download(String url, DownloadResponseBody.DownloadListener downloadListener, Callback callback){
+    public static Call download(String url, DownloadResponseBody.DownloadListener downloadListener, Callback callback) {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -54,12 +55,13 @@ public class DownLoadUtils {
 
     /**
      * 下载文件 断点续传
-     * @param url 地址
+     *
+     * @param url              地址
      * @param downloadListener 下载监听
-     * @param startPoint 开始下载的位置
-     * @param callback 下载完成回调
+     * @param startPoint       开始下载的位置
+     * @param callback         下载完成回调
      */
-    public static Call downloadBreakpointResume(String url, DownloadResponseBody.DownloadListener downloadListener,long startPoint, Callback callback){
+    public static Call downloadBreakpointResume(String url, DownloadResponseBody.DownloadListener downloadListener, long startPoint, Callback callback) {
         Request request = new Request.Builder()
                 .url(url)
                 .header("RANGE", "bytes=" + startPoint + "-")//断点续传
@@ -71,7 +73,7 @@ public class DownLoadUtils {
                 .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .sslSocketFactory(SSL.initSSLSocketFactory(), SSL.initTrustManager())
                 .addInterceptor(httpLoggingInterceptor)
-                .addInterceptor(new DownloadInterceptor(downloadListener,startPoint))
+                .addInterceptor(new DownloadInterceptor(downloadListener, startPoint))
                 .cookieJar(new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(BaseApplication.instance)));
         // 发起请求
         Call call = builder.build().newCall(request);

@@ -26,7 +26,7 @@ public class DownloadResponseBody extends ResponseBody {
         this.downloadListener = progressListener;
     }
 
-    public DownloadResponseBody(ResponseBody responseBody, DownloadListener progressListener,long startPoint) {
+    public DownloadResponseBody(ResponseBody responseBody, DownloadListener progressListener, long startPoint) {
         this.responseBody = responseBody;
         this.downloadListener = progressListener;
         this.startPoint = startPoint;
@@ -59,15 +59,15 @@ public class DownloadResponseBody extends ResponseBody {
             @Override
             public long read(Buffer sink, long byteCount) throws IOException {
                 long bytesRead = super.read(sink, byteCount);
-                if (totalBytesRead == 0){
+                if (totalBytesRead == 0) {
                     downloadListener.onStartDownload(responseBody.contentLength());
                 }
                 totalBytesRead += bytesRead != -1 ? bytesRead : 0;
                 if (null != downloadListener) {
-                    if (startPoint == -1){
-                        downloadListener.onProgress(totalBytesRead,responseBody.contentLength(),bytesRead == -1);
-                    }else {
-                        downloadListener.onProgress(totalBytesRead+startPoint,responseBody.contentLength(),bytesRead == -1);
+                    if (startPoint == -1) {
+                        downloadListener.onProgress(totalBytesRead, responseBody.contentLength(), bytesRead == -1);
+                    } else {
+                        downloadListener.onProgress(totalBytesRead + startPoint, responseBody.contentLength(), bytesRead == -1);
                     }
                 }
                 return bytesRead;
@@ -77,7 +77,9 @@ public class DownloadResponseBody extends ResponseBody {
 
     public interface DownloadListener {
         void onStartDownload(long length);
-        void onProgress(long progress, long total,boolean done);
+
+        void onProgress(long progress, long total, boolean done);
+
         void onFail(String errorInfo);
     }
 }

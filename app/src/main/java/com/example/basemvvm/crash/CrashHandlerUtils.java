@@ -129,7 +129,6 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
 
     /**
      * 收集设备参数信息
-     *
      */
     private void collectDeviceInfo() {
         infos.put("app名称", AppUtils.getAppName());
@@ -185,13 +184,13 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
          */
         String crashInfo = sb.toString();
         //写到sd卡上
-        if (SDCardUtils.isSDCardEnableByEnvironment()){
+        if (SDCardUtils.isSDCardEnableByEnvironment()) {
             FileUtils.createOrExistsDir(DIR_CRASH);
-            String fileName = formatter.format(new Date())+".txt";
-            File crashFile = new File(DIR_CRASH,fileName);
+            String fileName = formatter.format(new Date()) + ".txt";
+            File crashFile = new File(DIR_CRASH, fileName);
             FileUtils.createOrExistsFile(crashFile);
             try {
-                RandomAccessFile randomAccessFile = new RandomAccessFile(crashFile,"rwd");
+                RandomAccessFile randomAccessFile = new RandomAccessFile(crashFile, "rwd");
                 randomAccessFile.seek(crashFile.length());
                 randomAccessFile.write(crashInfo.getBytes());
                 randomAccessFile.close();

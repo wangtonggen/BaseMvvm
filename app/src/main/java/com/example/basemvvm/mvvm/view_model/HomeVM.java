@@ -19,6 +19,7 @@ public class HomeVM extends BaseFragmentLifecycleVM {
     public LinearLayoutManager linearLayoutManager;
     public HomeRecyclerAdapter homeRecyclerAdapter;
     private List<MultiItemBean> multiItemBeans = new ArrayList<>();
+
     public HomeVM(BaseMVVMFragment fragment) {
         super(fragment);
         init();
@@ -26,11 +27,11 @@ public class HomeVM extends BaseFragmentLifecycleVM {
 
     @Override
     protected void init() {
-        for (int i = 0; i < 20; i++){
-            if (i % 2 == 0){
-                multiItemBeans.add(new MultiItemBean(1,"item_"+i,"itemHome_"+i));
-            }else {
-                multiItemBeans.add(new MultiItemBean(0,"item_"+i,"itemHome_"+i));
+        for (int i = 0; i < 20; i++) {
+            if (i % 2 == 0) {
+                multiItemBeans.add(new MultiItemBean(1, "item_" + i, "itemHome_" + i));
+            } else {
+                multiItemBeans.add(new MultiItemBean(0, "item_" + i, "itemHome_" + i));
             }
         }
         linearLayoutManager = new LinearLayoutManager(mContext);

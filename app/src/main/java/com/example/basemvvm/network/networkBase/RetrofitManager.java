@@ -1,6 +1,6 @@
 package com.example.basemvvm.network.networkBase;
 
-import com.example.basemvvm.base.BaseApplication;
+import com.example.basemvvm.base.app.BaseApplication;
 import com.example.basemvvm.network.api.ApiBaseUrl;
 import com.example.basemvvm.utils.commonUtils.LogUtils;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
@@ -70,6 +70,7 @@ public class RetrofitManager {
 
     /**
      * 获取okhttpClient
+     *
      * @return okhttpClient
      */
     public OkHttpClient getOkHttpClient() {

@@ -8,12 +8,12 @@
             type="com.example.basemvvm.mvvm.view_model.HomeVM" />
     </data>
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recyclerView"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      recycler_adapter="@{homeVM.homeRecyclerAdapter}"
-      layout_manager="@{homeVM.linearLayoutManager}"
-      layout_has_fixed_size="10"
-      layout_item_cache_size="10"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        recycler_adapter="@{homeVM.homeRecyclerAdapter}"
+        layout_manager="@{homeVM.linearLayoutManager}"
+        layout_has_fixed_size="10"
+        layout_item_cache_size="10" />
 </layout>

@@ -13,7 +13,7 @@ import com.example.basemvvm.base.fragment.BaseMVVMFragment;
  * date:2020/4/3 0003
  * desc: toolbar的基类
  */
-public class BaseToolbarFragmentVM extends BaseFragmentLifecycleVM{
+public class BaseToolbarFragmentVM extends BaseFragmentLifecycleVM {
     public ObservableInt toolbarColor = new ObservableInt(R.color.colorAccent);//toolbar 的颜色值
     public ObservableField<String> title = new ObservableField<>("hello word");//标题
     public ObservableInt titleColor = new ObservableInt(R.color.color_title);//标题的颜色值
@@ -29,6 +29,6 @@ public class BaseToolbarFragmentVM extends BaseFragmentLifecycleVM{
     public ObservableInt backNavigationResId = new ObservableInt(R.drawable.ic_navigate_before_black_24dp);//导航按钮资源文件
 
     public BaseToolbarFragmentVM(BaseMVVMFragment fragment) {
-       super(fragment);
+        super(fragment);
     }
 }

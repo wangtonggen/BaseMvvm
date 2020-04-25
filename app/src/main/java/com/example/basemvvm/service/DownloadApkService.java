@@ -17,7 +17,7 @@ import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SDCardUtils;
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.BaseApplication;
+import com.example.basemvvm.base.app.BaseApplication;
 import com.example.basemvvm.bean.UpdateBean;
 import com.example.basemvvm.network.downloadAndUpload.download.DownLoadUtils;
 import com.example.basemvvm.network.downloadAndUpload.download.DownloadResponseBody;
@@ -48,6 +48,7 @@ public class DownloadApkService extends Service {
     private NotificationManager mNotificationManager;
     private Call call;
     private UpdateBean updateBean;
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -81,7 +82,7 @@ public class DownloadApkService extends Service {
 
                 @Override
                 public void onProgress(long progress, long total, boolean done) {
-                    LogUtils.e("onProgress=" + progress+"---total="+total);
+                    LogUtils.e("onProgress=" + progress + "---total=" + total);
                     notifyMsg((int) (progress * 100 / total));
                 }
 
@@ -97,7 +98,7 @@ public class DownloadApkService extends Service {
 
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) {
-                    LogUtils.e("onResponse="+response.message());
+                    LogUtils.e("onResponse=" + response.message());
                     ResponseBody responseBody = response.body();
                     if (responseBody != null) {
                         File file = MyFileUtils.saveFile(responseBody.byteStream(), DIR_APP, "hello.apk");
@@ -178,7 +179,7 @@ public class DownloadApkService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (call != null){
+        if (call != null) {
             call.cancel();
         }
         cancelNotify();

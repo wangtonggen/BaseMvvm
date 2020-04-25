@@ -1,7 +1,5 @@
 package com.example.basemvvm.db.database;
 
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
@@ -9,7 +7,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.basemvvm.base.BaseApplication;
+import com.example.basemvvm.base.app.BaseApplication;
 import com.example.basemvvm.db.dao.UserDao;
 import com.example.basemvvm.db.entity.UserEntity;
 import com.tencent.wcdb.database.SQLiteCipherSpec;
@@ -20,7 +18,7 @@ import com.tencent.wcdb.room.db.WCDBOpenHelperFactory;
  * date:2020/3/31 0031
  * desc:
  */
-@Database(entities = {UserEntity.class},version = 1,exportSchema = false)
+@Database(entities = {UserEntity.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final byte[] PASS_PWD = "luyuan".getBytes();//数据库加密的密码短语
     private static final int PAGE_SIZE = 4096;//设置要使用的页面大小。页面大小应该是2的幂。
@@ -44,6 +42,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     /**
      * 单例模式
+     *
      * @return database实例对象
      */
     public static AppDatabase getDatabase() {

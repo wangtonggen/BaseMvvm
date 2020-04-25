@@ -2,7 +2,7 @@ package com.example.basemvvm.adapter;
 
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
-import com.example.basemvvm.adapter.baseaDapter.BaseRecyclerMultiAdapter;
+import com.example.basemvvm.adapter.baseAdapter.BaseRecyclerMultiAdapter;
 import com.example.basemvvm.bean.MultiItemBean;
 import com.example.basemvvm.databinding.RecyclerItemHome01Binding;
 import com.example.basemvvm.databinding.RecyclerItemHomeBinding;
@@ -27,17 +27,17 @@ public class HomeRecyclerAdapter extends BaseRecyclerMultiAdapter<MultiItemBean,
 
     @Override
     public void bindData(@NotNull BaseViewHolder baseViewHolder, MultiItemBean multiItemBean) {
-        switch (baseViewHolder.getItemViewType()){
+        switch (baseViewHolder.getItemViewType()) {
             case 0:
                 RecyclerItemHome01Binding recyclerItemHome01Binding = baseViewHolder.getBinding();
-                if (recyclerItemHome01Binding != null){
+                if (recyclerItemHome01Binding != null) {
                     recyclerItemHome01Binding.setMultiItemBean(multiItemBean);
                     recyclerItemHome01Binding.executePendingBindings();
                 }
                 break;
             case 1:
                 RecyclerItemHomeBinding recyclerItemHomeBinding = baseViewHolder.getBinding();
-                if (recyclerItemHomeBinding != null){
+                if (recyclerItemHomeBinding != null) {
                     recyclerItemHomeBinding.setMultiItemBean(multiItemBean);
                     ItemVM itemVM = new ItemVM();
                     recyclerItemHomeBinding.setItemVM(itemVM);

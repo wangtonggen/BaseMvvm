@@ -51,7 +51,7 @@ public abstract class FileDownLoadObserver<T> extends DefaultObserver<T> {
      * @throws IOException IO异常
      */
     public File saveFile(ResponseBody responseBody, String destFileDir, String destFileName) throws IOException {
-        LogUtils.logE("hahaha",responseBody.contentLength()+"---");
+        LogUtils.logE("hahaha", responseBody.contentLength() + "---");
         InputStream is = null;
         byte[] buf = new byte[2048];
         int len = 0;

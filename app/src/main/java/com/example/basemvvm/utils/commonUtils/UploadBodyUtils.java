@@ -18,16 +18,18 @@ import okhttp3.RequestBody;
  */
 public class UploadBodyUtils {
 
-    public static MultipartBody imagesToMultipartBodyString(String key, List<String> files){
+    public static MultipartBody imagesToMultipartBodyString(String key, List<String> files) {
         List<File> fileList = new ArrayList<>();
         for (String file : files) {
             fileList.add(new File(file));
         }
-        return imagesToMultipartBody(key,fileList);
+        return imagesToMultipartBody(key, fileList);
     }
+
     /**
      * 指定image 类型
-     * @param key 文件key
+     *
+     * @param key   文件key
      * @param files 文件列表
      * @return MultipartBody
      */
@@ -37,9 +39,10 @@ public class UploadBodyUtils {
 
     /**
      * 指定文件的类型的
-     * @param key 文件的key
+     *
+     * @param key         文件的key
      * @param contentType 文件类型
-     * @param files 文件列表
+     * @param files       文件列表
      * @return MultipartBody
      */
     public static MultipartBody filesToMultipartBody(String key, @Nullable MediaType contentType, List<File> files) {
@@ -55,17 +58,18 @@ public class UploadBodyUtils {
         return builder.build();
     }
 
-    public static List<MultipartBody.Part> imagesToMultipartBodyPartsString(String key, List<String> files){
+    public static List<MultipartBody.Part> imagesToMultipartBodyPartsString(String key, List<String> files) {
         List<File> fileList = new ArrayList<>();
         for (String file : files) {
             fileList.add(new File(file));
         }
-        return imagesToMultipartBodyParts(key,fileList);
+        return imagesToMultipartBodyParts(key, fileList);
     }
 
     /**
      * 指定image 类型
-     * @param key 文件key
+     *
+     * @param key   文件key
      * @param files 文件列表
      * @return BodyPart
      */
@@ -76,9 +80,10 @@ public class UploadBodyUtils {
 
     /**
      * 转换成 BodyParts 类型
-     * @param key key
+     *
+     * @param key         key
      * @param contentType 文件类型
-     * @param files 文件集合
+     * @param files       文件集合
      * @return BodyParts
      */
     public static List<MultipartBody.Part> filesToMultipartBodyParts(@NonNull String key, @Nullable MediaType contentType, @NonNull List<File> files) {

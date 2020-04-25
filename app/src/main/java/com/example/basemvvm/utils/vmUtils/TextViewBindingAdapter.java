@@ -13,7 +13,7 @@ import androidx.databinding.BindingAdapter;
 public class TextViewBindingAdapter {
 
     @BindingAdapter("setMovementMethod")
-    public static void setMovementMethod(TextView textView, ScrollingMovementMethod scrollingMovementMethod){
+    public static void setMovementMethod(TextView textView, ScrollingMovementMethod scrollingMovementMethod) {
         textView.setMovementMethod(scrollingMovementMethod);
     }
 }

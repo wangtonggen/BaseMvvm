@@ -105,7 +105,7 @@ public class LoginVM extends BaseToolbarActivityVM {
         }
     }
 
-    private void loadData(){
+    private void loadData() {
 
     }
 }

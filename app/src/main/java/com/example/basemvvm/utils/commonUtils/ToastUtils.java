@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 import androidx.annotation.StringRes;
 
-import com.example.basemvvm.base.BaseApplication;
+import com.example.basemvvm.base.app.BaseApplication;
 
 /**
  * 提示类

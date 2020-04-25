@@ -16,6 +16,6 @@ public class BaseVM {
      * @param view view
      */
     public void onViewClick(View view) {
-    
+
     }
 }

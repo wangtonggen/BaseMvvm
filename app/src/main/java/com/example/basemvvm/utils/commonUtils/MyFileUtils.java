@@ -16,15 +16,15 @@ public class MyFileUtils {
     /**
      * 将文件写入本地
      *
-     * @param inputString 请求结果全体
+     * @param inputString  请求结果全体
      * @param destFileDir  目标文件夹
      * @param destFileName 目标文件名
      * @return 写入完成的文件
      */
-    public static File saveFile(InputStream inputString, String destFileDir, String destFileName){
+    public static File saveFile(InputStream inputString, String destFileDir, String destFileName) {
         FileUtils.createOrExistsDir(destFileDir);
-        File file = new File(destFileDir,destFileName);
-        if (file.isFile() && file.exists()){
+        File file = new File(destFileDir, destFileName);
+        if (file.isFile() && file.exists()) {
             file.delete();
         }
         FileUtils.createOrExistsFile(file);
@@ -34,7 +34,7 @@ public class MyFileUtils {
             byte[] b = new byte[1024];
             int len;
             while ((len = inputString.read(b)) != -1) {
-                fos.write(b,0,len);
+                fos.write(b, 0, len);
             }
             inputString.close();
             fos.close();

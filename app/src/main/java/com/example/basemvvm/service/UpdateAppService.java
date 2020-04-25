@@ -36,7 +36,7 @@ public class UpdateAppService extends Service {
         updateBean.setNewVersionName("1.0.1");
         updateBean.setUpdateType(1);
         updateBean.setDesc("1.更新内容1\n2.更新内容2\n3.更新内容3\n4.更新内容4\n5.更新内容5");
-        intent1.putExtra("update",updateBean);
+        intent1.putExtra("update", updateBean);
         startActivity(intent1);
         stopSelf();
         return super.onStartCommand(intent, flags, startId);

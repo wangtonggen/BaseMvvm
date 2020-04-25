@@ -1,4 +1,4 @@
-package com.example.basemvvm.adapter.baseaDapter;
+package com.example.basemvvm.adapter.baseAdapter;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -32,7 +32,7 @@ public abstract class BaseRecyclerMultiAdapter<T extends MultiItemEntity, VH ext
             return;
         }
         bindData(vh, t);
-        if (vh.getBinding() != null){
+        if (vh.getBinding() != null) {
             vh.getBinding().executePendingBindings();
         }
     }

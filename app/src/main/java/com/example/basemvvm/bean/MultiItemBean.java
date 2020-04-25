@@ -12,7 +12,7 @@ public class MultiItemBean implements MultiItemEntity {
     public String name;
     public String desc;
 
-    public MultiItemBean(int type, String name,String desc) {
+    public MultiItemBean(int type, String name, String desc) {
         this.type = type;
         this.name = name;
         this.desc = desc;
