@@ -70,6 +70,7 @@ public class BottomNavigationViewUtils {
     }
 
 
+    @SuppressWarnings("unchecked")
     private static <T> T getField(Class targetClass, Object instance, String fieldName) {
         try {
             Field field = targetClass.getDeclaredField(fieldName);

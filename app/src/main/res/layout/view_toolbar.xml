@@ -60,7 +60,7 @@
                 android:id="@+id/iv_right"
                 android:layout_width="@dimen/dp_30"
                 android:layout_height="@dimen/dp_30"
-                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginStart="@dimen/dp_10"
                 android:visibility="@{toolbarVM.rightImageShow?View.VISIBLE:View.GONE}"
                 app:image_url="@{toolbarVM.rightImageResId}"
                 app:layout_constraintBottom_toBottomOf="parent"

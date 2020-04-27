@@ -36,9 +36,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
     public static final String TAG = "CrashHandlerUtils";
     //系统默认的UncaughtException处理类
     private Thread.UncaughtExceptionHandler mDefaultHandler;
-    private static volatile CrashHandlerUtils INSTANCE;
-    //程序的Context对象
-    private Context mContext;
+    private static CrashHandlerUtils INSTANCE;
     //用来存储设备信息和异常信息
     private Map<String, Object> infos = new LinkedHashMap<>();
     //用于格式化日期,作为日志文件名的一部分
@@ -64,8 +62,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
         return INSTANCE;
     }
 
-    public void init(Context context) {
-        mContext = context;
+    public void init() {
         //获取系统默认的UncaughtException处理器
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         //设置该CrashHandler为程序的默认处理器
