@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.SDCardUtils;
-import com.example.basemvvm.utils.commonUtils.LogUtils;
-import com.example.basemvvm.utils.commonUtils.ToastUtils;
+import com.example.basemvvm.utils.common.LogUtils;
+import com.example.basemvvm.utils.common.ToastUtils;
 
 import java.io.File;
 import java.io.IOException;

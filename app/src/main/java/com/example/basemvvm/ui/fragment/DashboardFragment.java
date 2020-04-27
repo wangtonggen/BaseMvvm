@@ -4,7 +4,7 @@ import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.fragment.LazyLoadFragment;
 import com.example.basemvvm.databinding.FragmentDashboardBinding;
-import com.example.basemvvm.mvvm.view_model.DashboardVM;
+import com.example.basemvvm.mvvm.viewModel.DashboardVM;
 
 
 public class DashboardFragment extends LazyLoadFragment<FragmentDashboardBinding, DashboardVM> {

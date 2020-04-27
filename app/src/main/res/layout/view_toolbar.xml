@@ -8,7 +8,7 @@
 
         <variable
             name="toolbarVM"
-            type="com.example.basemvvm.mvvm.view_model_base.BaseToolbarActivityVM" />
+            type="com.example.basemvvm.base.baseViewModel.BaseToolbarActivityVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -5,7 +5,7 @@
 
         <variable
             name="homeVM"
-            type="com.example.basemvvm.mvvm.view_model.HomeVM" />
+            type="com.example.basemvvm.mvvm.viewModel.HomeVM" />
     </data>
 
     <androidx.recyclerview.widget.RecyclerView

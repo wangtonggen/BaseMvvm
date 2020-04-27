@@ -5,7 +5,7 @@
 
         <variable
             name="dashboardVM"
-            type="com.example.basemvvm.mvvm.view_model.DashboardVM" />
+            type="com.example.basemvvm.mvvm.viewModel.DashboardVM" />
     </data>
 
     <androidx.core.widget.NestedScrollView

@@ -6,7 +6,7 @@
 
         <variable
             name="notificationsVm"
-            type="com.example.basemvvm.mvvm.view_model.NotificationsVm" />
+            type="com.example.basemvvm.mvvm.viewModel.NotificationsVm" />
     </data>
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout

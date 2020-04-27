@@ -3,8 +3,8 @@ package com.example.basemvvm.network.networkBase;
 
 import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.network.exception.ResultException;
-import com.example.basemvvm.utils.commonUtils.LogUtils;
-import com.example.basemvvm.utils.commonUtils.ToastUtils;
+import com.example.basemvvm.utils.common.LogUtils;
+import com.example.basemvvm.utils.common.ToastUtils;
 import com.google.gson.JsonParseException;
 
 import java.net.SocketTimeoutException;

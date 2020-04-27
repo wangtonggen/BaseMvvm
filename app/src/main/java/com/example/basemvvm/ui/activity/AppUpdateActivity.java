@@ -10,7 +10,7 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseMVVMActivity;
 import com.example.basemvvm.bean.UpdateBean;
 import com.example.basemvvm.databinding.ActivityDialogDownApkBinding;
-import com.example.basemvvm.mvvm.view_model.DownloadAPKVM;
+import com.example.basemvvm.mvvm.viewModel.DownloadAPKVM;
 
 /**
  * author: wtg

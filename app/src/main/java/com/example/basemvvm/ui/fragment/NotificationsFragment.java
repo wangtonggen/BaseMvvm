@@ -4,7 +4,7 @@ import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.fragment.LazyLoadFragment;
 import com.example.basemvvm.databinding.FragmentNotificationsBinding;
-import com.example.basemvvm.mvvm.view_model.NotificationsVm;
+import com.example.basemvvm.mvvm.viewModel.NotificationsVm;
 
 
 public class NotificationsFragment extends LazyLoadFragment<FragmentNotificationsBinding, NotificationsVm> {

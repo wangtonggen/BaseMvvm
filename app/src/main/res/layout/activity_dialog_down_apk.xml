@@ -13,7 +13,7 @@
 
         <variable
             name="downloadVm"
-            type="com.example.basemvvm.mvvm.view_model.DownloadAPKVM" />
+            type="com.example.basemvvm.mvvm.viewModel.DownloadAPKVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

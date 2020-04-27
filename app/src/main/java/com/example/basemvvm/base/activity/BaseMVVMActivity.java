@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
-import com.example.basemvvm.mvvm.view_model_base.BaseLifecycleVM;
+import com.example.basemvvm.base.baseViewModel.BaseLifecycleVM;
 
 /**
  * author: wtg

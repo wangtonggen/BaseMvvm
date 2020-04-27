@@ -1,6 +1,6 @@
 package com.example.basemvvm.network.networkBase;
 
-import com.example.basemvvm.utils.commonUtils.LogUtils;
+import com.example.basemvvm.utils.common.LogUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;

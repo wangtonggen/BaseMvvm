@@ -21,7 +21,7 @@ import com.example.basemvvm.base.app.BaseApplication;
 import com.example.basemvvm.bean.UpdateBean;
 import com.example.basemvvm.network.downloadAndUpload.download.DownLoadUtils;
 import com.example.basemvvm.network.downloadAndUpload.download.DownloadResponseBody;
-import com.example.basemvvm.utils.commonUtils.MyFileUtils;
+import com.example.basemvvm.utils.common.MyFileUtils;
 
 import org.jetbrains.annotations.NotNull;
 

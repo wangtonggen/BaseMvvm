@@ -2,7 +2,7 @@ package com.example.basemvvm.network.networkBase;
 
 import com.example.basemvvm.base.app.BaseApplication;
 import com.example.basemvvm.network.api.ApiBaseUrl;
-import com.example.basemvvm.utils.commonUtils.LogUtils;
+import com.example.basemvvm.utils.common.LogUtils;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;

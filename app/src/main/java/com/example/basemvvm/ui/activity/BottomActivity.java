@@ -9,7 +9,7 @@ import com.example.basemvvm.base.activity.BaseNoMVVMActivity;
 import com.example.basemvvm.ui.fragment.DashboardFragment;
 import com.example.basemvvm.ui.fragment.HomeFragment;
 import com.example.basemvvm.ui.fragment.NotificationsFragment;
-import com.example.basemvvm.utils.commonUtils.BottomNavigationViewUtils;
+import com.example.basemvvm.utils.common.BottomNavigationViewUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;

@@ -6,7 +6,7 @@ import com.example.basemvvm.adapter.baseAdapter.BaseRecyclerMultiAdapter;
 import com.example.basemvvm.bean.MultiItemBean;
 import com.example.basemvvm.databinding.RecyclerItemHome01Binding;
 import com.example.basemvvm.databinding.RecyclerItemHomeBinding;
-import com.example.basemvvm.mvvm.view_model.ItemVM;
+import com.example.basemvvm.mvvm.viewModel.ItemVM;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
