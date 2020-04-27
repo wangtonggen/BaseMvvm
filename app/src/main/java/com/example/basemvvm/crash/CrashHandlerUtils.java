@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.SDCardUtils;
+import com.example.basemvvm.BuildConfig;
 import com.example.basemvvm.utils.common.LogUtils;
 import com.example.basemvvm.utils.common.ToastUtils;
 
@@ -172,9 +173,9 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
         String result = writer.toString();
         sb.append(result);
         LogUtils.logE(sb.toString());
-//        if(BuildConfig.DEBUG) {
-//            return;
-//        }
+        if(BuildConfig.DEBUG) {
+            return;
+        }
         /*
         这个 crashInfo 就是我们收集到的所有信息，可以做一个异常上报的接口用来提交用户的crash信息
          */
