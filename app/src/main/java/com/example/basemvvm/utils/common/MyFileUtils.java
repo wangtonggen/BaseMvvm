@@ -25,7 +25,7 @@ public class MyFileUtils {
         FileUtils.createOrExistsDir(destFileDir);
         File file = new File(destFileDir, destFileName);
         if (file.isFile() && file.exists()) {
-            file.delete();
+            boolean delete = file.delete();
         }
         FileUtils.createOrExistsFile(file);
         FileOutputStream fos;

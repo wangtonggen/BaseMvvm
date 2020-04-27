@@ -1,5 +1,6 @@
 package com.example.basemvvm.widget.common;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -32,6 +33,7 @@ public class NoScrollViewPager extends ViewPager {
         super.scrollTo(x, y);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent arg0) {
         if (noScroll)

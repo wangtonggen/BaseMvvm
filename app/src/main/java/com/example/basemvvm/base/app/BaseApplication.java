@@ -10,13 +10,6 @@ import com.example.basemvvm.crash.CrashHandlerUtils;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
-import com.scwang.smart.refresh.layout.api.RefreshFooter;
-import com.scwang.smart.refresh.layout.api.RefreshHeader;
-import com.scwang.smart.refresh.layout.api.RefreshLayout;
-import com.scwang.smart.refresh.layout.listener.DefaultRefreshFooterCreator;
-import com.scwang.smart.refresh.layout.listener.DefaultRefreshHeaderCreator;
-
-import org.jetbrains.annotations.NotNull;
 
 
 /**

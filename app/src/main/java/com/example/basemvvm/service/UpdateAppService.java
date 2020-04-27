@@ -25,7 +25,7 @@ public class UpdateAppService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent == null) {
-            return super.onStartCommand(intent, flags, startId);
+            return super.onStartCommand(null, flags, startId);
         }
         //先请求接口判断是否需要更新 把更新的类型，地址传给下载的activity
         Intent intent1 = new Intent(this, AppUpdateActivity.class);

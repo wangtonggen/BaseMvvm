@@ -54,7 +54,7 @@ public abstract class FileDownLoadObserver<T> extends DefaultObserver<T> {
         LogUtils.logE("hahaha", responseBody.contentLength() + "---");
         InputStream is = null;
         byte[] buf = new byte[2048];
-        int len = 0;
+        int len;
         FileOutputStream fos = null;
         try {
             is = responseBody.byteStream();
@@ -63,7 +63,7 @@ public abstract class FileDownLoadObserver<T> extends DefaultObserver<T> {
 
             File dir = new File(destFileDir);
             if (!dir.exists()) {
-                dir.mkdirs();
+                boolean mkdirs = dir.mkdirs();
             }
             File file = new File(dir, destFileName);
             fos = new FileOutputStream(file);

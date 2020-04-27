@@ -1,5 +1,7 @@
 package com.example.basemvvm.network.downloadAndUpload.download;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -22,6 +24,7 @@ public class DownloadInterceptor implements Interceptor {
         this.startPoint = startPoint;
     }
 
+    @NotNull
     @Override
     public Response intercept(Chain chain) throws IOException {
         Response response = chain.proceed(chain.request());

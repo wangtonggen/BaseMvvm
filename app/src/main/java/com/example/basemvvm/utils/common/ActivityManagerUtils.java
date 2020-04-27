@@ -121,6 +121,7 @@ public class ActivityManagerUtils {
             finishAllActivity();
             android.app.ActivityManager activityMgr = (android.app.ActivityManager) context
                     .getSystemService(Context.ACTIVITY_SERVICE);
+            assert activityMgr != null;
             activityMgr.killBackgroundProcesses(context.getPackageName());
             System.exit(0);
         } catch (Exception e) {

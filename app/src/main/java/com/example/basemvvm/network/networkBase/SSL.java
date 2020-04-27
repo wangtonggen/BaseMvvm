@@ -60,7 +60,7 @@ public class SSL {
                 } catch (IOException ignored) {
                 }
             }
-            TrustManagerFactory trustManagerFactory = null;
+            TrustManagerFactory trustManagerFactory;
 
             trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             trustManagerFactory.init(keyStore);
@@ -155,10 +155,12 @@ public class SSL {
                 return new X509Certificate[]{};
             }
 
+            @SuppressLint("TrustAllX509TrustManager")
             @Override
             public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
             }
 
+            @SuppressLint("TrustAllX509TrustManager")
             @Override
             public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
             }

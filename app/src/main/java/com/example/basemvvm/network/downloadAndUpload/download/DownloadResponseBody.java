@@ -1,5 +1,7 @@
 package com.example.basemvvm.network.downloadAndUpload.download;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 
 import io.reactivex.annotations.Nullable;
@@ -44,6 +46,7 @@ public class DownloadResponseBody extends ResponseBody {
         return responseBody.contentLength();
     }
 
+    @NotNull
     @Override
     public BufferedSource source() {
         if (bufferedSource == null) {
@@ -57,7 +60,7 @@ public class DownloadResponseBody extends ResponseBody {
             long totalBytesRead = 0L;
 
             @Override
-            public long read(Buffer sink, long byteCount) throws IOException {
+            public long read(@NotNull Buffer sink, long byteCount) throws IOException {
                 long bytesRead = super.read(sink, byteCount);
                 if (totalBytesRead == 0) {
                     downloadListener.onStartDownload(responseBody.contentLength());

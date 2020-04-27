@@ -22,15 +22,11 @@ public class RefreshBindingAdapter {
     @BindingAdapter(value = {"onRefreshCommand", "onLoadMoreCommand"}, requireAll = false)
     public static void refreshAndLoadMore(SmartRefreshLayout smartRefreshLayout, BindingCommand onRefreshCommand, BindingCommand onLoadMoreCommand) {
         if (onRefreshCommand != null) {
-            smartRefreshLayout.setOnRefreshListener(refreshLayout -> {
-                onRefreshCommand.execute();
-            });
+            smartRefreshLayout.setOnRefreshListener(refreshLayout -> onRefreshCommand.execute());
         }
 
         if (onLoadMoreCommand != null) {
-            smartRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
-                onLoadMoreCommand.execute();
-            });
+            smartRefreshLayout.setOnLoadMoreListener(refreshLayout -> onLoadMoreCommand.execute());
         }
     }
 

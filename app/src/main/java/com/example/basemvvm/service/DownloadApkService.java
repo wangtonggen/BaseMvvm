@@ -58,7 +58,7 @@ public class DownloadApkService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent == null) {
-            return super.onStartCommand(intent, flags, startId);
+            return super.onStartCommand(null, flags, startId);
         }
         updateBean = (UpdateBean) intent.getSerializableExtra("update");
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

@@ -1,7 +1,6 @@
 package com.example.basemvvm.adapter.baseAdapter;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 
 import com.chad.library.adapter.base.BaseDelegateMultiAdapter;
 import com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate;

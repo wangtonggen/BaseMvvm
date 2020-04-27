@@ -4,12 +4,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
-import androidx.annotation.DimenRes;
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.databinding.BindingAdapter;
-
-import com.example.basemvvm.R;
 
 /**
  * author：wtg
