@@ -15,7 +15,7 @@ import okio.Source;
 
 /**
  * author: wtg  2019/9/2 0002
- * desc:
+ * desc: 现在进度的监听
  */
 public class DownloadResponseBody extends ResponseBody {
     private ResponseBody responseBody;

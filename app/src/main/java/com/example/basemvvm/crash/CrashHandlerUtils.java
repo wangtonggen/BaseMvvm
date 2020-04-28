@@ -180,10 +180,11 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
         这个 crashInfo 就是我们收集到的所有信息，可以做一个异常上报的接口用来提交用户的crash信息
          */
         String crashInfo = sb.toString();
+        String name = formatter.format(new Date());
         //写到sd卡上
         if (SDCardUtils.isSDCardEnableByEnvironment()) {
             FileUtils.createOrExistsDir(DIR_CRASH);
-            String fileName = formatter.format(new Date()) + ".txt";
+            String fileName =  name + ".txt";
             File crashFile = new File(DIR_CRASH, fileName);
             FileUtils.createOrExistsFile(crashFile);
             try {
@@ -194,16 +195,18 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            uploadCrashInfo(crashFile,crashInfo);
         }
-        uploadCrashInfo(crashInfo);
+
     }
 
     /**
      * 上传crash信息 实现需要重写该方法
      *
+     * @param crashFile 保存的文件
      * @param crashInfo crash信息
      */
-    public void uploadCrashInfo(String crashInfo) {
+    private void uploadCrashInfo(File crashFile, String crashInfo) {
 //        LogUtils.logE("info", crashInfo);
         //如果上传成功了，则删除，上传失败了,保留
     }

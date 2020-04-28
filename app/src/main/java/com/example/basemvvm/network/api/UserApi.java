@@ -11,6 +11,9 @@ public class UserApi {
     //登录
     public static final String URL_USER_MEMBER_LOGIN = URL_USER_MEMBER_BASE + "login";
 
+    //刷新token
+    public static final String URL_USER_REFRESH_TOKEN = URL_USER_MEMBER_BASE + "login";
+
     //发送验证码
     public static final String URL_USER_MEMBER_SEND_CODE = URL_USER_MEMBER_BASE + "message/captcha";
 }

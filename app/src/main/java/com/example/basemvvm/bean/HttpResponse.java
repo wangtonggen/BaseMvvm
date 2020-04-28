@@ -1,6 +1,9 @@
 package com.example.basemvvm.bean;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.Objects;
 
 /**
  * author: wtg  2019/4/24 0024
@@ -33,5 +36,13 @@ public class HttpResponse<T> implements Serializable {
 
     public void setResult(T result) {
         this.result = result;
+    }
+
+    /**
+     * 获取类型
+     * @return type
+     */
+    public Type getType(){
+        return ((ParameterizedType) Objects.requireNonNull(getClass().getGenericSuperclass())).getActualTypeArguments()[0];
     }
 }
