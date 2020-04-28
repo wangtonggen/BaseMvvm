@@ -60,8 +60,6 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
         LogUtils.logE("Throwable:" + e.getMessage());
     }
 
-
     public abstract void onSuccess(HttpResponse<T> data);
-
 
 }

@@ -7,10 +7,12 @@ import androidx.multidex.MultiDexApplication;
 
 import com.example.basemvvm.R;
 import com.example.basemvvm.crash.CrashHandlerUtils;
+import com.example.basemvvm.network.networkBase.RetrofitManager;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
+import static com.example.basemvvm.network.api.ApiBaseUrl.URL_BASE;
 
 /**
  * author: wtg
@@ -24,10 +26,19 @@ public class BaseApplication extends MultiDexApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         instance = this;
+        //初始化 Retrofit2
+        initRetrofit();
         //初始化下拉刷新，上拉加载 的头部和尾部
         initSmartRefreshHeaderAndFooter();
         //初始化全局carsh
         CrashHandlerUtils.getInstance().init();
+    }
+
+    /**
+     * 初始化 Retrofit2
+     */
+    private void initRetrofit(){
+        RetrofitManager.getInstance().setBaseUrl(URL_BASE).init();
     }
 
     /**

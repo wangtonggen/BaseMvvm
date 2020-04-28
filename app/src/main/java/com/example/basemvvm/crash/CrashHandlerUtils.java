@@ -62,6 +62,14 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
         return INSTANCE;
     }
 
+    /**
+     * 设置crash目录
+     * @param crashDir 闪退目录
+     */
+    public void setCrashName(String crashDir){
+        DIR_CRASH = crashDir;
+    }
+
     public void init() {
         //获取系统默认的UncaughtException处理器
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();

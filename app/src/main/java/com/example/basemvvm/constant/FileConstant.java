@@ -15,5 +15,5 @@ public class FileConstant {
     //apk的下载路径
     public static final String DIR_APP = DIR_ROOT + File.separator + "app";
     //闪退文件的保存路径
-    public static final String DIR_CRASH = DIR_ROOT + File.separator + "crash";
+    public static String DIR_CRASH = DIR_ROOT + File.separator + "crash";
 }
