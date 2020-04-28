@@ -31,11 +31,11 @@ public class UpdateAppService extends Service {
         Intent intent1 = new Intent(this, AppUpdateActivity.class);
         intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         UpdateBean updateBean = new UpdateBean();
-        String url = "http://imtt.dd.qq.com/16891/E4E087B63E27B87175F4B9BC7CFC4997.apk?fsname=com.tencent.qlauncher_6.0.2_64170111.apk&csr=97c2";
+        String url = "http://3g.163.com/links/4636";
         updateBean.setDownloadUrl(url);
-        updateBean.setNewVersionCode(2);
+        updateBean.setNewVersionCode(1);
         updateBean.setNewVersionName("1.0.1");
-        updateBean.setUpdateType(0);
+        updateBean.setUpdateType(1);
         updateBean.setDesc("1.更新内容1\n2.更新内容2\n3.更新内容3\n4.更新内容4\n5.更新内容5");
         intent1.putExtra("update", updateBean);
         startActivity(intent1);
