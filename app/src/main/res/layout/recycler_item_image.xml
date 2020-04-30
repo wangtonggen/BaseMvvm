@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="imageItemVM"
+            type="com.example.basemvvm.mvvm.viewModel.ImageItemVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_80"
+        android:paddingStart="@dimen/dp_15"
+        android:paddingEnd="@dimen/dp_15"
+        tools:ignore="RtlSymmetry">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_image"
+            image_url1="@{imageItemVM.imageUrl}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

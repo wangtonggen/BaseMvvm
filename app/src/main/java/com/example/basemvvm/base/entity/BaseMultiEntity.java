@@ -14,5 +14,5 @@ public abstract class BaseMultiEntity implements Serializable {
      *
      * @return 类型
      */
-    abstract int getItemType();
+   public abstract int getItemType();
 }

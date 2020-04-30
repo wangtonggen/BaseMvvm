@@ -25,4 +25,17 @@ public class ImageBindingAdapter {
     public static void loadImage(ImageView imageView, Object url, int image_placeholder, int image_error_load) {
         Glide.with(imageView).load(url).placeholder(image_placeholder).error(image_error_load).into(imageView);
     }
+
+    /**
+     * 加载图片
+     *
+     * @param imageView         imageView
+     * @param url1               path
+     * @param image_placeholder 占位图片
+     * @param image_error_load  加载错误的图片
+     */
+    @BindingAdapter(value = {"image_url1", "image_placeholder", "image_error_load"}, requireAll = false)
+    public static void loadImage1(ImageView imageView, String url1, int image_placeholder, int image_error_load) {
+        Glide.with(imageView).load(url1).placeholder(image_placeholder).error(image_error_load).into(imageView);
+    }
 }

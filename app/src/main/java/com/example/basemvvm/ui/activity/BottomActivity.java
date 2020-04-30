@@ -9,6 +9,7 @@ import com.example.basemvvm.base.activity.BaseNoMVVMActivity;
 import com.example.basemvvm.ui.fragment.DashboardFragment;
 import com.example.basemvvm.ui.fragment.HomeFragment;
 import com.example.basemvvm.ui.fragment.NotificationsFragment;
+import com.example.basemvvm.ui.fragment.UserFragment;
 import com.example.basemvvm.utils.common.BottomNavigationViewUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -45,7 +46,7 @@ public class BottomActivity extends BaseNoMVVMActivity {
         fragments.add(new HomeFragment());
         fragments.add(new DashboardFragment());
         fragments.add(new NotificationsFragment());
-        fragments.add(new HomeFragment());
+        fragments.add(new UserFragment());
         MaxLifecyclePagerAdapter pagerAdapter = new MaxLifecyclePagerAdapter(getSupportFragmentManager(), fragments, null);
         viewPager.setAdapter(pagerAdapter);
         BottomNavigationViewUtils.closeAnimation(bottomNavigationView);
@@ -62,7 +63,7 @@ public class BottomActivity extends BaseNoMVVMActivity {
                 case R.id.navigation_notifications:
                     index = 2;
                     break;
-                case R.id.navigation_home1:
+                case R.id.user:
                     index = 3;
                     break;
             }

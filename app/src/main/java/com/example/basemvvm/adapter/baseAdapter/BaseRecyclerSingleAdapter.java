@@ -49,7 +49,7 @@ public abstract class BaseRecyclerSingleAdapter<VB extends ViewDataBinding, T, V
      * @param vh viewHolder
      * @return DataBinding
      */
-    protected VB getViewDataBinding(@NotNull VH vh) {
+    private VB getViewDataBinding(@NotNull VH vh) {
         return vh.getBinding();
     }
 

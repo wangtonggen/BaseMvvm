@@ -3,6 +3,7 @@ package com.example.basemvvm.adapter.baseAdapter;
 import com.chad.library.adapter.base.BaseProviderMultiAdapter;
 import com.example.basemvvm.base.entity.BaseMultiEntity;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -21,6 +22,6 @@ public abstract class BaseRecyclerProviderMultiAdapter<T extends BaseMultiEntity
     /**
      * 添加Provider类型
      */
-    abstract void addItemType();
+    protected abstract void addItemType();
 
 }

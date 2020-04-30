@@ -1,5 +1,7 @@
 package com.example.basemvvm.base.provider;
 
+import androidx.databinding.ViewDataBinding;
+
 import com.chad.library.adapter.base.provider.BaseItemProvider;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.base.entity.BaseMultiEntity;
@@ -11,15 +13,16 @@ import org.jetbrains.annotations.NotNull;
  * date:2020/4/25 0025
  * desc: 多布局的provider
  */
-public abstract class BaseProvider<T extends BaseMultiEntity> extends BaseItemProvider<T> {
+public abstract class BaseProvider<VB extends ViewDataBinding,T extends BaseMultiEntity> extends BaseItemProvider<T> {
     @Override
     public void convert(@NotNull BaseViewHolder baseViewHolder, T t) {
         if (t == null) {
             return;
         }
-        bindData(baseViewHolder, t);
-        if (baseViewHolder.getBinding() != null) {
-            baseViewHolder.getBinding().executePendingBindings();
+        VB viewDataBinding = baseViewHolder.getBinding();
+        if (viewDataBinding != null) {
+            bindData(baseViewHolder, viewDataBinding,t);
+            viewDataBinding.executePendingBindings();
         }
     }
 
@@ -29,5 +32,5 @@ public abstract class BaseProvider<T extends BaseMultiEntity> extends BaseItemPr
      * @param viewHolder viewHolder
      * @param t          数据源
      */
-    abstract void bindData(@NotNull BaseViewHolder viewHolder, T t);
+    protected abstract void bindData(@NotNull BaseViewHolder viewHolder, @NotNull VB viewDataBinding, T t);
 }

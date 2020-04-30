@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="userVM"
+            type="com.example.basemvvm.mvvm.viewModel.UserVM" />
+    </data>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefreshLayout"
+        onLoadMoreListener="@{userVM.onLoadMoreListener}"
+        onRefreshListener="@{userVM.onRefreshListener}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            layout_manager="@{userVM.linearLayoutManager}"
+            recycler_adapter="@{userVM.userRecyclerAdapter}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</layout>
