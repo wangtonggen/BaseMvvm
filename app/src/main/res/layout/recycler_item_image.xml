@@ -19,7 +19,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_image"
-            image_url1="@{imageItemVM.imageUrl}"
+            image_url="@{imageItemVM.imageUrl}"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_60"
             android:adjustViewBounds="true"
