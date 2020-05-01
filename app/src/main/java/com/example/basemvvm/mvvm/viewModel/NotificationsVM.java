@@ -19,7 +19,7 @@ import java.util.List;
  * date:2020/3/18 0018
  * desc:
  */
-public class NotificationsVm extends BaseFragmentLifecycleVM {
+public class NotificationsVM extends BaseFragmentLifecycleVM {
     public NotificationsRecyclerAdapter notificationsRecyclerAdapter;
     private int page = 1;
     private int pageSize = 15;
@@ -35,7 +35,7 @@ public class NotificationsVm extends BaseFragmentLifecycleVM {
         loadData(refreshLayout);
     };
 
-    public NotificationsVm(BaseMVVMFragment fragment) {
+    public NotificationsVM(BaseMVVMFragment fragment) {
         super(fragment);
         init();
     }
@@ -60,19 +60,20 @@ public class NotificationsVm extends BaseFragmentLifecycleVM {
     }
 
     private void loadData(RefreshLayout refreshLayout) {
-        if (page == 1) {
-            notificationBeans.clear();
-            for (int i = 0; i < pageSize; i++) {
-                notificationBeans.add(new NotificationBean("item_" + i));
-                notificationsRecyclerAdapter.notifyDataSetChanged();
-            }
-        } else {
-            int size = notificationBeans.size();
-            for (int i = 0; i < pageSize; i++) {
-                notificationBeans.add(new NotificationBean("item_" + (size + i)));
-                notificationsRecyclerAdapter.notifyItemRangeInserted(notificationBeans.size(), 15);
-            }
-        }
+
+//        if (page == 1) {
+//            notificationBeans.clear();
+//            for (int i = 0; i < pageSize; i++) {
+//                notificationBeans.add(new NotificationBean("item_" + i));
+//                notificationsRecyclerAdapter.notifyDataSetChanged();
+//            }
+//        } else {
+//            int size = notificationBeans.size();
+//            for (int i = 0; i < pageSize; i++) {
+//                notificationBeans.add(new NotificationBean("item_" + (size + i)));
+//                notificationsRecyclerAdapter.notifyItemRangeInserted(notificationBeans.size(), 15);
+//            }
+//        }
 
         if (refreshLayout != null) {
             refreshLayout.finishRefresh();

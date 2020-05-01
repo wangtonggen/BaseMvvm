@@ -2,10 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
-            name="notificationBean"
-            type="com.example.basemvvm.bean.NotificationBean" />
+            name="notificationItemVM"
+            type="com.example.basemvvm.mvvm.viewModel.NotificationItemVM" />
     </data>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -15,5 +14,5 @@
         android:textSize="@dimen/sp_20"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:text="@{notificationBean.name}" />
+        android:text="@{notificationItemVM.name}" />
 </layout>

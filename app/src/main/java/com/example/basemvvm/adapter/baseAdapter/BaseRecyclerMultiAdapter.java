@@ -1,10 +1,15 @@
 package com.example.basemvvm.adapter.baseAdapter;
 
+import android.view.LayoutInflater;
+import android.view.View;
+
 import androidx.databinding.DataBindingUtil;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
+import com.example.basemvvm.R;
+import com.example.basemvvm.base.app.BaseApplication;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -19,6 +24,7 @@ import java.util.List;
 public abstract class BaseRecyclerMultiAdapter<T extends MultiItemEntity, VH extends BaseViewHolder> extends BaseMultiItemQuickAdapter<T, VH> {
     public BaseRecyclerMultiAdapter(@Nullable List<T> data) {
         super(data);
+        setEmptyView(getRecyclerEmptyView());
     }
 
     @Override
@@ -35,6 +41,16 @@ public abstract class BaseRecyclerMultiAdapter<T extends MultiItemEntity, VH ext
         if (vh.getBinding() != null) {
             vh.getBinding().executePendingBindings();
         }
+    }
+
+
+    /**
+     * 设置列表无数据时的处理
+     * @return view
+     */
+    protected View getRecyclerEmptyView(){
+        View view = LayoutInflater.from(BaseApplication.instance).inflate(R.layout.view_default_recycler_empty,null);
+        return view;
     }
 
     /**

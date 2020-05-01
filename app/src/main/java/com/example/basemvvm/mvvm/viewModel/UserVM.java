@@ -6,7 +6,6 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.UserRecyclerAdapter;
 import com.example.basemvvm.base.baseViewModel.BaseFragmentLifecycleVM;
 import com.example.basemvvm.base.fragment.BaseMVVMFragment;
-import com.example.basemvvm.bean.NotificationBean;
 import com.example.basemvvm.bean.UserBean;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;

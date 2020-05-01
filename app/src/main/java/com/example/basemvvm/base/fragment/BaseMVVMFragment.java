@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.example.basemvvm.base.baseViewModel.BaseLifecycleVM;
+import com.example.basemvvm.utils.common.LogUtils;
 
 /**
  * author: wtg
@@ -26,6 +27,7 @@ public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends Bas
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        LogUtils.logE("create="+TAG);
         binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
         initView(savedInstanceState, binding.getRoot());
         return binding.getRoot();

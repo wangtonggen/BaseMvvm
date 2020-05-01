@@ -4,6 +4,8 @@ import android.view.MenuItem;
 
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.MaxLifecyclePagerAdapter;
+import com.example.basemvvm.adapter.ViewPager2Adapter;
+import com.example.basemvvm.base.fragment.BaseFragment;
 import com.example.basemvvm.base.fragment.BaseMVVMFragment;
 import com.example.basemvvm.base.activity.BaseNoMVVMActivity;
 import com.example.basemvvm.ui.fragment.DashboardFragment;
@@ -15,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +29,7 @@ public class BottomActivity extends BaseNoMVVMActivity {
     @BindView(R.id.bottomNavigationView)
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.viewPager)
-    ViewPager viewPager;
+    ViewPager2 viewPager;
 
     @Override
     protected int getLayoutRes() {
@@ -42,12 +45,12 @@ public class BottomActivity extends BaseNoMVVMActivity {
     protected void initView() {
         super.initView();
         bottomNavigationView.setItemIconTintList(null);
-        List<BaseMVVMFragment> fragments = new ArrayList<>();
+        List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new DashboardFragment());
         fragments.add(new NotificationsFragment());
         fragments.add(new UserFragment());
-        MaxLifecyclePagerAdapter pagerAdapter = new MaxLifecyclePagerAdapter(getSupportFragmentManager(), fragments, null);
+        ViewPager2Adapter pagerAdapter = new ViewPager2Adapter(this, fragments);
         viewPager.setAdapter(pagerAdapter);
         BottomNavigationViewUtils.closeAnimation(bottomNavigationView);
 
@@ -75,23 +78,15 @@ public class BottomActivity extends BaseNoMVVMActivity {
             return false;
         });
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
+        viewPager.setOffscreenPageLimit(1);
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 mIndex = position;
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
             }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
         });
+
         bottomNavigationView.post(() -> {
             BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 0, 100);
             BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 1, 50);

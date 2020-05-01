@@ -4,6 +4,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.adapter.baseAdapter.BaseRecyclerSingleAdapter;
 import com.example.basemvvm.bean.NotificationBean;
 import com.example.basemvvm.databinding.RecyclerItemNotificationBinding;
+import com.example.basemvvm.mvvm.viewModel.NotificationItemVM;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -22,6 +23,6 @@ public class NotificationsRecyclerAdapter extends BaseRecyclerSingleAdapter<Recy
 
     @Override
     public void bindData(@NotNull BaseViewHolder baseViewHolder, @NotNull RecyclerItemNotificationBinding viewDataBinding, NotificationBean notificationBean) {
-        viewDataBinding.setNotificationBean(notificationBean);
+        viewDataBinding.setNotificationItemVM(new NotificationItemVM(notificationBean));
     }
 }

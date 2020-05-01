@@ -2,8 +2,11 @@
     <string name="app_name">BaseMvvm</string>
     <string name="title_activity_bottom">BottomActivity</string>
     <string name="title_home">Home</string>
+    <string name="title_mine">Mine</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="str_empty_default_hint">暂无数据</string>
 </resources>

@@ -1,6 +1,11 @@
 package com.example.basemvvm.adapter.baseAdapter;
 
+import android.view.LayoutInflater;
+import android.view.View;
+
 import com.chad.library.adapter.base.BaseProviderMultiAdapter;
+import com.example.basemvvm.R;
+import com.example.basemvvm.base.app.BaseApplication;
 import com.example.basemvvm.base.entity.BaseMultiEntity;
 
 import org.jetbrains.annotations.NotNull;
@@ -17,6 +22,16 @@ public abstract class BaseRecyclerProviderMultiAdapter<T extends BaseMultiEntity
     public BaseRecyclerProviderMultiAdapter(@Nullable List<T> data) {
         super(data);
         addItemType();
+        setEmptyView(getRecyclerEmptyView());
+    }
+
+    /**
+     * 设置列表无数据时的处理
+     * @return view
+     */
+    protected View getRecyclerEmptyView(){
+        View view = LayoutInflater.from(BaseApplication.instance).inflate(R.layout.view_default_recycler_empty,null);
+        return view;
     }
 
     /**

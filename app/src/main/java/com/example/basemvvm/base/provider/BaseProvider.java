@@ -1,5 +1,8 @@
 package com.example.basemvvm.base.provider;
 
+import android.view.View;
+
+import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.chad.library.adapter.base.provider.BaseItemProvider;
@@ -24,6 +27,21 @@ public abstract class BaseProvider<VB extends ViewDataBinding,T extends BaseMult
             bindData(baseViewHolder, viewDataBinding,t);
             viewDataBinding.executePendingBindings();
         }
+    }
+
+    @Override
+    public void onViewHolderCreated(@NotNull BaseViewHolder viewHolder, int viewType) {
+        DataBindingUtil.bind(viewHolder.itemView);
+    }
+
+    @Override
+    public void onClick(@NotNull BaseViewHolder helper, @NotNull View view, T data, int position) {
+        super.onClick(helper, view, data, position);
+    }
+
+    @Override
+    public boolean onLongClick(@NotNull BaseViewHolder helper, @NotNull View view, T data, int position) {
+        return super.onLongClick(helper, view, data, position);
     }
 
     /**
