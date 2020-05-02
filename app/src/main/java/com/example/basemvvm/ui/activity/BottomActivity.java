@@ -3,10 +3,8 @@ package com.example.basemvvm.ui.activity;
 import android.view.MenuItem;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.adapter.MaxLifecyclePagerAdapter;
 import com.example.basemvvm.adapter.ViewPager2Adapter;
 import com.example.basemvvm.base.fragment.BaseFragment;
-import com.example.basemvvm.base.fragment.BaseMVVMFragment;
 import com.example.basemvvm.base.activity.BaseNoMVVMActivity;
 import com.example.basemvvm.ui.fragment.DashboardFragment;
 import com.example.basemvvm.ui.fragment.HomeFragment;
@@ -14,9 +12,9 @@ import com.example.basemvvm.ui.fragment.NotificationsFragment;
 import com.example.basemvvm.ui.fragment.UserFragment;
 import com.example.basemvvm.utils.common.BottomNavigationViewUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.gyf.immersionbar.ImmersionBar;
 
 import androidx.annotation.NonNull;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
@@ -44,6 +42,7 @@ public class BottomActivity extends BaseNoMVVMActivity {
     @Override
     protected void initView() {
         super.initView();
+        ImmersionBar.with(this).statusBarDarkFont(false).init();
         bottomNavigationView.setItemIconTintList(null);
         List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
@@ -59,6 +58,7 @@ public class BottomActivity extends BaseNoMVVMActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     index = 0;
+                    ImmersionBar.with(this).statusBarDarkFont(false).init();
                     break;
                 case R.id.navigation_dashboard:
                     index = 1;
@@ -67,6 +67,7 @@ public class BottomActivity extends BaseNoMVVMActivity {
                     index = 2;
                     break;
                 case R.id.user:
+//                    ImmersionBar.with(this).statusBarDarkFont(true).init();
                     index = 3;
                     break;
             }

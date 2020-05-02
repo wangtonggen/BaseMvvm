@@ -10,12 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.blankj.utilcode.util.ColorUtils;
+import com.example.basemvvm.R;
+import com.gyf.immersionbar.ImmersionBar;
+
 /**
  * author: wtg
  * date:2020/3/21 0021
  * desc:
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment{
     protected String TAG = this.getClass().getSimpleName();
     protected Context mContext;
     protected Activity mActivity;

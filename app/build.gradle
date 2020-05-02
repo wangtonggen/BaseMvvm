@@ -83,6 +83,11 @@ dependencies {
     //权限
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
 
+    //沉浸式状态栏工具类
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    // fragment快速实现（可选）
+    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+
     //network
     //响应式框架
     implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
