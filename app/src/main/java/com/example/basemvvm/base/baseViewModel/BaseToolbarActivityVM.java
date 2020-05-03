@@ -16,7 +16,7 @@ public class BaseToolbarActivityVM extends BaseActivityLifecycleVM {
     public ObservableInt toolbarColor = new ObservableInt(R.color.colorAccent);//toolbar 的颜色值
     public ObservableField<String> title = new ObservableField<>("hello word");//标题
     public ObservableInt titleColor = new ObservableInt(R.color.color_title);//标题的颜色值
-    public ObservableInt titleTextSize = new ObservableInt(R.dimen.size_text_title);//标题字体大小
+    public ObservableInt titleTextSize = new ObservableInt(R.dimen.size_toolbar_text_title);//标题字体大小
     public ObservableBoolean titleShow = new ObservableBoolean(true);//标题是否显示 true 显示 false不显示
     public ObservableField<String> rightText = new ObservableField<>();//右边文本
     public ObservableInt rightTextSize = new ObservableInt(R.dimen.size_text_title_right);//右边文字大小

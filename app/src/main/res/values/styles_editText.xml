@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="et_base">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:textSize">@dimen/sp_15</item>
+        <item name="android:textColor">@color/color_4d4d4d</item>
+        <item name="hintTextColor">@color/color_cccccc</item>
+    </style>
+
+    <style name="et_login_mobile" parent="et_base">
+        <item name="android:layout_marginStart">@dimen/dp_15</item>
+        <item name="android:layout_marginEnd">@dimen/dp_15</item>
+        <item name="android:inputType">phone</item>
+    </style>
+    <style name="et_login_verification_code" parent="et_base">
+        <item name="android:layout_marginStart">@dimen/dp_15</item>
+        <item name="android:layout_marginEnd">@dimen/dp_15</item>
+        <item name="android:inputType">number</item>
+    </style>
+</resources>

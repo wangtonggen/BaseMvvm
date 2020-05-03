@@ -1,6 +1,7 @@
-package com.example.basemvvm.ui;
+package com.example.basemvvm.ui.activity;
 
 import android.animation.Animator;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -10,15 +11,16 @@ import androidx.core.content.ContextCompat;
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseSwipeNoneRightActivity;
-import com.example.basemvvm.databinding.ActivityMainBinding;
+import com.example.basemvvm.databinding.ActivityLoginBinding;
 import com.example.basemvvm.mvvm.viewModel.LoginVM;
+import com.gyf.immersionbar.ImmersionBar;
 
 
-public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding, LoginVM> {
+public class LoginActivity extends BaseSwipeNoneRightActivity<ActivityLoginBinding, LoginVM> {
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.activity_main;
+        return R.layout.activity_login;
     }
 
     @Override
@@ -28,17 +30,23 @@ public class MainActivity extends BaseSwipeNoneRightActivity<ActivityMainBinding
 
     @Override
     protected void initView() {
-        binding.smartRefreshLayout.autoRefresh();
+//        ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).init();
+//        binding.smartRefreshLayout.autoRefresh();
     }
 
     @Override
     protected int getViewModelId() {
-        return BR.loginVm;
+        return BR.loginVM;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     private void starAnimation(View view, int color) {
         Animator anim = ViewAnimationUtils.createCircularReveal(view, view.getWidth() / 2, view.getHeight(), 0, view.getWidth() / 2.0f);
-        view.setBackgroundColor(ContextCompat.getColor(MainActivity.this, color));
+        view.setBackgroundColor(ContextCompat.getColor(LoginActivity.this, color));
         anim.setDuration(500);
         anim.setInterpolator(new AccelerateDecelerateInterpolator());
         anim.addListener(new Animator.AnimatorListener() {

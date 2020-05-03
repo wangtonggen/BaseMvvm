@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="size_text_title">@dimen/sp_25</dimen>
-    <dimen name="size_text_title_right">@dimen/sp_15</dimen>
+    <dimen name="size_toolbar_text_title">@dimen/sp_18</dimen>
+    <dimen name="size_text_title_right">@dimen/sp_14</dimen>
 </resources>

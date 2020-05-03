@@ -1,9 +1,7 @@
 package com.example.basemvvm.mvvm.viewModel;
 
-import android.content.Intent;
 import android.view.View;
 
-import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
@@ -13,11 +11,6 @@ import com.example.basemvvm.bean.LoginBean;
 import com.example.basemvvm.base.baseViewModel.BaseToolbarActivityVM;
 import com.example.basemvvm.network.model.UserModel;
 import com.example.basemvvm.network.networkBase.BaseObserver;
-import com.example.basemvvm.ui.activity.TestActivity;
-import com.example.basemvvm.utils.common.ToastUtils;
-import com.example.basemvvm.mvvm.bindAdapter.refresh.BindingCommand;
-import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import io.reactivex.disposables.Disposable;
 
@@ -27,43 +20,14 @@ import io.reactivex.disposables.Disposable;
 public class LoginVM extends BaseToolbarActivityVM {
     public final ObservableField<String> str_mobile = new ObservableField<>();
     public final ObservableField<String> str_code = new ObservableField<>();
-    public final ObservableBoolean focus = new ObservableBoolean(true);
-    private int page = 1;
-    private int pageSize = 20;
-    private BindingCommand onRefreshCommand = new BindingCommand(() -> {
-        //下拉刷新
-        ToastUtils.showShortToast("下拉刷新");
-        //加载数据
-        page = 1;
-        loadData();
-
-    });
-
-    private BindingCommand onLoadMoreCommand = new BindingCommand(() -> {
-        //上拉加载更多
-        ToastUtils.showShortToast("上拉加载");
-        //加载数据
-        page++;
-        loadData();
-    });
-
-    public OnRefreshListener onRefreshListener = refreshLayout -> {
-        ToastUtils.showShortToast("我是刷新");
-        refreshLayout.finishRefresh(2000);
-        //
-        onRefreshCommand.execute();
-    };
-
-    public OnLoadMoreListener onLoadMoreListener = refreshLayout -> {
-        ToastUtils.showShortToast("我是加载");
-        refreshLayout.finishLoadMore(2000);
-        onLoadMoreCommand.execute();
-    };
 
     public LoginVM(BaseMVVMActivity mActivity) {
         super(mActivity);
 
-        toolbarColor.set(R.color.colorPrimary);
+        toolbarColor.set(R.color.colorPrimaryDark);
+        titleColor.set(R.color.white);
+        backNavigationShow.set(false);
+        title.set("登录");
     }
 
     private void login() {
@@ -92,20 +56,6 @@ public class LoginVM extends BaseToolbarActivityVM {
 
     @Override
     public void onViewClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_login:
-                login();
-                break;
-            case R.id.btn_code:
-                getCode();
-                break;
-            case R.id.tv:
-                mActivity.startActivity(new Intent(mActivity, TestActivity.class));
-                break;
-        }
-    }
-
-    private void loadData() {
 
     }
 }
