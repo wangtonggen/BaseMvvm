@@ -1,5 +1,6 @@
 package com.example.basemvvm.ui.activity;
 
+import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.example.basemvvm.R;
@@ -12,9 +13,13 @@ import com.example.basemvvm.ui.fragment.NotificationsFragment;
 import com.example.basemvvm.ui.fragment.UserFragment;
 import com.example.basemvvm.utils.common.BottomNavigationViewUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.gyf.immersionbar.ImmersionBar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
@@ -22,8 +27,14 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class BottomActivity extends BaseNoMVVMActivity {
+public class MainActivity extends BaseNoMVVMActivity {
     private int mIndex = 0;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer;
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
     @BindView(R.id.bottomNavigationView)
     BottomNavigationView bottomNavigationView;
     @BindView(R.id.viewPager)
@@ -31,7 +42,7 @@ public class BottomActivity extends BaseNoMVVMActivity {
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.activity_bottom;
+        return R.layout.activity_main;
     }
 
     @Override
@@ -42,8 +53,16 @@ public class BottomActivity extends BaseNoMVVMActivity {
     @Override
     protected void initView() {
         super.initView();
-        ImmersionBar.with(this).statusBarDarkFont(false).init();
+//        ImmersionBar.with(this).statusBarDarkFont(false).init();
         bottomNavigationView.setItemIconTintList(null);
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.str_open, R.string.str_close);
+        mDrawerToggle.syncState();//初始化状态
+        drawer.addDrawerListener(mDrawerToggle);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            drawer.closeDrawer(Gravity.LEFT,true);
+            return false;
+        });
         List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new DashboardFragment());
@@ -58,6 +77,7 @@ public class BottomActivity extends BaseNoMVVMActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     index = 0;
+                    toolbar.setTitle("首页");
                     ImmersionBar.with(this).statusBarDarkFont(false).init();
                     break;
                 case R.id.navigation_dashboard:

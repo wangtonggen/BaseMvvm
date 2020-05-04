@@ -1,7 +1,6 @@
 package com.example.basemvvm.ui.activity;
 
 import android.animation.Animator;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -30,7 +29,7 @@ public class LoginActivity extends BaseSwipeNoneRightActivity<ActivityLoginBindi
 
     @Override
     protected void initView() {
-//        ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).init();
+        ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).init();
 //        binding.smartRefreshLayout.autoRefresh();
     }
 

@@ -8,7 +8,6 @@
         <variable
             name="loginVM"
             type="com.example.basemvvm.mvvm.viewModel.LoginVM" />
-
     </data>
 
     <LinearLayout
@@ -31,6 +30,7 @@
                 android:id="@+id/et_account"
                 style="@style/et_login_mobile"
                 android:hint="@string/str_mobile_hint"
+                android:text="@={loginVM.str_mobile}"
                 app:layout_constraintTop_toTopOf="parent"
                 bind:ignore="MissingConstraints" />
 
@@ -38,12 +38,14 @@
                 android:id="@+id/et_verification_code"
                 style="@style/et_login_verification_code"
                 android:hint="@string/str_verification_code_hint"
+                android:text="@={loginVM.str_code}"
                 app:layout_constraintTop_toBottomOf="@id/et_account"
                 bind:ignore="MissingConstraints" />
 
             <androidx.appcompat.widget.AppCompatButton
                 style="@style/btn_login_style"
-                android:text="@string/str_login_hint"
+                android:hint="@string/str_login_hint"
+                android:onClick="@{loginVM::login}"
                 app:layout_constraintTop_toBottomOf="@id/et_verification_code"
                 bind:ignore="MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>

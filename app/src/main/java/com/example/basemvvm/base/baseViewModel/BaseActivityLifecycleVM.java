@@ -1,9 +1,11 @@
 package com.example.basemvvm.base.baseViewModel;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.example.basemvvm.base.activity.BaseActivity;
+import com.lxj.xpopup.XPopup;
 
 /**
  * author: wtg
@@ -16,6 +18,12 @@ public abstract class BaseActivityLifecycleVM extends BaseLifecycleVM {
 
     public BaseActivityLifecycleVM(BaseActivity mActivity) {
         this.mActivity = mActivity;
+    }
+
+    @Override
+    public void showLoadingDialog(String content) {
+        basePopupView = new XPopup.Builder(mActivity).dismissOnTouchOutside(false).dismissOnBackPressed(false).asLoading(TextUtils.isEmpty(content) ? "加载中" : content);
+        basePopupView.show();
     }
 
     /**

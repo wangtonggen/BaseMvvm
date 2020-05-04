@@ -1,5 +1,6 @@
 package com.example.basemvvm.mvvm.viewModel;
 
+import android.os.Handler;
 import android.view.View;
 
 import androidx.databinding.ObservableField;
@@ -24,25 +25,26 @@ public class LoginVM extends BaseToolbarActivityVM {
     public LoginVM(BaseMVVMActivity mActivity) {
         super(mActivity);
 
-        toolbarColor.set(R.color.colorPrimaryDark);
-        titleColor.set(R.color.white);
+        toolbarColor.set(R.color.white);
+//        titleColor.set(R.color.white);
         backNavigationShow.set(false);
         title.set("登录");
     }
 
-    private void login() {
-        UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                super.onSubscribe(d);
-                addDisposable(d);
-            }
-
-            @Override
-            public void onSuccess(HttpResponse<LoginBean> data) {
-//                LogUtils.logE(data.getCode() + "---" + data.getMsg());
-            }
-        });
+    public void login(View view) {
+        showLoadingDialog("");
+        new Handler().postDelayed(this::closeLoadingDialog,3000);
+//        UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//                super.onSubscribe(d);
+//                addDisposable(d);
+//            }
+//
+//            @Override
+//            public void onSuccess(HttpResponse<LoginBean> data) {
+//            }
+//        });
     }
 
     private void getCode() {

@@ -4,6 +4,8 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
+import com.lxj.xpopup.core.BasePopupView;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -14,11 +16,11 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserver {
     private CompositeDisposable mDisposables = new CompositeDisposable();//请求管理类
-
+    protected BasePopupView basePopupView;
     /**
      * 显示加载框
      */
-    public void showLoadingDialog() {
+    public void showLoadingDialog(String content) {
 
     }
 
@@ -26,7 +28,9 @@ public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserve
      * 关闭加载框
      */
     public void closeLoadingDialog() {
-
+        if (basePopupView != null && basePopupView.isShow()){
+            basePopupView.dismiss();
+        }
     }
 
     /**

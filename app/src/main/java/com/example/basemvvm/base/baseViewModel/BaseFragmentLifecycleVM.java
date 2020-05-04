@@ -3,6 +3,7 @@ package com.example.basemvvm.base.baseViewModel;
 import android.content.Context;
 
 import com.example.basemvvm.base.fragment.BaseMVVMFragment;
+import com.lxj.xpopup.XPopup;
 
 /**
  * author: wtg
@@ -18,9 +19,16 @@ public abstract class BaseFragmentLifecycleVM extends BaseLifecycleVM {
         this.mContext = this.mFragment.getContext();
     }
 
+    @Override
+    public void showLoadingDialog(String content) {
+        basePopupView = new XPopup.Builder(mContext).asLoading(content);
+        basePopupView.show();
+    }
+
     /**
      * 初始化
      */
     protected void init() {
+
     }
 }
