@@ -1,5 +1,6 @@
 package com.example.basemvvm.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.view.Gravity;
 import android.view.MenuItem;
 
@@ -50,6 +51,7 @@ public class MainActivity extends BaseNoMVVMActivity {
         return -1;
     }
 
+    @SuppressLint("RtlHardcoded")
     @Override
     protected void initView() {
         super.initView();
