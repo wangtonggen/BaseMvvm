@@ -102,13 +102,16 @@ public class MainActivity extends BaseNoMVVMActivity {
                     break;
                 case R.id.navigation_find:
                     index = 1;
+                    toolbar.setTitle("发现");
                     break;
                 case R.id.navigation_message:
                     index = 2;
+                    toolbar.setTitle("消息");
                     break;
                 case R.id.navigation_dynamic:
 //                    ImmersionBar.with(this).statusBarDarkFont(true).init();
                     index = 3;
+                    toolbar.setTitle("动态");
                     break;
             }
             if (mIndex == index) {
