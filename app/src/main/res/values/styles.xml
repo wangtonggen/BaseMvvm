@@ -21,6 +21,15 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <!--checkBox 主题颜色-->
     <style name="theme_checkbox" parent="android:style/Widget.Material.CompoundButton.CheckBox">
         <item name="colorControlNormal">@color/color_check_normal</item>
@@ -56,13 +65,8 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="nav_item_style" parent="TextAppearance.AppCompat.Menu">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/color_4d4d4d</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

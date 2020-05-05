@@ -2,23 +2,36 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
+    <item
+        android:id="@+id/nav_gallery"
+        android:icon="@drawable/ic_menu_my_info"
+        android:title="@string/menu_info" />
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_menu_attention"
+        android:title="@string/menu_attention" />
+
+    <item
+        android:id="@+id/nav_day"
+        android:icon="@drawable/ic_menu_day"
+        android:title="@string/menu_day_model" />
+
+    <item
+        android:id="@+id/nav_night"
+        android:icon="@drawable/ic_menu_night"
+        android:title="@string/menu_night_model" />
+
+    <group android:checkableBehavior="single" android:id="@+id/groupNormal">
+
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/menu_settings" />
+
         <item
-            android:id="@+id/nav_day"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="@string/menu_logout" />
     </group>
 </menu>

@@ -11,10 +11,10 @@ import com.example.basemvvm.R;
  */
 public class ItemVM {
     public final ObservableInt textColor = new ObservableInt(R.color.colorPrimary);
-    public final ObservableInt imageRes = new ObservableInt(R.mipmap.ic_bk_instruct_power_s);
+    public final ObservableInt imageRes = new ObservableInt(R.drawable.ic_menu_home_normal);
 
     public ItemVM() {
         textColor.set(R.color.colorAccent);
-        imageRes.set(R.mipmap.ic_bk_instruct_power);
+        imageRes.set(R.drawable.ic_menu_home_normal);
     }
 }

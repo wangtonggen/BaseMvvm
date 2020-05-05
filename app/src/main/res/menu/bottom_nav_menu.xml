@@ -10,21 +10,21 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard"
+        android:id="@+id/navigation_find"
+        android:icon="@drawable/selector_find"
+        android:title="@string/title_find"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications"
+        android:id="@+id/navigation_message"
+        android:icon="@drawable/selector_message"
+        android:title="@string/title_message"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/user"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_mine"
+        android:id="@+id/navigation_dynamic"
+        android:icon="@drawable/selector_dynamic"
+        android:title="@string/title_dynamic"
         app:showAsAction="ifRoom" />
 
 </menu>

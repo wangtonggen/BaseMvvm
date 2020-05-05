@@ -25,7 +25,7 @@ public class BaseToolbarActivityVM extends BaseActivityLifecycleVM {
     public ObservableInt rightImageResId = new ObservableInt();//右边图标资源文件
     public ObservableBoolean rightImageShow = new ObservableBoolean(false);//右侧图标是否显示
     public ObservableBoolean backNavigationShow = new ObservableBoolean(true);//导航按钮是否显示
-    public ObservableInt backNavigationResId = new ObservableInt(R.drawable.ic_navigate_before_black_24dp);//导航按钮资源文件
+    public ObservableInt backNavigationResId = new ObservableInt(R.drawable.ic_arrow_back);//导航按钮资源文件
 
     public BaseToolbarActivityVM(BaseActivity mActivity) {
         super(mActivity);
