@@ -77,7 +77,7 @@ public class MyUserSPUtils {
     /**
      * 退出登录时清空登录数据
      */
-    public void loginOutClear(){
+    public static void loginOutClear(){
         setIsLogin(false);
         setHeadUrl(null);
         setUserName(null);

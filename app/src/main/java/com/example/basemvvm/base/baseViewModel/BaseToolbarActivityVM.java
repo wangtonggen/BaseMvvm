@@ -1,5 +1,7 @@
 package com.example.basemvvm.base.baseViewModel;
 
+import android.view.View;
+
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
@@ -13,7 +15,7 @@ import com.example.basemvvm.base.activity.BaseActivity;
  * desc: toolbar的基类
  */
 public class BaseToolbarActivityVM extends BaseActivityLifecycleVM {
-    public ObservableInt toolbarColor = new ObservableInt(R.color.colorAccent);//toolbar 的颜色值
+    public ObservableInt toolbarColor = new ObservableInt(R.color.colorPrimary);//toolbar 的颜色值
     public ObservableField<String> title = new ObservableField<>("hello word");//标题
     public ObservableInt titleColor = new ObservableInt(R.color.color_title);//标题的颜色值
     public ObservableInt titleTextSize = new ObservableInt(R.dimen.size_toolbar_text_title);//标题字体大小
@@ -29,5 +31,9 @@ public class BaseToolbarActivityVM extends BaseActivityLifecycleVM {
 
     public BaseToolbarActivityVM(BaseActivity mActivity) {
         super(mActivity);
+    }
+
+    public void onBack(View view){
+        mActivity.onBackPressed();
     }
 }

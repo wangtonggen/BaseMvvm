@@ -9,13 +9,13 @@ import androidx.core.content.ContextCompat;
 
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.activity.BaseSwipeNoneRightActivity;
+import com.example.basemvvm.base.activity.BaseSwipeBackLeftActivity;
 import com.example.basemvvm.databinding.ActivityLoginBinding;
 import com.example.basemvvm.mvvm.viewModel.LoginVM;
 import com.gyf.immersionbar.ImmersionBar;
 
 
-public class LoginActivity extends BaseSwipeNoneRightActivity<ActivityLoginBinding, LoginVM> {
+public class LoginActivity extends BaseSwipeBackLeftActivity<ActivityLoginBinding, LoginVM> {
 
     @Override
     protected int getLayoutRes() {

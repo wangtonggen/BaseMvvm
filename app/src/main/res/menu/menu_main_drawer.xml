@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <item
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_my_info"
         android:icon="@drawable/ic_menu_my_info"
         android:title="@string/menu_info" />
 
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_my_attention"
         android:icon="@drawable/ic_menu_attention"
         android:title="@string/menu_attention" />
 
@@ -25,7 +25,7 @@
     <group android:checkableBehavior="single" android:id="@+id/groupNormal">
 
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_settings"
             android:title="@string/menu_settings" />
 
