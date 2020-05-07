@@ -13,11 +13,13 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toolbar"
+        android:id="@+id/cl_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dp_50"
         android:paddingLeft="@dimen/dp_10"
         android:paddingRight="@dimen/dp_10"
+        app:layout_behavior=".widget.behavior.ToolbarAlphaBehavior"
         bind:view_background="@{toolbarVM.toolbarColor}">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -44,7 +46,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView

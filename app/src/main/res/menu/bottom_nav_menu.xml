@@ -16,6 +16,11 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/navigation_empty"
+        app:showAsAction="ifRoom"
+        android:title="" />
+
+    <item
         android:id="@+id/navigation_message"
         android:icon="@drawable/selector_message"
         android:title="@string/title_message"

@@ -1,9 +1,13 @@
 package com.example.basemvvm.mvvm.bindAdapter;
 
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
+import androidx.annotation.ColorRes;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.databinding.BindingAdapter;
 
+import com.blankj.utilcode.util.ColorUtils;
 import com.bumptech.glide.Glide;
 
 /**
@@ -24,16 +28,5 @@ public class ImageBindingAdapter {
     @BindingAdapter(value = {"image_url", "image_placeholder", "image_error_load"}, requireAll = false)
     public static void loadImage(ImageView imageView, Object url, int image_placeholder, int image_error_load) {
         Glide.with(imageView).load(url).placeholder(image_placeholder).error(image_error_load).into(imageView);
-    }
-
-    /**
-     * 加载图片
-     *
-     * @param imageView         imageView
-     * @param url               path
-     */
-    @BindingAdapter(value = {"imageUrl"}, requireAll = false)
-    public static void loadImage1(ImageView imageView, Object url) {
-        Glide.with(imageView).load(url).into(imageView);
     }
 }

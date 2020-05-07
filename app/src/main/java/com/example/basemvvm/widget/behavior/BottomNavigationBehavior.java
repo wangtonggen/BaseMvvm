@@ -32,15 +32,7 @@ public class BottomNavigationBehavior extends CoordinatorLayout.Behavior<View> {
 
     @Override
     public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
-//        LogUtils.logE("tag",child+"---"+target);
-//        LogUtils.logE("child", consumed[1] + "---" + dy + "---" + target.getScrollY());
-//        if (!isNeedAnimation){//如果不需要动画 并且导航栏处于隐藏的情况下则显示导航栏
-//            if (!isShow){
-//                startShowAnimation(child);
-//            }
-//            return;
-//        }
-        if (dy > 0) {// 上滑隐藏
+        if (dy > 10) {// 上滑隐藏
             startHideAnimation(child);
         } else if (dy < 0) {// 下滑显示
             startShowAnimation(child);

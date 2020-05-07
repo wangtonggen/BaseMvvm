@@ -263,3 +263,10 @@
 }
 #混淆 wcdb 结束
 
+#混淆底部导航栏 开始
+-keep public class com.google.android.material.bottomnavigation.BottomNavigationView { *; }
+-keep public class com.google.android.material.bottomnavigation.BottomNavigationMenuView { *; }
+-keep public class com.google.android.material.bottomnavigation.BottomNavigationPresenter { *; }
+-keep public class com.google.android.material.bottomnavigation.BottomNavigationItemView { *; }
+#混淆底部导航栏 结束
+

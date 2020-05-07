@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,6 +70,7 @@ public class MainActivity extends BaseNoMVVMActivity {
     AppCompatTextView tv_phone;
 
     private UpdateLoginReceiver updateLoginReceiver;
+
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
@@ -90,7 +92,7 @@ public class MainActivity extends BaseNoMVVMActivity {
         mDrawerToggle.syncState();//初始化状态
         drawer.addDrawerListener(mDrawerToggle);
         navigationView.setNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.nav_my_info:
                     break;
                 case R.id.nav_my_attention:
@@ -102,13 +104,13 @@ public class MainActivity extends BaseNoMVVMActivity {
                 case R.id.nav_settings:
                     break;
                 case R.id.nav_logout:
-                    new XPopup.Builder(this).asConfirm("提醒", "确定要退出登录？","取消","确定",()->{
+                    new XPopup.Builder(this).asConfirm("提醒", "确定要退出登录？", "取消", "确定", () -> {
 
                             },
                             () -> {
                                 MyUserSPUtils.loginOutClear();
                                 initHeadLayout();
-                            },false)
+                            }, false)
                             .show();
                     break;
             }
@@ -131,35 +133,44 @@ public class MainActivity extends BaseNoMVVMActivity {
         ViewPager2Adapter pagerAdapter = new ViewPager2Adapter(this, fragments);
         viewPager.setAdapter(pagerAdapter);
         BottomNavigationViewUtils.closeAnimation(bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            private int previousPosition = -1;
 
-        bottomNavigationView.setOnNavigationItemSelectedListener((@NonNull MenuItem item) -> {
-            int index = 0;
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    index = 0;
-                    toolbar.setTitle("首页");
-                    ImmersionBar.with(this).statusBarDarkFont(false).init();
-                    break;
-                case R.id.navigation_find:
-                    index = 1;
-                    toolbar.setTitle("发现");
-                    break;
-                case R.id.navigation_message:
-                    index = 2;
-                    toolbar.setTitle("消息");
-                    break;
-                case R.id.navigation_dynamic:
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int index = 0;
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        index = 0;
+                        toolbar.setTitle("首页");
+//                        ImmersionBar.with(MainActivity.this).statusBarDarkFont(false).init();
+                        break;
+                    case R.id.navigation_find:
+                        index = 1;
+                        toolbar.setTitle("发现");
+                        break;
+                    case R.id.navigation_message:
+                        index = 2;
+                        toolbar.setTitle("消息");
+                        break;
+                    case R.id.navigation_dynamic:
 //                    ImmersionBar.with(this).statusBarDarkFont(true).init();
-                    index = 3;
-                    toolbar.setTitle("动态");
-                    break;
-            }
-            if (mIndex == index) {
+                        index = 3;
+                        toolbar.setTitle("动态");
+                        break;
+                    case R.id.navigation_empty:
+                        return false;
+                }
+                if (mIndex == index) {
+                    return false;
+                }
+                if (previousPosition != index) {
+                    viewPager.setCurrentItem(index, false);
+                    previousPosition = index;
+                    mIndex = index;
+                }
                 return false;
             }
-            viewPager.setCurrentItem(index, false);
-            mIndex = index;
-            return false;
         });
 
         viewPager.setOffscreenPageLimit(1);
@@ -167,6 +178,24 @@ public class MainActivity extends BaseNoMVVMActivity {
             @Override
             public void onPageSelected(int position) {
                 mIndex = position;
+                if (position >= 2) {
+                    position++;
+                }
+                switch (mIndex) {
+                    case 0:
+                        toolbar.setTitle("首页");
+//                        ImmersionBar.with(MainActivity.this).statusBarDarkFont(false).init();
+                        break;
+                    case 1:
+                        toolbar.setTitle("发现");
+                        break;
+                    case 2:
+                        toolbar.setTitle("消息");
+                        break;
+                    case 3:
+                        toolbar.setTitle("动态");
+                        break;
+                }
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
             }
         });
@@ -184,7 +213,7 @@ public class MainActivity extends BaseNoMVVMActivity {
      */
     private void initUpdateLoginReceiver() {
         updateLoginReceiver = new UpdateLoginReceiver();
-        registerReceiver(updateLoginReceiver,new IntentFilter(IntentFilterConstant.UPDATE_LOGIN_ACTION));
+        registerReceiver(updateLoginReceiver, new IntentFilter(IntentFilterConstant.UPDATE_LOGIN_ACTION));
     }
 
     /**
@@ -205,20 +234,21 @@ public class MainActivity extends BaseNoMVVMActivity {
         ll_head.setOnClickListener(v -> {
             if (MyUserSPUtils.isLogin()) {
                 //进入详情
-                ToastUtils.showShortToast("已登录");
+                startActivity(new Intent(this,UserInfoActivity.class));
             } else {
                 //进入登录页 登录完成后则发送广播通知主页面更新
-//                ToastUtils.showShortToast("未登录");
-                TransitionAnimationUtils.startSceneTransitionAnimationActivity(this,LoginActivity.class,iv_head,StringUtils.getString(R.string.transition_name_unlogin_head));
+                startActivity(new Intent(this,UserInfoActivity.class));
+//                startActivity(new Intent(this,ScrollingActivity.class));
+//                TransitionAnimationUtils.startSceneTransitionAnimationActivity(this, LoginActivity.class, iv_head, StringUtils.getString(R.string.transition_name_unlogin_head));
             }
         });
     }
 
     @Override
     public void onBackPressed() {
-        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -226,7 +256,7 @@ public class MainActivity extends BaseNoMVVMActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (updateLoginReceiver != null){
+        if (updateLoginReceiver != null) {
             unregisterReceiver(updateLoginReceiver);
         }
     }
@@ -234,10 +264,10 @@ public class MainActivity extends BaseNoMVVMActivity {
     /**
      * 更新登录情况
      */
-    private class UpdateLoginReceiver extends BroadcastReceiver{
+    private class UpdateLoginReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-           //收到消息就更新
+            //收到消息就更新
             initHeadLayout();
         }
     }

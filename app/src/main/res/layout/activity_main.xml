@@ -33,27 +33,40 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_60"
+            android:layout_height="@dimen/dp_76"
             android:layout_gravity="bottom"
-            android:background="@color/white"
-            app:itemTextAppearanceActive="@dimen/sp_9"
-            app:itemTextAppearanceInactive="@dimen/sp_9"
-            app:itemTextColor="@color/selector_tab_text_color"
-            app:labelVisibilityMode="labeled"
-            app:layout_behavior=".widget.behavior.BottomNavigationBehavior"
-            app:menu="@menu/bottom_nav_menu" />
+            android:background="@color/transparent"
+            app:layout_behavior=".widget.behavior.BottomNavigationBehavior">
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:itemTextAppearanceActive="@dimen/sp_9"
+                app:itemTextAppearanceInactive="@dimen/sp_9"
+                app:itemTextColor="@color/selector_tab_text_color"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/bottom_nav_menu" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            app:layout_behavior=".widget.behavior.BottomNavigationBehavior"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:layout_marginBottom="16dp"
+                android:src="@android:drawable/ic_input_add"
+                android:tint="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:backgroundTint="@android:color/white"
+                app:fabCustomSize="@dimen/dp_60"
+                app:borderWidth="0dp"
+                app:elevation="@dimen/dp_9" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
