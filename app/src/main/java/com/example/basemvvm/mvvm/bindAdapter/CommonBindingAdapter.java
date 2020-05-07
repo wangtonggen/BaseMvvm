@@ -5,7 +5,9 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.IntRange;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.databinding.BindingAdapter;
 
 /**
@@ -21,9 +23,10 @@ public class CommonBindingAdapter {
      * @param view    view
      * @param bgResId 资源id
      */
-    @BindingAdapter("view_background")
-    public static void setBgRes(View view, int bgResId) {
+    @BindingAdapter(value = {"view_background","view_Alpha"},requireAll = false)
+    public static void setBgRes(View view, int bgResId, @IntRange(from=0,to=255) int alpha) {
         view.setBackgroundResource(bgResId);
+        view.getBackground().setAlpha(alpha);
     }
 
     /**

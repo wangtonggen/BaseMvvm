@@ -4,10 +4,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * author: wtg
@@ -24,7 +27,7 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
     }
 
     @Override
-    public boolean layoutDependsOn(CoordinatorLayout parent, Toolbar child, View dependency) {
+    public boolean layoutDependsOn(@NotNull CoordinatorLayout parent, @NotNull Toolbar child, @NotNull View dependency) {
         return dependency instanceof TextView;
     }
 
@@ -32,7 +35,7 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
      * 必须要加上  layout_anchor，对方也要layout_collapseMode才能使用
      */
     @Override
-    public boolean onDependentViewChanged(CoordinatorLayout parent, Toolbar child, View dependency) {
+    public boolean onDependentViewChanged(@NotNull CoordinatorLayout parent, @NotNull Toolbar child, @NotNull View dependency) {
 
         // 初始化高度
         if (mToolbarHeight == 0) {
@@ -50,8 +53,10 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
         // 计算alpha通道值
         float alpha = percent * 255;
 
+
         //设置背景颜色
-        child.setBackgroundColor(Color.argb((int) alpha, 63, 81, 181));
+        child.getBackground().setAlpha((int) alpha);
+//        child.setBackgroundColor(Color.argb((int) alpha, 63, 81, 181));
 
         return true;
     }

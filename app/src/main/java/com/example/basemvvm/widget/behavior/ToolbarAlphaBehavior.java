@@ -38,7 +38,7 @@ public class ToolbarAlphaBehavior extends CoordinatorLayout.Behavior<ConstraintL
     @Override
     public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull ConstraintLayout toolbar, @NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type, @NonNull int[] consumed) {
         startOffset = 0;
-        endOffset = context.getResources().getDimensionPixelOffset(R.dimen.dp_100) - toolbar.getHeight();
+        endOffset = context.getResources().getDimensionPixelOffset(R.dimen.dp_200) - toolbar.getHeight();
         offset += dyConsumed;
         if (offset <= startOffset) {  //alpha为0
             toolbar.getBackground().setAlpha(0);

@@ -20,11 +20,12 @@
         android:paddingLeft="@dimen/dp_10"
         android:paddingRight="@dimen/dp_10"
         app:layout_behavior=".widget.behavior.ToolbarAlphaBehavior"
-        bind:view_background="@{toolbarVM.toolbarColor}">
+        bind:view_background="@{toolbarVM.toolbarColor}"
+        bind:view_Alpha="@{toolbarVM.toolbarAlpha}">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25"
             android:visibility="@{toolbarVM.backNavigationShow?View.VISIBLE:View.INVISIBLE}"
             bind:image_url="@{toolbarVM.backNavigationResId}"
             android:onClick="@{toolbarVM::onBack}"

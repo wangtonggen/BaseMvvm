@@ -17,6 +17,7 @@ import com.example.basemvvm.utils.common.LogUtils;
  */
 public class BaseToolbarActivityVM extends BaseActivityLifecycleVM {
     public ObservableInt toolbarColor = new ObservableInt(R.color.colorPrimary);//toolbar 的颜色值
+    public ObservableInt toolbarAlpha = new ObservableInt(255);//toolbar 透明度
     public ObservableField<String> title = new ObservableField<>("hello word");//标题
     public ObservableInt titleColor = new ObservableInt(R.color.color_title);//标题的颜色值
     public ObservableInt titleTextSize = new ObservableInt(R.dimen.size_toolbar_text_title);//标题字体大小
@@ -33,7 +34,7 @@ public class BaseToolbarActivityVM extends BaseActivityLifecycleVM {
 
     public BaseToolbarActivityVM(BaseActivity mActivity) {
         super(mActivity);
-        LogUtils.logE("tag",titleColor.get()+"---");
+//        LogUtils.logE("tag",titleColor.get()+"---");
     }
 
     public void onBack(View view){

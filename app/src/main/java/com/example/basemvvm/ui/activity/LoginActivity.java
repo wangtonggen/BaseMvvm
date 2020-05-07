@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseSwipeBackLeftActivity;
+import com.example.basemvvm.base.baseViewModel.BaseToolbarActivityVM;
 import com.example.basemvvm.databinding.ActivityLoginBinding;
 import com.example.basemvvm.mvvm.viewModel.LoginVM;
 import com.gyf.immersionbar.ImmersionBar;
@@ -30,6 +31,7 @@ public class LoginActivity extends BaseSwipeBackLeftActivity<ActivityLoginBindin
     @Override
     protected void initView() {
         ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).init();
+        binding.toolbar.setToolbarVM(new BaseToolbarActivityVM(this));
 //        binding.smartRefreshLayout.autoRefresh();
     }
 

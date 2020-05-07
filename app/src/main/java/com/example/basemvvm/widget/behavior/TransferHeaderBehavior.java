@@ -8,13 +8,13 @@ import android.widget.ImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+
 /**
  * author: wtg
  * date:2020/5/7 0007
  * desc:
  */
 public class TransferHeaderBehavior extends CoordinatorLayout.Behavior<ImageView> {
-
     /**
      * 处于中心时候原始X轴
      */
@@ -60,7 +60,8 @@ public class TransferHeaderBehavior extends CoordinatorLayout.Behavior<ImageView
             x = child.getWidth();
         }
         // TODO 头像的放大和缩小没做
-
+        child.setScaleX(1 - mPercentY/4);
+        child.setScaleY(1 - mPercentY/4);
         child.setX(x);
         child.setY(mOriginalHeaderY - mOriginalHeaderY * mPercentY);
         return true;

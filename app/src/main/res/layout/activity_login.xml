@@ -18,8 +18,7 @@
 
         <include
             android:id="@+id/toolbar"
-            layout="@layout/view_toolbar"
-            bind:toolbarVM="@{loginVM}" />
+            layout="@layout/view_toolbar" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

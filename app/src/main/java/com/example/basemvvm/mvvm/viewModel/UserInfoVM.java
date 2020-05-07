@@ -4,6 +4,7 @@ import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseActivity;
+import com.example.basemvvm.base.baseViewModel.BaseActivityLifecycleVM;
 import com.example.basemvvm.base.baseViewModel.BaseToolbarActivityVM;
 
 /**
@@ -15,9 +16,5 @@ public class UserInfoVM extends BaseToolbarActivityVM {
     public ObservableField<String> topBgUrl = new ObservableField<>();
     public UserInfoVM(BaseActivity mActivity) {
         super(mActivity);
-        title.set("王大锤");
-        titleColor.set(R.color.white);
-        backNavigationResId.set(R.drawable.ic_arrow_back_white);
-        backNavigationShow.set(true);
     }
 }
