@@ -5,10 +5,11 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
-import androidx.annotation.IntRange;
+import androidx.annotation.FloatRange;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.databinding.BindingAdapter;
+
+import com.blankj.utilcode.util.ColorUtils;
 
 /**
  * author：wtg
@@ -24,9 +25,13 @@ public class CommonBindingAdapter {
      * @param bgResId 资源id
      */
     @BindingAdapter(value = {"view_background","view_Alpha"},requireAll = false)
-    public static void setBgRes(View view, int bgResId, @IntRange(from=0,to=255) int alpha) {
+    public static void setBgRes(View view, int bgResId, @FloatRange(from=0.0, to=1.0) float alpha) {
+        if (view == null){
+            return;
+        }
         view.setBackgroundResource(bgResId);
-        view.getBackground().setAlpha(alpha);
+//        view.setAlpha(alpha);
+        view.getBackground().setAlpha((int) (alpha*255));
     }
 
     /**
@@ -79,9 +84,14 @@ public class CommonBindingAdapter {
      * @param textView   view
      * @param resColorId 资源id
      */
-    @BindingAdapter("text_color")
-    public static void setTextColor(AppCompatTextView textView, @ColorRes int resColorId) {
+    @BindingAdapter(value = {"text_color"},requireAll = false)
+    public static void setTextColor(TextView textView, @ColorRes int resColorId) {
         textView.setTextColor(textView.getResources().getColor(resColorId));
+    }
+
+    @BindingAdapter(value = {"text_alpha"},requireAll = false)
+    public static void setTextAlpha(TextView textView, @FloatRange(from = 0.0f,to = 1.0f) float alpha){
+        textView.setAlpha(alpha);
     }
 
     /**

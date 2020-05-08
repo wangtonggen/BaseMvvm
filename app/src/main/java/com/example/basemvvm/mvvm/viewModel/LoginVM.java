@@ -10,8 +10,9 @@ import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseMVVMActivity;
+import com.example.basemvvm.base.baseViewModel.BaseActivityLifecycleVM;
+import com.example.basemvvm.base.baseViewModel.BaseToolbarVM;
 import com.example.basemvvm.bean.HttpResponse;
-import com.example.basemvvm.base.baseViewModel.BaseToolbarActivityVM;
 import com.example.basemvvm.constant.IntentFilterConstant;
 import com.example.basemvvm.network.model.UserModel;
 import com.example.basemvvm.network.networkBase.BaseObserver;
@@ -25,13 +26,14 @@ import io.reactivex.observers.DefaultObserver;
 /**
  * 登录的viewModel
  */
-public class LoginVM extends BaseToolbarActivityVM {
+public class LoginVM extends BaseActivityLifecycleVM {
     public ObservableField<String> str_mobile = new ObservableField<>();
     public ObservableField<String> str_code = new ObservableField<>();
     public ObservableBoolean btnLoginEnabled = new ObservableBoolean(false);
     public ObservableBoolean btnCodeEnabled = new ObservableBoolean(true);
     public ObservableField<String> btnCodeText = new ObservableField<>("获取验证码");
 
+    public BaseToolbarVM baseToolbarVM;
     public SimpleTextWatcher accountTextWatcher = new SimpleTextWatcher() {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -48,10 +50,11 @@ public class LoginVM extends BaseToolbarActivityVM {
     public LoginVM(BaseMVVMActivity mActivity) {
         super(mActivity);
 
-        toolbarColor.set(R.color.white);
-//        titleColor.set(R.color.white);
-        backNavigationShow.set(true);
-        title.set("登录");
+        baseToolbarVM = new BaseToolbarVM(mActivity);
+        baseToolbarVM.title.set("登录");
+        baseToolbarVM.toolbarColor.set(R.color.white);
+        baseToolbarVM.titleColor.set(R.color.color_title);
+        baseToolbarVM.backNavigationResId.set(R.drawable.ic_arrow_back);
     }
 
     /**

@@ -2,20 +2,22 @@ package com.example.basemvvm.ui.activity;
 
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
 
 import com.blankj.utilcode.util.BarUtils;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseSwipeBackLeftActivity;
-import com.example.basemvvm.base.baseViewModel.BaseToolbarActivityVM;
+import com.example.basemvvm.base.baseViewModel.BaseToolbarVM;
 import com.example.basemvvm.databinding.ActivityUserInfoBinding;
 import com.example.basemvvm.mvvm.viewModel.UserInfoVM;
+import com.example.basemvvm.utils.common.LogUtils;
+import com.example.basemvvm.utils.common.MyUserSPUtils;
+import com.google.android.material.appbar.AppBarLayout;
 import com.gyf.immersionbar.ImmersionBar;
 
-import jp.wasabeef.glide.transformations.BlurTransformation;
 
 /**
  * author: wtg
@@ -23,6 +25,8 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
  * desc: 个人信息
  */
 public class UserInfoActivity extends BaseSwipeBackLeftActivity<ActivityUserInfoBinding, UserInfoVM> {
+    private int height = -1;
+
     @Override
     protected UserInfoVM getViewModel() {
         return new UserInfoVM(this);
@@ -40,16 +44,38 @@ public class UserInfoActivity extends BaseSwipeBackLeftActivity<ActivityUserInfo
 
     @Override
     protected void initView() {
+//        height = getResources().getDimensionPixelOffset(R.dimen.dp_240);
+
         ImmersionBar.with(this).init();
-        ConstraintLayout clToolbar = binding.toolbar.clToolbar;
-        ViewGroup.LayoutParams layoutParams = clToolbar.getLayoutParams();
-        layoutParams.height = clToolbar.getMinHeight()+BarUtils.getStatusBarHeight();
-        clToolbar.setLayoutParams(layoutParams);
-        binding.toolbar.clToolbar.setPadding(clToolbar.getPaddingLeft(), BarUtils.getStatusBarHeight(),0,0);
-        binding.toolbar.setToolbarVM(new BaseToolbarActivityVM(this));
-        Glide.with(this).load(R.mipmap.bg_top)
-                .apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3)))
-                .into(binding.ivBgTop);
-//        Glide.with(this).asBitmap().apply(RequestOptions.bitmapTransform(new BlurTransformation(this,0))).load(R.mipmap.bg_top).into(binding.ivBgTop);
+        Toolbar clToolbar = binding.toolbar.clToolbar;
+        clToolbar.post(() -> {
+            ViewGroup.LayoutParams layoutParams = clToolbar.getLayoutParams();
+            layoutParams.height = clToolbar.getHeight() + BarUtils.getStatusBarHeight();
+            clToolbar.setLayoutParams(layoutParams);
+            binding.toolbar.clToolbar.setPadding(clToolbar.getPaddingLeft(), BarUtils.getStatusBarHeight(), 0, 0);
+        });
+
+        binding.toolbar.setToolbarVM(viewModel.baseToolbarVM);
+
+        binding.appbar.addOnOffsetChangedListener((AppBarLayout.BaseOnOffsetChangedListener) (appBarLayout, verticalOffset) -> {
+            if (height == -1) {//完全展开
+                height = appBarLayout.getBottom() - clToolbar.getHeight() - BarUtils.getStatusBarHeight();
+                LogUtils.logE("verticalOffset=" + verticalOffset + "---getBottom=" + appBarLayout.getBottom()+"---height="+height+"---"+clToolbar.getHeight()+"---"+BarUtils.getStatusBarHeight());
+            }
+            if (Math.abs(verticalOffset) <= 0) {
+                viewModel.baseToolbarVM.toolbarAlpha.set(0);
+                viewModel.baseToolbarVM.titleBgAlpha.set(0);
+            } else if (Math.abs(verticalOffset) < height) {
+                //获取渐变率
+                float scale = (float) Math.abs(verticalOffset) / height;
+                //获取渐变数值
+                float alpha = (1.0f * scale);
+                viewModel.baseToolbarVM.toolbarAlpha.set(alpha);
+                viewModel.baseToolbarVM.titleBgAlpha.set(alpha);
+            } else {
+                viewModel.baseToolbarVM.toolbarAlpha.set(1f);
+                viewModel.baseToolbarVM.titleBgAlpha.set(1f);
+            }
+        });
     }
 }

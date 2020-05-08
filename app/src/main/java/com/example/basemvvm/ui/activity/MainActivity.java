@@ -1,14 +1,10 @@
 package com.example.basemvvm.ui.activity;
 
 import android.animation.Animator;
-import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -22,7 +18,6 @@ import com.example.basemvvm.adapter.ViewPager2Adapter;
 import com.example.basemvvm.base.fragment.BaseFragment;
 import com.example.basemvvm.base.activity.BaseNoMVVMActivity;
 import com.example.basemvvm.constant.IntentFilterConstant;
-import com.example.basemvvm.constant.ParameterConstant;
 import com.example.basemvvm.ui.fragment.DashboardFragment;
 import com.example.basemvvm.ui.fragment.HomeFragment;
 import com.example.basemvvm.ui.fragment.NotificationsFragment;
@@ -33,7 +28,6 @@ import com.example.basemvvm.utils.common.MyUserSPUtils;
 import com.example.basemvvm.utils.common.ToastUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.gyf.immersionbar.ImmersionBar;
 import com.lxj.xpopup.XPopup;
 
 import androidx.annotation.NonNull;
@@ -41,6 +35,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.core.util.Pair;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
@@ -85,36 +80,47 @@ public class MainActivity extends BaseNoMVVMActivity {
     protected void initView() {
         super.initView();
         initUpdateLoginReceiver();
-//        ImmersionBar.with(this).statusBarDarkFont(false).init();
         bottomNavigationView.setItemIconTintList(null);
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.str_open, R.string.str_close);
         mDrawerToggle.syncState();//初始化状态
         drawer.addDrawerListener(mDrawerToggle);
         navigationView.setNavigationItemSelectedListener(item -> {
+            if (!MyUserSPUtils.isLogin() && item.getItemId() != R.id.nav_settings) {
+                ToastUtils.showShortToast("您还没有登录，请登录");
+                TransitionAnimationUtils.startSceneTransitionAnimationActivity(this, LoginActivity.class, iv_head, StringUtils.getString(R.string.transition_user_head));
+                return false;
+            }
             switch (item.getItemId()) {
                 case R.id.nav_my_info:
+                    startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
                     break;
                 case R.id.nav_my_attention:
+                    //我的关注
                     break;
                 case R.id.nav_day:
+                    //白天模式
                     break;
                 case R.id.nav_night:
+                    //夜晚模式
                     break;
                 case R.id.nav_settings:
+                    //设置
                     break;
                 case R.id.nav_logout:
                     new XPopup.Builder(this).asConfirm("提醒", "确定要退出登录？", "取消", "确定", () -> {
-
-                            },
-                            () -> {
                                 MyUserSPUtils.loginOutClear();
                                 initHeadLayout();
+                            },
+                            () -> {
+
                             }, false)
                             .show();
                     break;
             }
-            drawer.closeDrawer(GravityCompat.START, true);
+//            if (MyUserSPUtils.isLogin()) {
+//                drawer.closeDrawer(GravityCompat.START, true);
+//            }
             return false;
         });
 
@@ -143,7 +149,6 @@ public class MainActivity extends BaseNoMVVMActivity {
                     case R.id.navigation_home:
                         index = 0;
                         toolbar.setTitle("首页");
-//                        ImmersionBar.with(MainActivity.this).statusBarDarkFont(false).init();
                         break;
                     case R.id.navigation_find:
                         index = 1;
@@ -154,7 +159,6 @@ public class MainActivity extends BaseNoMVVMActivity {
                         toolbar.setTitle("消息");
                         break;
                     case R.id.navigation_dynamic:
-//                    ImmersionBar.with(this).statusBarDarkFont(true).init();
                         index = 3;
                         toolbar.setTitle("动态");
                         break;
@@ -184,7 +188,6 @@ public class MainActivity extends BaseNoMVVMActivity {
                 switch (mIndex) {
                     case 0:
                         toolbar.setTitle("首页");
-//                        ImmersionBar.with(MainActivity.this).statusBarDarkFont(false).init();
                         break;
                     case 1:
                         toolbar.setTitle("发现");
@@ -234,12 +237,10 @@ public class MainActivity extends BaseNoMVVMActivity {
         ll_head.setOnClickListener(v -> {
             if (MyUserSPUtils.isLogin()) {
                 //进入详情
-                startActivity(new Intent(this,UserInfoActivity.class));
+                TransitionAnimationUtils.startSceneTransitionAnimationActivity(this, UserInfoActivity.class, new Pair<>(iv_head, StringUtils.getString(R.string.transition_user_head)), new Pair<>(tv_name, StringUtils.getString(R.string.transition_user_name)));
             } else {
                 //进入登录页 登录完成后则发送广播通知主页面更新
-                startActivity(new Intent(this,UserInfoActivity.class));
-//                startActivity(new Intent(this,ScrollingActivity.class));
-//                TransitionAnimationUtils.startSceneTransitionAnimationActivity(this, LoginActivity.class, iv_head, StringUtils.getString(R.string.transition_name_unlogin_head));
+                TransitionAnimationUtils.startSceneTransitionAnimationActivity(this, LoginActivity.class, iv_head, StringUtils.getString(R.string.transition_user_head));
             }
         });
     }

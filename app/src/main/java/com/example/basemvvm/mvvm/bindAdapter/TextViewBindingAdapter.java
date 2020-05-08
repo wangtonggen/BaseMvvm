@@ -3,7 +3,10 @@ package com.example.basemvvm.mvvm.bindAdapter;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
+import androidx.annotation.FloatRange;
 import androidx.databinding.BindingAdapter;
+
+import com.blankj.utilcode.util.ColorUtils;
 
 /**
  * author: wtg
