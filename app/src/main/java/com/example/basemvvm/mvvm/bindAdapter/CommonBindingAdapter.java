@@ -31,7 +31,7 @@ public class CommonBindingAdapter {
         }
         view.setBackgroundResource(bgResId);
 //        view.setAlpha(alpha);
-        view.getBackground().setAlpha((int) (alpha*255));
+        view.getBackground().mutate().setAlpha((int) (alpha*255));
     }
 
     /**

@@ -14,7 +14,6 @@ import com.example.basemvvm.base.baseViewModel.BaseToolbarVM;
 import com.example.basemvvm.databinding.ActivityUserInfoBinding;
 import com.example.basemvvm.mvvm.viewModel.UserInfoVM;
 import com.example.basemvvm.utils.common.LogUtils;
-import com.example.basemvvm.utils.common.MyUserSPUtils;
 import com.google.android.material.appbar.AppBarLayout;
 import com.gyf.immersionbar.ImmersionBar;
 
@@ -44,8 +43,6 @@ public class UserInfoActivity extends BaseSwipeBackLeftActivity<ActivityUserInfo
 
     @Override
     protected void initView() {
-//        height = getResources().getDimensionPixelOffset(R.dimen.dp_240);
-
         ImmersionBar.with(this).init();
         Toolbar clToolbar = binding.toolbar.clToolbar;
         clToolbar.post(() -> {
@@ -60,7 +57,7 @@ public class UserInfoActivity extends BaseSwipeBackLeftActivity<ActivityUserInfo
         binding.appbar.addOnOffsetChangedListener((AppBarLayout.BaseOnOffsetChangedListener) (appBarLayout, verticalOffset) -> {
             if (height == -1) {//完全展开
                 height = appBarLayout.getBottom() - clToolbar.getHeight() - BarUtils.getStatusBarHeight();
-                LogUtils.logE("verticalOffset=" + verticalOffset + "---getBottom=" + appBarLayout.getBottom()+"---height="+height+"---"+clToolbar.getHeight()+"---"+BarUtils.getStatusBarHeight());
+//                LogUtils.logE("verticalOffset=" + verticalOffset + "---getBottom=" + appBarLayout.getBottom()+"---height="+height+"---"+clToolbar.getHeight()+"---"+BarUtils.getStatusBarHeight());
             }
             if (Math.abs(verticalOffset) <= 0) {
                 viewModel.baseToolbarVM.toolbarAlpha.set(0);

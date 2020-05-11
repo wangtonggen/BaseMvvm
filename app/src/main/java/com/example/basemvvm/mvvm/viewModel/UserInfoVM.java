@@ -23,8 +23,8 @@ public class UserInfoVM extends BaseActivityLifecycleVM {
 
         baseToolbarVM = new BaseToolbarVM(mActivity);
         baseToolbarVM.title.set(MyUserSPUtils.getUserName());
-        baseToolbarVM.toolbarAlpha.set(0);
-        baseToolbarVM.titleBgAlpha.set(0);
+//        baseToolbarVM.toolbarAlpha.set(0);
+//        baseToolbarVM.titleBgAlpha.set(0);
 
         topBgUrl.set(R.mipmap.bg_top);
         userHead.set(MyUserSPUtils.getHeadUrl());

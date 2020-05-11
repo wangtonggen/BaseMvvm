@@ -9,6 +9,7 @@ import androidx.databinding.ObservableInt;
 
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseActivity;
+import com.example.basemvvm.utils.common.LogUtils;
 
 /**
  * author: wtg
@@ -37,7 +38,7 @@ public class BaseToolbarVM extends BaseVM {
 
     public BaseToolbarVM(BaseActivity mActivity) {
         this.mActivity = mActivity;
-//        LogUtils.logE("tag",titleColor.get()+"---");
+        LogUtils.logE("tag",toolbarColor.get()+"---");
     }
 
     public void onBack(View view){

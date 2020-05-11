@@ -11,7 +11,9 @@ import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.StringUtils;
+import com.blankj.utilcode.util.ThreadUtils;
 import com.bumptech.glide.Glide;
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.ViewPager2Adapter;
@@ -48,7 +50,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends BaseNoMVVMActivity {
     private int mIndex = 0;
-    @BindView(R.id.toolbar)
+    @BindView(R.id.toolbar222)
     Toolbar toolbar;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
@@ -206,8 +208,8 @@ public class MainActivity extends BaseNoMVVMActivity {
         bottomNavigationView.post(() -> {
             BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 0, 100);
             BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 1, 50);
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 2, 8);
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 3, -10);
+            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 3, 8);
+            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 4, -10);
         });
     }
 
@@ -237,6 +239,7 @@ public class MainActivity extends BaseNoMVVMActivity {
         ll_head.setOnClickListener(v -> {
             if (MyUserSPUtils.isLogin()) {
                 //进入详情
+//                startActivity(new Intent(this,UserInfoActivity.class));
                 TransitionAnimationUtils.startSceneTransitionAnimationActivity(this, UserInfoActivity.class, new Pair<>(iv_head, StringUtils.getString(R.string.transition_user_head)), new Pair<>(tv_name, StringUtils.getString(R.string.transition_user_name)));
             } else {
                 //进入登录页 登录完成后则发送广播通知主页面更新
@@ -256,10 +259,10 @@ public class MainActivity extends BaseNoMVVMActivity {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         if (updateLoginReceiver != null) {
             unregisterReceiver(updateLoginReceiver);
         }
+        super.onDestroy();
     }
 
     /**
