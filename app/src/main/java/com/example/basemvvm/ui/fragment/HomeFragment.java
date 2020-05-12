@@ -26,6 +26,7 @@ public class HomeFragment extends LazyLoadFragment<FragmentHomeBinding, HomeVM>{
 
     @Override
     public void onLazyLoadData() {
+        binding.smartRefreshLayout.autoRefresh();
 //        LogUtils.logE(TAG, "HomeFragment");
     }
 }

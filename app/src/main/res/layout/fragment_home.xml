@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,12 +9,23 @@
             type="com.example.basemvvm.mvvm.viewModel.HomeVM" />
     </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefreshLayout"
+        onLoadMoreListener="@{homeVM.onLoadMoreListener}"
+        onRefreshListener="@{homeVM.onRefreshListener}"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        recycler_adapter="@{homeVM.homeRecyclerAdapter}"
-        layout_manager="@{homeVM.linearLayoutManager}"
-        layout_has_fixed_size="10"
-        layout_item_cache_size="10" />
+        android:layout_height="match_parent">
+        <com.scwang.smart.refresh.header.MaterialHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            layout_has_fixed_size="10"
+            layout_item_cache_size="20"
+            layout_manager="@{homeVM.linearLayoutManager}"
+            recycler_adapter="@{homeVM.homeRecyclerAdapter}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
 </layout>
