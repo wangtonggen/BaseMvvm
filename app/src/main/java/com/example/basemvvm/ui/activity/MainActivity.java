@@ -179,6 +179,7 @@ public class MainActivity extends BaseNoMVVMActivity {
             }
         });
 
+        viewPager.setUserInputEnabled(false);
         viewPager.setOffscreenPageLimit(1);
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -239,7 +240,6 @@ public class MainActivity extends BaseNoMVVMActivity {
         ll_head.setOnClickListener(v -> {
             if (MyUserSPUtils.isLogin()) {
                 //进入详情
-//                startActivity(new Intent(this,UserInfoActivity.class));
                 TransitionAnimationUtils.startSceneTransitionAnimationActivity(this, UserInfoActivity.class, new Pair<>(iv_head, StringUtils.getString(R.string.transition_user_head)), new Pair<>(tv_name, StringUtils.getString(R.string.transition_user_name)));
             } else {
                 //进入登录页 登录完成后则发送广播通知主页面更新

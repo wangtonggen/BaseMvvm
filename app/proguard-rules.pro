@@ -270,3 +270,6 @@
 -keep public class com.google.android.material.bottomnavigation.BottomNavigationItemView { *; }
 #混淆底部导航栏 结束
 
+##XBanner 图片轮播混淆配置
+-keep class com.stx.xhb.xbanner.**{*;}
+

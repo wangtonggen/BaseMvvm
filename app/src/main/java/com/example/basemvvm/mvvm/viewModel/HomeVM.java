@@ -4,24 +4,23 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.HomeRecyclerAdapter;
-import com.example.basemvvm.adapter.ImageBannerAdapter;
 import com.example.basemvvm.base.fragment.BaseMVVMFragment;
 import com.example.basemvvm.bean.BannerBean;
 import com.example.basemvvm.bean.MultiItemBean;
 import com.example.basemvvm.base.baseViewModel.BaseFragmentLifecycleVM;
+import com.example.basemvvm.utils.common.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
-import com.youth.banner.Banner;
-import com.youth.banner.indicator.CircleIndicator;
-import com.youth.banner.listener.OnBannerListener;
-import com.youth.banner.listener.OnPageChangeListener;
-import com.youth.banner.transformer.MZScaleInTransformer;
-import com.youth.banner.util.BannerUtils;
+import com.stx.xhb.androidx.XBanner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ import java.util.List;
  * date:2020/3/18 0018
  * desc: 首页的viewModel
  */
-public class HomeVM extends BaseFragmentLifecycleVM implements OnBannerListener, OnPageChangeListener {
+public class HomeVM extends BaseFragmentLifecycleVM{
     private int page = 1;
     private int pageSize = 15;
 
@@ -39,8 +38,7 @@ public class HomeVM extends BaseFragmentLifecycleVM implements OnBannerListener,
     public HomeRecyclerAdapter homeRecyclerAdapter;
     private List<MultiItemBean> multiItemBeans = new ArrayList<>();
 
-    private ImageBannerAdapter imageBannerAdapter;
-    private Banner banner;
+    private XBanner banner;
     private List<BannerBean> bannerBeans = new ArrayList<>();
     public OnRefreshListener onRefreshListener = refreshLayout -> {
         page = 1;
@@ -66,61 +64,7 @@ public class HomeVM extends BaseFragmentLifecycleVM implements OnBannerListener,
 
         View headerView = LayoutInflater.from(mContext).inflate(R.layout.view_home_header, null);
         homeRecyclerAdapter.addHeaderView(headerView);
-        banner = headerView.findViewById(R.id.banner);
-        imageBannerAdapter = new ImageBannerAdapter(bannerBeans);
-        banner.setStartPosition(2);
-        banner.setAdapter(imageBannerAdapter);
-        //设置指示器
-        banner.setIndicator(new CircleIndicator(mContext));
-        banner.setOnBannerListener(this);
-        banner.addOnPageChangeListener(this);
-        banner.setBannerRound(BannerUtils.dp2px(10));
-        //魅族效果
-        banner.setBannerGalleryMZ(20);
-    }
-
-    @Override
-    public void OnBannerClick(Object data, int position) {
-
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (banner != null){
-            banner.start();
-        }
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (banner != null){
-            banner.stop();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (banner != null){
-            banner.destroy();
-        }
+        banner = headerView.findViewById(R.id.xbanner);
     }
 
     /**
@@ -141,7 +85,17 @@ public class HomeVM extends BaseFragmentLifecycleVM implements OnBannerListener,
         bannerBeans.add(bannerBean1);
         bannerBeans.add(bannerBean2);
         bannerBeans.add(bannerBean3);
-        imageBannerAdapter.notifyDataSetChanged();
+
+        banner.setBannerData(R.layout.view_home_banner,bannerBeans);
+        banner.loadImage((banner1, model, view, position) -> {
+            AppCompatImageView imageView = view.findViewById(R.id.iv_image);
+            Glide.with(mContext).load(bannerBeans.get(position).getUrl()).apply(RequestOptions.bitmapTransform(new RoundedCorners(10))).into(imageView);
+        });
+        banner.setOnItemClickListener((banner1, model, view, position) -> {
+            ToastUtils.showShortToast("position_"+position);
+        });
+        banner.startAutoPlay();
+//        imageBannerAdapter.notifyDataSetChanged();
     }
 
     private void loadData(RefreshLayout refreshLayout) {
