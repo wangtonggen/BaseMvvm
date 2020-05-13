@@ -5,6 +5,8 @@ import android.content.Context;
 
 import androidx.multidex.MultiDexApplication;
 
+import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView;
+import com.chad.library.adapter.base.module.LoadMoreModuleConfig;
 import com.example.basemvvm.R;
 import com.example.basemvvm.crash.CrashHandlerUtils;
 import com.example.basemvvm.network.networkBase.RetrofitManager;
@@ -55,5 +57,7 @@ public class BaseApplication extends MultiDexApplication {
             //指定为经典Footer，默认是 BallPulseFooter
             return new ClassicsFooter(context).setDrawableSize(20);
         });
+
+        LoadMoreModuleConfig.setDefLoadMoreView(new SimpleLoadMoreView());
     }
 }

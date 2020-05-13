@@ -13,6 +13,8 @@
         android:id="@+id/smartRefreshLayout"
         onLoadMoreListener="@{homeVM.onLoadMoreListener}"
         onRefreshListener="@{homeVM.onRefreshListener}"
+        app:srlEnableLoadMoreWhenContentNotFull="false"
+        app:srlEnableAutoLoadMore="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.scwang.smart.refresh.header.MaterialHeader

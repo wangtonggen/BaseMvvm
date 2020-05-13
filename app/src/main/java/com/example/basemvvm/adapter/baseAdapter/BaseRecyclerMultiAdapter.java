@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * author: wtg
  * date:2020/3/23 0023
- * desc: 多布局的基类
+ * desc: 适用于类型较少，业务不复杂的场景，便于快速使用。
  */
 public abstract class BaseRecyclerMultiAdapter<T extends MultiItemEntity, VH extends BaseViewHolder> extends BaseMultiItemQuickAdapter<T, VH> {
     public BaseRecyclerMultiAdapter(@Nullable List<T> data) {

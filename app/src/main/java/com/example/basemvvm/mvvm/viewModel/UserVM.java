@@ -2,11 +2,13 @@ package com.example.basemvvm.mvvm.viewModel;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.UserRecyclerAdapter;
 import com.example.basemvvm.base.baseViewModel.BaseFragmentLifecycleVM;
 import com.example.basemvvm.base.fragment.BaseMVVMFragment;
 import com.example.basemvvm.bean.UserBean;
+import com.example.basemvvm.utils.common.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
@@ -26,6 +28,7 @@ public class UserVM extends BaseFragmentLifecycleVM {
     public UserRecyclerAdapter userRecyclerAdapter;
     private List<UserBean> userBeans = new ArrayList<>();
     public LinearLayoutManager linearLayoutManager;
+    private BaseLoadMoreModule  baseLoadMoreModule;
     public OnRefreshListener onRefreshListener = refreshLayout -> {
         page = 1;
         loadData(refreshLayout);
@@ -45,8 +48,23 @@ public class UserVM extends BaseFragmentLifecycleVM {
         linearLayoutManager = new LinearLayoutManager(mContext);
         userRecyclerAdapter = new UserRecyclerAdapter(userBeans);
 
+        baseLoadMoreModule = userRecyclerAdapter.getLoadMoreModule();
+        if (baseLoadMoreModule != null){
+            baseLoadMoreModule.setOnLoadMoreListener(()->{
+                page++;
+                loadData(null);
+            });
+            baseLoadMoreModule.setAutoLoadMore(false);
+            baseLoadMoreModule.setEnableLoadMoreIfNotFullPage(false);
+        }
         //url http://e.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7e41f5cfe760e0cf3d6cad6ee.jpg
         userRecyclerAdapter.addChildClickViewIds(R.id.btn_delete);
+        userRecyclerAdapter.setOnItemClickListener((adapter, view, position) -> {
+            userBeans.remove(position);
+            userRecyclerAdapter.notifyItemRemoved(position);
+            userRecyclerAdapter.notifyItemRangeChanged(position,userBeans.size()-position);
+            ToastUtils.showShortToast("哈哈哈");
+        });
         userRecyclerAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             switch (view.getId()){
                 case R.id.btn_delete:
@@ -75,6 +93,14 @@ public class UserVM extends BaseFragmentLifecycleVM {
         if (refreshLayout != null) {
             refreshLayout.finishRefresh();
             refreshLayout.finishLoadMore();
+        }
+
+        baseLoadMoreModule.setEnableLoadMore(true);
+
+        if (userBeans.size() >= 75){
+            baseLoadMoreModule.loadMoreEnd();
+        }else {
+            baseLoadMoreModule.loadMoreFail();
         }
     }
 }

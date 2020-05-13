@@ -1,5 +1,6 @@
 package com.example.basemvvm.adapter.baseAdapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -7,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.app.BaseApplication;
@@ -21,7 +23,7 @@ import java.util.List;
  * date:2020/3/23 0023
  * desc: 单布局的基类
  */
-public abstract class BaseRecyclerSingleAdapter<VB extends ViewDataBinding, T, VH extends BaseViewHolder> extends BaseQuickAdapter<T, VH> {
+public abstract class BaseRecyclerSingleAdapter<VB extends ViewDataBinding, T, VH extends BaseViewHolder> extends BaseQuickAdapter<T, VH> implements LoadMoreModule {
     public BaseRecyclerSingleAdapter(int layoutResId, @Nullable List<T> data) {
         super(layoutResId, data);
         setEmptyView(getRecyclerEmptyView());
@@ -49,9 +51,9 @@ public abstract class BaseRecyclerSingleAdapter<VB extends ViewDataBinding, T, V
      * 设置列表无数据时的处理
      * @return view
      */
+    @SuppressLint("InflateParams")
     protected View getRecyclerEmptyView(){
-        View view = LayoutInflater.from(BaseApplication.instance).inflate(R.layout.view_default_recycler_empty,null);
-        return view;
+        return LayoutInflater.from(BaseApplication.instance).inflate(R.layout.view_default_recycler_empty,null);
     }
 
     /**

@@ -95,7 +95,6 @@ public class HomeVM extends BaseFragmentLifecycleVM{
             ToastUtils.showShortToast("position_"+position);
         });
         banner.startAutoPlay();
-//        imageBannerAdapter.notifyDataSetChanged();
     }
 
     private void loadData(RefreshLayout refreshLayout) {
@@ -105,8 +104,7 @@ public class HomeVM extends BaseFragmentLifecycleVM{
             homeRecyclerAdapter.notifyDataSetChanged();
         }else {
             initData();
-//            homeRecyclerAdapter.notifyDataSetChanged();
-            homeRecyclerAdapter.notifyItemRangeInserted(homeRecyclerAdapter.getItemCount(),multiItemBeans.size()-homeRecyclerAdapter.getItemCount());
+            homeRecyclerAdapter.notifyItemRangeInserted(homeRecyclerAdapter.getItemCount(),pageSize);
         }
 
         finishRefreshAndLoadMore(refreshLayout);
@@ -125,7 +123,7 @@ public class HomeVM extends BaseFragmentLifecycleVM{
 
     private void initData(){
         int size = multiItemBeans.size();
-        for (int i = 0; i < size + pageSize; i++) {
+        for (int i = size; i < size + pageSize; i++) {
             multiItemBeans.add(new MultiItemBean(i%2==0?0:1,"item_"+i,"a you ok?"));
         }
     }
