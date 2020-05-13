@@ -163,4 +163,10 @@ dependencies {
 
     //banner androidX 版本使用下面的依赖
     implementation 'com.github.xiaohaibin:XBanner:androidx_v1.0.8'
+
+    //加载中动画
+    // of course, do not write x.x.x but the version number
+    implementation 'com.github.castorflex.smoothprogressbar:library:1.1.0'
+    // or
+    implementation 'com.github.castorflex.smoothprogressbar:library-circular:1.3.0'
 }

@@ -10,6 +10,7 @@ import com.chad.library.adapter.base.module.LoadMoreModuleConfig;
 import com.example.basemvvm.R;
 import com.example.basemvvm.crash.CrashHandlerUtils;
 import com.example.basemvvm.network.networkBase.RetrofitManager;
+import com.example.basemvvm.widget.common.CustomLoadMoreView;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -58,6 +59,6 @@ public class BaseApplication extends MultiDexApplication {
             return new ClassicsFooter(context).setDrawableSize(20);
         });
 
-        LoadMoreModuleConfig.setDefLoadMoreView(new SimpleLoadMoreView());
+        LoadMoreModuleConfig.setDefLoadMoreView(new CustomLoadMoreView());
     }
 }

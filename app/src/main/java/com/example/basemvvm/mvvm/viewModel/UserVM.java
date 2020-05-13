@@ -54,7 +54,7 @@ public class UserVM extends BaseFragmentLifecycleVM {
                 page++;
                 loadData(null);
             });
-            baseLoadMoreModule.setAutoLoadMore(false);
+            baseLoadMoreModule.setAutoLoadMore(true);
             baseLoadMoreModule.setEnableLoadMoreIfNotFullPage(false);
         }
         //url http://e.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7e41f5cfe760e0cf3d6cad6ee.jpg
@@ -95,12 +95,12 @@ public class UserVM extends BaseFragmentLifecycleVM {
             refreshLayout.finishLoadMore();
         }
 
-        baseLoadMoreModule.setEnableLoadMore(true);
-
-        if (userBeans.size() >= 75){
-            baseLoadMoreModule.loadMoreEnd();
-        }else {
-            baseLoadMoreModule.loadMoreFail();
-        }
+//        baseLoadMoreModule.setEnableLoadMore(true);
+//
+//        if (userBeans.size() >= 75){
+//            baseLoadMoreModule.loadMoreEnd();
+//        }else {
+//            baseLoadMoreModule.loadMoreComplete();
+//        }
     }
 }
