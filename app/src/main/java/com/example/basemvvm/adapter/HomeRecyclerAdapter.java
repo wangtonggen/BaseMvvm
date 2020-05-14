@@ -10,9 +10,6 @@ import com.example.basemvvm.databinding.RecyclerItemHomeBinding;
 import com.example.basemvvm.mvvm.viewModel.ItemVM;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 /**
  * author: wtg

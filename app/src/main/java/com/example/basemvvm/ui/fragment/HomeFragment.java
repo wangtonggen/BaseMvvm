@@ -7,7 +7,7 @@ import com.example.basemvvm.databinding.FragmentHomeBinding;
 import com.example.basemvvm.mvvm.viewModel.HomeVM;
 
 
-public class HomeFragment extends LazyLoadFragment<FragmentHomeBinding, HomeVM>{
+public class HomeFragment extends LazyLoadFragment<FragmentHomeBinding, HomeVM> {
 
     @Override
     protected int getLayoutRes() {

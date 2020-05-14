@@ -48,6 +48,7 @@ public class RetrofitManager {
     private CallAdapter.Factory callAdapterFactory = RxJava2CallAdapterFactory.create();
     private List<Interceptor> interceptors = new ArrayList<>();
     private String baseUrl;
+
     private RetrofitManager() {
 
     }
@@ -70,6 +71,7 @@ public class RetrofitManager {
 
     /**
      * 格式转换器
+     *
      * @param converterFactory 格式转换器
      * @return RetrofitManager
      */
@@ -80,6 +82,7 @@ public class RetrofitManager {
 
     /**
      * 适配器
+     *
      * @param callAdapterFactory 适配器
      * @return RetrofitManager
      */
@@ -116,6 +119,7 @@ public class RetrofitManager {
 
     /**
      * 设置baseUrl
+     *
      * @param baseUrl url
      */
     public RetrofitManager setBaseUrl(String baseUrl) {
@@ -154,11 +158,11 @@ public class RetrofitManager {
      * 初始化
      */
     public void init() {
-        if (TextUtils.isEmpty(baseUrl)){
+        if (TextUtils.isEmpty(baseUrl)) {
             ToastUtils.showShortToast("请设置baseUrl");
             return;
         }
-        if (okHttpClient == null){
+        if (okHttpClient == null) {
             //添加拦截器
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> LogUtils.logE("okhttp4:", message));
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -40,9 +40,10 @@ public class HttpResponse<T> implements Serializable {
 
     /**
      * 获取类型
+     *
      * @return type
      */
-    public Type getType(){
+    public Type getType() {
         return ((ParameterizedType) Objects.requireNonNull(getClass().getGenericSuperclass())).getActualTypeArguments()[0];
     }
 }

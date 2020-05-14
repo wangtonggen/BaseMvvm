@@ -19,7 +19,7 @@ public class TokenInterceptor implements Interceptor {
     @Override
     public Response intercept(@NotNull Chain chain) throws IOException {
         Request original = chain.request();
-        Request.Builder requestBuilder = original.newBuilder().header("Authorization", "Bearer "+"token");
+        Request.Builder requestBuilder = original.newBuilder().header("Authorization", "Bearer " + "token");
         Request request = requestBuilder.build();
         return chain.proceed(request);
     }

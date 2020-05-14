@@ -5,7 +5,6 @@ import android.content.Context;
 
 import androidx.multidex.MultiDexApplication;
 
-import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView;
 import com.chad.library.adapter.base.module.LoadMoreModuleConfig;
 import com.example.basemvvm.R;
 import com.example.basemvvm.crash.CrashHandlerUtils;
@@ -40,7 +39,7 @@ public class BaseApplication extends MultiDexApplication {
     /**
      * 初始化 Retrofit2
      */
-    private void initRetrofit(){
+    private void initRetrofit() {
         RetrofitManager.getInstance().setBaseUrl(URL_BASE).init();
     }
 

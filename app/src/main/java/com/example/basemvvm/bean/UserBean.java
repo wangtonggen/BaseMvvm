@@ -10,7 +10,8 @@ import com.example.basemvvm.base.entity.BaseMultiEntity;
 public class UserBean extends BaseMultiEntity {
     private int type;
     private String url;
-    public UserBean(int type,String url){
+
+    public UserBean(int type, String url) {
         this.type = type;
         this.url = url;
     }

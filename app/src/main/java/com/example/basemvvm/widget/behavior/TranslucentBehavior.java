@@ -1,10 +1,8 @@
 package com.example.basemvvm.widget.behavior;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -19,7 +17,9 @@ import org.jetbrains.annotations.NotNull;
  */
 public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
 
-    /**标题栏的高度*/
+    /**
+     * 标题栏的高度
+     */
     private int mToolbarHeight = 0;
 
     public TranslucentBehavior(Context context, AttributeSet attrs) {

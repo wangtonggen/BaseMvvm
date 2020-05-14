@@ -41,7 +41,8 @@ public class TokenModel {
 
     /**
      * 刷新token
-     * @param oldToken 旧的token
+     *
+     * @param oldToken     旧的token
      * @param baseObserver 监听
      */
     public void refreshToken(String oldToken, BaseObserver<TokenBean> baseObserver) {
@@ -54,12 +55,13 @@ public class TokenModel {
 
     /**
      * 刷新token
+     *
      * @param oldToken 旧的token
      * @return 返回call
      */
     public Call<ResponseBody> refreshTokenCall(String oldToken) {
         Map<String, Object> params = new HashMap<>();
         params.put("token", oldToken);
-       return userService.refreshTokenCall(params);
+        return userService.refreshTokenCall(params);
     }
 }

@@ -12,6 +12,7 @@ import com.example.basemvvm.bean.NotificationBean;
  */
 public class NotificationItemVM extends BaseVM {
     public ObservableField<String> name = new ObservableField<>();
+
     public NotificationItemVM(NotificationBean notificationBean) {
         name.set(notificationBean.name);
     }

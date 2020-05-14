@@ -20,7 +20,6 @@ import com.example.basemvvm.bean.MultiItemBean;
 import com.example.basemvvm.base.baseViewModel.BaseFragmentLifecycleVM;
 import com.example.basemvvm.utils.common.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
-import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.stx.xhb.androidx.XBanner;
 
@@ -64,8 +63,8 @@ public class HomeVM extends BaseFragmentLifecycleVM {
         banner = headerView.findViewById(R.id.xbanner);
 
         homeRecyclerAdapter.setOnItemClickListener((adapter, view, position) -> {
-            homeRecyclerAdapter.notifyItemChanged(position+homeRecyclerAdapter.getHeaderLayoutCount());
-            ToastUtils.showShortToast("position_"+position);
+            homeRecyclerAdapter.notifyItemChanged(position + homeRecyclerAdapter.getHeaderLayoutCount());
+            ToastUtils.showShortToast("position_" + position);
         });
         baseLoadMoreModule = homeRecyclerAdapter.getLoadMoreModule();
         baseLoadMoreModule.setOnLoadMoreListener(() -> {
@@ -100,14 +99,12 @@ public class HomeVM extends BaseFragmentLifecycleVM {
             AppCompatImageView imageView = view.findViewById(R.id.iv_image);
             Glide.with(mContext).load(bannerBeans.get(position).getUrl()).apply(RequestOptions.bitmapTransform(new RoundedCorners(10))).into(imageView);
         });
-        banner.setOnItemClickListener((banner1, model, view, position) -> {
-            ToastUtils.showShortToast("position_" + position);
-        });
+        banner.setOnItemClickListener((banner1, model, view, position) -> ToastUtils.showShortToast("position_" + position));
         banner.startAutoPlay();
     }
 
     private void loadData(RefreshLayout refreshLayout) {
-        new Handler().postDelayed(()->{
+        new Handler().postDelayed(() -> {
             if (page == 1) {
                 homeRecyclerAdapter.setList(initData());
                 homeRecyclerAdapter.notifyDataSetChanged();
@@ -116,7 +113,7 @@ public class HomeVM extends BaseFragmentLifecycleVM {
                 homeRecyclerAdapter.addData(initData());
                 finishRefreshAndLoadMore(refreshLayout);
             }
-        },2000);
+        }, 2000);
     }
 
     /**
@@ -131,9 +128,9 @@ public class HomeVM extends BaseFragmentLifecycleVM {
         }
 
         baseLoadMoreModule.setEnableLoadMore(true);
-        if (homeRecyclerAdapter.getData().size() >= 45){
+        if (homeRecyclerAdapter.getData().size() >= 45) {
             baseLoadMoreModule.loadMoreEnd();
-        }else {
+        } else {
             baseLoadMoreModule.loadMoreComplete();
         }
     }

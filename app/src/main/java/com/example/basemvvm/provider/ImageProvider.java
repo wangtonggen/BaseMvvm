@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * date:2020/4/30 0030
  * desc:
  */
-public class ImageProvider extends BaseProvider<RecyclerItemImageBinding,UserBean> {
+public class ImageProvider extends BaseProvider<RecyclerItemImageBinding, UserBean> {
 
     @Override
     public int getItemViewType() {

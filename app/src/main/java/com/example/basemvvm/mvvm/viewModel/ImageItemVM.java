@@ -12,6 +12,7 @@ import com.example.basemvvm.bean.UserBean;
  */
 public class ImageItemVM extends BaseVM {
     public ObservableField<String> imageUrl = new ObservableField<>();
+
     public ImageItemVM(UserBean userBean) {
         imageUrl.set(userBean.getUrl());
     }

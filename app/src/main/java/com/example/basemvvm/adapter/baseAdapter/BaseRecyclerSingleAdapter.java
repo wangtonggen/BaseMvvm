@@ -49,11 +49,12 @@ public abstract class BaseRecyclerSingleAdapter<VB extends ViewDataBinding, T, V
 
     /**
      * 设置列表无数据时的处理
+     *
      * @return view
      */
     @SuppressLint("InflateParams")
-    protected View getRecyclerEmptyView(){
-        return LayoutInflater.from(BaseApplication.instance).inflate(R.layout.view_default_recycler_empty,null);
+    protected View getRecyclerEmptyView() {
+        return LayoutInflater.from(BaseApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
     }
 
     /**

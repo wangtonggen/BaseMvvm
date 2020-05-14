@@ -16,7 +16,8 @@ import java.util.List;
  */
 public class ViewPager2Adapter extends FragmentStateAdapter {
     private List<BaseFragment> baseFragments;
-    public ViewPager2Adapter(@NonNull FragmentActivity fragmentActivity,List<BaseFragment> baseFragments) {
+
+    public ViewPager2Adapter(@NonNull FragmentActivity fragmentActivity, List<BaseFragment> baseFragments) {
         super(fragmentActivity);
         this.baseFragments = baseFragments;
     }

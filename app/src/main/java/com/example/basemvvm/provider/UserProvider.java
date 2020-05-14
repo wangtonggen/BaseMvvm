@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
  * date:2020/4/30 0030
  * desc:
  */
-public class UserProvider extends BaseProvider<RecyclerItemUserBinding,UserBean> {
+public class UserProvider extends BaseProvider<RecyclerItemUserBinding, UserBean> {
 
     @Override
     public int getItemViewType() {

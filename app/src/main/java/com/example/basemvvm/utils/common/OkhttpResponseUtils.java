@@ -1,7 +1,6 @@
 package com.example.basemvvm.utils.common;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 import okhttp3.ResponseBody;

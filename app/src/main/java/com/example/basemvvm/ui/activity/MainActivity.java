@@ -11,9 +11,7 @@ import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 
-import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.StringUtils;
-import com.blankj.utilcode.util.ThreadUtils;
 import com.bumptech.glide.Glide;
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.ViewPager2Adapter;

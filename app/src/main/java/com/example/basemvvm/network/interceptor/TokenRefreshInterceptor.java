@@ -31,10 +31,10 @@ public class TokenRefreshInterceptor implements Interceptor {
     @Override
     public Response intercept(@NotNull Chain chain) throws IOException {
         Request original = chain.request();
-        Request.Builder requestBuilder = original.newBuilder().header("Authorization", "Bearer "+"token");
+        Request.Builder requestBuilder = original.newBuilder().header("Authorization", "Bearer " + "token");
         Request request = requestBuilder.build();
         Response response = chain.proceed(request);
-        if (isTokenExpired(response)){//过期
+        if (isTokenExpired(response)) {//过期
             //同步请求方式，获取最新的Token
             String newToken = getNewToken();
             //使用新的Token，创建新的请求
@@ -67,8 +67,9 @@ public class TokenRefreshInterceptor implements Interceptor {
         // 通过获取token的接口，同步请求接口
         Call<ResponseBody> responseBodyCall = TokenModel.getInstance().refreshTokenCall("");
         String result = OkhttpResponseUtils.getResponseBody(Objects.requireNonNull(responseBodyCall.execute().body()));
-        Type type = new TypeToken<HttpResponse<TokenBean>>() {}.getType();
-        HttpResponse<TokenBean> tokenBeanHttpResponse = GsonUtils.fromJson(result,type);
+        Type type = new TypeToken<HttpResponse<TokenBean>>() {
+        }.getType();
+        HttpResponse<TokenBean> tokenBeanHttpResponse = GsonUtils.fromJson(result, type);
         return tokenBeanHttpResponse.getResult().getToken();
     }
 }

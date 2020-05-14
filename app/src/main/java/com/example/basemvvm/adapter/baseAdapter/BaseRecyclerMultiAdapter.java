@@ -12,9 +12,6 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.base.app.BaseApplication;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 /**
  * author: wtg
@@ -45,11 +42,11 @@ public abstract class BaseRecyclerMultiAdapter<T extends MultiItemEntity, VH ext
 
     /**
      * 设置列表无数据时的处理
+     *
      * @return view
      */
-    protected View getRecyclerEmptyView(){
-        View view = LayoutInflater.from(BaseApplication.instance).inflate(R.layout.view_default_recycler_empty,null);
-        return view;
+    protected View getRecyclerEmptyView() {
+        return LayoutInflater.from(BaseApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
     }
 
     /**

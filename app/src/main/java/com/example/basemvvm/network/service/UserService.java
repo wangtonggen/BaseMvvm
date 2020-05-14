@@ -42,6 +42,7 @@ public interface UserService {
 
     /**
      * 刷新token
+     *
      * @param params 参数
      * @return 订阅对象
      */
@@ -51,6 +52,7 @@ public interface UserService {
 
     /**
      * 刷新token
+     *
      * @param params 参数
      * @return 订阅对象
      */

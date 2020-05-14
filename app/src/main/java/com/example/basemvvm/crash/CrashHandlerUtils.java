@@ -64,9 +64,10 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
 
     /**
      * 设置crash目录
+     *
      * @param crashDir 闪退目录
      */
-    public void setCrashName(String crashDir){
+    public void setCrashName(String crashDir) {
         DIR_CRASH = crashDir;
     }
 
@@ -181,7 +182,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
         String result = writer.toString();
         sb.append(result);
         LogUtils.logE(sb.toString());
-        if(BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             return;
         }
         /*
@@ -192,7 +193,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
         //写到sd卡上
         if (SDCardUtils.isSDCardEnableByEnvironment()) {
             FileUtils.createOrExistsDir(DIR_CRASH);
-            String fileName =  name + ".txt";
+            String fileName = name + ".txt";
             File crashFile = new File(DIR_CRASH, fileName);
             FileUtils.createOrExistsFile(crashFile);
             try {
@@ -203,7 +204,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            uploadCrashInfo(crashFile,crashInfo);
+            uploadCrashInfo(crashFile, crashInfo);
         }
 
     }

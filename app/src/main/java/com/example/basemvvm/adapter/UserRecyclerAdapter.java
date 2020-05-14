@@ -7,7 +7,6 @@ import com.example.basemvvm.provider.ImageProvider;
 import com.example.basemvvm.provider.UserProvider;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class UserRecyclerAdapter extends BaseRecyclerProviderMultiAdapter<UserBe
     @Override
     protected int getItemType(@NotNull List<? extends UserBean> list, int i) {
         int type = 0;
-        switch (list.get(i).getItemType()){
+        switch (list.get(i).getItemType()) {
             case 0:
                 type = TYPE_USER;
                 break;

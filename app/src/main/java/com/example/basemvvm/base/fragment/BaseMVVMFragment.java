@@ -27,7 +27,7 @@ public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends Bas
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LogUtils.logE("create="+TAG);
+        LogUtils.logE("create=" + TAG);
         binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
         initView(savedInstanceState, binding.getRoot());
         return binding.getRoot();

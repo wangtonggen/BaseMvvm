@@ -3,17 +3,13 @@ package com.example.basemvvm.ui.activity;
 import android.view.ViewGroup;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
 
 import com.blankj.utilcode.util.BarUtils;
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.activity.BaseSwipeBackLeftActivity;
-import com.example.basemvvm.base.baseViewModel.BaseToolbarVM;
 import com.example.basemvvm.databinding.ActivityUserInfoBinding;
 import com.example.basemvvm.mvvm.viewModel.UserInfoVM;
-import com.example.basemvvm.utils.common.LogUtils;
 import com.google.android.material.appbar.AppBarLayout;
 import com.gyf.immersionbar.ImmersionBar;
 

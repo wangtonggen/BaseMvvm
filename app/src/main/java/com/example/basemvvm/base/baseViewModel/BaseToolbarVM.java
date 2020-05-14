@@ -38,10 +38,10 @@ public class BaseToolbarVM extends BaseVM {
 
     public BaseToolbarVM(BaseActivity mActivity) {
         this.mActivity = mActivity;
-        LogUtils.logE("tag",toolbarColor.get()+"---");
+        LogUtils.logE("tag", toolbarColor.get() + "---");
     }
 
-    public void onBack(View view){
+    public void onBack(View view) {
         mActivity.onBackPressed();
     }
 }

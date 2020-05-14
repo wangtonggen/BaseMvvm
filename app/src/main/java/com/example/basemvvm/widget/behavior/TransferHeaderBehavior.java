@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import org.jetbrains.annotations.NotNull;
+
 
 /**
  * author: wtg
@@ -30,12 +32,12 @@ public class TransferHeaderBehavior extends CoordinatorLayout.Behavior<ImageView
     }
 
     @Override
-    public boolean layoutDependsOn(CoordinatorLayout parent, ImageView child, View dependency) {
+    public boolean layoutDependsOn(@NotNull CoordinatorLayout parent, @NotNull ImageView child, @NotNull View dependency) {
         return dependency instanceof Toolbar;
     }
 
     @Override
-    public boolean onDependentViewChanged(CoordinatorLayout parent, ImageView child, View dependency) {
+    public boolean onDependentViewChanged(@NotNull CoordinatorLayout parent, @NotNull ImageView child, @NotNull View dependency) {
         // 计算X轴坐标
         if (mOriginalHeaderX == 0) {
             this.mOriginalHeaderX = dependency.getWidth() / 2 - child.getWidth() / 2;
@@ -60,8 +62,8 @@ public class TransferHeaderBehavior extends CoordinatorLayout.Behavior<ImageView
             x = child.getWidth();
         }
         // TODO 头像的放大和缩小没做
-        child.setScaleX(1 - mPercentY/4);
-        child.setScaleY(1 - mPercentY/4);
+        child.setScaleX(1 - mPercentY / 4);
+        child.setScaleY(1 - mPercentY / 4);
         child.setX(x);
         child.setY(mOriginalHeaderY - mOriginalHeaderY * mPercentY);
         return true;

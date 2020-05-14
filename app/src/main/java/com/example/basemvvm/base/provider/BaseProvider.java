@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
  * date:2020/4/25 0025
  * desc: 多布局的provider
  */
-public abstract class BaseProvider<VB extends ViewDataBinding,T extends BaseMultiEntity> extends BaseItemProvider<T> {
+public abstract class BaseProvider<VB extends ViewDataBinding, T extends BaseMultiEntity> extends BaseItemProvider<T> {
     @Override
     public void convert(@NotNull BaseViewHolder baseViewHolder, T t) {
         if (t == null) {
@@ -24,7 +24,7 @@ public abstract class BaseProvider<VB extends ViewDataBinding,T extends BaseMult
         }
         VB viewDataBinding = baseViewHolder.getBinding();
         if (viewDataBinding != null) {
-            bindData(baseViewHolder, viewDataBinding,t);
+            bindData(baseViewHolder, viewDataBinding, t);
             viewDataBinding.executePendingBindings();
         }
     }

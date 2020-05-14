@@ -18,6 +18,7 @@ public class UserInfoVM extends BaseActivityLifecycleVM {
     public ObservableField<String> userHead = new ObservableField<>();
     public ObservableField<String> userName = new ObservableField<>();
     public BaseToolbarVM baseToolbarVM;
+
     public UserInfoVM(BaseActivity mActivity) {
         super(mActivity);
 
