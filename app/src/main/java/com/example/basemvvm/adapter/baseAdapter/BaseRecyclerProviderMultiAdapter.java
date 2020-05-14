@@ -21,8 +21,7 @@ import java.util.List;
  *      2、Adapter不限定ViewHolder类型。ViewHolder 由 BaseItemProvider 实现，并且每个BaseItemProvider可以拥有自己类型的ViewHolder类型。
  */
 public abstract class BaseRecyclerProviderMultiAdapter<T extends BaseMultiEntity> extends BaseProviderMultiAdapter<T> {
-    public BaseRecyclerProviderMultiAdapter(@Nullable List<T> data) {
-        super(data);
+    public BaseRecyclerProviderMultiAdapter() {
         addItemType();
         setEmptyView(getRecyclerEmptyView());
     }

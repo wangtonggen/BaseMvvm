@@ -1,5 +1,6 @@
 package com.example.basemvvm.adapter;
 
+import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.baseAdapter.BaseRecyclerMultiAdapter;
@@ -18,9 +19,8 @@ import java.util.List;
  * date:2020/3/23 0023
  * desc: 多布局监听
  */
-public class HomeRecyclerAdapter extends BaseRecyclerMultiAdapter<MultiItemBean, BaseViewHolder> {
-    public HomeRecyclerAdapter(@Nullable List<MultiItemBean> data) {
-        super(data);
+public class HomeRecyclerAdapter extends BaseRecyclerMultiAdapter<MultiItemBean, BaseViewHolder> implements LoadMoreModule {
+    public HomeRecyclerAdapter() {
         addItemType(0, R.layout.recycler_item_home01);
         addItemType(1, R.layout.recycler_item_home);
     }

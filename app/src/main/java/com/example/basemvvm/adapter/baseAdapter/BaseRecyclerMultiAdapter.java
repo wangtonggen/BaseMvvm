@@ -22,8 +22,7 @@ import java.util.List;
  * desc: 适用于类型较少，业务不复杂的场景，便于快速使用。
  */
 public abstract class BaseRecyclerMultiAdapter<T extends MultiItemEntity, VH extends BaseViewHolder> extends BaseMultiItemQuickAdapter<T, VH> {
-    public BaseRecyclerMultiAdapter(@Nullable List<T> data) {
-        super(data);
+    public BaseRecyclerMultiAdapter() {
         setEmptyView(getRecyclerEmptyView());
     }
 

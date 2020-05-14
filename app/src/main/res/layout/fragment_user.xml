@@ -11,7 +11,6 @@
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/smartRefreshLayout"
-        onLoadMoreListener="@{userVM.onLoadMoreListener}"
         onRefreshListener="@{userVM.onRefreshListener}"
         app:srlEnableLoadMore="false"
         app:srlEnableAutoLoadMore="false"

@@ -19,9 +19,6 @@ import java.util.List;
 public class UserRecyclerAdapter extends BaseRecyclerProviderMultiAdapter<UserBean> implements LoadMoreModule {
     public static int TYPE_USER = 0;
     public static int TYPE_IMAGE = 1;
-    public UserRecyclerAdapter(@Nullable List<UserBean> data) {
-        super(data);
-    }
 
     @Override
     protected void addItemType() {
