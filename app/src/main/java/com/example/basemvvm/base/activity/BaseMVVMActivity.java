@@ -32,6 +32,9 @@ public abstract class BaseMVVMActivity<B extends ViewDataBinding, VM extends Bas
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (viewModel != null){
+            viewModel.onDestroy();
+        }
         if (binding != null) {
             binding.unbind();
         }

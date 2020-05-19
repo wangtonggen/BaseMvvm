@@ -34,9 +34,6 @@ public abstract class BaseRecyclerMultiAdapter<T extends MultiItemEntity, VH ext
             return;
         }
         bindData(vh, t);
-        if (vh.getBinding() != null) {
-            vh.getBinding().executePendingBindings();
-        }
     }
 
 

@@ -34,9 +34,6 @@ public abstract class BaseRecyclerDelegateMultiAdapter<T, VH extends BaseViewHol
             return;
         }
         bindData(vh, t);
-        if (vh.getBinding() != null) {
-            vh.getBinding().executePendingBindings();
-        }
     }
 
     /**

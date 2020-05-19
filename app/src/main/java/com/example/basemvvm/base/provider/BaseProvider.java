@@ -22,7 +22,7 @@ public abstract class BaseProvider<VB extends ViewDataBinding, T extends BaseMul
         if (t == null) {
             return;
         }
-        VB viewDataBinding = baseViewHolder.getBinding();
+        VB viewDataBinding = DataBindingUtil.getBinding(baseViewHolder.itemView);
         if (viewDataBinding != null) {
             bindData(baseViewHolder, viewDataBinding, t);
             viewDataBinding.executePendingBindings();

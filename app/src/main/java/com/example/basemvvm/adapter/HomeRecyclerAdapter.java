@@ -1,5 +1,7 @@
 package com.example.basemvvm.adapter;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
@@ -26,19 +28,17 @@ public class HomeRecyclerAdapter extends BaseRecyclerMultiAdapter<MultiItemBean,
     public void bindData(@NotNull BaseViewHolder baseViewHolder, MultiItemBean multiItemBean) {
         switch (baseViewHolder.getItemViewType()) {
             case 0:
-                RecyclerItemHome01Binding recyclerItemHome01Binding = baseViewHolder.getBinding();
+                RecyclerItemHome01Binding recyclerItemHome01Binding = DataBindingUtil.getBinding(baseViewHolder.itemView);
                 if (recyclerItemHome01Binding != null) {
                     recyclerItemHome01Binding.setMultiItemBean(multiItemBean);
-                    recyclerItemHome01Binding.executePendingBindings();
                 }
                 break;
             case 1:
-                RecyclerItemHomeBinding recyclerItemHomeBinding = baseViewHolder.getBinding();
+                RecyclerItemHomeBinding recyclerItemHomeBinding = DataBindingUtil.getBinding(baseViewHolder.itemView);
                 if (recyclerItemHomeBinding != null) {
                     recyclerItemHomeBinding.setMultiItemBean(multiItemBean);
                     ItemVM itemVM = new ItemVM();
                     recyclerItemHomeBinding.setItemVM(itemVM);
-                    recyclerItemHomeBinding.executePendingBindings();
                 }
                 break;
         }

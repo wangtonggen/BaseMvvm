@@ -63,6 +63,7 @@ public class HomeVM extends BaseFragmentLifecycleVM {
         banner = headerView.findViewById(R.id.xbanner);
 
         homeRecyclerAdapter.setOnItemClickListener((adapter, view, position) -> {
+            homeRecyclerAdapter.getData().get(position).name = "hello";
             homeRecyclerAdapter.notifyItemChanged(position + homeRecyclerAdapter.getHeaderLayoutCount());
             ToastUtils.showShortToast("position_" + position);
         });

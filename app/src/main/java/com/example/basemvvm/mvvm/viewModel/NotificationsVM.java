@@ -48,7 +48,6 @@ public class NotificationsVM extends BaseFragmentLifecycleVM {
         notificationsRecyclerAdapter.setOnItemClickListener((adapter, view, position) -> {
             notificationBeans.get(position).name = "hello word";
             notificationsRecyclerAdapter.notifyItemChanged(position);
-//            ToastUtils.showLongToast("position_" + position);
         });
 
         notificationsRecyclerAdapter.setOnItemLongClickListener((adapter, view, position) -> {
@@ -60,20 +59,19 @@ public class NotificationsVM extends BaseFragmentLifecycleVM {
     }
 
     private void loadData(RefreshLayout refreshLayout) {
-
-//        if (page == 1) {
-//            notificationBeans.clear();
-//            for (int i = 0; i < pageSize; i++) {
-//                notificationBeans.add(new NotificationBean("item_" + i));
-//                notificationsRecyclerAdapter.notifyDataSetChanged();
-//            }
-//        } else {
-//            int size = notificationBeans.size();
-//            for (int i = 0; i < pageSize; i++) {
-//                notificationBeans.add(new NotificationBean("item_" + (size + i)));
-//                notificationsRecyclerAdapter.notifyItemRangeInserted(notificationBeans.size(), 15);
-//            }
-//        }
+        if (page == 1) {
+            notificationBeans.clear();
+            for (int i = 0; i < pageSize; i++) {
+                notificationBeans.add(new NotificationBean("item_" + i));
+                notificationsRecyclerAdapter.notifyDataSetChanged();
+            }
+        } else {
+            int size = notificationBeans.size();
+            for (int i = 0; i < pageSize; i++) {
+                notificationBeans.add(new NotificationBean("item_" + (size + i)));
+                notificationsRecyclerAdapter.notifyItemRangeInserted(notificationBeans.size(), 15);
+            }
+        }
 
         if (refreshLayout != null) {
             refreshLayout.finishRefresh();

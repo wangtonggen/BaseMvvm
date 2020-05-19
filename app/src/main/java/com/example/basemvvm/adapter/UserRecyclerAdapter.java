@@ -3,8 +3,8 @@ package com.example.basemvvm.adapter;
 import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.example.basemvvm.adapter.baseAdapter.BaseRecyclerProviderMultiAdapter;
 import com.example.basemvvm.bean.UserBean;
-import com.example.basemvvm.provider.ImageProvider;
-import com.example.basemvvm.provider.UserProvider;
+import com.example.basemvvm.adapter.provider.ImageProvider;
+import com.example.basemvvm.adapter.provider.UserProvider;
 
 import org.jetbrains.annotations.NotNull;
 

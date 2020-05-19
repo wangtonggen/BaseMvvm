@@ -62,10 +62,4 @@ public class AppUpdateActivity extends BaseMVVMActivity<ActivityDialogDownApkBin
             super.onBackPressed();
         }
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        viewModel.onDestroy();
-    }
 }

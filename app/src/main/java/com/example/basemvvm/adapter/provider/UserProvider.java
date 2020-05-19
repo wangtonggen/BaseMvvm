@@ -1,4 +1,4 @@
-package com.example.basemvvm.provider;
+package com.example.basemvvm.adapter.provider;
 
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
