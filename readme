@@ -1,7 +1,27 @@
-接下来的工作
+使用
 ------
-1.添加rxjava2+retrofit2 网络请求
+1.首先再project build.gradle添加
+allprojects {
+		repositories {
+			...
+			maven { url 'https://www.jitpack.io' }
+		}
+	}
 
-2.测试填写recyclerView的adapter的相关信息
+2.在APP 里面的 build.gradle添加依赖
+implementation'com.github.wangtonggen:BaseMvvm:1.0'
 
-3.测试整体问题
+3.lib里面有使用到butterknife 首先在 project build.gradle添加  
+dependencies {  
+classpath 'com.android.tools.build:gradle:3.6.3'  
+classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'  
+// NOTE: Donot place your application dependencies here; they belong  
+//in the individual module build.gradle files  
+}  
+还需要在APP 里面的 build.gradle添加 apply plugin:
+'com.jakewharton.butterknife'  
+//butterknife  
+implementation'com.jakewharton:butterknife:10.2.1'  
+annotationProcessor'com.jakewharton:butterknife-compiler:10.2.1'
+
+
