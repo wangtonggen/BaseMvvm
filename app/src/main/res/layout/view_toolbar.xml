@@ -9,7 +9,7 @@
 
         <variable
             name="toolbarVM"
-            type="com.example.basemvvm.base.baseViewModel.BaseToolbarVM" />
+            type="com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM" />
     </data>
 
     <androidx.appcompat.widget.Toolbar

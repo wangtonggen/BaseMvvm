@@ -3,10 +3,10 @@ package com.example.basemvvm.mvvm.viewModel;
 import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.activity.BaseActivity;
-import com.example.basemvvm.base.baseViewModel.BaseActivityLifecycleVM;
-import com.example.basemvvm.base.baseViewModel.BaseToolbarVM;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
+import com.wang.mvvmcore.base.activity.BaseActivity;
+import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
+import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
 
 /**
  * author: wtg

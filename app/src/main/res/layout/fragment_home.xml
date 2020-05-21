@@ -22,7 +22,7 @@
             android:id="@+id/recyclerView"
             layout_has_fixed_size="10"
             layout_item_cache_size="20"
-            layout_manager="@{homeVM.linearLayoutManager}"
+            app:layoutManager="@{homeVM.linearLayoutManager}"
             recycler_adapter="@{homeVM.homeRecyclerAdapter}"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -7,10 +7,10 @@ import android.view.View;
 import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.fragment.BaseMVVMFragment;
-import com.example.basemvvm.base.baseViewModel.BaseFragmentLifecycleVM;
 import com.example.basemvvm.service.UpdateAppService;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.wang.mvvmcore.base.baseViewModel.BaseFragmentLifecycleVM;
+import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
 import io.reactivex.disposables.Disposable;
 

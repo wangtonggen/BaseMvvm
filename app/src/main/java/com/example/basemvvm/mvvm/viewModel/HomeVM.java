@@ -13,15 +13,15 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.R;
-import com.example.basemvvm.adapter.HomeRecyclerAdapter;
-import com.example.basemvvm.base.fragment.BaseMVVMFragment;
+import com.example.basemvvm.adapter.HomeBindingAdapter;
 import com.example.basemvvm.bean.BannerBean;
 import com.example.basemvvm.bean.MultiItemBean;
-import com.example.basemvvm.base.baseViewModel.BaseFragmentLifecycleVM;
-import com.example.basemvvm.utils.common.ToastUtils;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.stx.xhb.androidx.XBanner;
+import com.wang.mvvmcore.base.baseViewModel.BaseFragmentLifecycleVM;
+import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
+import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class HomeVM extends BaseFragmentLifecycleVM {
 
     private BaseLoadMoreModule baseLoadMoreModule;
     public LinearLayoutManager linearLayoutManager;
-    public HomeRecyclerAdapter homeRecyclerAdapter;
+    public HomeBindingAdapter homeRecyclerAdapter;
 
     private XBanner banner;
     private List<BannerBean> bannerBeans = new ArrayList<>();
@@ -56,7 +56,7 @@ public class HomeVM extends BaseFragmentLifecycleVM {
     @Override
     protected void init() {
         linearLayoutManager = new LinearLayoutManager(mContext);
-        homeRecyclerAdapter = new HomeRecyclerAdapter();
+        homeRecyclerAdapter = new HomeBindingAdapter();
 
         View headerView = LayoutInflater.from(mContext).inflate(R.layout.view_home_header, null);
         homeRecyclerAdapter.addHeaderView(headerView);

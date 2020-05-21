@@ -11,14 +11,14 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.SDCardUtils;
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.activity.BaseActivity;
 import com.example.basemvvm.bean.UpdateBean;
-import com.example.basemvvm.base.baseViewModel.BaseActivityLifecycleVM;
-import com.example.basemvvm.network.downloadAndUpload.download.DownLoadUtils;
-import com.example.basemvvm.network.downloadAndUpload.download.DownloadResponseBody;
 import com.example.basemvvm.service.DownloadApkService;
-import com.example.basemvvm.utils.common.LogUtils;
-import com.example.basemvvm.utils.common.MyFileUtils;
+import com.wang.mvvmcore.base.activity.BaseActivity;
+import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
+import com.wang.mvvmcore.network.downloadAndUpload.download.DownLoadUtils;
+import com.wang.mvvmcore.network.downloadAndUpload.download.DownloadResponseBody;
+import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.utils.common.MyFileUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +30,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-import static com.example.basemvvm.constant.FileConstant.DIR_APP;
+import static com.wang.mvvmcore.constant.FileConstant.DIR_APP;
 
 /**
  * author: wtg

@@ -7,11 +7,11 @@ import androidx.appcompat.widget.Toolbar;
 import com.blankj.utilcode.util.BarUtils;
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.activity.BaseSwipeBackLeftActivity;
 import com.example.basemvvm.databinding.ActivityUserInfoBinding;
 import com.example.basemvvm.mvvm.viewModel.UserInfoVM;
 import com.google.android.material.appbar.AppBarLayout;
 import com.gyf.immersionbar.ImmersionBar;
+import com.wang.mvvmcore.base.activity.BaseSwipeBackLeftActivity;
 
 
 /**

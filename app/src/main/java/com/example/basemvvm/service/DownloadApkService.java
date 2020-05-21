@@ -19,9 +19,9 @@ import com.blankj.utilcode.util.SDCardUtils;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.app.BaseApplication;
 import com.example.basemvvm.bean.UpdateBean;
-import com.example.basemvvm.network.downloadAndUpload.download.DownLoadUtils;
-import com.example.basemvvm.network.downloadAndUpload.download.DownloadResponseBody;
-import com.example.basemvvm.utils.common.MyFileUtils;
+import com.wang.mvvmcore.network.downloadAndUpload.download.DownLoadUtils;
+import com.wang.mvvmcore.network.downloadAndUpload.download.DownloadResponseBody;
+import com.wang.mvvmcore.utils.common.MyFileUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -33,9 +33,9 @@ import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-import static com.example.basemvvm.constant.FileConstant.DIR_APP;
 import static com.example.basemvvm.constant.NotificationConstant.DOWNLOAD_APK_CHANNEL_ID;
 import static com.example.basemvvm.constant.NotificationConstant.NOTIFICATION_ID;
+import static com.wang.mvvmcore.constant.FileConstant.DIR_APP;
 
 /**
  * author: wtg

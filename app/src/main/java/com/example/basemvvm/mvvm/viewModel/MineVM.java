@@ -1,7 +1,7 @@
 package com.example.basemvvm.mvvm.viewModel;
 
-import com.example.basemvvm.base.baseViewModel.BaseFragmentLifecycleVM;
-import com.example.basemvvm.base.fragment.BaseMVVMFragment;
+import com.wang.mvvmcore.base.baseViewModel.BaseFragmentLifecycleVM;
+import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
 /**
  * author：wtg

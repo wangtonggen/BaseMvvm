@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.basemvvm.base.fragment.BaseFragment;
+import com.wang.mvvmcore.base.fragment.BaseFragment;
 
 import java.util.List;
 

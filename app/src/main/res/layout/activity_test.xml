@@ -2,42 +2,47 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_test"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="@dimen/sp_38"
-        android:gravity="center"
-        android:text="test" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
-        style="@style/Widget.MaterialComponents.BottomAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:menu="@menu/bottom_nav_menu"
-        app:fabCradleMargin="5dp"
-        app:fabAlignmentMode="center" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@id/bottom_app_bar"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_main"
+                style="@style/tv_item_test"
+                android:text="主页面" />
 
-    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-        android:id="@+id/bnve"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        app:menu="@menu/bottom_nav_menu" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_delegate_multi"
+                style="@style/tv_item_test"
+                android:text="DelegateMulti" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_multi"
+                style="@style/tv_item_test"
+                android:text="Multi" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_provider"
+                style="@style/tv_item_test"
+                android:text="Provider" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_binder"
+                style="@style/tv_item_test"
+                android:text="Binder" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_single"
+                style="@style/tv_item_test"
+                android:text="Single" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="providerVM"
+            type="com.example.basemvvm.mvvm.viewModel.ProviderVM" />
+    </data>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableLoadMore="false"
+        onRefreshListener="@{providerVM.onRefreshListener}">
+
+        <com.scwang.smart.refresh.header.MaterialHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="@{providerVM.linearLayoutManager}"
+            recycler_adapter="@{providerVM.providerAdapter}"/>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</layout>

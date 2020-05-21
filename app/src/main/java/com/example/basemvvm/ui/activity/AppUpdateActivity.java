@@ -7,10 +7,10 @@ import android.view.WindowManager;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.activity.BaseMVVMActivity;
 import com.example.basemvvm.bean.UpdateBean;
 import com.example.basemvvm.databinding.ActivityDialogDownApkBinding;
 import com.example.basemvvm.mvvm.viewModel.DownloadAPKVM;
+import com.wang.mvvmcore.base.activity.BaseMVVMActivity;
 
 /**
  * author: wtg

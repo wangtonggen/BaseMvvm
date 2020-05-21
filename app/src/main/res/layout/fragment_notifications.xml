@@ -19,7 +19,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            layout_manager="@{notificationsVm.linearLayoutManager}"
+            app:layoutManager="@{notificationsVm.linearLayoutManager}"
             recycler_adapter="@{notificationsVm.notificationsRecyclerAdapter}"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

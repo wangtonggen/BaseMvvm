@@ -2,8 +2,8 @@ package com.example.basemvvm.mvvm.viewModel;
 
 import androidx.databinding.ObservableField;
 
-import com.example.basemvvm.base.baseViewModel.BaseVM;
 import com.example.basemvvm.bean.UserBean;
+import com.wang.mvvmcore.base.baseViewModel.BaseVM;
 
 /**
  * author: wtg

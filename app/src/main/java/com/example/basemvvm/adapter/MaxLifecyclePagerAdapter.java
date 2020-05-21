@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.basemvvm.base.fragment.BaseMVVMFragment;
+import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
 import java.util.List;
 

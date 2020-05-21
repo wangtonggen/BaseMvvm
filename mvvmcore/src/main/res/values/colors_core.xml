@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorToolbarBg">#4CAF50</color>
+    <color name="colorToolbarTitle">#ffffff</color>
+    <color name="colorToolbarRight">#4d4d4d</color>
+    <color name="colorNavigationIcon">#ffffff</color>
+</resources>

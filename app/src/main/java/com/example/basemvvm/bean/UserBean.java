@@ -1,6 +1,6 @@
 package com.example.basemvvm.bean;
 
-import com.example.basemvvm.base.entity.BaseMultiEntity;
+import com.wang.mvvmcore.adapter.entity.BaseMultiEntity;
 
 /**
  * author: wtg

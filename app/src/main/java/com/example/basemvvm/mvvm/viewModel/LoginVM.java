@@ -9,17 +9,17 @@ import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.activity.BaseMVVMActivity;
-import com.example.basemvvm.base.baseViewModel.BaseActivityLifecycleVM;
-import com.example.basemvvm.base.baseViewModel.BaseToolbarVM;
 import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.constant.IntentFilterConstant;
+import com.example.basemvvm.network.base.BaseObserver;
 import com.example.basemvvm.network.model.UserModel;
-import com.example.basemvvm.network.networkBase.BaseObserver;
-import com.example.basemvvm.utils.common.CountDownUtils;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
-import com.example.basemvvm.utils.common.ToastUtils;
-import com.example.basemvvm.widget.common.SimpleTextWatcher;
+import com.wang.mvvmcore.base.activity.BaseMVVMActivity;
+import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
+import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
+import com.wang.mvvmcore.utils.common.CountDownUtils;
+import com.wang.mvvmcore.utils.common.ToastUtils;
+import com.wang.mvvmcore.widget.common.SimpleTextWatcher;
 
 import io.reactivex.observers.DefaultObserver;
 

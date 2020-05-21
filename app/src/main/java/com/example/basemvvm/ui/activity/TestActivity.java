@@ -1,12 +1,11 @@
 package com.example.basemvvm.ui.activity;
 
-import androidx.appcompat.widget.AppCompatEditText;
+import android.content.Intent;
+import android.view.View;
 
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.activity.BaseNoMVVMActivity;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.wang.mvvmcore.base.activity.BaseNoMVVMActivity;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -15,10 +14,6 @@ import butterknife.OnClick;
  * desc:
  */
 public class TestActivity extends BaseNoMVVMActivity {
-    @BindView(R.id.et_test)
-    AppCompatEditText et_test;
-    @BindView(R.id.bnve)
-    BottomNavigationViewEx bnve;
 
     @Override
     protected int getLayoutRes() {
@@ -27,12 +22,36 @@ public class TestActivity extends BaseNoMVVMActivity {
 
     @Override
     protected void initView() {
-        bnve.enableAnimation(false);
-        bnve.enableShiftingMode(false);
-        bnve.enableItemShiftingMode(false);
+
     }
 
-    @OnClick(R.id.et_test)
-    public void onViewClicked() {
+//    @OnClick(R.id.tv_main)
+//    public void jumpMain(){
+//        startActivity(new Intent(this,MainActivity.class));
+//    }
+
+    @OnClick({R.id.tv_main,R.id.tv_delegate_multi,R.id.tv_multi,R.id.tv_provider,R.id.tv_single,R.id.tv_binder})
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.tv_main:
+                startActivity(new Intent(this,MainActivity.class));
+                break;
+            case R.id.tv_delegate_multi://多布局条目 delegate方式
+                startActivity(new Intent(this,DelegateActivity.class));
+                break;
+            case R.id.tv_multi://多布局条目 普通方式
+                startActivity(new Intent(this, MultiActivity.class));
+                break;
+            case R.id.tv_provider://多布局条目 provider方式
+                startActivity(new Intent(this,ProviderActivity.class));
+                break;
+            case R.id.tv_binder://多布局 binder方式
+                startActivity(new Intent(this,BinderActivity.class));
+                break;
+            case R.id.tv_single:// 单布局
+                startActivity(new Intent(this,SingleActivity.class));
+                break;
+        }
     }
+
 }

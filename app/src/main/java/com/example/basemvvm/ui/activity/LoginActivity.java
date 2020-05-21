@@ -9,10 +9,10 @@ import androidx.core.content.ContextCompat;
 
 import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
-import com.example.basemvvm.base.activity.BaseSwipeBackLeftActivity;
 import com.example.basemvvm.databinding.ActivityLoginBinding;
 import com.example.basemvvm.mvvm.viewModel.LoginVM;
 import com.gyf.immersionbar.ImmersionBar;
+import com.wang.mvvmcore.base.activity.BaseSwipeBackLeftActivity;
 
 
 public class LoginActivity extends BaseSwipeBackLeftActivity<ActivityLoginBinding, LoginVM> {

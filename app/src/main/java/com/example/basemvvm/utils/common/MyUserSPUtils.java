@@ -5,11 +5,10 @@ import com.example.basemvvm.constant.SPConstant;
 
 /**
  * author: wtg
- * date:2020/5/5 0005
- * desc: 封装SPutils
+ * date:2020/5/21 0021
+ * desc: 封装SPUtils
  */
 public class MyUserSPUtils {
-
     /**
      * 存入是否已登录
      *

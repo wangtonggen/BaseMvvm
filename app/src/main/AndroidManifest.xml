@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,9 +35,14 @@
         <activity
             android:name=".ui.activity.AppUpdateActivity"
             android:theme="@style/dialogstyle" />
-        <activity android:name=".ui.activity.TestActivity" /> <!-- 判断是否需要更新APP的service -->
-        <service android:name=".service.UpdateAppService" /> <!-- 下载的service -->
-        <service android:name=".service.DownloadApkService" /> <!-- 获取基本配置文件的服务 -->
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.DelegateActivity"/>
+        <activity android:name=".ui.activity.MultiActivity"/>
+        <activity android:name=".ui.activity.ProviderActivity"/>
+        <activity android:name=".ui.activity.BinderActivity"/>
+        <activity android:name=".ui.activity.SingleActivity"/>
+        <service android:name=".service.UpdateAppService" />
+        <service android:name=".service.DownloadApkService" />
         <service android:name=".service.ConfigService" /> <!-- 适配7.0无法自动跳转安装界面的问题 -->
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -1,9 +1,9 @@
 package com.example.basemvvm.network.model;
 
 import com.example.basemvvm.bean.LoginBean;
-import com.example.basemvvm.network.networkBase.BaseObserver;
-import com.example.basemvvm.network.networkBase.RetrofitManager;
+import com.example.basemvvm.network.base.BaseObserver;
 import com.example.basemvvm.network.service.UserService;
+import com.wang.mvvmcore.network.networkBase.RetrofitManager;
 
 import java.util.HashMap;
 import java.util.Map;

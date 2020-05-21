@@ -1,8 +1,8 @@
 package com.example.basemvvm.network.model;
 
-import com.example.basemvvm.network.networkBase.FileDownLoadObserver;
-import com.example.basemvvm.network.networkBase.RetrofitManager;
 import com.example.basemvvm.network.service.DownloadAndUploadService;
+import com.wang.mvvmcore.network.networkBase.FileDownLoadObserver;
+import com.wang.mvvmcore.network.networkBase.RetrofitManager;
 
 import java.io.File;
 

@@ -4,12 +4,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.R;
-import com.example.basemvvm.adapter.UserRecyclerAdapter;
-import com.example.basemvvm.base.baseViewModel.BaseFragmentLifecycleVM;
-import com.example.basemvvm.base.fragment.BaseMVVMFragment;
+import com.example.basemvvm.adapter.UserBindingAdapter;
 import com.example.basemvvm.bean.UserBean;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+import com.wang.mvvmcore.base.baseViewModel.BaseFragmentLifecycleVM;
+import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ import java.util.Random;
 public class UserVM extends BaseFragmentLifecycleVM {
     private int page = 1;
     private int pageSize = 15;
-    public UserRecyclerAdapter userRecyclerAdapter;
+    public UserBindingAdapter userRecyclerAdapter;
     public LinearLayoutManager linearLayoutManager;
     private BaseLoadMoreModule baseLoadMoreModule;
     public OnRefreshListener onRefreshListener = refreshLayout -> {
@@ -31,10 +31,6 @@ public class UserVM extends BaseFragmentLifecycleVM {
         loadData(refreshLayout);
     };
 
-    //    public OnLoadMoreListener onLoadMoreListener = refreshLayout -> {
-//        page++;
-//        loadData(refreshLayout);
-//    };
     public UserVM(BaseMVVMFragment fragment) {
         super(fragment);
         init();
@@ -43,7 +39,7 @@ public class UserVM extends BaseFragmentLifecycleVM {
     @Override
     protected void init() {
         linearLayoutManager = new LinearLayoutManager(mContext);
-        userRecyclerAdapter = new UserRecyclerAdapter();
+        userRecyclerAdapter = new UserBindingAdapter();
 
         baseLoadMoreModule = userRecyclerAdapter.getLoadMoreModule();
         baseLoadMoreModule.setOnLoadMoreListener(() -> {
@@ -56,7 +52,6 @@ public class UserVM extends BaseFragmentLifecycleVM {
         userRecyclerAdapter.addChildClickViewIds(R.id.btn_delete);
         userRecyclerAdapter.setOnItemClickListener((adapter, view, position) -> {
             userRecyclerAdapter.getData().remove(position);
-//            userRecyclerAdapter.notifyDataSetChanged();
             userRecyclerAdapter.notifyItemRemoved(position);
             userRecyclerAdapter.notifyItemRangeChanged(position, userRecyclerAdapter.getData().size() - position);
         });
@@ -71,7 +66,6 @@ public class UserVM extends BaseFragmentLifecycleVM {
     }
 
     private void loadData(RefreshLayout refreshLayout) {
-        Random random = new Random();
         if (page == 1) {
             userRecyclerAdapter.setList(getData());
         } else {

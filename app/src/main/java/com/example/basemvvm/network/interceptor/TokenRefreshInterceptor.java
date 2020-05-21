@@ -5,8 +5,8 @@ import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.bean.TokenBean;
 import com.example.basemvvm.constant.CodeConstant;
 import com.example.basemvvm.network.model.TokenModel;
-import com.example.basemvvm.utils.common.OkhttpResponseUtils;
 import com.google.gson.reflect.TypeToken;
+import com.wang.mvvmcore.utils.common.OkhttpResponseUtils;
 
 import org.jetbrains.annotations.NotNull;
 
