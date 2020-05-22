@@ -5,7 +5,7 @@ import android.widget.EditText;
 import androidx.databinding.BindingAdapter;
 
 import com.blankj.utilcode.util.KeyboardUtils;
-import com.wang.mvvmcore.widget.common.SimpleTextWatcher;
+import com.wang.mvvmcore.widget.SimpleTextWatcher;
 
 /**
  * author: wtg

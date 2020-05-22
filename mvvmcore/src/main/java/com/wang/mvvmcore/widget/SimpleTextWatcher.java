@@ -1,4 +1,4 @@
-package com.wang.mvvmcore.widget.common;
+package com.wang.mvvmcore.widget;
 
 import android.text.Editable;
 import android.text.TextWatcher;

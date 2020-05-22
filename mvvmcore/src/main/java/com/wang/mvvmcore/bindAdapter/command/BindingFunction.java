@@ -1,4 +1,4 @@
-package com.wang.mvvmcore.bindAdapter.refresh;
+package com.wang.mvvmcore.bindAdapter.command;
 
 /**
  * author: wtg

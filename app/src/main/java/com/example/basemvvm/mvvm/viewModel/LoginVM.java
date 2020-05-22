@@ -19,7 +19,7 @@ import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
 import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
 import com.wang.mvvmcore.utils.common.CountDownUtils;
 import com.wang.mvvmcore.utils.common.ToastUtils;
-import com.wang.mvvmcore.widget.common.SimpleTextWatcher;
+import com.wang.mvvmcore.widget.SimpleTextWatcher;
 
 import io.reactivex.observers.DefaultObserver;
 

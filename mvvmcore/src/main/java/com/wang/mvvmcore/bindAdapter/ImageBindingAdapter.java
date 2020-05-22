@@ -30,7 +30,7 @@ public class ImageBindingAdapter {
     }
 
     /**
-     * 加载图片
+     * 加载毛玻璃图片
      *
      * @param imageView         imageView
      * @param url               path

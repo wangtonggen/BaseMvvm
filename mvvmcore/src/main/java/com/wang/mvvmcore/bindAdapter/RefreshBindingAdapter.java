@@ -3,7 +3,7 @@ package com.wang.mvvmcore.bindAdapter;
 import androidx.databinding.BindingAdapter;
 
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
-import com.wang.mvvmcore.bindAdapter.refresh.BindingCommand;
+import com.wang.mvvmcore.bindAdapter.command.BindingCommand;
 
 /**
  * author: wtg
