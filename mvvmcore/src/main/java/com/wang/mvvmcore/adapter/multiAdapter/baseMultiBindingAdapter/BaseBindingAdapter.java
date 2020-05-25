@@ -1,5 +1,7 @@
 package com.wang.mvvmcore.adapter.multiAdapter.baseMultiBindingAdapter;
 
+import android.annotation.SuppressLint;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -7,7 +9,8 @@ import androidx.databinding.DataBindingUtil;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
-import com.wang.mvvmcore.config.EmptyConfig;
+import com.wang.mvvmcore.R;
+import com.wang.mvvmcore.base.app.BaseCoreApplication;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class BaseBindingAdapter<T extends MultiItemEntity, VH extends BaseViewHolder> extends BaseMultiItemQuickAdapter<T, VH> {
     public BaseBindingAdapter() {
+        super();
         setEmptyView(getRecyclerEmptyView());
     }
 
@@ -40,8 +44,9 @@ public abstract class BaseBindingAdapter<T extends MultiItemEntity, VH extends B
      *
      * @return view
      */
+    @SuppressLint("InflateParams")
     protected View getRecyclerEmptyView() {
-        return EmptyConfig.getInstance().getEmptyView();
+        return LayoutInflater.from(BaseCoreApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
     }
 
     /**

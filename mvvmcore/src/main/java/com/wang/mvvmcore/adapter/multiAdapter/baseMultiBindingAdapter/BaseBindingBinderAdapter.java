@@ -1,10 +1,13 @@
 package com.wang.mvvmcore.adapter.multiAdapter.baseMultiBindingAdapter;
 
+import android.annotation.SuppressLint;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseBinderAdapter;
 import com.chad.library.adapter.base.module.LoadMoreModule;
-import com.wang.mvvmcore.config.EmptyConfig;
+import com.wang.mvvmcore.R;
+import com.wang.mvvmcore.base.app.BaseCoreApplication;
 
 /**
  * author: wtg
@@ -13,6 +16,7 @@ import com.wang.mvvmcore.config.EmptyConfig;
  */
 public class BaseBindingBinderAdapter extends BaseBinderAdapter implements LoadMoreModule {
     public BaseBindingBinderAdapter() {
+        super();
         setEmptyView(getRecyclerEmptyView());
     }
 
@@ -21,8 +25,9 @@ public class BaseBindingBinderAdapter extends BaseBinderAdapter implements LoadM
      *
      * @return view
      */
+    @SuppressLint("InflateParams")
     protected View getRecyclerEmptyView() {
-        return EmptyConfig.getInstance().getEmptyView();
+        return LayoutInflater.from(BaseCoreApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
     }
 
 }

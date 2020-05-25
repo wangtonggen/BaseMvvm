@@ -14,20 +14,7 @@ import com.wang.mvvmcore.base.app.BaseCoreApplication;
  */
 public class EmptyConfig {
     @SuppressLint("StaticFieldLeak")
-    private static EmptyConfig INSTANCE;
-    private View emptyView;
-    private EmptyConfig(){}
-
-    public static EmptyConfig getInstance(){
-        if (INSTANCE == null){
-            synchronized (EmptyConfig.class){
-                if (INSTANCE == null){
-                    INSTANCE = new EmptyConfig();
-                }
-            }
-        }
-        return INSTANCE;
-    }
+    public static View emptyView  = LayoutInflater.from(BaseCoreApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
 
     /**
      * 设置全局的空布局

@@ -1,11 +1,14 @@
 package com.wang.mvvmcore.adapter.singleAdapter;
 
+import android.annotation.SuppressLint;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
-import com.wang.mvvmcore.config.EmptyConfig;
+import com.wang.mvvmcore.R;
+import com.wang.mvvmcore.base.app.BaseCoreApplication;
 
 /**
  * author: wtg
@@ -23,7 +26,8 @@ public abstract class BaseSingleAdapter<T,VH extends BaseViewHolder> extends Bas
      *
      * @return view
      */
+    @SuppressLint("InflateParams")
     protected View getRecyclerEmptyView() {
-        return EmptyConfig.getInstance().getEmptyView();
+        return LayoutInflater.from(BaseCoreApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
     }
 }

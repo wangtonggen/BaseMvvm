@@ -1,5 +1,7 @@
 package com.wang.mvvmcore.adapter.multiAdapter.baseMultiBindingAdapter;
 
+import android.annotation.SuppressLint;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -7,7 +9,8 @@ import androidx.databinding.DataBindingUtil;
 import com.chad.library.adapter.base.BaseDelegateMultiAdapter;
 import com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
-import com.wang.mvvmcore.config.EmptyConfig;
+import com.wang.mvvmcore.R;
+import com.wang.mvvmcore.base.app.BaseCoreApplication;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -41,8 +44,9 @@ public abstract class BaseBindingDelegateAdapter<T, VH extends BaseViewHolder> e
      *
      * @return view
      */
+    @SuppressLint("InflateParams")
     protected View getRecyclerEmptyView() {
-        return EmptyConfig.getInstance().getEmptyView();
+        return LayoutInflater.from(BaseCoreApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
     }
 
     /**

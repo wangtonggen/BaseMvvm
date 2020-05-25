@@ -1,10 +1,13 @@
 package com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter;
 
+import android.annotation.SuppressLint;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseProviderMultiAdapter;
+import com.wang.mvvmcore.R;
 import com.wang.mvvmcore.adapter.entity.BaseMultiEntity;
-import com.wang.mvvmcore.config.EmptyConfig;
+import com.wang.mvvmcore.base.app.BaseCoreApplication;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -30,8 +33,9 @@ public abstract class BaseProviderAdapter<T extends BaseMultiEntity> extends Bas
      *
      * @return view
      */
+    @SuppressLint("InflateParams")
     protected View getRecyclerEmptyView() {
-        return EmptyConfig.getInstance().getEmptyView();
+        return LayoutInflater.from(BaseCoreApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
     }
     /**
      * 添加Provider类型
