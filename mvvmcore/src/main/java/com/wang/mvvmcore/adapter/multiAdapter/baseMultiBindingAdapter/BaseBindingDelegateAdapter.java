@@ -1,10 +1,13 @@
 package com.wang.mvvmcore.adapter.multiAdapter.baseMultiBindingAdapter;
 
+import android.view.View;
+
 import androidx.databinding.DataBindingUtil;
 
 import com.chad.library.adapter.base.BaseDelegateMultiAdapter;
 import com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
+import com.wang.mvvmcore.config.EmptyConfig;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class BaseBindingDelegateAdapter<T, VH extends BaseViewHolder> extends BaseDelegateMultiAdapter<T, VH> {
     public BaseBindingDelegateAdapter() {
+        setEmptyView(getRecyclerEmptyView());
         setMultiTypeDelegate(getBaseMultiTypeDelegate());
     }
 
@@ -30,6 +34,15 @@ public abstract class BaseBindingDelegateAdapter<T, VH extends BaseViewHolder> e
             return;
         }
         bindData(vh, t);
+    }
+
+    /**
+     * 设置列表无数据时的处理
+     *
+     * @return view
+     */
+    protected View getRecyclerEmptyView() {
+        return EmptyConfig.getInstance().getEmptyView();
     }
 
     /**

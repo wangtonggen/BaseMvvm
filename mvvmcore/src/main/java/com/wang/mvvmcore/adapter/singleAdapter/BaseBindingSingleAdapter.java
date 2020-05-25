@@ -12,6 +12,7 @@ import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.wang.mvvmcore.R;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
+import com.wang.mvvmcore.config.EmptyConfig;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -49,9 +50,8 @@ public abstract class BaseBindingSingleAdapter<VB extends ViewDataBinding, T, VH
      *
      * @return view
      */
-    @SuppressLint("InflateParams")
     protected View getRecyclerEmptyView() {
-        return LayoutInflater.from(BaseCoreApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
+        return EmptyConfig.getInstance().getEmptyView();
     }
 
     /**
