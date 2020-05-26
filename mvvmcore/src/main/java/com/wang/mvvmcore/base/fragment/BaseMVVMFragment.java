@@ -18,7 +18,7 @@ import com.wang.mvvmcore.utils.common.LogUtils;
  * date:2020/3/12 0012
  * desc: fragment 基类
  */
-public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseFragment {
+public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseLazyLoadFragment {
 
     protected B binding;
     protected int viewModelId;

@@ -25,11 +25,6 @@ public class TestActivity extends BaseNoMVVMActivity {
 
     }
 
-//    @OnClick(R.id.tv_main)
-//    public void jumpMain(){
-//        startActivity(new Intent(this,MainActivity.class));
-//    }
-
     @OnClick({R.id.tv_main,R.id.tv_delegate_multi,R.id.tv_multi,R.id.tv_provider,R.id.tv_single,R.id.tv_binder})
     public void onViewClicked(View view) {
         switch (view.getId()){

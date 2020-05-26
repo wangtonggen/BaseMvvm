@@ -4,14 +4,14 @@ import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.databinding.FragmentUserBinding;
 import com.example.basemvvm.mvvm.viewModel.UserVM;
-import com.wang.mvvmcore.base.fragment.LazyLoadFragment;
+import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
 /**
  * author: wtg
  * date:2020/4/30 0030
  * desc:
  */
-public class UserFragment extends LazyLoadFragment<FragmentUserBinding, UserVM> {
+public class UserFragment extends BaseMVVMFragment<FragmentUserBinding, UserVM> {
 
     @Override
     public void onLazyLoadData() {

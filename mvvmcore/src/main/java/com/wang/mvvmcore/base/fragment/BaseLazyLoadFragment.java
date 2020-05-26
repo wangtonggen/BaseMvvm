@@ -9,7 +9,7 @@ import com.wang.mvvmcore.base.baseViewModel.BaseLifecycleVM;
  * date:2020/3/17 0017
  * desc: 懒加载
  */
-public abstract class LazyLoadFragment<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseMVVMFragment<B, VM> {
+public abstract class BaseLazyLoadFragment extends BaseFragment {
     private boolean isFirstLoad = true;//是否是第一次加载 true是 false 否
 
     @Override

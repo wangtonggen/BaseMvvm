@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
  * date:2020/3/21 0021
  * desc: 不适用mvvm的fragment的基类
  */
-public abstract class BaseNoMVVMFragment extends BaseFragment {
+public abstract class BaseNoMVVMFragment extends BaseLazyLoadFragment {
     protected View rootView;
 
     @Nullable

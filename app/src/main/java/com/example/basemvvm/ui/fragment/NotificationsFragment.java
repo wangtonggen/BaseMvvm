@@ -4,10 +4,10 @@ import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.databinding.FragmentNotificationsBinding;
 import com.example.basemvvm.mvvm.viewModel.NotificationsVM;
-import com.wang.mvvmcore.base.fragment.LazyLoadFragment;
+import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
 
-public class NotificationsFragment extends LazyLoadFragment<FragmentNotificationsBinding, NotificationsVM> {
+public class NotificationsFragment extends BaseMVVMFragment<FragmentNotificationsBinding, NotificationsVM> {
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_notifications;

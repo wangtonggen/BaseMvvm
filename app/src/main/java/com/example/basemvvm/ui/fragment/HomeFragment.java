@@ -4,10 +4,10 @@ import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.databinding.FragmentHomeBinding;
 import com.example.basemvvm.mvvm.viewModel.HomeVM;
-import com.wang.mvvmcore.base.fragment.LazyLoadFragment;
+import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
 
-public class HomeFragment extends LazyLoadFragment<FragmentHomeBinding, HomeVM> {
+public class HomeFragment extends BaseMVVMFragment<FragmentHomeBinding, HomeVM> {
 
     @Override
     protected int getLayoutRes() {
