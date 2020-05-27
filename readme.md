@@ -19,7 +19,7 @@ maven {url 'https://jitpack.io' }
 apply plugin: 'com.jakewharton.butterknife'
 
 3.在APP 里面的 build.gradle添加依赖  
-implementation 'com.github.wangtonggen:BaseMvvm:1.0.1'  
+implementation 'com.github.wangtonggen:BaseMvvm:1.0.2'  
 还需要在APP 里面的 build.gradle添加 apply plugin:
 'com.jakewharton.butterknife'  
 //butterknife  
