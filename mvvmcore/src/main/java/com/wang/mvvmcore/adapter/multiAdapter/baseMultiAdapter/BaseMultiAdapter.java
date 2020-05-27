@@ -4,8 +4,8 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.chad.library.adapter.base.BaseDelegateMultiAdapter;
-import com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate;
+import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.wang.mvvmcore.R;
@@ -13,13 +13,13 @@ import com.wang.mvvmcore.base.app.BaseCoreApplication;
 
 /**
  * author: wtg
- * date:2020/5/20 0020
- * desc:
+ * date:2020/5/27 0027
+ * desc: 多布局 适合不复杂的逻辑
  */
-public abstract class BaseDelegateAdapter<T, VH extends BaseViewHolder> extends BaseDelegateMultiAdapter<T,VH> implements LoadMoreModule {
-    public BaseDelegateAdapter() {
-        setEmptyView(getRecyclerEmptyView());
-        setMultiTypeDelegate(getBaseMultiTypeDelegate());
+public abstract class BaseMultiAdapter<T extends MultiItemEntity,VH extends BaseViewHolder> extends BaseMultiItemQuickAdapter<T,VH> implements LoadMoreModule {
+    public BaseMultiAdapter() {
+        super();
+        addItemTypes();
     }
 
     /**
@@ -33,9 +33,7 @@ public abstract class BaseDelegateAdapter<T, VH extends BaseViewHolder> extends 
     }
 
     /**
-     * 获取代理
-     *
-     * @return 代理实体
+     * 添加item的类型
      */
-    public abstract BaseMultiTypeDelegate<T> getBaseMultiTypeDelegate();
+    public abstract void addItemTypes();
 }

@@ -40,7 +40,6 @@ public abstract class BaseBindingSingleAdapter<VB extends ViewDataBinding, T, VH
         VB viewDataBinding = getViewDataBinding(vh);
         if (viewDataBinding != null) {
             bindData(vh, viewDataBinding, t);
-            viewDataBinding.executePendingBindings();
         }
     }
 

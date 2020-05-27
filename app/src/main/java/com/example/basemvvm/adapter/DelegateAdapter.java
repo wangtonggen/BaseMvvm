@@ -3,7 +3,6 @@ package com.example.basemvvm.adapter;
 import androidx.databinding.DataBindingUtil;
 
 import com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate;
-import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
 import com.example.basemvvm.bean.UserBean;
@@ -22,7 +21,7 @@ import java.util.List;
  * date:2020/5/20 0020
  * desc:
  */
-public class DelegateAdapter extends BaseBindingDelegateAdapter<UserBean, BaseViewHolder> implements LoadMoreModule {
+public class DelegateAdapter extends BaseBindingDelegateAdapter<UserBean, BaseViewHolder> {
 
     @Override
     public void bindData(@NotNull BaseViewHolder baseViewHolder, UserBean multiItemBean) {
@@ -48,7 +47,7 @@ public class DelegateAdapter extends BaseBindingDelegateAdapter<UserBean, BaseVi
     }
 
     public static class MyMultiTypeDelegate extends BaseMultiTypeDelegate<UserBean> {
-        MyMultiTypeDelegate() {
+        public MyMultiTypeDelegate() {
             addItemType(0, R.layout.recycler_item_user);
             addItemType(1, R.layout.recycler_item_image);
         }

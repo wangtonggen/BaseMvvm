@@ -1,4 +1,4 @@
-package com.wang.mvvmcore.adapter.multiAdapter.baseMultiBindingAdapter;
+package com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -14,8 +14,8 @@ import com.wang.mvvmcore.base.app.BaseCoreApplication;
  * date:2020/5/20 0020
  * desc:
  */
-public class BaseBindingBinderAdapter extends BaseBinderAdapter implements LoadMoreModule {
-    public BaseBindingBinderAdapter() {
+public class BaseMultiBinderAdapter extends BaseBinderAdapter implements LoadMoreModule {
+    public BaseMultiBinderAdapter() {
         super();
         setEmptyView(getRecyclerEmptyView());
     }

@@ -26,4 +26,9 @@ public class ProviderActivity extends BaseSwipeBackLeftActivity<ActivityProvider
     protected int getLayoutRes() {
         return R.layout.activity_provider;
     }
+
+    @Override
+    protected void initView() {
+        binding.smartRefreshLayout.autoRefresh();
+    }
 }

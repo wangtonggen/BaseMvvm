@@ -26,4 +26,9 @@ public class MultiActivity extends BaseSwipeBackLeftActivity<ActivityMultiBindin
     protected int getLayoutRes() {
         return R.layout.activity_multi;
     }
+
+    @Override
+    protected void initView() {
+        binding.smartRefreshLayout.autoRefresh();
+    }
 }

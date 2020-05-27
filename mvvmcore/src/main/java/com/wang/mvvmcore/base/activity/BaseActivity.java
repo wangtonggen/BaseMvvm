@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.LayoutRes;
 
+import com.wang.mvvmcore.Interface.SwipeInterface;
 import com.wang.mvvmcore.utils.common.ActivityManagerUtils;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
@@ -82,6 +83,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
      *
      * @return 方向
      */
+    @SwipeInterface
     protected abstract int getEdgeTrackingEnabled();
 
     /**

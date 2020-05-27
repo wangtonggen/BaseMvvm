@@ -26,4 +26,9 @@ public class SingleActivity extends BaseSwipeBackLeftActivity<ActivitySingleBind
     protected int getLayoutRes() {
         return R.layout.activity_single;
     }
+
+    @Override
+    protected void initView() {
+        binding.smartRefreshLayout.autoRefresh();
+    }
 }

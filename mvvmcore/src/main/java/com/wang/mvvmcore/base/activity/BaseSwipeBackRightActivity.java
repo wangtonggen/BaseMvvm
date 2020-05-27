@@ -3,6 +3,7 @@ package com.wang.mvvmcore.base.activity;
 import androidx.databinding.ViewDataBinding;
 
 import com.wang.mvvmcore.base.baseViewModel.BaseLifecycleVM;
+import com.wang.mvvmcore.constant.SwipeConstant;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
@@ -14,6 +15,6 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
 public abstract class BaseSwipeBackRightActivity<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseMVVMActivity<B, VM> {
     @Override
     protected int getEdgeTrackingEnabled() {
-        return SwipeBackLayout.EDGE_RIGHT;
+        return SwipeConstant.SWIPE_RIGHT;
     }
 }
