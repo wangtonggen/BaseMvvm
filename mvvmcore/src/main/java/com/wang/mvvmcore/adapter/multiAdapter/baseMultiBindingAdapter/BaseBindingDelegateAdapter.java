@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.chad.library.adapter.base.BaseDelegateMultiAdapter;
 import com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate;
+import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.wang.mvvmcore.R;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
@@ -20,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
  * desc:适用于: 1、实体类不方便扩展，此Adapter的数据类型可以是任意类型，只需要在BaseMultiTypeDelegate.getItemType中返回对应类型
  * 2、item 类型较少 如果类型较多，为了方便隔离各类型的业务逻辑，推荐使用BaseProviderMultiAdapter
  */
-public abstract class BaseBindingDelegateAdapter<T, VH extends BaseViewHolder> extends BaseDelegateMultiAdapter<T, VH> {
+public abstract class BaseBindingDelegateAdapter<T, VH extends BaseViewHolder> extends BaseDelegateMultiAdapter<T, VH> implements LoadMoreModule {
     public BaseBindingDelegateAdapter() {
         setEmptyView(getRecyclerEmptyView());
         setMultiTypeDelegate(getBaseMultiTypeDelegate());

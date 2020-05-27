@@ -26,4 +26,9 @@ public class BinderActivity extends BaseSwipeBackLeftActivity<ActivityBinderBind
     protected int getLayoutRes() {
         return R.layout.activity_binder;
     }
+
+    @Override
+    protected void initView() {
+        binding.smartRefreshLayout.autoRefresh();
+    }
 }

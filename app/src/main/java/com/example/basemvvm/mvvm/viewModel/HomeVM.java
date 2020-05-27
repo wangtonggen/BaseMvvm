@@ -13,7 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.R;
-import com.example.basemvvm.adapter.HomeBindingAdapter;
+import com.example.basemvvm.adapter.HomeBindingMultiAdapter;
 import com.example.basemvvm.bean.BannerBean;
 import com.example.basemvvm.bean.MultiItemBean;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
@@ -37,7 +37,7 @@ public class HomeVM extends BaseFragmentLifecycleVM {
 
     private BaseLoadMoreModule baseLoadMoreModule;
     public LinearLayoutManager linearLayoutManager;
-    public HomeBindingAdapter homeRecyclerAdapter;
+    public HomeBindingMultiAdapter homeRecyclerAdapter;
 
     private XBanner banner;
     private List<BannerBean> bannerBeans = new ArrayList<>();
@@ -56,7 +56,7 @@ public class HomeVM extends BaseFragmentLifecycleVM {
     @Override
     protected void init() {
         linearLayoutManager = new LinearLayoutManager(mContext);
-        homeRecyclerAdapter = new HomeBindingAdapter();
+        homeRecyclerAdapter = new HomeBindingMultiAdapter();
 
         View headerView = LayoutInflater.from(mContext).inflate(R.layout.view_home_header, null);
         homeRecyclerAdapter.addHeaderView(headerView);

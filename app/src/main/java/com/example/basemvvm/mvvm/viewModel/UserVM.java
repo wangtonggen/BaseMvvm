@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.R;
-import com.example.basemvvm.adapter.UserBindingAdapter;
+import com.example.basemvvm.adapter.UserAdapter;
 import com.example.basemvvm.bean.UserBean;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
@@ -23,7 +23,7 @@ import java.util.Random;
 public class UserVM extends BaseFragmentLifecycleVM {
     private int page = 1;
     private int pageSize = 15;
-    public UserBindingAdapter userRecyclerAdapter;
+    public UserAdapter userRecyclerAdapter;
     public LinearLayoutManager linearLayoutManager;
     private BaseLoadMoreModule baseLoadMoreModule;
     public OnRefreshListener onRefreshListener = refreshLayout -> {
@@ -39,7 +39,7 @@ public class UserVM extends BaseFragmentLifecycleVM {
     @Override
     protected void init() {
         linearLayoutManager = new LinearLayoutManager(mContext);
-        userRecyclerAdapter = new UserBindingAdapter();
+        userRecyclerAdapter = new UserAdapter();
 
         baseLoadMoreModule = userRecyclerAdapter.getLoadMoreModule();
         baseLoadMoreModule.setOnLoadMoreListener(() -> {

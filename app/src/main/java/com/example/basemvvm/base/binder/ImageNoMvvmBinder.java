@@ -1,11 +1,10 @@
-package com.example.basemvvm.base.provider;
+package com.example.basemvvm.base.binder;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
-import com.example.basemvvm.adapter.UserAdapter;
 import com.example.basemvvm.bean.UserBean;
-import com.wang.mvvmcore.adapter.provider.BaseProvider;
+import com.wang.mvvmcore.adapter.binder.BaseBinder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,12 +15,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * date:2020/5/27 0027
  * desc:
  */
-public class UserProvider extends BaseProvider<UserBean> {
-    @Override
-    public int getItemViewType() {
-        return UserAdapter.TYPE_USER;
-    }
-
+public class ImageNoMvvmBinder extends BaseBinder<UserBean> {
     @Override
     public int getLayoutId() {
         return R.layout.recycler_item_user_nomvvm;

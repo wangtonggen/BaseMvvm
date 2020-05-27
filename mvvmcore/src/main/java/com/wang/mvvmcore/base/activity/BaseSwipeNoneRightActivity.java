@@ -4,6 +4,7 @@ package com.wang.mvvmcore.base.activity;
 import androidx.databinding.ViewDataBinding;
 
 import com.wang.mvvmcore.base.baseViewModel.BaseLifecycleVM;
+import com.wang.mvvmcore.constant.SwipeConstant;
 
 /**
  * author: wtg
@@ -13,6 +14,6 @@ import com.wang.mvvmcore.base.baseViewModel.BaseLifecycleVM;
 public abstract class BaseSwipeNoneRightActivity<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseMVVMActivity<B, VM> {
     @Override
     protected int getEdgeTrackingEnabled() {
-        return -1;
+        return SwipeConstant.SWIPE_NONE;
     }
 }

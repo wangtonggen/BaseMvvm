@@ -41,6 +41,12 @@
         <activity android:name=".ui.activity.ProviderActivity"/>
         <activity android:name=".ui.activity.BinderActivity"/>
         <activity android:name=".ui.activity.SingleActivity"/>
+        <activity android:name=".ui.activity.noMvvm.DelegateNoMvvmActivity"/>
+        <activity android:name=".ui.activity.noMvvm.MultiNoMvvmActivity"/>
+        <activity android:name=".ui.activity.noMvvm.ProviderNoMvvmActivity"/>
+        <activity android:name=".ui.activity.noMvvm.SingleNoMvvmActivity"/>
+        <activity android:name=".ui.activity.noMvvm.BinderNoMvvmActivity"/>
+
         <service android:name=".service.UpdateAppService" />
         <service android:name=".service.DownloadApkService" />
         <service android:name=".service.ConfigService" /> <!-- 适配7.0无法自动跳转安装界面的问题 -->

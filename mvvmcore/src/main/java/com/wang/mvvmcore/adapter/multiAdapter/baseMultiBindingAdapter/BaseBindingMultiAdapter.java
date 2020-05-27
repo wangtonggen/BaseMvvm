@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.wang.mvvmcore.R;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
@@ -19,10 +20,11 @@ import org.jetbrains.annotations.NotNull;
  * date:2020/3/23 0023
  * desc: 适用于类型较少，业务不复杂的场景，便于快速使用。
  */
-public abstract class BaseBindingAdapter<T extends MultiItemEntity, VH extends BaseViewHolder> extends BaseMultiItemQuickAdapter<T, VH> {
-    public BaseBindingAdapter() {
+public abstract class BaseBindingMultiAdapter<T extends MultiItemEntity, VH extends BaseViewHolder> extends BaseMultiItemQuickAdapter<T, VH> implements LoadMoreModule {
+    public BaseBindingMultiAdapter() {
         super();
         setEmptyView(getRecyclerEmptyView());
+        addItemTypes();
     }
 
     @Override
@@ -48,6 +50,11 @@ public abstract class BaseBindingAdapter<T extends MultiItemEntity, VH extends B
     protected View getRecyclerEmptyView() {
         return LayoutInflater.from(BaseCoreApplication.instance).inflate(R.layout.view_default_recycler_empty, null);
     }
+
+    /**
+     * 添加item的类型
+     */
+    public abstract void addItemTypes();
 
     /**
      * 设置数据源

@@ -3,7 +3,7 @@ package com.example.basemvvm.mvvm.viewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chad.library.adapter.base.module.BaseLoadMoreModule;
-import com.example.basemvvm.adapter.Adapter;
+import com.example.basemvvm.adapter.MultiAdapter;
 import com.example.basemvvm.bean.MultiItemBean;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
@@ -24,7 +24,7 @@ public class MultiVM extends BaseActivityLifecycleVM {
     private int pageSize = 15;
     private BaseLoadMoreModule baseLoadMoreModule;
     public LinearLayoutManager linearLayoutManager;
-    public Adapter multiAdapter;
+    public MultiAdapter multiAdapter;
     public OnRefreshListener onRefreshListener = refreshLayout -> {
         page = 1;
         loadData(refreshLayout);
@@ -37,7 +37,7 @@ public class MultiVM extends BaseActivityLifecycleVM {
     @Override
     protected void init() {
         linearLayoutManager = new LinearLayoutManager(mActivity);
-        multiAdapter = new Adapter();
+        multiAdapter = new MultiAdapter();
 
         multiAdapter.setOnItemClickListener((adapter, view, position) -> {
             multiAdapter.getData().get(position).name = "hello";

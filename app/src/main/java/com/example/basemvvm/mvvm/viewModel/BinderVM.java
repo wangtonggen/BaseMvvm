@@ -10,7 +10,7 @@ import com.example.basemvvm.bean.NotificationBean;
 import com.example.basemvvm.bean.UserBean;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
-import com.wang.mvvmcore.adapter.multiAdapter.baseMultiBindingAdapter.BaseBindingBinderAdapter;
+import com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter.BaseMultiBinderAdapter;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
 
@@ -26,7 +26,7 @@ public class BinderVM extends BaseActivityLifecycleVM {
     private int page = 1;
     private int pageSize = 15;
     private BaseLoadMoreModule baseLoadMoreModule;
-    public BaseBindingBinderAdapter baseBindingBinderAdapter;
+    public BaseMultiBinderAdapter baseMultiBinderAdapter;
     public LinearLayoutManager linearLayoutManager;
     public OnRefreshListener onRefreshListener = refreshLayout -> {
         page = 1;
@@ -40,9 +40,9 @@ public class BinderVM extends BaseActivityLifecycleVM {
     @Override
     protected void init() {
         linearLayoutManager = new LinearLayoutManager(mActivity);
-        baseBindingBinderAdapter = new BaseBindingBinderAdapter();
-        baseBindingBinderAdapter.addItemBinder(UserBean.class,new ImageItemBinder()).addItemBinder(NotificationBean.class,new UserItemBinder());
-        baseLoadMoreModule = baseBindingBinderAdapter.getLoadMoreModule();
+        baseMultiBinderAdapter = new BaseMultiBinderAdapter();
+        baseMultiBinderAdapter.addItemBinder(UserBean.class,new ImageItemBinder()).addItemBinder(NotificationBean.class,new UserItemBinder());
+        baseLoadMoreModule = baseMultiBinderAdapter.getLoadMoreModule();
         baseLoadMoreModule.setOnLoadMoreListener(() -> {
             page++;
             loadData(null);
@@ -50,13 +50,13 @@ public class BinderVM extends BaseActivityLifecycleVM {
         baseLoadMoreModule.setAutoLoadMore(true);
         baseLoadMoreModule.setEnableLoadMoreIfNotFullPage(false);
         //url http://e.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7e41f5cfe760e0cf3d6cad6ee.jpg
-        baseBindingBinderAdapter.addChildClickViewIds(R.id.btn_delete);
-        baseBindingBinderAdapter.setOnItemClickListener((adapter, view, position) -> {
-            baseBindingBinderAdapter.getData().remove(position);
-            baseBindingBinderAdapter.notifyItemRemoved(position);
-            baseBindingBinderAdapter.notifyItemRangeChanged(position, baseBindingBinderAdapter.getData().size() - position);
+        baseMultiBinderAdapter.addChildClickViewIds(R.id.btn_delete);
+        baseMultiBinderAdapter.setOnItemClickListener((adapter, view, position) -> {
+            baseMultiBinderAdapter.getData().remove(position);
+            baseMultiBinderAdapter.notifyItemRemoved(position);
+            baseMultiBinderAdapter.notifyItemRangeChanged(position, baseMultiBinderAdapter.getData().size() - position);
         });
-        baseBindingBinderAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+        baseMultiBinderAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             switch (view.getId()) {
                 case R.id.btn_delete:
 //                    baseRecyclerBinderAdapter.getData().get(position).setUrl("http://e.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7e41f5cfe760e0cf3d6cad6ee.jpg");
@@ -68,12 +68,12 @@ public class BinderVM extends BaseActivityLifecycleVM {
 
     private void loadData(RefreshLayout refreshLayout) {
         if (page == 1) {
-            baseBindingBinderAdapter.setList(getData());
+            baseMultiBinderAdapter.setList(getData());
         } else {
-            baseBindingBinderAdapter.addData(getData());
+            baseMultiBinderAdapter.addData(getData());
         }
         baseLoadMoreModule.setEnableLoadMore(true);
-        if (baseBindingBinderAdapter.getData().size() >= 75) {
+        if (baseMultiBinderAdapter.getData().size() >= 75) {
             baseLoadMoreModule.loadMoreEnd();
         } else {
             baseLoadMoreModule.loadMoreComplete();

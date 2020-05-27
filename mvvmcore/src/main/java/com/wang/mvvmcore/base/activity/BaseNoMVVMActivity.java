@@ -2,6 +2,8 @@ package com.wang.mvvmcore.base.activity;
 
 import android.os.Bundle;
 
+import com.wang.mvvmcore.constant.SwipeConstant;
+
 import butterknife.ButterKnife;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
@@ -25,6 +27,6 @@ public abstract class BaseNoMVVMActivity extends BaseActivity {
      * @return 方向
      */
     protected int getEdgeTrackingEnabled() {
-        return SwipeBackLayout.EDGE_LEFT;
+        return SwipeConstant.SWIPE_LEFT;
     }
 }

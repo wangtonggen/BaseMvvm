@@ -178,7 +178,7 @@ public class MainActivity extends BaseNoMVVMActivity {
         });
 
         viewPager.setUserInputEnabled(false);
-        viewPager.setOffscreenPageLimit(1);
+        viewPager.setOffscreenPageLimit(4);
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
