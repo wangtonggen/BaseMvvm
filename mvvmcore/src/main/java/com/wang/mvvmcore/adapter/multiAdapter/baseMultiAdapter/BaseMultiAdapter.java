@@ -14,7 +14,12 @@ import com.wang.mvvmcore.base.app.BaseCoreApplication;
 /**
  * author: wtg
  * date:2020/5/27 0027
- * desc: 多布局 适合不复杂的逻辑
+ * desc: 多类型布局，适用于类型较少，业务不复杂的场景，便于快速使用。
+ *   data[T]必须实现[MultiItemEntity]
+ *   如果数据类无法实现[MultiItemEntity]，请使用[BaseDelegateAdapter]
+ *   如果类型较多，为了方便隔离各类型的业务逻辑，推荐使用[BaseProviderAdapter]
+ *   T 实体类
+ *   VH ViewHolder
  */
 public abstract class BaseMultiAdapter<T extends MultiItemEntity,VH extends BaseViewHolder> extends BaseMultiItemQuickAdapter<T,VH> implements LoadMoreModule {
     public BaseMultiAdapter() {

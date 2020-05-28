@@ -21,6 +21,7 @@ public class CommonBindingAdapter {
      *
      * @param view    view
      * @param bgResId 资源id
+     * @param alpha   透明度
      */
     @BindingAdapter(value = {"view_background", "view_Alpha"}, requireAll = false)
     public static void setBgRes(View view, int bgResId, @FloatRange(from = 0.0, to = 1.0) float alpha) {
@@ -28,7 +29,6 @@ public class CommonBindingAdapter {
             return;
         }
         view.setBackgroundResource(bgResId);
-//        view.setAlpha(alpha);
         view.getBackground().mutate().setAlpha((int) (alpha * 255));
     }
 
@@ -36,7 +36,7 @@ public class CommonBindingAdapter {
      * 设置填充左边布局
      *
      * @param view          TextView 和其子类
-     * @param drawableResId drawable
+     * @param drawableResId drawable资源id
      */
     @BindingAdapter("compoundDrawableLeft")
     public static void compoundDrawablesLeft(TextView view, @DrawableRes int drawableResId) {
@@ -47,7 +47,7 @@ public class CommonBindingAdapter {
      * 设置填充右边布局
      *
      * @param view          TextView 和其子类
-     * @param drawableResId drawable
+     * @param drawableResId drawable资源id
      */
     @BindingAdapter("compoundDrawableRight")
     public static void compoundDrawablesRight(TextView view, @DrawableRes int drawableResId) {
@@ -58,7 +58,7 @@ public class CommonBindingAdapter {
      * 设置填充上边布局
      *
      * @param view          TextView 和其子类
-     * @param drawableResId drawable
+     * @param drawableResId drawable资源id
      */
     @BindingAdapter("compoundDrawableTop")
     public static void compoundDrawablesTop(TextView view, @DrawableRes int drawableResId) {
@@ -69,7 +69,7 @@ public class CommonBindingAdapter {
      * 设置填充下边布局
      *
      * @param view          TextView 和其子类
-     * @param drawableResId drawable
+     * @param drawableResId drawable资源id
      */
     @BindingAdapter("compoundDrawableBottom")
     public static void compoundDrawablesBottom(TextView view, @DrawableRes int drawableResId) {
@@ -87,6 +87,12 @@ public class CommonBindingAdapter {
         textView.setTextColor(textView.getResources().getColor(resColorId));
     }
 
+    /**
+     * 设置透明度
+     *
+     * @param textView view
+     * @param alpha    透明度
+     */
     @BindingAdapter(value = {"text_alpha"}, requireAll = false)
     public static void setTextAlpha(TextView textView, @FloatRange(from = 0.0f, to = 1.0f) float alpha) {
         textView.setAlpha(alpha);

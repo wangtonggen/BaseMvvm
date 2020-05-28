@@ -14,7 +14,11 @@ import com.wang.mvvmcore.base.app.BaseCoreApplication;
 /**
  * author: wtg
  * date:2020/5/20 0020
- * desc:
+ * desc:多类型布局，通过代理类的方式，返回布局 id 和 item 类型；
+ *   适用于:
+ *   1、实体类不方便扩展，此Adapter的数据类型可以是任意类型，只需要在[BaseMultiTypeDelegate.getItemType]中返回对应类型
+ *   2、item 类型较少
+ *   如果类型较多，为了方便隔离各类型的业务逻辑，推荐使用[BaseMultiBinderAdapter]
  */
 public abstract class BaseDelegateAdapter<T, VH extends BaseViewHolder> extends BaseDelegateMultiAdapter<T,VH> implements LoadMoreModule {
     public BaseDelegateAdapter() {

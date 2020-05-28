@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * author: wtg
  * date:2020/4/25 0025
- * desc: 多布局的provider
+ * desc: 多布局的provider使用dataBinding
  */
 public abstract class BaseBindingProvider<VB extends ViewDataBinding, T extends BaseMultiEntity> extends BaseItemProvider<T> {
     @Override

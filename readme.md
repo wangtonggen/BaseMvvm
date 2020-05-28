@@ -128,29 +128,39 @@ annotationProcessor'com.jakewharton:butterknife-compiler:10.2.1'
     }
 ```
 ## 3.recyclerView的adapter的使用
-```mermaid
-    所有的adapter的基类都是基于BaseRecyclerViewAdapterHelper 地址 https://github.com/CymChad/BaseRecyclerViewAdapterHelper 来二次封装的 并且在里面加入了默认的空列表的显示信息
-    adapter分为两部分 1.单布局(下面包含使用DataBinding和不使用DataBinding)2.多布局(包含使用DataBinding和不使用DataBinding) 如果要是继承BaseBindingBinderAdapter 
-    item需要继承BaseBinder或者BaseViewDataBinder 如果是继承BaseBindingProviderAdapter item则需要继承BaseProvider 具体看demo 
-    1.1 singleAdapter
-     1.1.1 BaseSingleAdapter
-     1.1.2 BaseBindingSingleAdapter
-    1.2 multiAdapter
-     1.2.1 baseMultiAdapter
-      1.2.1.1 BaseDelegateAdapter
-      1.2.1.2 BaseProviderAdapter
-     1.2.2 baseMultiBindingAdapter
-      1.2.2.1 BaseBindingAdapter
-      1.2.2.2 BaseBindingBinderAdapter
-      1.2.2.3 BaseBindingDelegateAdapter
-      1.2.2.4 BaseBindingProviderAdapter
-        
-```
+1. 所有的adapter的基类都是基于[BaseRecyclerViewAdapterHelper](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)来二次封装的
+   并且在里面加入了默认的空列表的显示信息
+   adapter分为两部分
+2. 单布局(下面包含使用DataBinding和不使用DataBinding)
+3. 多布局(包含使用DataBinding和不使用DataBinding)
+   如果要是继承[BaseMultiBinderAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/multiAdapter/baseMultiAdapter/BaseMultiBinderAdapter.java)
+   item需要继承[BaseBinder](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/binder/BaseBinder.java)或者[BaseViewDataBinder](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/binder/BaseViewDataBinder.java)
+   如果是继承[BaseProviderAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/multiAdapter/baseMultiAdapter/BaseProviderAdapter.java)
+   item则需要继承[BaseProvider](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/provider/BaseProvider.java)
+   或者[BaseBindingProvider](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/provider/BaseBindingProvider.java)
+   具体请看demo
+### 单布局 [singleAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/singleAdapter)
+1. [BaseSingleAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/singleAdapter/BaseSingleAdapter.java)
+2. [BaseBindingSingleAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/singleAdapter/BaseBindingSingleAdapter.java)
+### 多布局 [multiAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/multiAdapter)
+1.  [BaseDelegateAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/multiAdapter/baseMultiAdapter/BaseDelegateAdapter.java)
+2.  [BaseMultiAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/multiAdapter/baseMultiAdapter/BaseMultiAdapter.java)
+3.  [BaseMultiBinderAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/multiAdapter/baseMultiAdapter/BaseMultiBinderAdapter.java)
+4.  [BaseProviderAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/multiAdapter/baseMultiAdapter/BaseProviderAdapter.java)
+5.  [BaseBindingDelegateAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/multiAdapter/baseMultiBindingAdapter/BaseBindingDelegateAdapter.java)
+6.  [BaseBindingMultiAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/adapter/multiAdapter/baseMultiBindingAdapter/BaseBindingMultiAdapter.java)
 
 ## 4.mvvm BindAdapter的使用
-```mermaid
-    
-```
+1. [command](mvvmcore/src/main/java/com/wang/mvvmcore/bindAdapter/command)
+   用来监听按钮的点击事件
+2. [CommonBindingAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/bindAdapter/CommonBindingAdapter.java)
+3. [EditTextBindingAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/bindAdapter/EditTextBindingAdapter.java)
+4. [ImageBindingAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/bindAdapter/ImageBindingAdapter.java)
+5. [RecyclerViewBindingAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/bindAdapter/RecyclerViewBindingAdapter.java)
+6. [RefreshBindingAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/bindAdapter/RefreshBindingAdapter.java)
+7. [SmartRefreshBindingAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/bindAdapter/SmartRefreshBindingAdapter.java)
+8. [TextViewBindingAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/bindAdapter/TextViewBindingAdapter.java)
+9. [ViewPagerBindingAdapter](mvvmcore/src/main/java/com/wang/mvvmcore/bindAdapter/ViewPagerBindingAdapter.java)
 
 
 

@@ -6,7 +6,7 @@ import com.wang.mvvmcore.adapter.entity.BaseMultiEntity;
 /**
  * author: wtg
  * date:2020/5/27 0027
- * desc: provider 不使用mvvm模式
+ * desc: provider 不使用dataBinding
  */
 public abstract class BaseProvider<T extends BaseMultiEntity> extends BaseItemProvider<T> {
 

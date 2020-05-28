@@ -3,13 +3,14 @@ package com.wang.mvvmcore.adapter.binder;
 import androidx.viewbinding.ViewBinding;
 
 import com.chad.library.adapter.base.binder.QuickViewBindingItemBinder;
+import com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter.BaseMultiBinderAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
 /**
  * author: wtg
  * date:2020/5/19 0019
- * desc: 绑定data 创建binder
+ * desc: 使用dataBinding的binder 在使用{@link BaseMultiBinderAdapter} 是必须继承该类
  */
 public abstract class BaseViewDataBinder<T, VB extends ViewBinding> extends QuickViewBindingItemBinder<T, VB> {
 

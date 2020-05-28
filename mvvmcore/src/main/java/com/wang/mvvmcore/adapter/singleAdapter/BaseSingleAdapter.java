@@ -13,7 +13,7 @@ import com.wang.mvvmcore.base.app.BaseCoreApplication;
 /**
  * author: wtg
  * date:2020/5/20 0020
- * desc: 不适用binding 的单布局adapter基类
+ * desc: 不使用binding 的单布局adapter基类
  */
 public abstract class BaseSingleAdapter<T,VH extends BaseViewHolder> extends BaseQuickAdapter<T,VH> implements LoadMoreModule {
     public BaseSingleAdapter(int layoutResId) {

@@ -12,6 +12,12 @@ import androidx.databinding.BindingAdapter;
  */
 public class TextViewBindingAdapter {
 
+    /**
+     * textView 滑动设置
+     *
+     * @param textView                view
+     * @param scrollingMovementMethod 滑动方法
+     */
     @BindingAdapter("setMovementMethod")
     public static void setMovementMethod(TextView textView, ScrollingMovementMethod scrollingMovementMethod) {
         textView.setMovementMethod(scrollingMovementMethod);
