@@ -4,7 +4,7 @@
 # 使用
 1.lib里面有使用到butterknife 首先在 project build.gradle添加  
 dependencies {  
-classpath 'com.android.tools.build:gradle:3.6.3'  
+classpath 'com.android.tools.build:gradle:4.0.0'  
 classpath'com.jakewharton:butterknife-gradle-plugin:10.2.1'  
 }  
 和  
