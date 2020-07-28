@@ -61,6 +61,8 @@ dependencies {
     //google aac
     api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
+    api 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.2.2'
+
     //基础工具类
     api 'com.blankj:utilcodex:1.26.0'
 

@@ -9,6 +9,9 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
+import com.wang.mvvmcore.rxBus.MsgEvent;
+import com.wang.mvvmcore.rxBus.RxBus;
+import com.wang.mvvmcore.utils.common.LogUtils;
 import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import java.util.ArrayList;
@@ -49,6 +52,8 @@ public class DelegateVM extends BaseActivityLifecycleVM {
         baseLoadMoreModule.setEnableLoadMoreIfNotFullPage(false);
 
         delegateAdapter.setOnItemClickListener((adapter, view, position) -> {
+            LogUtils.logE("delegateAdapter");
+            RxBus.getInstance().post(new MsgEvent(1,"hello"));
             ToastUtils.showShortToast("position_"+position);
         });
     }

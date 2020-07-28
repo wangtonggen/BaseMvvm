@@ -3,6 +3,8 @@ package com.example.basemvvm.ui.activity;
 import android.content.Intent;
 import android.view.View;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 import com.example.basemvvm.R;
 import com.example.basemvvm.ui.activity.noMvvm.BinderNoMvvmActivity;
 import com.example.basemvvm.ui.activity.noMvvm.DelegateNoMvvmActivity;
@@ -10,7 +12,12 @@ import com.example.basemvvm.ui.activity.noMvvm.MultiNoMvvmActivity;
 import com.example.basemvvm.ui.activity.noMvvm.ProviderNoMvvmActivity;
 import com.example.basemvvm.ui.activity.noMvvm.SingleNoMvvmActivity;
 import com.wang.mvvmcore.base.activity.BaseNoMVVMActivity;
+import com.wang.mvvmcore.rxBus.MsgEvent;
+import com.wang.mvvmcore.rxBus.RxBus;
+import com.wang.mvvmcore.rxBus.RxBusObserver;
+import com.wang.mvvmcore.utils.common.LogUtils;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -20,6 +27,8 @@ import butterknife.OnClick;
  */
 public class TestActivity extends BaseNoMVVMActivity {
 
+    @BindView(R.id.tv_databinding_delegate_multi)
+    AppCompatTextView tv_databinding_delegate_multi;
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_test;
@@ -27,7 +36,13 @@ public class TestActivity extends BaseNoMVVMActivity {
 
     @Override
     protected void initView() {
-
+        RxBus.getInstance().toObservable(this,MsgEvent.class).subscribe(new RxBusObserver<MsgEvent>() {
+            @Override
+            public void onNext(MsgEvent msgEvent) {
+                LogUtils.logE("hahhahaha");
+                tv_databinding_delegate_multi.setText(msgEvent.getMsg());
+            }
+        });
     }
 
     @OnClick({R.id.tv_main, R.id.tv_databinding_delegate_multi, R.id.tv_databinding_multi, R.id.tv_databinding_provider, R.id.tv_databinding_binder, R.id.tv_databinding_single,

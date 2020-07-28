@@ -27,6 +27,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.lxj.xpopup.XPopup;
 import com.wang.mvvmcore.base.activity.BaseNoMVVMActivity;
 import com.wang.mvvmcore.base.fragment.BaseFragment;
+import com.wang.mvvmcore.constant.SwipeConstant;
 import com.wang.mvvmcore.utils.anim.TransitionAnimationUtils;
 import com.wang.mvvmcore.utils.common.ToastUtils;
 
@@ -73,7 +74,7 @@ public class MainActivity extends BaseNoMVVMActivity {
 
     @Override
     protected int getEdgeTrackingEnabled() {
-        return -1;
+        return SwipeConstant.SWIPE_NONE;
     }
 
     @Override
