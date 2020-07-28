@@ -11,7 +11,7 @@ import com.wang.mvvmcore.constant.SwipeConstant;
  * date:2020/3/12 0012
  * desc: 向左划出
  */
-public abstract class BaseSwipeNoneRightActivity<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseMVVMActivity<B, VM> {
+public abstract class BaseSwipeNoneActivity<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseMVVMActivity<B, VM> {
     @Override
     protected int getEdgeTrackingEnabled() {
         return SwipeConstant.SWIPE_NONE;
