@@ -2,6 +2,7 @@ package com.wang.mvvmcore.network.networkBase;
 
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
@@ -158,7 +159,7 @@ public class RetrofitManager {
      */
     public void init() {
         if (TextUtils.isEmpty(baseUrl)) {
-            ToastUtils.showShortToast("请设置baseUrl");
+            ToastUtils.showShort("请设置baseUrl");
             return;
         }
         if (okHttpClient == null) {

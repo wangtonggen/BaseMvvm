@@ -2,6 +2,7 @@ package com.example.basemvvm.mvvm.viewModel;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.adapter.MultiAdapter;
 import com.example.basemvvm.bean.MultiItemBean;
@@ -41,7 +42,7 @@ public class MultiVM extends BaseActivityLifecycleVM {
         multiAdapter.setOnItemClickListener((adapter, view, position) -> {
             multiAdapter.getData().get(position).name = "hello";
             multiAdapter.notifyItemChanged(position + multiAdapter.getHeaderLayoutCount());
-            ToastUtils.showShortToast("position_" + position);
+            ToastUtils.showShort("position_" + position);
         });
         baseLoadMoreModule = multiAdapter.getLoadMoreModule();
         baseLoadMoreModule.setOnLoadMoreListener(() -> {

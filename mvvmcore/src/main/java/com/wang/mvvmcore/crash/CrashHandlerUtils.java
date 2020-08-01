@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.SDCardUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.wang.mvvmcore.BuildConfig;
 import com.wang.mvvmcore.utils.common.LogUtils;
 
@@ -133,7 +134,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
             public void run() {
                 Looper.prepare();
                 throwable.printStackTrace();
-                ToastUtils.showShortToast(getCrashTip());
+                ToastUtils.showShort(getCrashTip());
                 Looper.loop();
             }
         }.start();

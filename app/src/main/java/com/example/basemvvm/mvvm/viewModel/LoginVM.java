@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.example.basemvvm.R;
 import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.constant.IntentFilterConstant;
@@ -65,7 +66,7 @@ public class LoginVM extends BaseActivityLifecycleVM {
         showLoadingDialog("获取中");
         new Handler().postDelayed(() -> {
             closeLoadingDialog();
-            ToastUtils.showShortToast("发送成功,请注意查收");
+            ToastUtils.showShort("发送成功,请注意查收");
             btnCodeEnabled.set(false);
             btnCodeText.set("60s");
             CountDownUtils.countDown(1L, 60L, new DefaultObserver<Long>() {

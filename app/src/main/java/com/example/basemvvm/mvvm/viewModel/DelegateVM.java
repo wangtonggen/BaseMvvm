@@ -2,6 +2,7 @@ package com.example.basemvvm.mvvm.viewModel;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.adapter.DelegateAdapter;
 import com.example.basemvvm.bean.UserBean;
@@ -53,7 +54,7 @@ public class DelegateVM extends BaseActivityLifecycleVM {
         delegateAdapter.setOnItemClickListener((adapter, view, position) -> {
             LogUtils.logE("delegateAdapter");
             RxBus.getInstance().post(new MsgEvent(1,"hello"));
-            ToastUtils.showShortToast("position_"+position);
+            ToastUtils.showShort("position_" + position);
         });
     }
 

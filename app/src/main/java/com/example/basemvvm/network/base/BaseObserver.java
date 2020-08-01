@@ -1,5 +1,6 @@
 package com.example.basemvvm.network.base;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.example.basemvvm.bean.HttpResponse;
 import com.google.gson.JsonParseException;
 import com.wang.mvvmcore.network.exception.ResultException;
@@ -36,7 +37,7 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
     @Override
     public void onError(Throwable e) {
         if (e instanceof SocketTimeoutException) {//连接超时
-            ToastUtils.showShortToast("连接超时，请稍后再试!");
+            ToastUtils.showShort("连接超时，请稍后再试!");
         } else if (e instanceof ResultException) {
             ResultException resultException = (ResultException) e;
             switch (resultException.getCode()) {
@@ -47,9 +48,9 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
                 case 3:
                     break;
             }
-            ToastUtils.showShortToast(e.getMessage());
+            ToastUtils.showShort(e.getMessage());
         } else if (e instanceof JsonParseException) {
-            ToastUtils.showShortToast("数据错误");
+            ToastUtils.showShort("数据错误");
         }
         onFail(e);
     }
