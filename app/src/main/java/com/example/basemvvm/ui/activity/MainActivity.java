@@ -12,6 +12,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 
 import com.blankj.utilcode.util.StringUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.ViewPager2Adapter;
@@ -29,7 +30,6 @@ import com.wang.mvvmcore.base.activity.BaseNoMVVMActivity;
 import com.wang.mvvmcore.base.fragment.BaseFragment;
 import com.wang.mvvmcore.constant.SwipeConstant;
 import com.wang.mvvmcore.utils.anim.TransitionAnimationUtils;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -88,7 +88,7 @@ public class MainActivity extends BaseNoMVVMActivity {
         drawer.addDrawerListener(mDrawerToggle);
         navigationView.setNavigationItemSelectedListener(item -> {
             if (!MyUserSPUtils.isLogin() && item.getItemId() != R.id.nav_settings) {
-                ToastUtils.showShortToast("您还没有登录，请登录");
+                ToastUtils.showShort("您还没有登录，请登录");
                 TransitionAnimationUtils.startSceneTransitionAnimationActivity(this, LoginActivity.class, iv_head, StringUtils.getString(R.string.transition_user_head));
                 return false;
             }

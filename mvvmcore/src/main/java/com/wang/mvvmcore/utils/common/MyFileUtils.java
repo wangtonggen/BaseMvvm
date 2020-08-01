@@ -13,6 +13,7 @@ import java.io.InputStream;
  * desc:
  */
 public class MyFileUtils {
+
     /**
      * 将文件写入本地
      *
@@ -25,7 +26,7 @@ public class MyFileUtils {
         FileUtils.createOrExistsDir(destFileDir);
         File file = new File(destFileDir, destFileName);
         if (file.isFile() && file.exists()) {
-            boolean delete = file.delete();
+            file.delete();
         }
         FileUtils.createOrExistsFile(file);
         FileOutputStream fos;

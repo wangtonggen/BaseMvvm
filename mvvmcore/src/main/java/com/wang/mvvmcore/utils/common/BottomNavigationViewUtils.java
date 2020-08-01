@@ -64,7 +64,7 @@ public class BottomNavigationViewUtils {
 
             // 显示badegeview
             new QBadgeView(context).bindTarget(view).setBadgeTextSize(10, true).setOnDragStateChangedListener((dragState, badge, targetView) -> {
-            }).setGravityOffset(spaceWidth, StringUtils.dp2px(context,3), false).setBadgeNumber(showNumber);
+            }).setGravityOffset(spaceWidth, MyStringUtils.dp2px(context,3), false).setBadgeNumber(showNumber);
         }
     }
 

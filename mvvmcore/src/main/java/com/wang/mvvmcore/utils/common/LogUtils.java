@@ -1,7 +1,5 @@
 package com.wang.mvvmcore.utils.common;
 
-import android.util.Log;
-
 import com.wang.mvvmcore.BuildConfig;
 
 /**
@@ -12,12 +10,21 @@ import com.wang.mvvmcore.BuildConfig;
 public class LogUtils {
     private static final String TAG = "LogUtils";
 
+    /**
+     * 打印log
+     * @param tag tag
+     * @param message 内容
+     */
     public static void logE(String tag, String message) {
         if (BuildConfig.DEBUG) {
-            Log.e(tag, message);
+            com.blankj.utilcode.util.LogUtils.e(tag,message);
         }
     }
 
+    /**
+     * 打印log
+     * @param message 消息
+     */
     public static void logE(String message) {
         logE(TAG, message);
     }

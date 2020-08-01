@@ -4,21 +4,15 @@ import android.content.Context;
 
 import androidx.annotation.StringRes;
 
+import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.ScreenUtils;
+import com.blankj.utilcode.util.StringUtils;
+
 /**
  * author: wtg  2019/4/24 0024
  * desc: 字符串处理类
  */
-public class StringUtils {
-    /**
-     * 只能传入String的id
-     *
-     * @param strId 资源id
-     * @return 字符串
-     */
-    public static String getString(Context context, @StringRes int strId) {
-        return context.getResources().getString(strId);
-    }
-
+public class MyStringUtils {
     /**
      * 加密电话中间四位显示*
      *
@@ -38,7 +32,7 @@ public class StringUtils {
      * @return 字符串
      */
     public static String strFormat(Context context, @StringRes int resId, Object... args) {
-        return String.format(getString(context, resId), args);
+        return String.format(StringUtils.getString(resId), args);
     }
 
     /**
@@ -52,25 +46,4 @@ public class StringUtils {
         return String.format(format, args);
     }
 
-    /**
-     * 判断是否是gif图片
-     *
-     * @param path 图片路径
-     * @return true 是 false 否
-     */
-    public static boolean isGif(String path) {
-        return (path.endsWith(".gif") || path.endsWith(".GIF"));
-    }
-
-    /**
-     * dp 转 px
-     *
-     * @param ctx 上下文
-     * @param dp  dp
-     * @return px
-     */
-    public static int dp2px(Context ctx, float dp) {
-        float density = ctx.getResources().getDisplayMetrics().density;
-        return (int) (dp * density + 0.5f);// 4.9->5 4.4->4
-    }
 }

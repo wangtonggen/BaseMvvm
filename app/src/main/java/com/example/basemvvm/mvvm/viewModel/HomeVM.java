@@ -21,7 +21,6 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.stx.xhb.androidx.XBanner;
 import com.wang.mvvmcore.base.baseViewModel.BaseFragmentLifecycleVM;
 import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;

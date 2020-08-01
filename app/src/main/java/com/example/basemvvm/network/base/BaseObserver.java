@@ -4,7 +4,6 @@ import com.example.basemvvm.bean.HttpResponse;
 import com.google.gson.JsonParseException;
 import com.wang.mvvmcore.network.exception.ResultException;
 import com.wang.mvvmcore.utils.common.LogUtils;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import java.net.SocketTimeoutException;
 

@@ -7,7 +7,6 @@ import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
 import com.wang.mvvmcore.utils.common.LogUtils;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import org.jetbrains.annotations.NotNull;
 

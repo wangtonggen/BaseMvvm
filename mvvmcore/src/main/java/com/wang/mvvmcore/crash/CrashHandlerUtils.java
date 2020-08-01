@@ -10,7 +10,6 @@ import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.SDCardUtils;
 import com.wang.mvvmcore.BuildConfig;
 import com.wang.mvvmcore.utils.common.LogUtils;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import java.io.File;
 import java.io.IOException;

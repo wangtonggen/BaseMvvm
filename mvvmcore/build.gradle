@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 5
-        versionName "1.0.5"
+        versionCode 7
+        versionName "1.0.7"
 
         multiDexEnabled true
 
@@ -64,7 +64,7 @@ dependencies {
     api 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.2.2'
 
     //基础工具类
-    api 'com.blankj:utilcodex:1.26.0'
+    api 'com.blankj:utilcodex:1.29.0'
 
     //下滑/左滑/右滑 关闭activity
     api 'me.imid.swipebacklayout.lib:library:1.1.0'

@@ -9,7 +9,6 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;

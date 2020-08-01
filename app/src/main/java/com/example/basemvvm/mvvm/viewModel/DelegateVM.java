@@ -12,7 +12,6 @@ import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
 import com.wang.mvvmcore.rxBus.MsgEvent;
 import com.wang.mvvmcore.rxBus.RxBus;
 import com.wang.mvvmcore.utils.common.LogUtils;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
