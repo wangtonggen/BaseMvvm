@@ -46,7 +46,7 @@ public class UserModel {
         params.put("mobile", mobile);
         params.put("captcha", captcha);
         userService.login(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(Schedulers.io())
                 .subscribe(baseObserver);
     }
 

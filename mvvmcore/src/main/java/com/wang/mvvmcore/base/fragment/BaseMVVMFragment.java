@@ -44,10 +44,21 @@ public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends Bas
         getLifecycle().addObserver(viewModel);
     }
 
+    /**
+     * 设置viewModel
+     */
     private void refreshLayout() {
         if (viewModel != null) {
             binding.setVariable(viewModelId, viewModel);
         }
+        bindOtherViewModel();
+    }
+
+    /**
+     * 绑定其他的viewModel
+     */
+    protected void bindOtherViewModel(){
+
     }
 
     /**

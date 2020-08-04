@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.SDCardUtils;
+import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.wang.mvvmcore.BuildConfig;
 import com.wang.mvvmcore.utils.common.LogUtils;
@@ -129,15 +130,10 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
             return false;
         }
         //使用Toast来显示异常信息
-        new Thread() {
-            @Override
-            public void run() {
-                Looper.prepare();
-                throwable.printStackTrace();
-                ToastUtils.showShort(getCrashTip());
-                Looper.loop();
-            }
-        }.start();
+        ThreadUtils.runOnUiThread(()->{
+            throwable.printStackTrace();
+            ToastUtils.showShort(getCrashTip());
+        });
         //收集设备参数信息
         collectDeviceInfo();
         //保存日志文件

@@ -1,5 +1,7 @@
 package com.wang.mvvmcore.base.baseViewModel;
 
+import android.view.View;
+
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
@@ -15,7 +17,6 @@ import io.reactivex.disposables.Disposable;
  * desc: ViewModel 生命周期管理的基类
  */
 public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserver {
-    private CompositeDisposable mDisposables = new CompositeDisposable();//请求管理类
     protected BasePopupView basePopupView;
 
     /**
@@ -49,23 +50,11 @@ public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserve
     }
 
     /**
-     * 加入订阅对象
-     *
-     * @param disposable 订阅对象
+     * 按钮点击时间
+     * @param view view
      */
-    protected void addDisposable(Disposable disposable) {
-        if (mDisposables == null || mDisposables.isDisposed()) {
-            mDisposables = new CompositeDisposable();
-        }
-        mDisposables.add(disposable);
-    }
+    public void onViewClick(View view){
 
-    /**
-     * 取消所有请求
-     */
-    private void cancelRequest() {
-        if (mDisposables != null && mDisposables.size() > 0 && !mDisposables.isDisposed())
-            mDisposables.dispose();
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -96,6 +85,5 @@ public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserve
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy() {
 //        LogUtils.logE(TAG, "onDestroy: ");
-        cancelRequest();
     }
 }

@@ -48,6 +48,14 @@ public abstract class BaseMVVMActivity<B extends ViewDataBinding, VM extends Bas
         if (viewModel != null) {
             binding.setVariable(viewModelId, viewModel);
         }
+        bindOtherViewModel();
+    }
+
+    /**
+     * 绑定其他的viewModel
+     */
+    protected void bindOtherViewModel(){
+
     }
 
     /**
