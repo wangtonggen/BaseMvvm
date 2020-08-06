@@ -8,8 +8,8 @@ import com.wang.mvvmcore.network.networkBase.RetrofitManager;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 /**
  * author: wtg
@@ -43,10 +43,10 @@ public class UserModel {
      */
     public void login(String mobile, String captcha, BaseObserver<LoginBean> baseObserver) {
         Map<String, Object> params = new HashMap<>();
-        params.put("mobile", mobile);
-        params.put("captcha", captcha);
-        userService.login(params).subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
+        params.put("account", mobile);
+        params.put("password", captcha);
+        userService.login(params)
+                .subscribeOn(Schedulers.io())
                 .subscribe(baseObserver);
     }
 

@@ -65,14 +65,14 @@ public class DelegateVM extends BaseActivityLifecycleVM {
             delegateAdapter.addData(getData());
         }
 
-        if (refreshLayout != null) {
+        if (refreshLayout != null && refreshLayout.isRefreshing()) {
             refreshLayout.finishRefresh();
-            refreshLayout.finishLoadMore();
         }
 
         baseLoadMoreModule.setEnableLoadMore(true);
         if (delegateAdapter.getData().size() >= 75) {
-            baseLoadMoreModule.loadMoreEnd();
+            baseLoadMoreModule.setEnableLoadMore(false);
+//            baseLoadMoreModule.loadMoreEnd();
         } else {
             baseLoadMoreModule.loadMoreComplete();
         }

@@ -1,5 +1,7 @@
 package com.wang.mvvmcore.utils.common;
 
+import android.text.TextUtils;
+
 import com.wang.mvvmcore.BuildConfig;
 
 /**
@@ -17,7 +19,11 @@ public class LogUtils {
      */
     public static void logE(String tag, String message) {
         if (BuildConfig.DEBUG) {
-            com.blankj.utilcode.util.LogUtils.e(tag,message);
+            if (TextUtils.isEmpty(tag)){
+                com.blankj.utilcode.util.LogUtils.e(message);
+            }else {
+                com.blankj.utilcode.util.LogUtils.e(tag,message);
+            }
         }
     }
 
@@ -26,6 +32,6 @@ public class LogUtils {
      * @param message 消息
      */
     public static void logE(String message) {
-        logE(TAG, message);
+        logE(null, message);
     }
 }

@@ -6,10 +6,12 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import com.lxj.xpopup.core.BasePopupView;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ThreadUtils;
+import com.lxj.xpopup.impl.LoadingPopupView;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * author: wtg
@@ -17,7 +19,8 @@ import io.reactivex.disposables.Disposable;
  * desc: ViewModel 生命周期管理的基类
  */
 public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserver {
-    protected BasePopupView basePopupView;
+    protected LoadingPopupView loadingPopupView;
+    protected CompositeDisposable mDisposables;
 
     /**
      * 显示加载框
@@ -30,8 +33,8 @@ public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserve
      * 关闭加载框
      */
     public void closeLoadingDialog() {
-        if (basePopupView != null && basePopupView.isShow()) {
-            basePopupView.dismiss();
+        if (loadingPopupView != null) {
+            ThreadUtils.runOnUiThread(()-> loadingPopupView.dismiss());
         }
     }
 
@@ -55,6 +58,27 @@ public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserve
      */
     public void onViewClick(View view){
 
+    }
+
+    /**
+     * 加入订阅对象
+     *
+     * @param disposable 订阅对象
+     */
+    protected void addDisposable(Disposable disposable) {
+        if (mDisposables == null || mDisposables.isDisposed()) {
+            mDisposables = new CompositeDisposable();
+        }
+        mDisposables.add(disposable);
+    }
+
+    /**
+     * 清除所有的请求
+     */
+    public void onUnBind() {
+        if (mDisposables != null && mDisposables.size() > 0 && !mDisposables.isDisposed()) {
+            mDisposables.dispose();
+        }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -84,6 +108,7 @@ public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserve
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy() {
+        onUnBind();
 //        LogUtils.logE(TAG, "onDestroy: ");
     }
 }

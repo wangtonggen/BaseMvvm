@@ -6,6 +6,7 @@ import androidx.databinding.ObservableFloat;
 import androidx.databinding.ObservableInt;
 
 import com.wang.mvvmcore.R;
+import com.wang.mvvmcore.base.fragment.BaseFragment;
 import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
 /**
@@ -31,7 +32,7 @@ public class BaseToolbarFragmentVM extends BaseFragmentLifecycleVM {
     public ObservableInt backNavigationColor = new ObservableInt(R.color.colorNavigationIcon);//导航的颜色
     public ObservableInt backNavigationResId = new ObservableInt(R.drawable.ic_arrow_back_white);//导航按钮资源文件
 
-    public BaseToolbarFragmentVM(BaseMVVMFragment fragment) {
+    public BaseToolbarFragmentVM(BaseFragment fragment) {
         super(fragment);
     }
 }

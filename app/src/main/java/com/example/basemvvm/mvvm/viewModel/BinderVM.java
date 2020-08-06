@@ -6,8 +6,12 @@ import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.R;
 import com.example.basemvvm.base.binder.ImageItemBinder;
 import com.example.basemvvm.base.binder.UserItemBinder;
+import com.example.basemvvm.bean.HttpResponse;
+import com.example.basemvvm.bean.LoginBean;
 import com.example.basemvvm.bean.NotificationBean;
 import com.example.basemvvm.bean.UserBean;
+import com.example.basemvvm.network.base.BaseObserver;
+import com.example.basemvvm.network.model.UserModel;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter.BaseMultiBinderAdapter;
@@ -16,6 +20,8 @@ import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.disposables.Disposable;
 
 /**
  * author: wtg

@@ -85,4 +85,8 @@ public class TestActivity extends BaseNoMVVMActivity {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

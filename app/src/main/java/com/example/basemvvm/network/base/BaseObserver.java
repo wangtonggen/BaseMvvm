@@ -8,8 +8,8 @@ import com.wang.mvvmcore.utils.common.LogUtils;
 
 import java.net.SocketTimeoutException;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * author: wtg  2019/4/24 0024
@@ -18,7 +18,7 @@ import io.reactivex.disposables.Disposable;
 public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
     @Override
     public void onNext(HttpResponse<T> tHttpResponse) {
-        if (tHttpResponse.getCode() != 200) {
+        if (tHttpResponse.getCode() != 1) {
             onError(new ResultException(tHttpResponse.getCode(), tHttpResponse.getMsg()));
         } else {
             onSuccess(tHttpResponse);

@@ -70,6 +70,6 @@ public class TokenRefreshInterceptor implements Interceptor {
         Type type = new TypeToken<HttpResponse<TokenBean>>() {
         }.getType();
         HttpResponse<TokenBean> tokenBeanHttpResponse = GsonUtils.fromJson(result, type);
-        return tokenBeanHttpResponse.getResult().getToken();
+        return tokenBeanHttpResponse.getData().getToken();
     }
 }

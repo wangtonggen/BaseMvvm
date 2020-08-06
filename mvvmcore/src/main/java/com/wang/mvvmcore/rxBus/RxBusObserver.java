@@ -6,7 +6,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * author: 王统根
  * time: 2020/7/28
- * desc:
+ * desc: rxBus接收事件处理
  */
 public abstract class RxBusObserver<T> implements Observer<T> {
     @Override

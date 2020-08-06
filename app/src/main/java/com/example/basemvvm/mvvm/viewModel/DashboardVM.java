@@ -1,6 +1,7 @@
 package com.example.basemvvm.mvvm.viewModel;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.View;
 
@@ -8,11 +9,14 @@ import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.R;
 import com.example.basemvvm.service.UpdateAppService;
-import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.tbruyelle.rxpermissions3.Permission;
+import com.tbruyelle.rxpermissions3.RxPermissions;
 import com.wang.mvvmcore.base.baseViewModel.BaseFragmentLifecycleVM;
 import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * author: wtg
@@ -40,13 +44,14 @@ public class DashboardVM extends BaseFragmentLifecycleVM {
         }
     }
 
+    @SuppressLint("CheckResult")
     private void downLoadApk() {
         final RxPermissions rxPermissions = new RxPermissions(mFragment);
-        Disposable permissions = rxPermissions.requestEachCombined(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .subscribe(permission -> {
+        @NonNull Disposable subscribe = rxPermissions.requestEachCombined(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe((permission -> {
                     if (permission.granted) {//已经同意
                         mContext.startService(new Intent(mContext, UpdateAppService.class));
                     }
-                });
+                }));
     }
 }

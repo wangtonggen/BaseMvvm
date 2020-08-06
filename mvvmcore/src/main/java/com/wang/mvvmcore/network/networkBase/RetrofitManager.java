@@ -21,7 +21,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.wang.mvvmcore.network.networkBase.ApiConfigConstant.CONNECT_TIMEOUT;
@@ -45,7 +45,7 @@ public class RetrofitManager {
     private int writeTimeout = WRITE_TIMEOUT;
     private TimeUnit writeTimeoutTimeUnit = TimeUnit.SECONDS;
     private Converter.Factory converterFactory = GsonConverterFactory.create();
-    private CallAdapter.Factory callAdapterFactory = RxJava2CallAdapterFactory.create();
+    private CallAdapter.Factory callAdapterFactory = RxJava3CallAdapterFactory.create();
     private List<Interceptor> interceptors = new ArrayList<>();
     private String baseUrl;
 
@@ -164,7 +164,7 @@ public class RetrofitManager {
         }
         if (okHttpClient == null) {
             //添加拦截器
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> LogUtils.logE("okhttp4:", message));
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> LogUtils.logE("okhttp4::", message));
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();

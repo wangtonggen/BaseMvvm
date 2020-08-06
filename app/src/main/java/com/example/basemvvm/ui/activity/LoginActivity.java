@@ -13,6 +13,7 @@ import com.example.basemvvm.databinding.ActivityLoginBinding;
 import com.example.basemvvm.mvvm.viewModel.LoginVM;
 import com.gyf.immersionbar.ImmersionBar;
 import com.wang.mvvmcore.base.activity.BaseSwipeBackLeftActivity;
+import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
 
 
 public class LoginActivity extends BaseSwipeBackLeftActivity<ActivityLoginBinding, LoginVM> {
@@ -28,9 +29,19 @@ public class LoginActivity extends BaseSwipeBackLeftActivity<ActivityLoginBindin
     }
 
     @Override
+    protected void bindOtherViewModel() {
+        BaseToolbarVM baseToolbarVM = new BaseToolbarVM(this);
+        baseToolbarVM.title.set("登录");
+        baseToolbarVM.toolbarColor.set(R.color.white);
+        baseToolbarVM.titleColor.set(R.color.color_title);
+        baseToolbarVM.backNavigationResId.set(R.drawable.ic_arrow_back);
+        binding.toolbar.setToolbarVM(baseToolbarVM);
+
+    }
+
+    @Override
     protected void initView() {
         ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).init();
-        binding.toolbar.setToolbarVM(viewModel.baseToolbarVM);
     }
 
     @Override

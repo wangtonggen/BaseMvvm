@@ -11,17 +11,21 @@ import androidx.databinding.ObservableField;
 import com.blankj.utilcode.util.ToastUtils;
 import com.example.basemvvm.R;
 import com.example.basemvvm.bean.HttpResponse;
+import com.example.basemvvm.bean.LoginBean;
 import com.example.basemvvm.constant.IntentFilterConstant;
 import com.example.basemvvm.network.base.BaseObserver;
 import com.example.basemvvm.network.model.UserModel;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
+import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.activity.BaseMVVMActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
 import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
 import com.wang.mvvmcore.utils.common.CountDownUtils;
+import com.wang.mvvmcore.utils.common.LogUtils;
 import com.wang.mvvmcore.widget.SimpleTextWatcher;
 
 import io.reactivex.observers.DefaultObserver;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * 登录的viewModel
@@ -33,7 +37,6 @@ public class LoginVM extends BaseActivityLifecycleVM {
     public ObservableBoolean btnCodeEnabled = new ObservableBoolean(true);
     public ObservableField<String> btnCodeText = new ObservableField<>("获取验证码");
 
-    public BaseToolbarVM baseToolbarVM;
     public SimpleTextWatcher accountTextWatcher = new SimpleTextWatcher() {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -47,14 +50,8 @@ public class LoginVM extends BaseActivityLifecycleVM {
         }
     };
 
-    public LoginVM(BaseMVVMActivity mActivity) {
+    public LoginVM(BaseActivity mActivity) {
         super(mActivity);
-
-        baseToolbarVM = new BaseToolbarVM(mActivity);
-        baseToolbarVM.title.set("登录");
-        baseToolbarVM.toolbarColor.set(R.color.white);
-        baseToolbarVM.titleColor.set(R.color.color_title);
-        baseToolbarVM.backNavigationResId.set(R.drawable.ic_arrow_back);
     }
 
     /**
@@ -99,27 +96,33 @@ public class LoginVM extends BaseActivityLifecycleVM {
      */
     public void login(View view) {
         showLoadingDialog("登录中");
-        new Handler().postDelayed(() -> {
-            closeLoadingDialog();
-            MyUserSPUtils.setIsLogin(true);
-            MyUserSPUtils.setUserName("奔跑的一毛一");
-            MyUserSPUtils.setUserMobile(str_mobile.get());
-            String path = "http://e.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7e41f5cfe760e0cf3d6cad6ee.jpg";
-            MyUserSPUtils.setHeadUrl(path);
-            mActivity.sendBroadcast(new Intent(IntentFilterConstant.UPDATE_LOGIN_ACTION));
-            mActivity.finish();
-        }, 3000);
-//        UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
-//            @Override
-//            public void onSubscribe(Disposable d) {
-//                super.onSubscribe(d);
-//                addDisposable(d);
-//            }
-//
-//            @Override
-//            public void onSuccess(HttpResponse<LoginBean> data) {
-//            }
-//        });
+        UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                addDisposable(d);
+            }
+
+            @Override
+            public void onSuccess(HttpResponse<LoginBean> data) {
+                str_mobile.set("15727960192");
+                str_code.set("789456");
+                LogUtils.logE("login",data.getCode()+"---"+data.getMsg()+"---"+data.getData().getMsg()+"---"+data.getData().getUserName());
+            }
+
+            @Override
+            public void onComplete() {
+                super.onComplete();
+                LogUtils.logE("onComplete");
+                closeLoadingDialog();
+            }
+
+            @Override
+            public void onFail(Throwable e) {
+                super.onFail(e);
+                LogUtils.logE("onFail");
+                closeLoadingDialog();
+            }
+        });
     }
 
     private void getCode() {

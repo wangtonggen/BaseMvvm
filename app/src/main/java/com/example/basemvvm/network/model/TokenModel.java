@@ -3,13 +3,14 @@ package com.example.basemvvm.network.model;
 import com.example.basemvvm.bean.TokenBean;
 import com.example.basemvvm.network.base.BaseObserver;
 import com.example.basemvvm.network.service.UserService;
+import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.network.networkBase.RetrofitManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 
@@ -45,7 +46,7 @@ public class TokenModel {
      * @param oldToken     旧的token
      * @param baseObserver 监听
      */
-    public void refreshToken(String oldToken, BaseObserver<TokenBean> baseObserver) {
+    public void refreshToken(BaseActivity activity, String oldToken, BaseObserver<TokenBean> baseObserver) {
         Map<String, Object> params = new HashMap<>();
         params.put("token", oldToken);
         userService.refreshToken(params).subscribeOn(Schedulers.io())

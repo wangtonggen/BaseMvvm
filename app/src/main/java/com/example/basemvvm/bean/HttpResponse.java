@@ -12,7 +12,7 @@ import java.util.Objects;
 public class HttpResponse<T> implements Serializable {
     private int code;
     private String msg;
-    private T result;
+    private T data;
 
     public int getCode() {
         return code;
@@ -30,12 +30,12 @@ public class HttpResponse<T> implements Serializable {
         this.msg = msg;
     }
 
-    public T getResult() {
-        return result;
+    public T getData() {
+        return data;
     }
 
-    public void setResult(T result) {
-        this.result = result;
+    public void setData(T data) {
+        this.data = data;
     }
 
     /**
