@@ -9,10 +9,8 @@ import com.example.basemvvm.BR;
 import com.example.basemvvm.R;
 import com.example.basemvvm.databinding.ActivityUserInfoBinding;
 import com.example.basemvvm.mvvm.viewModel.UserInfoVM;
-import com.google.android.material.appbar.AppBarLayout;
 import com.gyf.immersionbar.ImmersionBar;
 import com.wang.mvvmcore.base.activity.BaseSwipeBackLeftActivity;
-
 
 /**
  * author: wtg
@@ -50,24 +48,23 @@ public class UserInfoActivity extends BaseSwipeBackLeftActivity<ActivityUserInfo
 
         binding.toolbar.setToolbarVM(viewModel.baseToolbarVM);
 
-        binding.appbar.addOnOffsetChangedListener((AppBarLayout.BaseOnOffsetChangedListener) (appBarLayout, verticalOffset) -> {
+        binding.appbar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
             if (height == -1) {//完全展开
                 height = appBarLayout.getBottom() - clToolbar.getHeight() - BarUtils.getStatusBarHeight();
-//                LogUtils.logE("verticalOffset=" + verticalOffset + "---getBottom=" + appBarLayout.getBottom()+"---height="+height+"---"+clToolbar.getHeight()+"---"+BarUtils.getStatusBarHeight());
             }
             if (Math.abs(verticalOffset) <= 0) {
-                viewModel.baseToolbarVM.toolbarAlpha.set(0);
-                viewModel.baseToolbarVM.titleBgAlpha.set(0);
+                binding.toolbar.getToolbarVM().toolbarAlpha.set(0);
+                binding.toolbar.getToolbarVM().titleBgAlpha.set(0);
             } else if (Math.abs(verticalOffset) < height) {
                 //获取渐变率
                 float scale = (float) Math.abs(verticalOffset) / height;
                 //获取渐变数值
                 float alpha = (1.0f * scale);
-                viewModel.baseToolbarVM.toolbarAlpha.set(alpha);
-                viewModel.baseToolbarVM.titleBgAlpha.set(alpha);
+                binding.toolbar.getToolbarVM().toolbarAlpha.set(alpha);
+                binding.toolbar.getToolbarVM().titleBgAlpha.set(alpha);
             } else {
-                viewModel.baseToolbarVM.toolbarAlpha.set(1f);
-                viewModel.baseToolbarVM.titleBgAlpha.set(1f);
+                binding.toolbar.getToolbarVM().toolbarAlpha.set(1f);
+                binding.toolbar.getToolbarVM().titleBgAlpha.set(1f);
             }
         });
     }

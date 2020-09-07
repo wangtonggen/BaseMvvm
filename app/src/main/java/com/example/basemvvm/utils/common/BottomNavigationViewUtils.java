@@ -21,6 +21,11 @@ import q.rorbin.badgeview.QBadgeView;
  * desc：
  */
 public class BottomNavigationViewUtils {
+
+    /**
+     * 去掉BottomNavigationView 自带的动画效果
+     * @param view BottomNavigationView
+     */
     @SuppressLint("RestrictedApi")
     public static void closeAnimation(BottomNavigationView view) {
         BottomNavigationMenuView mMenuView = (BottomNavigationMenuView) view.getChildAt(0);
@@ -69,9 +74,16 @@ public class BottomNavigationViewUtils {
         }
     }
 
-
+    /**
+     * 反射获取字段
+     * @param targetClass 控件的class
+     * @param instance 控件
+     * @param fieldName 字段名
+     * @param <T> 泛型
+     * @return 控件
+     */
     @SuppressWarnings("unchecked")
-    private static <T> T getField(Class targetClass, Object instance, String fieldName) {
+    private static <T> T getField(Class<? extends View> targetClass, Object instance, String fieldName) {
         try {
             Field field = targetClass.getDeclaredField(fieldName);
             field.setAccessible(true);
@@ -82,8 +94,14 @@ public class BottomNavigationViewUtils {
         return null;
     }
 
-
-    private static void setField(Class targetClass, Object instance, String fieldName, Object value) {
+    /**
+     * 反射设置字段值
+     * @param targetClass 目标View的class
+     * @param instance 目标view
+     * @param fieldName 字段名
+     * @param value 值
+     */
+    private static void setField(Class<? extends View> targetClass, Object instance, String fieldName, Object value) {
         try {
             Field field = targetClass.getDeclaredField(fieldName);
             field.setAccessible(true);

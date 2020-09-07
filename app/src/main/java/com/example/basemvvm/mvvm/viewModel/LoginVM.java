@@ -5,9 +5,11 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.core.util.Pair;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
+import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.example.basemvvm.R;
 import com.example.basemvvm.bean.HttpResponse;
@@ -15,11 +17,13 @@ import com.example.basemvvm.bean.LoginBean;
 import com.example.basemvvm.constant.IntentFilterConstant;
 import com.example.basemvvm.network.base.BaseObserver;
 import com.example.basemvvm.network.model.UserModel;
+import com.example.basemvvm.ui.activity.UserInfoActivity;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.activity.BaseMVVMActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
 import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
+import com.wang.mvvmcore.utils.anim.TransitionAnimationUtils;
 import com.wang.mvvmcore.utils.common.CountDownUtils;
 import com.wang.mvvmcore.utils.common.LogUtils;
 import com.wang.mvvmcore.widget.SimpleTextWatcher;
@@ -104,8 +108,11 @@ public class LoginVM extends BaseActivityLifecycleVM {
 
             @Override
             public void onSuccess(HttpResponse<LoginBean> data) {
+                MyUserSPUtils.setIsLogin(true);
                 str_mobile.set("15727960192");
                 str_code.set("789456");
+                MyUserSPUtils.setUserName("奔跑的一毛一");
+                MyUserSPUtils.setHeadUrl("http://g.hiphotos.baidu.com/image/pic/item/6d81800a19d8bc3e770bd00d868ba61ea9d345f2.jpg");
                 LogUtils.logE("login",data.getCode()+"---"+data.getMsg()+"---"+data.getData().getMsg()+"---"+data.getData().getUserName());
             }
 

@@ -84,8 +84,8 @@ dependencies {
     implementation 'com.github.xiaohaibin:XBanner:androidx_v1.0.8'
 
     //butterknife
-    implementation 'com.jakewharton:butterknife:10.2.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
     implementation project(path: ':mvvmcore')
 }
