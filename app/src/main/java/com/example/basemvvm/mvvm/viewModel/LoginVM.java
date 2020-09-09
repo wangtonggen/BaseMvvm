@@ -1,31 +1,22 @@
 package com.example.basemvvm.mvvm.viewModel;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 
-import androidx.core.util.Pair;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
-import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.example.basemvvm.R;
 import com.example.basemvvm.bean.HttpResponse;
 import com.example.basemvvm.bean.LoginBean;
-import com.example.basemvvm.constant.IntentFilterConstant;
 import com.example.basemvvm.network.base.BaseObserver;
 import com.example.basemvvm.network.model.UserModel;
-import com.example.basemvvm.ui.activity.UserInfoActivity;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
 import com.wang.mvvmcore.base.activity.BaseActivity;
-import com.wang.mvvmcore.base.activity.BaseMVVMActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
-import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
-import com.wang.mvvmcore.utils.anim.TransitionAnimationUtils;
 import com.wang.mvvmcore.utils.common.CountDownUtils;
-import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 import com.wang.mvvmcore.widget.SimpleTextWatcher;
 
 import io.reactivex.observers.DefaultObserver;
@@ -64,9 +55,9 @@ public class LoginVM extends BaseActivityLifecycleVM {
      * @param view view
      */
     public void getCode(View view) {
-        showLoadingDialog("获取中");
+        showLoading(mActivity,"获取中");
         new Handler().postDelayed(() -> {
-            closeLoadingDialog();
+            closeLoading();
             ToastUtils.showShort("发送成功,请注意查收");
             btnCodeEnabled.set(false);
             btnCodeText.set("60s");
@@ -99,7 +90,7 @@ public class LoginVM extends BaseActivityLifecycleVM {
      * @param view view
      */
     public void login(View view) {
-        showLoadingDialog("登录中");
+        showLoading(mActivity,"登录中");
         UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -113,21 +104,21 @@ public class LoginVM extends BaseActivityLifecycleVM {
                 str_code.set("789456");
                 MyUserSPUtils.setUserName("奔跑的一毛一");
                 MyUserSPUtils.setHeadUrl("http://g.hiphotos.baidu.com/image/pic/item/6d81800a19d8bc3e770bd00d868ba61ea9d345f2.jpg");
-                LogUtils.logE("login",data.getCode()+"---"+data.getMsg()+"---"+data.getData().getMsg()+"---"+data.getData().getUserName());
+                CoreLogUtils.logE("login",data.getCode()+"---"+data.getMsg()+"---"+data.getData().getMsg()+"---"+data.getData().getUserName());
             }
 
             @Override
             public void onComplete() {
                 super.onComplete();
-                LogUtils.logE("onComplete");
-                closeLoadingDialog();
+                CoreLogUtils.logE("onComplete");
+                closeLoading();
             }
 
             @Override
             public void onFail(Throwable e) {
                 super.onFail(e);
-                LogUtils.logE("onFail");
-                closeLoadingDialog();
+                CoreLogUtils.logE("onFail");
+                closeLoading();
             }
         });
     }

@@ -4,7 +4,7 @@ import androidx.databinding.ObservableField;
 
 import com.example.basemvvm.bean.UserBean;
 import com.wang.mvvmcore.base.baseViewModel.BaseVM;
-import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 /**
  * author: wtg
@@ -19,6 +19,6 @@ public class UserItemVM extends BaseVM {
         this.userBean = userBean;
         imageUrl.set(userBean.getUrl());
 
-        LogUtils.logE(imageUrl.get() + "---");
+        CoreLogUtils.logE(imageUrl.get() + "---");
     }
 }

@@ -4,7 +4,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.example.basemvvm.bean.HttpResponse;
 import com.google.gson.JsonParseException;
 import com.wang.mvvmcore.network.exception.ResultException;
-import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import java.net.SocketTimeoutException;
 
@@ -56,7 +56,7 @@ public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
     }
 
     public void onFail(Throwable e) {
-        LogUtils.logE("Throwable:" + e.getMessage());
+        CoreLogUtils.logE("Throwable:" + e.getMessage());
     }
 
     public abstract void onSuccess(HttpResponse<T> data);

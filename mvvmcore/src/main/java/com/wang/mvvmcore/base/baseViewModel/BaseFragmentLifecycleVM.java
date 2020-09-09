@@ -1,12 +1,9 @@
 package com.wang.mvvmcore.base.baseViewModel;
 
 import android.content.Context;
-import android.text.TextUtils;
 
-import com.lxj.xpopup.XPopup;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.fragment.BaseFragment;
-import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
 
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
@@ -31,18 +28,6 @@ public abstract class BaseFragmentLifecycleVM extends BaseLifecycleVM {
         this.mFragment = fragment;
         this.mActivity = mActivity;
         this.mContext = this.mFragment.getContext();
-    }
-
-    @Override
-    public void showLoadingDialog(String content) {
-        if (loadingPopupView == null) {
-            loadingPopupView = new XPopup.Builder(mContext).dismissOnTouchOutside(false).dismissOnBackPressed(false).asLoading();
-        }
-        if (loadingPopupView.isShow()) {
-            return;
-        }
-        loadingPopupView.setTitle(TextUtils.isEmpty(content) ? "加载中" : content);
-        loadingPopupView.show();
     }
 
     /**

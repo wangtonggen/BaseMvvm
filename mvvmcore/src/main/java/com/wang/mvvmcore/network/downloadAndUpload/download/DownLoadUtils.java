@@ -5,7 +5,7 @@ import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
 import com.wang.mvvmcore.network.networkBase.SSL;
-import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -38,7 +38,7 @@ public class DownLoadUtils {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> LogUtils.logE("okhttp4_download:", message));
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> CoreLogUtils.logE("okhttp4_download:", message));
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
@@ -66,7 +66,7 @@ public class DownLoadUtils {
                 .url(url)
                 .header("RANGE", "bytes=" + startPoint + "-")//断点续传
                 .build();
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> LogUtils.logE("okhttp4_download:", message));
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> CoreLogUtils.logE("okhttp4_download:", message));
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)

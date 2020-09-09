@@ -1,13 +1,13 @@
 package com.wang.mvvmcore.base.baseViewModel;
 
+import android.content.Context;
 import android.view.View;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ThreadUtils;
+import com.lxj.xpopup.XPopup;
 import com.lxj.xpopup.impl.LoadingPopupView;
 
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -24,39 +24,42 @@ public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserve
 
     /**
      * 显示加载框
+     *
+     * @param context 上下文
+     * @param title   标题
      */
-    public void showLoadingDialog(String content) {
+    public void showLoading(Context context, String title) {
+        if (loadingPopupView == null) {
+            loadingPopupView = new XPopup.Builder(context).asLoading();
+        }
+        loadingPopupView.setTitle(title);
+        loadingPopupView.show();
+    }
 
+    /**
+     * 显示加载框
+     *
+     * @param context 上下文
+     */
+    public void showLoading(Context context) {
+        showLoading(context, "");
     }
 
     /**
      * 关闭加载框
      */
-    public void closeLoadingDialog() {
-        if (loadingPopupView != null) {
-            ThreadUtils.runOnUiThread(()-> loadingPopupView.dismiss());
+    public void closeLoading() {
+        if (loadingPopupView != null && loadingPopupView.isShow()) {
+            loadingPopupView.dismiss();
         }
     }
 
     /**
-     * 显示提示性对话框
-     */
-    public void showTextDialog() {
-
-    }
-
-    /**
-     * 关闭提示性对话框
-     */
-    public void closeTextDialog() {
-
-    }
-
-    /**
      * 按钮点击时间
+     *
      * @param view view
      */
-    public void onViewClick(View view){
+    public void onViewClick(View view) {
 
     }
 

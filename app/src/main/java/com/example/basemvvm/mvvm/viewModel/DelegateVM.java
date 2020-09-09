@@ -12,7 +12,7 @@ import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
 import com.wang.mvvmcore.rxBus.MsgEvent;
 import com.wang.mvvmcore.rxBus.RxBus;
-import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class DelegateVM extends BaseActivityLifecycleVM {
         baseLoadMoreModule.setEnableLoadMoreIfNotFullPage(false);
 
         delegateAdapter.setOnItemClickListener((adapter, view, position) -> {
-            LogUtils.logE("delegateAdapter");
+            CoreLogUtils.logE("delegateAdapter");
             RxBus.getInstance().post(new MsgEvent(1,"hello"));
             ToastUtils.showShort("position_" + position);
         });

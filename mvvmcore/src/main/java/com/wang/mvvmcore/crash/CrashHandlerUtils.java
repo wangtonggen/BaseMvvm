@@ -1,7 +1,6 @@
 package com.wang.mvvmcore.crash;
 
 import android.os.Build;
-import android.os.Looper;
 
 import androidx.annotation.NonNull;
 
@@ -11,7 +10,7 @@ import com.blankj.utilcode.util.SDCardUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.wang.mvvmcore.BuildConfig;
-import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -108,7 +107,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
-                LogUtils.logE("error : ", e.getMessage());
+                CoreLogUtils.logE("error : ", e.getMessage());
                 e.printStackTrace();
             }
             //退出程序
@@ -189,7 +188,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
         printWriter.close();
         String result = writer.toString();
         sb.append(result);
-        LogUtils.logE(sb.toString());
+        CoreLogUtils.logE(sb.toString());
         if (BuildConfig.DEBUG) {
             return;
         }

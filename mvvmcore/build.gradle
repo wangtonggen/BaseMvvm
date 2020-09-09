@@ -7,8 +7,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 11
-        versionName "1.1.1"
+        versionCode 12
+        versionName "1.1.2"
 
         multiDexEnabled true
 
@@ -36,6 +36,11 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
+    //App需要有确定的起始点
+    //使用一个栈来代表App的导航状态
+    //向上按钮从不会退出你的App
+    //在App任务中向上和返回按钮是等价的
+    //深度链接到目标或导航到相同的目标应产生相同的堆栈
     api 'androidx.navigation:navigation-fragment:2.3.0'
     api 'androidx.navigation:navigation-ui:2.3.0'
     api 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -51,7 +56,6 @@ dependencies {
     api 'androidx.drawerlayout:drawerlayout:1.1.1'
     api 'androidx.annotation:annotation:1.1.0'
     api 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
-    api'androidx.annotation:annotation:1.1.0'
 
     api 'androidx.multidex:multidex:2.0.1'
 
@@ -71,9 +75,6 @@ dependencies {
 
     //recyclerView adapter 支持Androidx
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
-
-    //分割线
-    api 'com.yqritc:recyclerview-flexibledivider:1.4.0'
 
     //权限
     api 'com.github.tbruyelle:rxpermissions:0.12'

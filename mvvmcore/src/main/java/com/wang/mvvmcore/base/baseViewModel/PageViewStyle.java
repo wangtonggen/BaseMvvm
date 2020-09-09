@@ -12,5 +12,4 @@ public class PageViewStyle {
     public int pageSize = 15;
     //数据总数
     public int totalCount = 0;
-
 }

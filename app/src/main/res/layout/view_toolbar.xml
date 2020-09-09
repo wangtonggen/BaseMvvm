@@ -22,6 +22,7 @@
         app:contentInsetStart="0dp"
         app:contentInsetRight="0dp"
         app:contentInsetStartWithNavigation="0dp"
+        android:elevation="@dimen/dp_5"
         android:minHeight="@dimen/dp_50">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

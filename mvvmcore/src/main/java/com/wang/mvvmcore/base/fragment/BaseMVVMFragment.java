@@ -11,7 +11,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.wang.mvvmcore.base.baseViewModel.BaseLifecycleVM;
-import com.wang.mvvmcore.utils.common.LogUtils;
 
 /**
  * author: wtg
