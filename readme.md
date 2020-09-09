@@ -5,7 +5,7 @@
 1.lib里面有使用到butterknife 首先在 project build.gradle添加  
 dependencies {  
 classpath 'com.android.tools.build:gradle:4.0.0'  
-classpath'com.jakewharton:butterknife-gradle-plugin:10.2.1'  
+classpath'com.jakewharton:butterknife-gradle-plugin:10.2.3'  
 }  
 和  
 allprojects {  
@@ -19,7 +19,7 @@ maven {url 'https://jitpack.io' }
 apply plugin: 'com.jakewharton.butterknife'
 
 3.在APP 里面的 build.gradle添加依赖  
-implementation 'com.gitee.wangdachui:BaseMvvm:1.1.2'
+implementation 'com.gitee.wangdachui:BaseMvvm:1.1.3'
 还需要在APP 里面的 build.gradle添加 apply plugin:
 'com.jakewharton.butterknife'  
 //butterknife  
