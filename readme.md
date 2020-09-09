@@ -2,13 +2,7 @@
 该库使用的mvvm+rxjava2+retrofit2+okhttp3+glide架构模式 可以很方便的使用
 
 # 使用
-1.lib里面有使用到butterknife 首先在 project build.gradle添加  
-dependencies {  
-classpath 'com.android.tools.build:gradle:4.0.0'  
-classpath'com.jakewharton:butterknife-gradle-plugin:10.2.3'  
-}  
-和  
-allprojects {  
+1.allprojects {  
 repositories {  
 google()  
 jcenter()  
