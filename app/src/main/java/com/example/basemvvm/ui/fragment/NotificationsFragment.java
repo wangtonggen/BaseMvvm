@@ -5,6 +5,7 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.databinding.FragmentNotificationsBinding;
 import com.example.basemvvm.mvvm.viewModel.NotificationsVM;
 import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 
 public class NotificationsFragment extends BaseMVVMFragment<FragmentNotificationsBinding, NotificationsVM> {
@@ -25,7 +26,7 @@ public class NotificationsFragment extends BaseMVVMFragment<FragmentNotification
 
     @Override
     public void onLazyLoadData() {
-//        LogUtils.logE(TAG, "NotificationsFragment");
+        CoreLogUtils.logE(TAG, "NotificationsFragment");
         binding.smartRefreshLayout.autoRefresh();
     }
 }

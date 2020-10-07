@@ -8,6 +8,7 @@ import com.example.basemvvm.widget.common.CustomLoadMoreView;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
 import com.wang.mvvmcore.crash.CrashHandlerUtils;
 import com.wang.mvvmcore.network.api.ApiBaseUrl;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import butterknife.ButterKnife;
 
@@ -31,6 +32,7 @@ public class BaseApplication extends BaseCoreApplication {
         //http://wthrcdn.etouch.cn/weather_mini?citykey=101180301
         ApiBaseUrl.URL_BASE = "http://192.168.10.139:8888/springboot/";
         initRetrofit();
+        CoreLogUtils.setIsPrintLog(true);
     }
 
     @Override

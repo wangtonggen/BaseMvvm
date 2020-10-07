@@ -25,6 +25,7 @@ public abstract class BaseBindingProvider<VB extends ViewDataBinding, T extends 
         VB viewDataBinding = DataBindingUtil.getBinding(baseViewHolder.itemView);
         if (viewDataBinding != null) {
             bindData(baseViewHolder, viewDataBinding, t);
+            viewDataBinding.executePendingBindings();
         }
     }
 

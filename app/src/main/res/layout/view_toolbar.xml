@@ -9,7 +9,7 @@
 
         <variable
             name="toolbarVM"
-            type="com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM" />
+            type="com.wang.mvvmcore.base.style.BaseToolbarStyle" />
     </data>
 
     <androidx.appcompat.widget.Toolbar
@@ -18,12 +18,13 @@
         view_background="@{toolbarVM.toolbarColor}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_collapseMode="pin"
-        app:contentInsetStart="0dp"
+        android:elevation="@dimen/dp_1"
+        android:minHeight="@dimen/dp_50"
         app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
         app:contentInsetStartWithNavigation="0dp"
-        android:elevation="@dimen/dp_5"
-        android:minHeight="@dimen/dp_50">
+        app:layout_collapseMode="pin">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -33,20 +34,20 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="@dimen/dp_25"
                 android:layout_height="@dimen/dp_25"
-                android:visibility="@{toolbarVM.backNavigationShow?View.VISIBLE:View.INVISIBLE}"
-                bind:image_url="@{toolbarVM.backNavigationResId}"
                 android:onClick="@{toolbarVM::onBack}"
+                android:visibility="@{toolbarVM.backNavigationShow?View.VISIBLE:View.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                bind:image_url="@{toolbarVM.backNavigationResId}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_title"
+                text_alpha="@{toolbarVM.titleBgAlpha}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{toolbarVM.title}"
                 android:textSize="@dimen/sp_18"
-                text_alpha="@{toolbarVM.titleBgAlpha}"
                 android:visibility="@{toolbarVM.titleShow?View.VISIBLE:View.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -57,9 +58,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent">
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_right"
@@ -78,10 +79,10 @@
                     android:layout_height="@dimen/dp_30"
                     android:layout_marginStart="@dimen/dp_10"
                     android:visibility="@{toolbarVM.rightImageShow?View.VISIBLE:View.GONE}"
-                    bind:image_url="@{toolbarVM.rightImageResId}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@id/tv_right"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:image_url="@{toolbarVM.rightImageResId}" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>

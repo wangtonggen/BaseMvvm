@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="delegateVM"
             type="com.example.basemvvm.mvvm.viewModel.DelegateVM" />
@@ -11,20 +12,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/smartRefreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            autoLoadMore="@{delegateVM.smartRefreshStyle.autoLoadMore}"
+            finishRefresh="@{delegateVM.smartRefreshStyle.finishRefresh}"
             onRefreshListener="@{delegateVM.onRefreshListener}"
-            app:srlEnableAutoLoadMore="false">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <com.scwang.smart.refresh.header.MaterialHeader
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <androidx.recyclerview.widget.RecyclerView
-                app:layoutManager="@{delegateVM.linearLayoutManager}"
                 recycler_adapter="@{delegateVM.delegateAdapter}"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                app:layoutManager="@{delegateVM.linearLayoutManager}" />
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

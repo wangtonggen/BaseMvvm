@@ -49,7 +49,7 @@ public class RxBus {
     }
 
     /**
-     * 使用Rxlifecycle解决RxJava引起的内存泄漏
+     * 接收事件，使用Rxlifecycle解决RxJava引起的内存泄漏
      */
     public <T> Observable<T> toObservable(LifecycleOwner owner, final Class<T> eventType) {
         LifecycleProvider<Lifecycle.Event> provider = AndroidLifecycle.createLifecycleProvider(owner);
@@ -68,10 +68,6 @@ public class RxBus {
     }
 
     /**
-     * Stciky 相关
-     */
-
-    /**
      * 发送一个新Sticky事件
      */
     public void postSticky(Object event) {
@@ -88,7 +84,7 @@ public class RxBus {
     public <T> Observable<T> toObservableSticky(LifecycleOwner owner,final Class<T> eventType) {
         synchronized (mStickyEventMap) {
             LifecycleProvider<Lifecycle.Event> provider = AndroidLifecycle.createLifecycleProvider(owner);
-            Observable<T> observable = mBus.ofType(eventType).compose(provider.<T>bindToLifecycle());
+            Observable<T> observable = mBus.ofType(eventType).compose(provider.bindToLifecycle());
             final Object event = mStickyEventMap.get(eventType);
 
             if (event != null) {

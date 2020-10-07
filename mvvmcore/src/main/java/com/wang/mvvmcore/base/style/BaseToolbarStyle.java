@@ -1,4 +1,4 @@
-package com.wang.mvvmcore.base.baseViewModel;
+package com.wang.mvvmcore.base.style;
 
 import android.view.View;
 
@@ -15,7 +15,9 @@ import com.wang.mvvmcore.base.activity.BaseActivity;
  * date:2020/4/3 0003
  * desc: toolbar的基类 如果需要修改颜色字体等设置继承此项或者自定义
  */
-public class BaseToolbarVM extends BaseVM {
+public class BaseToolbarStyle{
+    protected String TAG = getClass().getSimpleName();
+
     public ObservableInt toolbarColor = new ObservableInt(R.color.colorToolbarBg);//toolbar 的颜色值
     public ObservableFloat toolbarAlpha = new ObservableFloat(1.0f);//toolbar 透明度
     public ObservableField<String> title = new ObservableField<>("hello word");//标题
@@ -35,7 +37,7 @@ public class BaseToolbarVM extends BaseVM {
 
     protected BaseActivity mActivity;
 
-    public BaseToolbarVM(BaseActivity mActivity) {
+    public BaseToolbarStyle(BaseActivity mActivity) {
         this.mActivity = mActivity;
     }
 

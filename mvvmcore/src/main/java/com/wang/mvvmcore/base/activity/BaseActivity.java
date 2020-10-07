@@ -1,6 +1,5 @@
 package com.wang.mvvmcore.base.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.LayoutRes;
@@ -30,45 +29,6 @@ public abstract class BaseActivity extends SwipeBackActivity {
     public void onDestroy() {
         super.onDestroy();
         ActivityManagerUtils.getAppManager().finishActivity(this);
-    }
-
-    @Override
-    public void startActivity(Intent intent) {
-        super.startActivity(intent);
-//        setStartAnimation(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
-    }
-
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode) {
-        super.startActivityForResult(intent, requestCode);
-//        setFinishAnimation(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-//        setFinishAnimation(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
-    }
-
-
-    /**
-     * 设置打开activity动画
-     *
-     * @param enterAnim 进入动画
-     * @param exitAnim  退出动画
-     */
-    public void setStartAnimation(int enterAnim, int exitAnim) {
-        overridePendingTransition(enterAnim, exitAnim);
-    }
-
-    /**
-     * 设置关闭activity动画
-     *
-     * @param enterAnim 进入动画
-     * @param exitAnim  退出动画
-     */
-    public void setFinishAnimation(int enterAnim, int exitAnim) {
-        overridePendingTransition(enterAnim, exitAnim);
     }
 
     /**

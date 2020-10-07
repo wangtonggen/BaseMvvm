@@ -32,6 +32,7 @@ public class BinderNoMvvmActivity extends BaseNoMVVMActivity {
 
     private BaseMultiBinderAdapter baseBinderAdapter;
     private BaseLoadMoreModule baseLoadMoreModule;
+
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_binder_momvvm;
@@ -40,9 +41,9 @@ public class BinderNoMvvmActivity extends BaseNoMVVMActivity {
     @Override
     protected void initView() {
         baseBinderAdapter = new BaseMultiBinderAdapter();
-        baseBinderAdapter.addItemBinder(UserBean.class,new ImageNoMvvmBinder()).addItemBinder(MultiItemBean.class,new MultiItemBeanNoMvvmBinder());
+        baseBinderAdapter.addItemBinder(UserBean.class, new ImageNoMvvmBinder()).addItemBinder(MultiItemBean.class, new MultiItemBeanNoMvvmBinder());
         baseLoadMoreModule = baseBinderAdapter.getLoadMoreModule();
-        baseLoadMoreModule.setOnLoadMoreListener(()->{
+        baseLoadMoreModule.setOnLoadMoreListener(() -> {
             page++;
             loadData();
         });
@@ -51,7 +52,7 @@ public class BinderNoMvvmActivity extends BaseNoMVVMActivity {
         baseLoadMoreModule.setEnableLoadMoreIfNotFullPage(false);
 
         smartRefreshLayout.setOnRefreshListener(refreshLayout -> {
-            page=1;
+            page = 1;
             loadData();
         });
 
@@ -80,10 +81,10 @@ public class BinderNoMvvmActivity extends BaseNoMVVMActivity {
         }
     }
 
-    private List<Object> getData(){
+    private List<Object> getData() {
         List<Object> objects = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
-            objects.add(i%2==0?new UserBean(0,"http://e.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7e41f5cfe760e0cf3d6cad6ee.jpg"):new MultiItemBean(0,"position_"+i,"a you ok?"));
+            objects.add(i % 2 == 0 ? new UserBean(0, "http://e.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7e41f5cfe760e0cf3d6cad6ee.jpg") : new MultiItemBean(0, "position_" + i, "a you ok?"));
         }
         return objects;
     }

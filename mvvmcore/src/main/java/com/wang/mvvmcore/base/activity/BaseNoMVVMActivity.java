@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.wang.mvvmcore.constant.SwipeConstant;
 
 import butterknife.ButterKnife;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
 /**
@@ -13,6 +15,8 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
  * desc：不使用MVVM结构的 使用butterKnife 控件绑定
  */
 public abstract class BaseNoMVVMActivity extends BaseActivity {
+    protected CompositeDisposable mDisposables;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +32,32 @@ public abstract class BaseNoMVVMActivity extends BaseActivity {
      */
     protected int getEdgeTrackingEnabled() {
         return SwipeConstant.SWIPE_LEFT;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        onUnBind();
+    }
+
+    /**
+     * 加入订阅对象
+     *
+     * @param disposable 订阅对象
+     */
+    protected void addDisposable(Disposable disposable) {
+        if (mDisposables == null || mDisposables.isDisposed()) {
+            mDisposables = new CompositeDisposable();
+        }
+        mDisposables.add(disposable);
+    }
+
+    /**
+     * 清除所有的请求
+     */
+    public void onUnBind() {
+        if (mDisposables != null && mDisposables.size() > 0 && !mDisposables.isDisposed()) {
+            mDisposables.dispose();
+        }
     }
 }

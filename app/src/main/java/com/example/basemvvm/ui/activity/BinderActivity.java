@@ -5,7 +5,7 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.databinding.ActivityBinderBinding;
 import com.example.basemvvm.mvvm.viewModel.BinderVM;
 import com.wang.mvvmcore.base.activity.BaseSwipeBackLeftActivity;
-import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
+import com.wang.mvvmcore.base.style.BaseToolbarStyle;
 
 /**
  * author: wtg
@@ -30,7 +30,7 @@ public class BinderActivity extends BaseSwipeBackLeftActivity<ActivityBinderBind
 
     @Override
     protected void bindOtherViewModel() {
-        binding.toolbar.setToolbarVM(new BaseToolbarVM(this));
+        binding.toolbar.setToolbarVM(new BaseToolbarStyle(this));
     }
 
     @Override

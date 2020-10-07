@@ -14,11 +14,11 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 /**
  * author: wtg
  * date:2020/3/14 0014
- * desc:
+ * desc: 用户模块的数据处理类
  */
 public class UserModel {
     private static UserModel userModel;
-    private static UserService userService;
+    private static UserService userService = RetrofitManager.getInstance().createService(UserService.class);
 
     public static UserModel getInstance() {
         if (userModel == null) {
@@ -27,9 +27,6 @@ public class UserModel {
                     userModel = new UserModel();
                 }
             }
-        }
-        if (userService == null) {
-            userService = RetrofitManager.getInstance().createService(UserService.class);
         }
         return userModel;
     }
@@ -59,7 +56,8 @@ public class UserModel {
     public void sendCode(String mobile, BaseObserver<String> baseObserver) {
         Map<String, Object> params = new HashMap<>();
         params.put("mobile", mobile);
-        userService.sendCode(params).subscribeOn(Schedulers.io())
+        userService.sendCode(params)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(baseObserver);
     }

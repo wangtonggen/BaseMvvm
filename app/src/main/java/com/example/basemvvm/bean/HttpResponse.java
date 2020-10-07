@@ -7,7 +7,8 @@ import java.util.Objects;
 
 /**
  * author: wtg  2019/4/24 0024
- * desc: 基础的bean类采用泛型
+ * desc: 基础的bean类采用泛型 可以定制的数据标准
+ *       只需重新定义基本bean 然后放到相应的{@link com.example.basemvvm.network.service.UserService}里面就可以了
  */
 public class HttpResponse<T> implements Serializable {
     private int code;
@@ -36,14 +37,5 @@ public class HttpResponse<T> implements Serializable {
 
     public void setData(T data) {
         this.data = data;
-    }
-
-    /**
-     * 获取类型
-     *
-     * @return type
-     */
-    public Type getType() {
-        return ((ParameterizedType) Objects.requireNonNull(getClass().getGenericSuperclass())).getActualTypeArguments()[0];
     }
 }

@@ -46,7 +46,7 @@ public class UserInfoActivity extends BaseSwipeBackLeftActivity<ActivityUserInfo
             binding.toolbar.clToolbar.setPadding(clToolbar.getPaddingLeft(), BarUtils.getStatusBarHeight(), 0, 0);
         });
 
-        binding.toolbar.setToolbarVM(viewModel.baseToolbarVM);
+        binding.toolbar.setToolbarVM(viewModel.baseToolbarStyle);
 
         binding.appbar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
             if (height == -1) {//完全展开

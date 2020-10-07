@@ -13,7 +13,9 @@ import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * author: wtg  2019/4/24 0024
- * desc: 对数据处理
+ * desc: 对数据处理封装，可以根据自己的需具体业务和数据标准来定制
+ *       只需把{@link HttpResponse}替换成自己定义的数据格式基类就可以了
+ *       把相应的{@link com.example.basemvvm.network.service.UserService}数据类型替换
  */
 public abstract class BaseObserver<T> implements Observer<HttpResponse<T>> {
     @Override

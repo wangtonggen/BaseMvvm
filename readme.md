@@ -10,7 +10,8 @@ maven {url 'https://jitpack.io' }
 }
 
 2.在APP 里面的 build.gradle添加依赖  
-implementation 'com.gitee.wangdachui:BaseMvvm:1.1.3'
+implementation 'com.gitee.wangdachui:BaseMvvm:1.1.4'
+
 添加butterknife
 implementation'com.jakewharton:butterknife:10.2.3'  
 annotationProcessor'com.jakewharton:butterknife-compiler:10.2.3'

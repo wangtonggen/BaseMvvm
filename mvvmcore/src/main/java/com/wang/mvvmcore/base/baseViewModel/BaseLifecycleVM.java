@@ -9,6 +9,7 @@ import androidx.lifecycle.OnLifecycleEvent;
 
 import com.lxj.xpopup.XPopup;
 import com.lxj.xpopup.impl.LoadingPopupView;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -86,32 +87,32 @@ public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserve
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate() {
-//        LogUtils.logE(TAG, "onCreate: ");
+        CoreLogUtils.logE(TAG, "onCreate: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onStart() {
-//        LogUtils.logE(TAG, "onStart: ");
+        CoreLogUtils.logE(TAG, "onStart: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void onResume() {
-//        LogUtils.logE(TAG, "onResume: ");
+        CoreLogUtils.logE(TAG, "onResume: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPause() {
-//        LogUtils.logE(TAG, "onPause: ");
+        CoreLogUtils.logE(TAG, "onPause: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void onStop() {
-//        LogUtils.logE(TAG, "onStop: ");
+        CoreLogUtils.logE(TAG, "onStop: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy() {
         onUnBind();
-//        LogUtils.logE(TAG, "onDestroy: ");
+        CoreLogUtils.logE(TAG, "onDestroy: ");
     }
 }

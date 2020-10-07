@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -23,6 +24,7 @@ import com.example.basemvvm.ui.fragment.NotificationsFragment;
 import com.example.basemvvm.ui.fragment.UserFragment;
 import com.example.basemvvm.utils.common.BottomNavigationViewUtils;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.lxj.xpopup.XPopup;
@@ -205,12 +207,15 @@ public class MainActivity extends BaseNoMVVMActivity {
             }
         });
 
-        bottomNavigationView.post(() -> {
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 0, 100);
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 1, 50);
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 3, 8);
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 4, -10);
-        });
+        BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.navigation_home);//显示角标 系统自带
+        badgeDrawable.setBackgroundColor(Color.GREEN);//显示点状角标 不显示具体消息数量
+        BadgeDrawable badgeDrawable1 = bottomNavigationView.getOrCreateBadge(R.id.navigation_find);//显示角标 系统自带
+        badgeDrawable1.setBackgroundColor(Color.BLUE);//显示点状角标 改变角标背景色
+        badgeDrawable1.setNumber(8);
+        BadgeDrawable badgeDrawable2 = bottomNavigationView.getOrCreateBadge(R.id.navigation_message);//显示角标 系统自带
+        badgeDrawable2.setNumber(99);
+        BadgeDrawable badgeDrawable3 = bottomNavigationView.getOrCreateBadge(R.id.navigation_dynamic);//显示角标 系统自带
+        badgeDrawable3.setNumber(1000);
     }
 
     /**

@@ -2,7 +2,6 @@ package com.example.basemvvm.mvvm.viewModel;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.adapter.DelegateAdapter;
 import com.example.basemvvm.bean.UserBean;
@@ -10,6 +9,7 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
+import com.wang.mvvmcore.base.style.SmartRefreshStyle;
 import com.wang.mvvmcore.rxBus.MsgEvent;
 import com.wang.mvvmcore.rxBus.RxBus;
 import com.wang.mvvmcore.utils.common.CoreLogUtils;
@@ -29,7 +29,10 @@ public class DelegateVM extends BaseActivityLifecycleVM {
     private BaseLoadMoreModule baseLoadMoreModule;
     public LinearLayoutManager linearLayoutManager;
     public DelegateAdapter delegateAdapter;
+    public SmartRefreshStyle smartRefreshStyle = new SmartRefreshStyle();
     public OnRefreshListener onRefreshListener = refreshLayout -> {
+        CoreLogUtils.logE("tag","hahah");
+        smartRefreshStyle.finishRefresh.set(false);
         page = 1;
         loadData(refreshLayout);
     };
@@ -54,7 +57,6 @@ public class DelegateVM extends BaseActivityLifecycleVM {
         delegateAdapter.setOnItemClickListener((adapter, view, position) -> {
             CoreLogUtils.logE("delegateAdapter");
             RxBus.getInstance().post(new MsgEvent(1,"hello"));
-            ToastUtils.showShort("position_" + position);
         });
     }
 
@@ -65,14 +67,13 @@ public class DelegateVM extends BaseActivityLifecycleVM {
             delegateAdapter.addData(getData());
         }
 
-        if (refreshLayout != null && refreshLayout.isRefreshing()) {
-            refreshLayout.finishRefresh();
+        if (refreshLayout != null) {
+            smartRefreshStyle.finishRefresh.set(true);
         }
 
         baseLoadMoreModule.setEnableLoadMore(true);
         if (delegateAdapter.getData().size() >= 75) {
             baseLoadMoreModule.setEnableLoadMore(false);
-//            baseLoadMoreModule.loadMoreEnd();
         } else {
             baseLoadMoreModule.loadMoreComplete();
         }

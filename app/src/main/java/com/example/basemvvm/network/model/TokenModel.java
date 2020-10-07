@@ -21,7 +21,7 @@ import retrofit2.Call;
  */
 public class TokenModel {
     private static TokenModel tokenModel;
-    private static UserService userService;
+    private static UserService userService = RetrofitManager.getInstance().createService(UserService.class);
 
     private TokenModel() {
     }
@@ -33,9 +33,6 @@ public class TokenModel {
                     tokenModel = new TokenModel();
                 }
             }
-        }
-        if (userService == null) {
-            userService = RetrofitManager.getInstance().createService(UserService.class);
         }
         return tokenModel;
     }

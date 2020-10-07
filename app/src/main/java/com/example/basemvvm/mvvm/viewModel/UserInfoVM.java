@@ -2,11 +2,10 @@ package com.example.basemvvm.mvvm.viewModel;
 
 import androidx.databinding.ObservableField;
 
-import com.example.basemvvm.R;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
-import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
+import com.wang.mvvmcore.base.style.BaseToolbarStyle;
 
 /**
  * author: wtg
@@ -17,17 +16,16 @@ public class UserInfoVM extends BaseActivityLifecycleVM {
     public ObservableField<Object> topBgUrl = new ObservableField<>();
     public ObservableField<String> userHead = new ObservableField<>();
     public ObservableField<String> userName = new ObservableField<>();
-    public BaseToolbarVM baseToolbarVM;
+    public BaseToolbarStyle baseToolbarStyle;
 
     public UserInfoVM(BaseActivity mActivity) {
         super(mActivity);
 
-        baseToolbarVM = new BaseToolbarVM(mActivity);
-        baseToolbarVM.title.set(MyUserSPUtils.getUserName());
+        baseToolbarStyle = new BaseToolbarStyle(mActivity);
+        baseToolbarStyle.title.set(MyUserSPUtils.getUserName());
 //        baseToolbarVM.toolbarAlpha.set(0);
 //        baseToolbarVM.titleBgAlpha.set(0);
 
-        topBgUrl.set(R.mipmap.bg_top);
         userHead.set(MyUserSPUtils.getHeadUrl());
         userName.set(MyUserSPUtils.getUserName());
     }

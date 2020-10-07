@@ -27,6 +27,11 @@ import static com.example.basemvvm.network.api.UploadApi.URL_UPLOAD_IMAGE;
  * desc: 下载文件的service
  */
 public interface DownloadAndUploadService {
+    /**
+     * 下载文件
+     * @param url url地址
+     * @return 监听
+     */
     @Streaming
     @GET
     Observable<ResponseBody> download(@NonNull @Url String url);

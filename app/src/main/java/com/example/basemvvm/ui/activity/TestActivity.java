@@ -15,6 +15,7 @@ import com.wang.mvvmcore.base.activity.BaseNoMVVMActivity;
 import com.wang.mvvmcore.rxBus.MsgEvent;
 import com.wang.mvvmcore.rxBus.RxBus;
 import com.wang.mvvmcore.rxBus.RxBusObserver;
+import com.wang.mvvmcore.utils.common.ActivityManagerUtils;
 import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import butterknife.BindView;
@@ -39,7 +40,6 @@ public class TestActivity extends BaseNoMVVMActivity {
         RxBus.getInstance().toObservable(this,MsgEvent.class).subscribe(new RxBusObserver<MsgEvent>() {
             @Override
             public void onNext(MsgEvent msgEvent) {
-                CoreLogUtils.logE("hahhahaha");
                 tv_databinding_delegate_multi.setText(msgEvent.getMsg());
             }
         });
