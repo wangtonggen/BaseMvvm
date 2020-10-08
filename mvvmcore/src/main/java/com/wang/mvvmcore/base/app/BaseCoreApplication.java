@@ -28,7 +28,6 @@ public class BaseCoreApplication extends MultiDexApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         instance = this;
-        // 需要继承重写此方法
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.wang.mvvmcore.adapter.provider;
+package com.wang.mvvmcore.adapter.multi.provider;
 
 import android.view.View;
 
@@ -15,8 +15,11 @@ import org.jetbrains.annotations.NotNull;
  * author: wtg
  * date:2020/4/25 0025
  * desc: 多布局的provider使用dataBinding
+ *
+ * @param <T>  bean
+ * @param <VB> viewBinding
  */
-public abstract class BaseBindingProvider<VB extends ViewDataBinding, T extends BaseMultiEntity> extends BaseItemProvider<T> {
+public abstract class BaseBindingProvider<T extends BaseMultiEntity, VB extends ViewDataBinding> extends BaseItemProvider<T> {
     @Override
     public void convert(@NotNull BaseViewHolder baseViewHolder, T t) {
         if (t == null) {

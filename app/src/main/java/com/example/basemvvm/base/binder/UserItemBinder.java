@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import com.example.basemvvm.bean.NotificationBean;
 import com.example.basemvvm.databinding.RecyclerItemNotificationBinding;
 import com.example.basemvvm.mvvm.viewModel.NotificationItemVM;
-import com.wang.mvvmcore.adapter.binder.BaseViewDataBinder;
+import com.wang.mvvmcore.adapter.multi.binder.BaseBindingBinder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * date:2020/5/20 0020
  * desc:
  */
-public class UserItemBinder extends BaseViewDataBinder<NotificationBean, RecyclerItemNotificationBinding> {
+public class UserItemBinder extends BaseBindingBinder<NotificationBean, RecyclerItemNotificationBinding> {
 
     @Override
     public void setData(RecyclerItemNotificationBinding viewDataBinding, NotificationBean notificationBean) {

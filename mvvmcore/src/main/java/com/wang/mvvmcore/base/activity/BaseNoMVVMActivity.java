@@ -12,7 +12,7 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
 /**
  * author：wtg
  * time：2020/3/15
- * desc：不使用MVVM结构的 使用butterKnife 控件绑定
+ * desc：不使用数据绑定结构的 使用butterKnife 控件绑定
  */
 public abstract class BaseNoMVVMActivity extends BaseActivity {
     protected CompositeDisposable mDisposables;

@@ -3,7 +3,7 @@ package com.example.basemvvm.adapter;
 import com.example.basemvvm.bean.UserBean;
 import com.example.basemvvm.base.provider.ImageBindingProvider;
 import com.example.basemvvm.base.provider.UserBindingProvider;
-import com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter.BaseProviderAdapter;
+import com.wang.mvvmcore.adapter.multi.adapter.BaseProviderAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -19,7 +19,7 @@ public class UserAdapter extends BaseProviderAdapter<UserBean> {
     public static int TYPE_IMAGE = 1;
 
     @Override
-    protected void addItemType() {
+    protected void addItemTypeProvider() {
         addItemProvider(new UserBindingProvider());
         addItemProvider(new ImageBindingProvider());
     }

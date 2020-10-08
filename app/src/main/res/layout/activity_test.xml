@@ -20,16 +20,6 @@
                 android:text="主页面" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_databinding_delegate_multi"
-                style="@style/tv_item_test"
-                android:text="DataBindingDelegateMulti" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_databinding_multi"
-                style="@style/tv_item_test"
-                android:text="DataBindingMulti" />
-
-            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_databinding_provider"
                 style="@style/tv_item_test"
                 android:text="DataBindingProvider" />
@@ -43,16 +33,6 @@
                 android:id="@+id/tv_databinding_single"
                 style="@style/tv_item_test"
                 android:text="DataBindingSingle" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_delegate_multi"
-                style="@style/tv_item_test"
-                android:text="DelegateMulti" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_multi"
-                style="@style/tv_item_test"
-                android:text="Multi" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_provider"

@@ -10,7 +10,7 @@ import com.example.basemvvm.base.binder.MultiItemBeanNoMvvmBinder;
 import com.example.basemvvm.bean.MultiItemBean;
 import com.example.basemvvm.bean.UserBean;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
-import com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter.BaseMultiBinderAdapter;
+import com.wang.mvvmcore.adapter.multi.adapter.BaseMultiBinderAdapter;
 import com.wang.mvvmcore.base.activity.BaseNoMVVMActivity;
 
 import java.util.ArrayList;

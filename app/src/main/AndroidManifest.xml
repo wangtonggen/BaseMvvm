@@ -38,13 +38,9 @@
             android:name=".ui.activity.AppUpdateActivity"
             android:theme="@style/dialog_style" />
         <activity android:name=".ui.activity.MainActivity" />
-        <activity android:name=".ui.activity.DelegateActivity" />
-        <activity android:name=".ui.activity.MultiActivity" />
         <activity android:name=".ui.activity.ProviderActivity" />
         <activity android:name=".ui.activity.BinderActivity" />
         <activity android:name=".ui.activity.SingleActivity" />
-        <activity android:name=".ui.activity.noMvvm.DelegateNoMvvmActivity" />
-        <activity android:name=".ui.activity.noMvvm.MultiNoMvvmActivity" />
         <activity android:name=".ui.activity.noMvvm.ProviderNoMvvmActivity" />
         <activity android:name=".ui.activity.noMvvm.SingleNoMvvmActivity" />
         <activity android:name=".ui.activity.noMvvm.BinderNoMvvmActivity" />

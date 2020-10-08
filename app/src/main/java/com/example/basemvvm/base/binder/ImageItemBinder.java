@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import com.example.basemvvm.bean.UserBean;
 import com.example.basemvvm.databinding.RecyclerItemImageBinding;
 import com.example.basemvvm.mvvm.viewModel.ImageItemVM;
-import com.wang.mvvmcore.adapter.binder.BaseViewDataBinder;
+import com.wang.mvvmcore.adapter.multi.binder.BaseBindingBinder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * date:2020/5/20 0020
  * desc:
  */
-public class ImageItemBinder extends BaseViewDataBinder<UserBean, RecyclerItemImageBinding> {
+public class ImageItemBinder extends BaseBindingBinder<UserBean, RecyclerItemImageBinding> {
     @Override
     public void setData(RecyclerItemImageBinding viewDataBinding, UserBean userBean) {
         viewDataBinding.setImageItemVM(new ImageItemVM(userBean));

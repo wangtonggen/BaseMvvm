@@ -36,15 +36,4 @@ public abstract class BaseActivityLifecycleVM extends BaseLifecycleVM {
     public void setBundle(Bundle bundle) {
         this.bundle = bundle;
     }
-
-    /**
-     * 点击返回键 功能
-     *
-     * @param view view
-     */
-    public void onBackClick(View view) {
-        mActivity.finish();
-    }
-
-
 }

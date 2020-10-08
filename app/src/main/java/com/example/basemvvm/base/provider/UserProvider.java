@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.UserAdapter;
 import com.example.basemvvm.bean.UserBean;
-import com.wang.mvvmcore.adapter.provider.BaseProvider;
+import com.wang.mvvmcore.adapter.multi.provider.BaseProvider;
 
 import org.jetbrains.annotations.NotNull;
 

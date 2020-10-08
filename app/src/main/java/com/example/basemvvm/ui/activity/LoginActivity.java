@@ -13,7 +13,7 @@ import com.example.basemvvm.databinding.ActivityLoginBinding;
 import com.example.basemvvm.mvvm.viewModel.LoginVM;
 import com.gyf.immersionbar.ImmersionBar;
 import com.wang.mvvmcore.base.activity.BaseSwipeBackLeftActivity;
-import com.wang.mvvmcore.base.style.BaseToolbarStyle;
+import com.wang.mvvmcore.base.style.BaseToolbarActivityStyle;
 
 
 public class LoginActivity extends BaseSwipeBackLeftActivity<ActivityLoginBinding, LoginVM> {
@@ -30,12 +30,12 @@ public class LoginActivity extends BaseSwipeBackLeftActivity<ActivityLoginBindin
 
     @Override
     protected void bindOtherViewModel() {
-        BaseToolbarStyle baseToolbarStyle = new BaseToolbarStyle(this);
-        baseToolbarStyle.title.set("登录");
-        baseToolbarStyle.toolbarColor.set(R.color.white);
-        baseToolbarStyle.titleColor.set(R.color.color_title);
-        baseToolbarStyle.backNavigationResId.set(R.drawable.ic_arrow_back);
-        binding.toolbar.setToolbarVM(baseToolbarStyle);
+        BaseToolbarActivityStyle baseToolbarActivityStyle = new BaseToolbarActivityStyle(this);
+        baseToolbarActivityStyle.title.set("登录");
+        baseToolbarActivityStyle.toolbarColor.set(R.color.white);
+        baseToolbarActivityStyle.titleColor.set(R.color.color_title);
+        baseToolbarActivityStyle.backNavigationResId.set(R.drawable.ic_arrow_back);
+        binding.toolbar.setToolbarVM(baseToolbarActivityStyle);
 
     }
 

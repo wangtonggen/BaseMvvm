@@ -20,10 +20,11 @@ import io.reactivex.rxjava3.disposables.Disposable;
 public abstract class BaseNoMVVMFragment extends BaseLazyLoadFragment {
     protected View rootView;
     protected CompositeDisposable mDisposables;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (rootView == null){
+        if (rootView == null) {
             rootView = LayoutInflater.from(mContext).inflate(getLayoutRes(), container, false);
         }
         ButterKnife.bind(rootView);

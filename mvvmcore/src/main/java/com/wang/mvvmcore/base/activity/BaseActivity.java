@@ -13,7 +13,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 /**
  * author：wtg
  * time：2020/3/15
- * desc：
+ * desc：activity 最基类
  */
 public abstract class BaseActivity extends SwipeBackActivity {
 

@@ -4,7 +4,7 @@ package com.example.basemvvm.adapter.nomvvm;
 import com.example.basemvvm.base.provider.ImageProvider;
 import com.example.basemvvm.base.provider.UserProvider;
 import com.example.basemvvm.bean.UserBean;
-import com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter.BaseProviderAdapter;
+import com.wang.mvvmcore.adapter.multi.adapter.BaseProviderAdapter;
 
 /**
  * author: wtg
@@ -13,7 +13,7 @@ import com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter.BaseProviderAdapt
  */
 public class ProviderNoMvvmAdapter extends BaseProviderAdapter<UserBean> {
     @Override
-    protected void addItemType() {
+    protected void addItemTypeProvider() {
         addItemProvider(new UserProvider());
         addItemProvider(new ImageProvider());
     }

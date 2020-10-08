@@ -5,7 +5,7 @@ import androidx.databinding.ObservableField;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
-import com.wang.mvvmcore.base.style.BaseToolbarStyle;
+import com.wang.mvvmcore.base.style.BaseToolbarActivityStyle;
 
 /**
  * author: wtg
@@ -16,13 +16,13 @@ public class UserInfoVM extends BaseActivityLifecycleVM {
     public ObservableField<Object> topBgUrl = new ObservableField<>();
     public ObservableField<String> userHead = new ObservableField<>();
     public ObservableField<String> userName = new ObservableField<>();
-    public BaseToolbarStyle baseToolbarStyle;
+    public BaseToolbarActivityStyle baseToolbarActivityStyle;
 
     public UserInfoVM(BaseActivity mActivity) {
         super(mActivity);
 
-        baseToolbarStyle = new BaseToolbarStyle(mActivity);
-        baseToolbarStyle.title.set(MyUserSPUtils.getUserName());
+        baseToolbarActivityStyle = new BaseToolbarActivityStyle(mActivity);
+        baseToolbarActivityStyle.title.set(MyUserSPUtils.getUserName());
 //        baseToolbarVM.toolbarAlpha.set(0);
 //        baseToolbarVM.titleBgAlpha.set(0);
 
