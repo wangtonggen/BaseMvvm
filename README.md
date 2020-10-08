@@ -15,7 +15,7 @@ allprojects {
 ## App里面的gradle添加依赖
 ---
 ```
-implementation 'com.gitee.wangdachui:BaseMvvm:1.1.4'
+implementation 'com.gitee.wangdachui:BaseMvvm:1.1.5'
 //添加butterknife
 implementation'com.jakewharton:butterknife:10.2.3'  
 annotationProcessor'com.jakewharton:butterknife-compiler:10.2.3'
@@ -128,10 +128,162 @@ public abstract class BaseNoMVVMFragment extends BaseLazyLoadFragment {
 adapter分为两部分
 1. 单布局
     - 使用MVVM
+        - [BaseBindingSingleAdapter](com.wang.mvvmcore.adapter.singleAdapter.BaseSingleAdapter)
+        示例：
+        ```
+        public class SingleAdapter extends BaseBindingSingleAdapter<NotificationBean,RecyclerItemNotificationBinding> {
+        
+            public SingleAdapter(int layoutResId) {
+                super(layoutResId);
+            }
+        
+            @Override
+            public void bindData(@NotNull BaseDataBindingHolder<RecyclerItemNotificationBinding> vh, @NotNull RecyclerItemNotificationBinding viewDataBinding, NotificationBean notificationBean) {
+                viewDataBinding.setNotificationItemVM(new NotificationItemVM(notificationBean));
+            }
+        
+        }
+        ```
     - 不使用MVVM
+        - [BaseSingleAdapter](com.wang.mvvmcore.adapter.singleAdapter.BaseSingleAdapter)
+        示例：
+        ```
+        public class SingleNoMvvmAdapter extends BaseSingleAdapter<NotificationBean, BaseViewHolder> {
+            public SingleNoMvvmAdapter(int layoutResId) {
+                super(layoutResId);
+            }
+        
+            @Override
+            protected void convert(@NotNull BaseViewHolder baseViewHolder, NotificationBean notificationBean) {
+                baseViewHolder.setText(R.id.tv_name,notificationBean.name);
+            }
+        }
+      ```
 2. 多布局
     - 使用MMVM
+        - [BaseBindingBinder](com.wang.mvvmcore.adapter.multi.binder.BaseBindingBinder)
+        示例：
+        ```
+        public class UserItemBinder extends BaseBindingBinder<NotificationBean, RecyclerItemNotificationBinding> {
+        
+            @Override
+            public void setData(RecyclerItemNotificationBinding viewDataBinding, NotificationBean notificationBean) {
+                viewDataBinding.setNotificationItemVM(new NotificationItemVM(notificationBean));
+            }
+        
+            @NotNull
+            @Override
+            public RecyclerItemNotificationBinding onCreateViewBinding(@NotNull LayoutInflater layoutInflater, @NotNull ViewGroup viewGroup, int i) {
+                return RecyclerItemNotificationBinding.inflate(layoutInflater,viewGroup,false);
+            }
+        }
+      ```
+        - [BaseBindingProvider](com.wang.mvvmcore.adapter.multi.provider.BaseBindingProvider)
+        示例：
+        ```
+        public class Home01Provider extends BaseBindingProvider<MultiItemBean, RecyclerItemHome01Binding> {
+            @Override
+            protected void bindData(@NotNull BaseViewHolder viewHolder, @NotNull RecyclerItemHome01Binding viewDataBinding, MultiItemBean multiItemBean) {
+                viewDataBinding.setMultiItemBean(multiItemBean);
+            }
+        
+            @Override
+            public int getItemViewType() {
+                return 0;
+            }
+        
+            @Override
+            public int getLayoutId() {
+                return R.layout.recycler_item_home01;
+            }
+        }
+      ```
     - 不使用MVVM
+        - [BaseBinder](com.wang.mvvmcore.adapter.multi.binder.BaseBinder)
+        示例：
+        ```
+        public class ImageNoMvvmBinder extends BaseBinder<UserBean> {
+            @Override
+            public int getLayoutId() {
+                return R.layout.recycler_item_user_nomvvm;
+            }
+        
+            @Override
+            public void convert(@NotNull BaseViewHolder baseViewHolder, UserBean userBean) {
+                Glide.with(getContext()).load(userBean.getUrl()).into((CircleImageView)baseViewHolder.getView(R.id.iv_image));
+            }
+        }
+      ```
+        - [BaseProvider](com.wang.mvvmcore.adapter.multi.provider.BaseProvider)
+        示例：
+        ```
+        public class HomeBindingMultiAdapter extends BaseProviderAdapter<MultiItemBean> {
+        
+            @Override
+            protected void addItemTypeProvider() {
+                addItemProvider(new HomeProvider());
+                addItemProvider(new Home01Provider());
+            }
+        }
+      ```
+## Application
+---
+```
+//依赖项目需要继承 BaseCoreApplication 需要修改的地方重写相应的方法
+public class BaseApplication extends BaseCoreApplication {
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        //初始化 Retrofit2
+//        initRetrofit();
+        //初始化下拉刷新，上拉加载 的头部和尾部
+        initSmartRefreshHeaderAndFooter(R.color.colorPrimary,new CustomLoadMoreView());
+        //初始化全局carsh
+        initCrash();
+
+        ButterKnife.setDebug(BuildConfig.DEBUG);
+        //http://wthrcdn.etouch.cn/weather_mini?citykey=101180301
+        ApiBaseUrl.URL_BASE = "http://192.168.10.139:8888/springboot/";
+        initRetrofit();
+        CoreLogUtils.setIsPrintLog(true);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+    }
+
+    @Override
+    protected void initCrash() {
+        CrashHandlerUtils.getInstance().setUploadListener((crashFile, crashInfo) -> {
+            //上传或者处理异常信息
+        }).init();
+    }
+}
+```
+## utils使用
+---
+- [CoreLogUtils](com.wang.mvvmcore.utils.common.CoreLogUtils)打印日志
+```
+CoreLogUtils.setIsPrintLog(true);//true开启打印，false关闭打印
+```
+- [ActivityManagerUtils](com.wang.mvvmcore.utils.common.ActivityManagerUtils) Activity堆栈管理
+## rxBus使用
+---
+```
+//发送数据
+RxBus.getInstance().post(new MsgEvent(1,"hello“))
+
+//接受数据
+RxBus.getInstance().toObservable(this,MsgEvent.class).subscribe(new RxBusObserver<MsgEvent>() {
+           @Override
+           public void onNext(MsgEvent msgEvent) {
+
+           }
+       });
+```
+
 
 
 
