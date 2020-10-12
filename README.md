@@ -81,7 +81,6 @@ public class ProviderActivity extends BaseSwipeBackLeftActivity<ActivityProvider
 ```
 ## fragment的继承
 ---
-
 ```
 // 使用MVVM的fragment的基类 默认采用懒加载方式加载数据
 public class DashboardFragment extends BaseMVVMFragment<FragmentDashboardBinding, DashboardVM> {
