@@ -1,15 +1,11 @@
 package com.wang.mvvmcore.base.fragment;
 
-import androidx.databinding.ViewDataBinding;
-
-import com.wang.mvvmcore.base.baseViewModel.BaseLifecycleVM;
-
 /**
  * author: wtg
  * date:2020/3/17 0017
- * desc: 懒加载
+ * desc: 懒加载的fragment基类
  */
-public abstract class BaseLazyLoadFragment extends BaseFragment {
+abstract class BaseLazyLoadFragment extends BaseFragment {
     private boolean isFirstLoad = true;//是否是第一次加载 true是 false 否
 
     @Override

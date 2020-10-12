@@ -8,5 +8,5 @@ package com.wang.mvvmcore.network.api;
 public class ApiBaseUrl {
     //外网测试环境
 //    public static final String URL_BASE = "http://test.dcqcjlb.cn/";
-    public static final String URL_BASE = "https://api.51shanky.com/";
+    public static String URL_BASE = "";
 }

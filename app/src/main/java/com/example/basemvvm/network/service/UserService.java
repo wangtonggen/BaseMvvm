@@ -7,7 +7,7 @@ import com.example.basemvvm.network.api.UserApi;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
+import io.reactivex.rxjava3.core.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
@@ -17,7 +17,7 @@ import retrofit2.http.POST;
 /**
  * author: wtg
  * date:2020/3/14 0014
- * desc:
+ * desc: 需要定义数据标准类型只需要把{@link HttpResponse} 替换成自己定义的即可
  */
 public interface UserService {
     /**

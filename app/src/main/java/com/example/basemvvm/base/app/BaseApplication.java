@@ -7,6 +7,8 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.widget.common.CustomLoadMoreView;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
 import com.wang.mvvmcore.crash.CrashHandlerUtils;
+import com.wang.mvvmcore.network.api.ApiBaseUrl;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import butterknife.ButterKnife;
 
@@ -20,13 +22,23 @@ public class BaseApplication extends BaseCoreApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         //初始化 Retrofit2
-        initRetrofit();
+//        initRetrofit();
         //初始化下拉刷新，上拉加载 的头部和尾部
         initSmartRefreshHeaderAndFooter(R.color.colorPrimary,new CustomLoadMoreView());
         //初始化全局carsh
         initCrash();
 
         ButterKnife.setDebug(BuildConfig.DEBUG);
+        //http://wthrcdn.etouch.cn/weather_mini?citykey=101180301
+        ApiBaseUrl.URL_BASE = "http://192.168.10.139:8888/springboot/";
+        initRetrofit();
+        CoreLogUtils.setIsPrintLog(true);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
     }
 
     @Override

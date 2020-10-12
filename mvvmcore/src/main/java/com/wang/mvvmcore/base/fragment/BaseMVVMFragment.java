@@ -11,15 +11,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.wang.mvvmcore.base.baseViewModel.BaseLifecycleVM;
-import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 /**
  * author: wtg
  * date:2020/3/12 0012
- * desc: fragment 基类
+ * desc: fragment 基类使用数据绑定
  */
 public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseLazyLoadFragment {
-
     protected B binding;
     protected int viewModelId;
     protected VM viewModel;
@@ -27,8 +26,10 @@ public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends Bas
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LogUtils.logE("create=" + TAG);
-        binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
+        CoreLogUtils.logE("create", "onCreateView");
+        if (binding == null) {
+            binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
+        }
         initView(savedInstanceState, binding.getRoot());
         return binding.getRoot();
     }
@@ -44,10 +45,21 @@ public abstract class BaseMVVMFragment<B extends ViewDataBinding, VM extends Bas
         getLifecycle().addObserver(viewModel);
     }
 
+    /**
+     * 设置viewModel
+     */
     private void refreshLayout() {
         if (viewModel != null) {
             binding.setVariable(viewModelId, viewModel);
         }
+        bindOtherViewModel();
+    }
+
+    /**
+     * 绑定其他的viewModel
+     */
+    protected void bindOtherViewModel() {
+
     }
 
     /**

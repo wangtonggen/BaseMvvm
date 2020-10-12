@@ -1,14 +1,6 @@
 package com.wang.mvvmcore.network.networkBase;
 
-import com.wang.mvvmcore.utils.common.LogUtils;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import io.reactivex.observers.DefaultObserver;
-import okhttp3.ResponseBody;
 
 /**
  * author: wtg

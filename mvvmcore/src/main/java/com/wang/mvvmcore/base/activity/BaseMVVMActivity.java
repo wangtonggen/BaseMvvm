@@ -10,7 +10,7 @@ import com.wang.mvvmcore.base.baseViewModel.BaseLifecycleVM;
 /**
  * author: wtg
  * date:2020/3/12 0012
- * desc: activity 基类
+ * desc: activity 基类（使用数据绑定）
  */
 public abstract class BaseMVVMActivity<B extends ViewDataBinding, VM extends BaseLifecycleVM> extends BaseActivity {
     protected B binding;
@@ -32,7 +32,7 @@ public abstract class BaseMVVMActivity<B extends ViewDataBinding, VM extends Bas
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (viewModel != null){
+        if (viewModel != null) {
             viewModel.onDestroy();
         }
         if (binding != null) {
@@ -48,6 +48,14 @@ public abstract class BaseMVVMActivity<B extends ViewDataBinding, VM extends Bas
         if (viewModel != null) {
             binding.setVariable(viewModelId, viewModel);
         }
+        bindOtherViewModel();
+    }
+
+    /**
+     * 绑定其他的viewModel
+     */
+    protected void bindOtherViewModel() {
+
     }
 
     /**

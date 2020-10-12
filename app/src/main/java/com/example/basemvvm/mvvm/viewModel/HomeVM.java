@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
@@ -21,7 +22,6 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.stx.xhb.androidx.XBanner;
 import com.wang.mvvmcore.base.baseViewModel.BaseFragmentLifecycleVM;
 import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +65,7 @@ public class HomeVM extends BaseFragmentLifecycleVM {
         homeRecyclerAdapter.setOnItemClickListener((adapter, view, position) -> {
             homeRecyclerAdapter.getData().get(position).name = "hello";
             homeRecyclerAdapter.notifyItemChanged(position + homeRecyclerAdapter.getHeaderLayoutCount());
-            ToastUtils.showShortToast("position_" + position);
+            ToastUtils.showShort("position_" + position);
         });
         baseLoadMoreModule = homeRecyclerAdapter.getLoadMoreModule();
         baseLoadMoreModule.setOnLoadMoreListener(() -> {
@@ -100,7 +100,7 @@ public class HomeVM extends BaseFragmentLifecycleVM {
             AppCompatImageView imageView = view.findViewById(R.id.iv_image);
             Glide.with(mContext).load(bannerBeans.get(position).getUrl()).apply(RequestOptions.bitmapTransform(new RoundedCorners(10))).into(imageView);
         });
-        banner.setOnItemClickListener((banner1, model, view, position) -> ToastUtils.showShortToast("position_" + position));
+        banner.setOnItemClickListener((banner1, model, view, position) -> ToastUtils.showShort("position_" + position));
         banner.startAutoPlay();
     }
 

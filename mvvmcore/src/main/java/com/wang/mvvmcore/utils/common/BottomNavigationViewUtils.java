@@ -6,6 +6,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -64,7 +65,7 @@ public class BottomNavigationViewUtils {
 
             // 显示badegeview
             new QBadgeView(context).bindTarget(view).setBadgeTextSize(10, true).setOnDragStateChangedListener((dragState, badge, targetView) -> {
-            }).setGravityOffset(spaceWidth, StringUtils.dp2px(context,3), false).setBadgeNumber(showNumber);
+            }).setGravityOffset(spaceWidth, AdaptScreenUtils.pt2Px(3), false).setBadgeNumber(showNumber);
         }
     }
 

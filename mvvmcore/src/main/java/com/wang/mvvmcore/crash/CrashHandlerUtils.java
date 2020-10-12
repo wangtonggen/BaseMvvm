@@ -1,16 +1,16 @@
 package com.wang.mvvmcore.crash;
 
 import android.os.Build;
-import android.os.Looper;
 
 import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.SDCardUtils;
+import com.blankj.utilcode.util.ThreadUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.wang.mvvmcore.BuildConfig;
-import com.wang.mvvmcore.utils.common.LogUtils;
-import com.wang.mvvmcore.utils.common.ToastUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -107,7 +107,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
-                LogUtils.logE("error : ", e.getMessage());
+                CoreLogUtils.logE("error : ", e.getMessage());
                 e.printStackTrace();
             }
             //退出程序
@@ -129,15 +129,10 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
             return false;
         }
         //使用Toast来显示异常信息
-        new Thread() {
-            @Override
-            public void run() {
-                Looper.prepare();
-                throwable.printStackTrace();
-                ToastUtils.showShortToast(getCrashTip());
-                Looper.loop();
-            }
-        }.start();
+        ThreadUtils.runOnUiThread(()->{
+            throwable.printStackTrace();
+            ToastUtils.showShort(getCrashTip());
+        });
         //收集设备参数信息
         collectDeviceInfo();
         //保存日志文件
@@ -193,7 +188,7 @@ public class CrashHandlerUtils implements Thread.UncaughtExceptionHandler {
         printWriter.close();
         String result = writer.toString();
         sb.append(result);
-        LogUtils.logE(sb.toString());
+        CoreLogUtils.logE(sb.toString());
         if (BuildConfig.DEBUG) {
             return;
         }

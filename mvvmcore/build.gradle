@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2
-        versionName "1.0.2"
+        versionCode 15
+        versionName "1.1.5"
 
         multiDexEnabled true
 
@@ -36,45 +36,50 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
-    api 'androidx.navigation:navigation-fragment:2.2.2'
-    api 'androidx.navigation:navigation-ui:2.2.2'
+    //App需要有确定的起始点
+    //使用一个栈来代表App的导航状态
+    //向上按钮从不会退出你的App
+    //在App任务中向上和返回按钮是等价的
+    //深度链接到目标或导航到相同的目标应产生相同的堆栈
+    api 'androidx.navigation:navigation-fragment:2.3.0'
+    api 'androidx.navigation:navigation-ui:2.3.0'
     api 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.4.0")
-    api 'androidx.test.espresso:espresso-core:3.2.0'
-    api 'androidx.appcompat:appcompat:1.1.0'
-    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    testImplementation('com.squareup.okhttp3:mockwebserver:4.8.1')
+    api 'androidx.test.espresso:espresso-core:3.3.0'
+    api 'androidx.appcompat:appcompat:1.2.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.2'
     api 'androidx.cardview:cardview:1.0.0'
     api 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
-    api 'com.google.android.material:material:1.1.0'
-    api 'androidx.drawerlayout:drawerlayout:1.0.0'
+    api 'com.google.android.material:material:1.2.1'
+    api 'androidx.drawerlayout:drawerlayout:1.1.1'
     api 'androidx.annotation:annotation:1.1.0'
     api 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
-    api'androidx.annotation:annotation:1.1.0'
 
+    //限制函数方法超过的问题
     api 'androidx.multidex:multidex:2.0.1'
 
     //gson
     api 'com.google.code.gson:gson:2.8.6'
 
     //google aac
-    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+//    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    //生命周期监听
+    api 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.2.2'
 
     //基础工具类
-    api 'com.blankj:utilcodex:1.26.0'
+    api 'com.blankj:utilcodex:1.29.0'
 
     //下滑/左滑/右滑 关闭activity
     api 'me.imid.swipebacklayout.lib:library:1.1.0'
 
     //recyclerView adapter 支持Androidx
-    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.2'
-
-    //分割线
-    api 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
     //权限
-    api 'com.github.tbruyelle:rxpermissions:0.10.2'
+    api 'com.github.tbruyelle:rxpermissions:0.12'
 
     //沉浸式状态栏工具类
     api 'com.gyf.immersionbar:immersionbar:3.0.0'
@@ -83,13 +88,13 @@ dependencies {
 
     //network
     //响应式框架
-    api 'io.reactivex.rxjava2:rxjava:2.2.19'
-    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    api 'com.squareup.okhttp3:okhttp:4.4.0'
-    api 'com.squareup.okhttp3:logging-interceptor:4.4.0'
-    api 'com.squareup.retrofit2:retrofit:2.7.2'
-    api 'com.squareup.retrofit2:converter-gson:2.7.2'
-    api 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
+    api 'io.reactivex.rxjava3:rxjava:3.0.5'
+    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    api 'com.squareup.okhttp3:okhttp:4.8.1'
+    api 'com.squareup.okhttp3:logging-interceptor:4.8.1'
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
     api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
     //下拉刷新控件
@@ -105,8 +110,8 @@ dependencies {
     api 'com.yqritc:recyclerview-flexibledivider:1.4.0'
 
     //butterknife
-    api 'com.jakewharton:butterknife:10.2.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    api 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
     //弹窗
     api 'com.lxj:xpopup:1.8.10'

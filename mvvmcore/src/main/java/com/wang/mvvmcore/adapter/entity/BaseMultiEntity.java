@@ -1,7 +1,7 @@
 package com.wang.mvvmcore.adapter.entity;
 
-import com.wang.mvvmcore.adapter.provider.BaseBindingProvider;
-import com.wang.mvvmcore.adapter.provider.BaseProvider;
+import com.wang.mvvmcore.adapter.multi.provider.BaseBindingProvider;
+import com.wang.mvvmcore.adapter.multi.provider.BaseProvider;
 
 import java.io.Serializable;
 

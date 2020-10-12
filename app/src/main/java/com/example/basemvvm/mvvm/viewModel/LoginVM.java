@@ -1,6 +1,5 @@
 package com.example.basemvvm.mvvm.viewModel;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
@@ -8,20 +7,20 @@ import android.view.View;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 
-import com.example.basemvvm.R;
+import com.blankj.utilcode.util.ToastUtils;
 import com.example.basemvvm.bean.HttpResponse;
-import com.example.basemvvm.constant.IntentFilterConstant;
+import com.example.basemvvm.bean.LoginBean;
 import com.example.basemvvm.network.base.BaseObserver;
 import com.example.basemvvm.network.model.UserModel;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
-import com.wang.mvvmcore.base.activity.BaseMVVMActivity;
+import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
-import com.wang.mvvmcore.base.baseViewModel.BaseToolbarVM;
 import com.wang.mvvmcore.utils.common.CountDownUtils;
-import com.wang.mvvmcore.utils.common.ToastUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 import com.wang.mvvmcore.widget.SimpleTextWatcher;
 
 import io.reactivex.observers.DefaultObserver;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * 登录的viewModel
@@ -33,7 +32,6 @@ public class LoginVM extends BaseActivityLifecycleVM {
     public ObservableBoolean btnCodeEnabled = new ObservableBoolean(true);
     public ObservableField<String> btnCodeText = new ObservableField<>("获取验证码");
 
-    public BaseToolbarVM baseToolbarVM;
     public SimpleTextWatcher accountTextWatcher = new SimpleTextWatcher() {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -47,14 +45,8 @@ public class LoginVM extends BaseActivityLifecycleVM {
         }
     };
 
-    public LoginVM(BaseMVVMActivity mActivity) {
+    public LoginVM(BaseActivity mActivity) {
         super(mActivity);
-
-        baseToolbarVM = new BaseToolbarVM(mActivity);
-        baseToolbarVM.title.set("登录");
-        baseToolbarVM.toolbarColor.set(R.color.white);
-        baseToolbarVM.titleColor.set(R.color.color_title);
-        baseToolbarVM.backNavigationResId.set(R.drawable.ic_arrow_back);
     }
 
     /**
@@ -63,10 +55,10 @@ public class LoginVM extends BaseActivityLifecycleVM {
      * @param view view
      */
     public void getCode(View view) {
-        showLoadingDialog("获取中");
+        showLoading(mActivity,"获取中");
         new Handler().postDelayed(() -> {
-            closeLoadingDialog();
-            ToastUtils.showShortToast("发送成功,请注意查收");
+            closeLoading();
+            ToastUtils.showShort("发送成功,请注意查收");
             btnCodeEnabled.set(false);
             btnCodeText.set("60s");
             CountDownUtils.countDown(1L, 60L, new DefaultObserver<Long>() {
@@ -98,28 +90,37 @@ public class LoginVM extends BaseActivityLifecycleVM {
      * @param view view
      */
     public void login(View view) {
-        showLoadingDialog("登录中");
-        new Handler().postDelayed(() -> {
-            closeLoadingDialog();
-            MyUserSPUtils.setIsLogin(true);
-            MyUserSPUtils.setUserName("奔跑的一毛一");
-            MyUserSPUtils.setUserMobile(str_mobile.get());
-            String path = "http://e.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f7e41f5cfe760e0cf3d6cad6ee.jpg";
-            MyUserSPUtils.setHeadUrl(path);
-            mActivity.sendBroadcast(new Intent(IntentFilterConstant.UPDATE_LOGIN_ACTION));
-            mActivity.finish();
-        }, 3000);
-//        UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
-//            @Override
-//            public void onSubscribe(Disposable d) {
-//                super.onSubscribe(d);
-//                addDisposable(d);
-//            }
-//
-//            @Override
-//            public void onSuccess(HttpResponse<LoginBean> data) {
-//            }
-//        });
+        showLoading(mActivity,"登录中");
+        UserModel.getInstance().login(str_mobile.get(), str_code.get(), new BaseObserver<LoginBean>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                addDisposable(d);
+            }
+
+            @Override
+            public void onSuccess(HttpResponse<LoginBean> data) {
+                MyUserSPUtils.setIsLogin(true);
+                str_mobile.set("15727960192");
+                str_code.set("789456");
+                MyUserSPUtils.setUserName("奔跑的一毛一");
+                MyUserSPUtils.setHeadUrl("http://g.hiphotos.baidu.com/image/pic/item/6d81800a19d8bc3e770bd00d868ba61ea9d345f2.jpg");
+                CoreLogUtils.logE("login",data.getCode()+"---"+data.getMsg()+"---"+data.getData().getMsg()+"---"+data.getData().getUserName());
+            }
+
+            @Override
+            public void onComplete() {
+                super.onComplete();
+                CoreLogUtils.logE("onComplete");
+                closeLoading();
+            }
+
+            @Override
+            public void onFail(Throwable e) {
+                super.onFail(e);
+                CoreLogUtils.logE("onFail");
+                closeLoading();
+            }
+        });
     }
 
     private void getCode() {

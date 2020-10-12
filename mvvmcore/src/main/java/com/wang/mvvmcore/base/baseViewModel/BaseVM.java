@@ -1,6 +1,5 @@
 package com.wang.mvvmcore.base.baseViewModel;
 
-import android.view.View;
 
 /**
  * author: wtg
@@ -9,13 +8,4 @@ import android.view.View;
  */
 public class BaseVM {
     protected String TAG = getClass().getSimpleName();
-
-    /**
-     * View 的点击事件
-     *
-     * @param view view
-     */
-    public void onViewClick(View view) {
-
-    }
 }

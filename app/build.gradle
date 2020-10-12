@@ -46,8 +46,8 @@ android {
         }
 
         debug {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             android.applicationVariants.all {
                 outputs.all {
@@ -63,29 +63,32 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //wcdb数据库
-    implementation 'com.tencent.wcdb:wcdb-android:1.0.8'
-    implementation 'com.tencent.wcdb:room:1.0.8'  // 代替 room-runtime，同时也不需要再引用 wcdb-android
-    implementation 'androidx.room:room-runtime:2.2.5'
+    api 'com.tencent.wcdb:wcdb-android:1.0.8'
+    api 'com.tencent.wcdb:room:1.0.8'  // 代替 room-runtime，同时也不需要再引用 wcdb-android
+    api 'androidx.room:room-runtime:2.2.5'
     annotationProcessor 'androidx.room:room-compiler:2.2.5' // compiler 需要用 room 的
 
     //圆形图片
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    api 'de.hdodenhof:circleimageview:3.1.0'
 
     //recyclerView 侧滑
-    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+    api "com.daimajia.swipelayout:library:1.2.0@aar"
 
     //带数字的进度条
-    implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
+    api 'com.daimajia.numberprogressbar:library:1.4@aar'
 
     //底部导航
-    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+    api 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+
+    //banner
+    api 'com.youth.banner:banner:2.1.0'
 
     //banner androidX 版本使用下面的依赖
-    implementation 'com.github.xiaohaibin:XBanner:androidx_v1.0.8'
+    api 'com.github.xiaohaibin:XBanner:androidx_v1.0.8'
 
     //butterknife
-    implementation 'com.jakewharton:butterknife:10.2.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
     implementation project(path: ':mvvmcore')
 }

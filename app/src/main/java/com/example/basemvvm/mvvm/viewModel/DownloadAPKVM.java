@@ -17,7 +17,7 @@ import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
 import com.wang.mvvmcore.network.downloadAndUpload.download.DownLoadUtils;
 import com.wang.mvvmcore.network.downloadAndUpload.download.DownloadResponseBody;
-import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 import com.wang.mvvmcore.utils.common.MyFileUtils;
 
 import org.jetbrains.annotations.NotNull;
@@ -92,30 +92,30 @@ public class DownloadAPKVM extends BaseActivityLifecycleVM {
             call = DownLoadUtils.download(updateBean.getDownloadUrl(), new DownloadResponseBody.DownloadListener() {
                 @Override
                 public void onStartDownload(long length) {
-                    LogUtils.logE("onStartDownload=" + length);
+                    CoreLogUtils.logE("onStartDownload=" + length);
                 }
 
                 @Override
                 public void onProgress(long progress, long total, boolean done) {
-                    LogUtils.logE("onProgress=" + progress + "---total=" + total);
+                    CoreLogUtils.logE("onProgress=" + progress + "---total=" + total);
                     progressInt.set((int) (progress * 100 / total));
                 }
 
                 @Override
                 public void onFail(String errorInfo) {
-                    LogUtils.logE("onFail=" + errorInfo);
+                    CoreLogUtils.logE("onFail=" + errorInfo);
                     mActivity.finish();
                 }
             }, new Callback() {
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                    LogUtils.logE("onFailure=" + e.getMessage());
+                    CoreLogUtils.logE("onFailure=" + e.getMessage());
                     mActivity.finish();
                 }
 
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) {
-                    LogUtils.logE("onResponse=" + response.message());
+                    CoreLogUtils.logE("onResponse=" + response.message());
                     ResponseBody responseBody = response.body();
                     if (responseBody != null) {
                         File file = MyFileUtils.saveFile(responseBody.byteStream(), DIR_APP, "hello.apk");

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * author: wtg
  * date:2020/5/27 0027
- * desc:
+ * desc:单布局不使用MVVM
  */
 public class SingleNoMvvmAdapter extends BaseSingleAdapter<NotificationBean, BaseViewHolder> {
     public SingleNoMvvmAdapter(int layoutResId) {

@@ -7,7 +7,7 @@ import com.example.basemvvm.bean.HttpResponse;
 import java.util.List;
 import java.util.Map;
 
-import io.reactivex.Observable;
+import io.reactivex.rxjava3.core.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
@@ -27,6 +27,11 @@ import static com.example.basemvvm.network.api.UploadApi.URL_UPLOAD_IMAGE;
  * desc: 下载文件的service
  */
 public interface DownloadAndUploadService {
+    /**
+     * 下载文件
+     * @param url url地址
+     * @return 监听
+     */
     @Streaming
     @GET
     Observable<ResponseBody> download(@NonNull @Url String url);

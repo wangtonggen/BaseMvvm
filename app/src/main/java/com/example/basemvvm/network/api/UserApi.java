@@ -9,7 +9,7 @@ public class UserApi {
     //用户member基准
     private static final String URL_USER_MEMBER_BASE = "member/";
     //登录
-    public static final String URL_USER_MEMBER_LOGIN = URL_USER_MEMBER_BASE + "login";
+    public static final String URL_USER_MEMBER_LOGIN = "login";
 
     //刷新token
     public static final String URL_USER_REFRESH_TOKEN = URL_USER_MEMBER_BASE + "login";

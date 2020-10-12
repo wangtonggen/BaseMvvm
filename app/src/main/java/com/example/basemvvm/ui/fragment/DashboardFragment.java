@@ -5,6 +5,7 @@ import com.example.basemvvm.R;
 import com.example.basemvvm.databinding.FragmentDashboardBinding;
 import com.example.basemvvm.mvvm.viewModel.DashboardVM;
 import com.wang.mvvmcore.base.fragment.BaseMVVMFragment;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 
 public class DashboardFragment extends BaseMVVMFragment<FragmentDashboardBinding, DashboardVM> {
@@ -25,6 +26,6 @@ public class DashboardFragment extends BaseMVVMFragment<FragmentDashboardBinding
 
     @Override
     public void onLazyLoadData() {
-//        LogUtils.logE(TAG, "DashboardFragment");
+        CoreLogUtils.logE(TAG, "DashboardFragment");
     }
 }

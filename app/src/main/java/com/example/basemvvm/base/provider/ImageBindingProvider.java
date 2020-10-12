@@ -6,7 +6,7 @@ import com.example.basemvvm.adapter.UserAdapter;
 import com.example.basemvvm.bean.UserBean;
 import com.example.basemvvm.databinding.RecyclerItemImageBinding;
 import com.example.basemvvm.mvvm.viewModel.ImageItemVM;
-import com.wang.mvvmcore.adapter.provider.BaseBindingProvider;
+import com.wang.mvvmcore.adapter.multi.provider.BaseBindingProvider;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * date:2020/4/30 0030
  * desc:
  */
-public class ImageBindingProvider extends BaseBindingProvider<RecyclerItemImageBinding, UserBean> {
+public class ImageBindingProvider extends BaseBindingProvider<UserBean,RecyclerItemImageBinding> {
 
     @Override
     public int getItemViewType() {

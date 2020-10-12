@@ -14,6 +14,9 @@ import com.wang.mvvmcore.base.app.BaseCoreApplication;
  * author: wtg
  * date:2020/5/20 0020
  * desc: 不使用binding 的单布局adapter基类
+ *       如果想要修改没有数据的情况下显示的布局只需要重写{@link #getRecyclerEmptyView()}方法即可
+ * @param <T> bean
+ * @param <VH> viewHolder
  */
 public abstract class BaseSingleAdapter<T,VH extends BaseViewHolder> extends BaseQuickAdapter<T,VH> implements LoadMoreModule {
     public BaseSingleAdapter(int layoutResId) {

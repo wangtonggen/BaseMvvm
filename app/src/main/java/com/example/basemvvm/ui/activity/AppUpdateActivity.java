@@ -11,6 +11,7 @@ import com.example.basemvvm.bean.UpdateBean;
 import com.example.basemvvm.databinding.ActivityDialogDownApkBinding;
 import com.example.basemvvm.mvvm.viewModel.DownloadAPKVM;
 import com.wang.mvvmcore.base.activity.BaseMVVMActivity;
+import com.wang.mvvmcore.constant.SwipeConstant;
 
 /**
  * author: wtg
@@ -48,7 +49,7 @@ public class AppUpdateActivity extends BaseMVVMActivity<ActivityDialogDownApkBin
 
     @Override
     protected int getEdgeTrackingEnabled() {
-        return -1;
+        return SwipeConstant.SWIPE_NONE;
     }
 
     @Override

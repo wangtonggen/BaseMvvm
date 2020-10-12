@@ -1,13 +1,18 @@
 package com.wang.mvvmcore.base.baseViewModel;
 
+import android.content.Context;
+import android.view.View;
+
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import com.lxj.xpopup.core.BasePopupView;
+import com.lxj.xpopup.XPopup;
+import com.lxj.xpopup.impl.LoadingPopupView;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * author: wtg
@@ -15,36 +20,47 @@ import io.reactivex.disposables.Disposable;
  * desc: ViewModel 生命周期管理的基类
  */
 public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserver {
-    private CompositeDisposable mDisposables = new CompositeDisposable();//请求管理类
-    protected BasePopupView basePopupView;
+    protected LoadingPopupView loadingPopupView;
+    protected CompositeDisposable mDisposables;
 
     /**
      * 显示加载框
+     *
+     * @param context 上下文
+     * @param title   标题
      */
-    public void showLoadingDialog(String content) {
+    public void showLoading(Context context, String title) {
+        if (loadingPopupView == null) {
+            loadingPopupView = new XPopup.Builder(context).asLoading();
+        }
+        loadingPopupView.setTitle(title);
+        loadingPopupView.show();
+    }
 
+    /**
+     * 显示加载框
+     *
+     * @param context 上下文
+     */
+    public void showLoading(Context context) {
+        showLoading(context, "");
     }
 
     /**
      * 关闭加载框
      */
-    public void closeLoadingDialog() {
-        if (basePopupView != null && basePopupView.isShow()) {
-            basePopupView.dismiss();
+    public void closeLoading() {
+        if (loadingPopupView != null && loadingPopupView.isShow()) {
+            loadingPopupView.dismiss();
         }
     }
 
     /**
-     * 显示提示性对话框
+     * 按钮点击时间
+     *
+     * @param view view
      */
-    public void showTextDialog() {
-
-    }
-
-    /**
-     * 关闭提示性对话框
-     */
-    public void closeTextDialog() {
+    public void onViewClick(View view) {
 
     }
 
@@ -61,41 +77,42 @@ public abstract class BaseLifecycleVM extends BaseVM implements LifecycleObserve
     }
 
     /**
-     * 取消所有请求
+     * 清除所有的请求
      */
-    private void cancelRequest() {
-        if (mDisposables != null && mDisposables.size() > 0 && !mDisposables.isDisposed())
+    public void onUnBind() {
+        if (mDisposables != null && mDisposables.size() > 0 && !mDisposables.isDisposed()) {
             mDisposables.dispose();
+        }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreate() {
-//        LogUtils.logE(TAG, "onCreate: ");
+        CoreLogUtils.logE(TAG, "onCreate: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onStart() {
-//        LogUtils.logE(TAG, "onStart: ");
+        CoreLogUtils.logE(TAG, "onStart: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void onResume() {
-//        LogUtils.logE(TAG, "onResume: ");
+        CoreLogUtils.logE(TAG, "onResume: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPause() {
-//        LogUtils.logE(TAG, "onPause: ");
+        CoreLogUtils.logE(TAG, "onPause: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void onStop() {
-//        LogUtils.logE(TAG, "onStop: ");
+        CoreLogUtils.logE(TAG, "onStop: ");
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy() {
-//        LogUtils.logE(TAG, "onDestroy: ");
-        cancelRequest();
+        onUnBind();
+        CoreLogUtils.logE(TAG, "onDestroy: ");
     }
 }

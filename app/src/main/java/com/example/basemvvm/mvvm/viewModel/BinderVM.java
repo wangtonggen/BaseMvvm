@@ -10,7 +10,7 @@ import com.example.basemvvm.bean.NotificationBean;
 import com.example.basemvvm.bean.UserBean;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
-import com.wang.mvvmcore.adapter.multiAdapter.baseMultiAdapter.BaseMultiBinderAdapter;
+import com.wang.mvvmcore.adapter.multi.adapter.BaseMultiBinderAdapter;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
 

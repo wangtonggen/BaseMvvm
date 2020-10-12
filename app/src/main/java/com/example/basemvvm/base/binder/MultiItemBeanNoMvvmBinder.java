@@ -3,7 +3,7 @@ package com.example.basemvvm.base.binder;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
 import com.example.basemvvm.bean.MultiItemBean;
-import com.wang.mvvmcore.adapter.binder.BaseBinder;
+import com.wang.mvvmcore.adapter.multi.binder.BaseBinder;
 
 import org.jetbrains.annotations.NotNull;
 

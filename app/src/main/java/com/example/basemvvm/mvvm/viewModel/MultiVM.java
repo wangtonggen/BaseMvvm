@@ -2,6 +2,7 @@ package com.example.basemvvm.mvvm.viewModel;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.module.BaseLoadMoreModule;
 import com.example.basemvvm.adapter.MultiAdapter;
 import com.example.basemvvm.bean.MultiItemBean;
@@ -9,7 +10,6 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.wang.mvvmcore.base.activity.BaseActivity;
 import com.wang.mvvmcore.base.baseViewModel.BaseActivityLifecycleVM;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +42,7 @@ public class MultiVM extends BaseActivityLifecycleVM {
         multiAdapter.setOnItemClickListener((adapter, view, position) -> {
             multiAdapter.getData().get(position).name = "hello";
             multiAdapter.notifyItemChanged(position + multiAdapter.getHeaderLayoutCount());
-            ToastUtils.showShortToast("position_" + position);
+            ToastUtils.showShort("position_" + position);
         });
         baseLoadMoreModule = multiAdapter.getLoadMoreModule();
         baseLoadMoreModule.setOnLoadMoreListener(() -> {

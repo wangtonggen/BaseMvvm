@@ -4,7 +4,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.basemvvm.R;
 import com.example.basemvvm.bean.UserBean;
-import com.wang.mvvmcore.adapter.binder.BaseBinder;
+import com.wang.mvvmcore.adapter.multi.binder.BaseBinder;
 
 import org.jetbrains.annotations.NotNull;
 

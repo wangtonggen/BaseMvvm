@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class DownloadModel {
     private static DownloadModel downloadModel;
-    private static DownloadAndUploadService downloadAndUploadService;
+    private static DownloadAndUploadService downloadAndUploadService = RetrofitManager.getInstance().createService(DownloadAndUploadService.class);
 
     public static DownloadModel getInstance() {
         if (downloadModel == null) {
@@ -25,9 +25,6 @@ public class DownloadModel {
                     downloadModel = new DownloadModel();
                 }
             }
-        }
-        if (downloadAndUploadService == null) {
-            downloadAndUploadService = RetrofitManager.getInstance().createService(DownloadAndUploadService.class);
         }
         return downloadModel;
     }

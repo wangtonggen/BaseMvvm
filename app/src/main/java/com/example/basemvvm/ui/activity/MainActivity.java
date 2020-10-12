@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -12,6 +13,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 
 import com.blankj.utilcode.util.StringUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.example.basemvvm.R;
 import com.example.basemvvm.adapter.ViewPager2Adapter;
@@ -22,13 +24,14 @@ import com.example.basemvvm.ui.fragment.NotificationsFragment;
 import com.example.basemvvm.ui.fragment.UserFragment;
 import com.example.basemvvm.utils.common.BottomNavigationViewUtils;
 import com.example.basemvvm.utils.common.MyUserSPUtils;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.lxj.xpopup.XPopup;
 import com.wang.mvvmcore.base.activity.BaseNoMVVMActivity;
 import com.wang.mvvmcore.base.fragment.BaseFragment;
+import com.wang.mvvmcore.constant.SwipeConstant;
 import com.wang.mvvmcore.utils.anim.TransitionAnimationUtils;
-import com.wang.mvvmcore.utils.common.ToastUtils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -73,7 +76,7 @@ public class MainActivity extends BaseNoMVVMActivity {
 
     @Override
     protected int getEdgeTrackingEnabled() {
-        return -1;
+        return SwipeConstant.SWIPE_NONE;
     }
 
     @Override
@@ -87,7 +90,7 @@ public class MainActivity extends BaseNoMVVMActivity {
         drawer.addDrawerListener(mDrawerToggle);
         navigationView.setNavigationItemSelectedListener(item -> {
             if (!MyUserSPUtils.isLogin() && item.getItemId() != R.id.nav_settings) {
-                ToastUtils.showShortToast("您还没有登录，请登录");
+                ToastUtils.showShort("您还没有登录，请登录");
                 TransitionAnimationUtils.startSceneTransitionAnimationActivity(this, LoginActivity.class, iv_head, StringUtils.getString(R.string.transition_user_head));
                 return false;
             }
@@ -204,12 +207,15 @@ public class MainActivity extends BaseNoMVVMActivity {
             }
         });
 
-        bottomNavigationView.post(() -> {
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 0, 100);
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 1, 50);
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 3, 8);
-            BottomNavigationViewUtils.showBadgeView(this, bottomNavigationView, 4, -10);
-        });
+        BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.navigation_home);//显示角标 系统自带
+        badgeDrawable.setBackgroundColor(Color.GREEN);//显示点状角标 不显示具体消息数量
+        BadgeDrawable badgeDrawable1 = bottomNavigationView.getOrCreateBadge(R.id.navigation_find);//显示角标 系统自带
+        badgeDrawable1.setBackgroundColor(Color.BLUE);//显示点状角标 改变角标背景色
+        badgeDrawable1.setNumber(8);
+        BadgeDrawable badgeDrawable2 = bottomNavigationView.getOrCreateBadge(R.id.navigation_message);//显示角标 系统自带
+        badgeDrawable2.setNumber(99);
+        BadgeDrawable badgeDrawable3 = bottomNavigationView.getOrCreateBadge(R.id.navigation_dynamic);//显示角标 系统自带
+        badgeDrawable3.setNumber(1000);
     }
 
     /**

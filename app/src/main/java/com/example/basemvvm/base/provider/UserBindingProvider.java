@@ -6,8 +6,8 @@ import com.example.basemvvm.adapter.UserAdapter;
 import com.example.basemvvm.bean.UserBean;
 import com.example.basemvvm.databinding.RecyclerItemUserBinding;
 import com.example.basemvvm.mvvm.viewModel.UserItemVM;
-import com.wang.mvvmcore.adapter.provider.BaseBindingProvider;
-import com.wang.mvvmcore.utils.common.LogUtils;
+import com.wang.mvvmcore.adapter.multi.provider.BaseBindingProvider;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
  * date:2020/4/30 0030
  * desc:
  */
-public class UserBindingProvider extends BaseBindingProvider<RecyclerItemUserBinding, UserBean> {
+public class UserBindingProvider extends BaseBindingProvider<UserBean,RecyclerItemUserBinding> {
 
     @Override
     public int getItemViewType() {
@@ -30,7 +30,7 @@ public class UserBindingProvider extends BaseBindingProvider<RecyclerItemUserBin
 
     @Override
     protected void bindData(@NotNull BaseViewHolder viewHolder, @NotNull RecyclerItemUserBinding viewDataBinding, UserBean userBean) {
-        LogUtils.logE("bindData");
+        CoreLogUtils.logE("bindData");
         viewDataBinding.setUserItemVM(new UserItemVM(userBean));
     }
 }

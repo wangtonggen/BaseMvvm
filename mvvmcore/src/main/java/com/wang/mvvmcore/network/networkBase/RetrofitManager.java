@@ -2,12 +2,12 @@ package com.wang.mvvmcore.network.networkBase;
 
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
-import com.wang.mvvmcore.utils.common.LogUtils;
-import com.wang.mvvmcore.utils.common.ToastUtils;
+import com.wang.mvvmcore.utils.common.CoreLogUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -21,7 +21,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.wang.mvvmcore.network.networkBase.ApiConfigConstant.CONNECT_TIMEOUT;
@@ -45,7 +45,7 @@ public class RetrofitManager {
     private int writeTimeout = WRITE_TIMEOUT;
     private TimeUnit writeTimeoutTimeUnit = TimeUnit.SECONDS;
     private Converter.Factory converterFactory = GsonConverterFactory.create();
-    private CallAdapter.Factory callAdapterFactory = RxJava2CallAdapterFactory.create();
+    private CallAdapter.Factory callAdapterFactory = RxJava3CallAdapterFactory.create();
     private List<Interceptor> interceptors = new ArrayList<>();
     private String baseUrl;
 
@@ -159,12 +159,12 @@ public class RetrofitManager {
      */
     public void init() {
         if (TextUtils.isEmpty(baseUrl)) {
-            ToastUtils.showShortToast("请设置baseUrl");
+            ToastUtils.showShort("请设置baseUrl");
             return;
         }
         if (okHttpClient == null) {
             //添加拦截器
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> LogUtils.logE("okhttp4:", message));
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor((@NotNull String message) -> CoreLogUtils.logE("okhttp4::", message));
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
