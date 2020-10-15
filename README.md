@@ -35,7 +35,6 @@ public class ProviderActivity extends BaseSwipeBackLeftActivity<ActivityProvider
     protected int getViewModelId() {
         return BR.providerVM;
     }
-
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_provider;
