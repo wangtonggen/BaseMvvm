@@ -15,7 +15,7 @@ allprojects {
 ## App里面的gradle添加依赖
 ---
 ```
-implementation 'com.gitee.wangdachui:BaseMvvm:1.1.5'
+implementation 'com.gitee.wangdachui:BaseMvvm:1.1.6'
 //添加butterknife
 implementation'com.jakewharton:butterknife:10.2.3'  
 annotationProcessor'com.jakewharton:butterknife-compiler:10.2.3'
