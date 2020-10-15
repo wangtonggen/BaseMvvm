@@ -125,7 +125,7 @@ public class ActivityManagerUtils {
             activityMgr.killBackgroundProcesses(context.getPackageName());
             System.exit(0);
         } catch (Exception e) {
-//            LogUtils.e(TAG, e.getMessage());
+            CoreLogUtils.logE(TAG,e.getMessage());
         }
     }
 }

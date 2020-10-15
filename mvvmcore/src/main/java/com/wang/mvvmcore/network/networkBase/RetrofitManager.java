@@ -168,8 +168,8 @@ public class RetrofitManager {
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            builder.connectTimeout(connectTimeout, connectTimeoutTimeUnit);
-            builder.readTimeout(readTimeout, readTimeoutTimeUnit)
+            builder.connectTimeout(connectTimeout, connectTimeoutTimeUnit)
+                    .readTimeout(readTimeout, readTimeoutTimeUnit)
                     .writeTimeout(writeTimeout, writeTimeoutTimeUnit)
                     .sslSocketFactory(SSL.initSSLSocketFactory(), SSL.initTrustManager())
                     .addInterceptor(httpLoggingInterceptor)
@@ -196,6 +196,12 @@ public class RetrofitManager {
         return okHttpClient;
     }
 
+    /**
+     * 设置okhttpClient
+     *
+     * @param okHttpClient 设置网络请求对象
+     * @return 管理类
+     */
     public RetrofitManager setOkHttpClient(OkHttpClient okHttpClient) {
         this.okHttpClient = okHttpClient;
         return instance;

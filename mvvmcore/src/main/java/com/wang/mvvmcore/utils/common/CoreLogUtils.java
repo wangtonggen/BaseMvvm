@@ -2,6 +2,8 @@ package com.wang.mvvmcore.utils.common;
 
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.LogUtils;
+
 /**
  * author: wtg
  * date:2020/3/13 0013
@@ -20,9 +22,9 @@ public class CoreLogUtils {
     public static void logE(String tag, String message) {
         if (isPrintLog) {
             if (TextUtils.isEmpty(tag)) {
-                com.blankj.utilcode.util.LogUtils.e(message);
+                LogUtils.e(message);
             } else {
-                com.blankj.utilcode.util.LogUtils.e(tag, message);
+                LogUtils.e(tag, message);
             }
         }
     }

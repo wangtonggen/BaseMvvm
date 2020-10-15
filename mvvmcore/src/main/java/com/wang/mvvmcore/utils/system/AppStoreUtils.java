@@ -101,13 +101,17 @@ public class AppStoreUtils {
         return intent;
     }
 
-    private static boolean go2NormalAppStore(String packageName) {
+    /**
+     * 正常使用会默认打开已安装的应用商店列表，如只有一个，则打开仅有的应用商店。
+     *
+     * @param packageName 包名
+     */
+    private static void go2NormalAppStore(String packageName) {
         Intent intent = getNormalAppStoreIntent();
-        if (intent == null) return false;
+        if (intent == null) return;
         intent.setData(Uri.parse("market://details?id=" + packageName));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Utils.getApp().startActivity(intent);
-        return true;
     }
 
     private static Intent getNormalAppStoreIntent() {
@@ -120,6 +124,11 @@ public class AppStoreUtils {
         return null;
     }
 
+    /**
+     * 获取到三星应用市场的intent
+     * @param packageName 应用包名
+     * @return intent
+     */
     private static Intent getSamsungAppStoreIntent(final String packageName) {
         Intent intent = new Intent();
         intent.setClassName("com.sec.android.app.samsungapps", "com.sec.android.app.samsungapps.Main");
@@ -131,6 +140,11 @@ public class AppStoreUtils {
         return null;
     }
 
+    /**
+     * 获取跳转乐视的intent
+     * @param packageName 包名
+     * @return intent
+     */
     private static Intent getLeecoAppStoreIntent(final String packageName) {
         Intent intent = new Intent();
         intent.setClassName("com.letv.app.appstore", "com.letv.app.appstore.appmodule.details.DetailsActivity");
