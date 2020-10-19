@@ -9,6 +9,10 @@ import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.wang.mvvmcore.R;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
 
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+
 /**
  * author: wtg
  * date:2020/5/20 0020
@@ -22,6 +26,11 @@ import com.wang.mvvmcore.base.app.BaseCoreApplication;
  * ViewHolder 由 [BaseBinder/BaseViewDataBinder] 实现，并且每个{@link com.wang.mvvmcore.adapter.multi.binder.BaseBinder] 或者{@link com.wang.mvvmcore.adapter.multi.binder.BaseBindingBinder}可以拥有自己类型的ViewHolder类型。
  */
 public class BaseMultiBinderAdapter extends BaseBinderAdapter implements LoadMoreModule {
+    public BaseMultiBinderAdapter(@Nullable List<Object> list) {
+        super(list);
+        setEmptyView(getRecyclerEmptyView());
+    }
+
     public BaseMultiBinderAdapter() {
         super();
         setEmptyView(getRecyclerEmptyView());

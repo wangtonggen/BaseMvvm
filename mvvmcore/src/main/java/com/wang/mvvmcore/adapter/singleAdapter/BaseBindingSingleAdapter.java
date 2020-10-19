@@ -13,6 +13,9 @@ import com.wang.mvvmcore.R;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 /**
  * author: wtg
@@ -23,6 +26,11 @@ import org.jetbrains.annotations.NotNull;
  * @param <VB> 数据绑定类
  */
 public abstract class BaseBindingSingleAdapter<T, VB extends ViewDataBinding> extends BaseQuickAdapter<T, BaseDataBindingHolder<VB>> implements LoadMoreModule {
+    public BaseBindingSingleAdapter(int layoutResId, @Nullable List<T> data) {
+        super(layoutResId, data);
+        setEmptyView(getRecyclerEmptyView());
+    }
+
     public BaseBindingSingleAdapter(int layoutResId) {
         super(layoutResId);
         setEmptyView(getRecyclerEmptyView());

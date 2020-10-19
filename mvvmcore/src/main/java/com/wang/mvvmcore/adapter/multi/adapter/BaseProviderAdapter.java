@@ -11,6 +11,7 @@ import com.wang.mvvmcore.adapter.entity.BaseMultiEntity;
 import com.wang.mvvmcore.base.app.BaseCoreApplication;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -24,7 +25,14 @@ import java.util.List;
  * @param <T> bean
  */
 public abstract class BaseProviderAdapter<T extends BaseMultiEntity> extends BaseProviderMultiAdapter<T> implements LoadMoreModule {
+    public BaseProviderAdapter(@Nullable List<T> data) {
+        super(data);
+        addItemTypeProvider();
+        setEmptyView(getRecyclerEmptyView());
+    }
+
     public BaseProviderAdapter() {
+        super();
         addItemTypeProvider();
         setEmptyView(getRecyclerEmptyView());
     }
